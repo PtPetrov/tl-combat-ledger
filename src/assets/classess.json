@@ -1,0 +1,290 @@
+[
+  {
+    "className": "Battleweaver",
+    "classSlug": "battleweaver",
+    "weapons": [
+      { "name": "Crossbow", "slug": "crossbow" },
+      { "name": "Staff", "slug": "staff" }
+    ]
+  },
+  {
+    "className": "Berserker",
+    "classSlug": "berserker",
+    "weapons": [
+      { "name": "Sword", "slug": "sword" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Cavalier",
+    "classSlug": "cavalier",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Crossbow", "slug": "crossbow" }
+    ]
+  },
+  {
+    "className": "Crucifix",
+    "classSlug": "crucifix",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Crossbow", "slug": "crossbow" }
+    ]
+  },
+  {
+    "className": "Crusader",
+    "classSlug": "crusader",
+    "weapons": [
+      { "name": "Greatsword", "slug": "greatsword" },
+      { "name": "Sword", "slug": "sword" }
+    ]
+  },
+  {
+    "className": "Darkblighter",
+    "classSlug": "darkblighter",
+    "weapons": [
+      { "name": "Daggers", "slug": "daggers" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Disciple",
+    "classSlug": "disciple",
+    "weapons": [
+      { "name": "Sword", "slug": "sword" },
+      { "name": "Staff", "slug": "staff" }
+    ]
+  },
+  {
+    "className": "Enigma",
+    "classSlug": "enigma",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Staff", "slug": "staff" }
+    ]
+  },
+  {
+    "className": "Eradicator",
+    "classSlug": "eradicator",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Staff", "slug": "staff" }
+    ]
+  },
+  {
+    "className": "Fury",
+    "classSlug": "fury",
+    "weapons": [
+      { "name": "Crossbow", "slug": "crossbow" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Gladiator",
+    "classSlug": "gladiator",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Greatsword", "slug": "greatsword" }
+    ]
+  },
+  {
+    "className": "Guardian",
+    "classSlug": "guardian",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Sword", "slug": "sword" }
+    ]
+  },
+  {
+    "className": "Impaler",
+    "classSlug": "impaler",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Longbow", "slug": "longbow" }
+    ]
+  },
+  {
+    "className": "Infiltrator",
+    "classSlug": "infiltrator",
+    "weapons": [
+      { "name": "Longbow", "slug": "longbow" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Invocator",
+    "classSlug": "invocator",
+    "weapons": [
+      { "name": "Staff", "slug": "staff" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Justicar",
+    "classSlug": "justicar",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Greatsword", "slug": "greatsword" }
+    ]
+  },
+  {
+    "className": "Liberator",
+    "classSlug": "liberator",
+    "weapons": [
+      { "name": "Longbow", "slug": "longbow" },
+      { "name": "Staff", "slug": "staff" }
+    ]
+  },
+  {
+    "className": "Lunarch",
+    "classSlug": "lunarch",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Oracle",
+    "classSlug": "oracle",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Outrider",
+    "classSlug": "outrider",
+    "weapons": [
+      { "name": "Crossbow", "slug": "crossbow" },
+      { "name": "Greatsword", "slug": "greatsword" }
+    ]
+  },
+  {
+    "className": "Paladin",
+    "classSlug": "paladin",
+    "weapons": [
+      { "name": "Greatsword", "slug": "greatsword" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Polaris",
+    "classSlug": "polaris",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Spear", "slug": "spear" }
+    ]
+  },
+  {
+    "className": "Raider",
+    "classSlug": "raider",
+    "weapons": [
+      { "name": "Crossbow", "slug": "crossbow" },
+      { "name": "Sword", "slug": "sword" }
+    ]
+  },
+  {
+    "className": "Ranger",
+    "classSlug": "ranger",
+    "weapons": [
+      { "name": "Longbow", "slug": "longbow" },
+      { "name": "Greatsword", "slug": "greatsword" }
+    ]
+  },
+  {
+    "className": "Ravager",
+    "classSlug": "ravager",
+    "weapons": [
+      { "name": "Greatsword", "slug": "greatsword" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Scorpion",
+    "classSlug": "scorpion",
+    "weapons": [
+      { "name": "Crossbow", "slug": "crossbow" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Scout",
+    "classSlug": "scout",
+    "weapons": [
+      { "name": "Longbow", "slug": "longbow" },
+      { "name": "Crossbow", "slug": "crossbow" }
+    ]
+  },
+  {
+    "className": "Scryer",
+    "classSlug": "scryer",
+    "weapons": [
+      { "name": "Orb", "slug": "orb" },
+      { "name": "Longbow", "slug": "longbow" }
+    ]
+  },
+  {
+    "className": "Seeker",
+    "classSlug": "seeker",
+    "weapons": [
+      { "name": "Longbow", "slug": "longbow" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Sentinel",
+    "classSlug": "sentinel",
+    "weapons": [
+      { "name": "Staff", "slug": "staff" },
+      { "name": "Greatsword", "slug": "greatsword" }
+    ]
+  },
+  {
+    "className": "Shadowdancer",
+    "classSlug": "shadowdancer",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Spellblade",
+    "classSlug": "spellblade",
+    "weapons": [
+      { "name": "Staff", "slug": "staff" },
+      { "name": "Daggers", "slug": "daggers" }
+    ]
+  },
+  {
+    "className": "Steelheart",
+    "classSlug": "steelheart",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Sword", "slug": "sword" }
+    ]
+  },
+  {
+    "className": "Templar",
+    "classSlug": "templar",
+    "weapons": [
+      { "name": "Sword", "slug": "sword" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Voidlance",
+    "classSlug": "voidlance",
+    "weapons": [
+      { "name": "Spear", "slug": "spear" },
+      { "name": "Wand", "slug": "wand" }
+    ]
+  },
+  {
+    "className": "Warden",
+    "classSlug": "warden",
+    "weapons": [
+      { "name": "Sword", "slug": "sword" },
+      { "name": "Longbow", "slug": "longbow" }
+    ]
+  }
+]

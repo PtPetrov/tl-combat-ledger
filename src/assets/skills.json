@@ -1,0 +1,2819 @@
+[
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "shield survival technique",
+    "slug": "shield-survival-technique",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shield-survival-technique",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_DefenceAction_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/shield-survival-technique.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "shield strike",
+    "slug": "shield-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shield-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_DebuffAttack_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/shield-strike.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "counter barrier",
+    "slug": "counter-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/counter-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_BuffAttack_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/counter-barrier.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "strategic rush",
+    "slug": "strategic-rush",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/strategic-rush",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_DashAttack_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/strategic-rush.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "chain hook",
+    "slug": "chain-hook",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/chain-hook",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_MoveSkill_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/chain-hook.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "provoking roar",
+    "slug": "provoking-roar",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/provoking-roar",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_TauntBuff_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/provoking-roar.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "immortal pride",
+    "slug": "immortal-pride",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/immortal-pride",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/WP_SW_S_MaxHealthUp.webp",
+    "iconPath": "src/assets/icons/sword-shield/immortal-pride.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "shield throw",
+    "slug": "shield-throw",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shield-throw",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_ShieldThrow.webp",
+    "iconPath": "src/assets/icons/sword-shield/shield-throw.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "stalwart bastion",
+    "slug": "stalwart-bastion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/stalwart-bastion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_ShieldBuff.webp",
+    "iconPath": "src/assets/icons/sword-shield/stalwart-bastion.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "annihilating slash",
+    "slug": "annihilating-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/annihilating-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_WhirlwindSlash.webp",
+    "iconPath": "src/assets/icons/sword-shield/annihilating-slash.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "fierce clash",
+    "slug": "fierce-clash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fierce-clash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_PushAttack.webp",
+    "iconPath": "src/assets/icons/sword-shield/fierce-clash.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "witty retort",
+    "slug": "witty-retort",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/witty-retort",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_ManaAttack.webp",
+    "iconPath": "src/assets/icons/sword-shield/witty-retort.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "a shot at victory",
+    "slug": "a-shot-at-victory",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/a-shot-at-victory",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_DoubleChanceAttack_1.webp",
+    "iconPath": "src/assets/icons/sword-shield/a-shot-at-victory.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "skillful evasion",
+    "slug": "skillful-evasion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/skillful-evasion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_TheCloserEvasionUP_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/skillful-evasion.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "resilient mind",
+    "slug": "resilient-mind",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/resilient-mind",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_BlockSucceedRewardMana_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/resilient-mind.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "aegis shield",
+    "slug": "aegis-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/aegis-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_ArmorUp_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/aegis-shield.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "spectrum of agony",
+    "slug": "spectrum-of-agony",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/spectrum-of-agony",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_TauntBuff_Attack_AA.webp",
+    "iconPath": "src/assets/icons/sword-shield/spectrum-of-agony.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "gerads patience",
+    "slug": "gerads-patience",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/gerads-patience",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_BlockSucceedTolerance.webp",
+    "iconPath": "src/assets/icons/sword-shield/gerads-patience.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "impenetrable",
+    "slug": "impenetrable",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/impenetrable",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_AroundCountBuff.webp",
+    "iconPath": "src/assets/icons/sword-shield/impenetrable.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "morale boost",
+    "slug": "morale-boost",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/morale-boost",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_CrashSucceedBuff.webp",
+    "iconPath": "src/assets/icons/sword-shield/morale-boost.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "All-Out Defense Weapon Mastery Boss Damage Reduction 24 ▲",
+    "slug": "all-out-defense",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/all-out-defense",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_2.webp",
+    "iconPath": "src/assets/icons/sword-shield/all-out-defense.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Annihilation Blade Active Uses Annihilation Blade in the designated direction, dealing 880% + 107 of Base Damage to all targets within 6 times the Attack Range, and increases Sword skill damage by 20% for 6s. This skill can only be upgraded with a Precious Active Skill Growth Book: Omnipotence.",
+    "slug": "annihilation-blade",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/annihilation-blade",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_DoubleChanceAttack_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/annihilation-blade.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Blade of Rage Weapon Mastery Cooldown Speed 5% ▲",
+    "slug": "blade-of-rage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/blade-of-rage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_3.webp",
+    "iconPath": "src/assets/icons/sword-shield/blade-of-rage.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Blessing of Immortality Active",
+    "slug": "blessing-of-immortality",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/blessing-of-immortality",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_S_MaxHealthUp_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/blessing-of-immortality.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Calculated Rush Weapon Mastery Collision Chance 75 ▲",
+    "slug": "calculated-rush",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/calculated-rush",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_1.webp",
+    "iconPath": "src/assets/icons/sword-shield/calculated-rush.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Cleaving Roar Active Has a(n) 70% chance to decrease Melee, Ranged, Magic Endurance 340 of 6 enemies within 3m range for 4.8s. Has a 100% chance to apply against monsters and increases the effect duration to 7.2s.",
+    "slug": "cleaving-roar",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cleaving-roar",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_TauntBuff_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/cleaving-roar.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Concentrated Barrier Active For 6s, on evading an attack, using Shield Block, or blocking with a Defense Skill within 1.35 times the Range (4.5 times for Magic and Ranged) performs a counterattack that deals damage equal to 250% of Damage Reduction to the attacker. The counterattack cannot trigger Critical Hits or Heavy Attacks. When hit, store received damage up to 100% of Max Health, and when reused within 6s, inflict 25% of stored damage + 300% of Base Damage to all enemies within Attack Range, and the effect is removed. For 3s after the effect is removed, Shield Block Chance increases by 34%.",
+    "slug": "concentrated-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/concentrated-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_BuffAttack_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/concentrated-barrier.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Controlling Rake Active",
+    "slug": "controlling-rake",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/controlling-rake",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_MoveSkill_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/controlling-rake.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Corrupting Blade Weapon Mastery Weaken Chance 75 ▲",
+    "slug": "corrupting-blade",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/corrupting-blade",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_1.webp",
+    "iconPath": "src/assets/icons/sword-shield/corrupting-blade.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Desperate Clash Active Deals 220% of Base Damage with a(n) 80% chance to apply Collision: Prone. To other enemies within 3m radius, has a 80% chance to apply Collision: Push. Has the same chance to Push enemies that collide with the target and decrease the damage they deal. Targets that collide with a wall are Stunned for 3s.",
+    "slug": "desperate-clash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/desperate-clash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_PushAttack_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/desperate-clash.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Great Fury Active",
+    "slug": "great-fury",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/great-fury",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SH_ShieldBuff_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/great-fury.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Impregnable Stance Weapon Mastery Shield Block Chance 8% ▲",
+    "slug": "impregnable-stance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/impregnable-stance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_2.webp",
+    "iconPath": "src/assets/icons/sword-shield/impregnable-stance.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Indomitable Spirit Weapon Mastery Stun Resistance 125 ▲",
+    "slug": "indomitable-spirit",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/indomitable-spirit",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_3.webp",
+    "iconPath": "src/assets/icons/sword-shield/indomitable-spirit.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Piercing Strike Active Deals 580% of Base Damage + 129 to the target and other enemies within a 60-degree cone. Weakens the target with a(n) 70% chance to decrease Magic, Melee, and Ranged Hit Chance by 250 for 6s. Shield Strike's Melee Heavy Attack Chance increases by 50 per 1% of Shield Block Chance. Each successful Counterattack with Counter Barrier decreases Shield Strike cooldown by 1.3s. Greatly increases target's Aggro.",
+    "slug": "piercing-strike-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/piercing-strike-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_DebuffAttack_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/piercing-strike-2.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Slash Common Deals damage equal to 100% of Base Damage.",
+    "slug": "slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_BasicAttack.webp",
+    "iconPath": "src/assets/icons/sword-shield/slash.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Steely Physique Weapon Mastery Collision Resistance 100 ▲",
+    "slug": "steely-physique",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/steely-physique",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_2.webp",
+    "iconPath": "src/assets/icons/sword-shield/steely-physique.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Undaunted Courage Weapon Mastery Boss Endurance 120 ▲",
+    "slug": "undaunted-courage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/undaunted-courage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_1.webp",
+    "iconPath": "src/assets/icons/sword-shield/undaunted-courage.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Valorous Justice Weapon Mastery Boss Bonus Damage 49 ▲",
+    "slug": "valorous-justice",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/valorous-justice",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_3.webp",
+    "iconPath": "src/assets/icons/sword-shield/valorous-justice.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "Whirling Shield Active",
+    "slug": "whirling-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/whirling-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW_SH_S_ShieldThrow_SP.webp",
+    "iconPath": "src/assets/icons/sword-shield/whirling-shield.webp"
+  },
+  {
+    "weapon": "Sword & Shield",
+    "weaponSlug": "sword-shield",
+    "name": "skillful block",
+    "slug": "skillful-block",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/skillful-block",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW_SH_0.webp",
+    "iconPath": "src/assets/icons/sword-shield/skillful-block.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "iron point parry",
+    "slug": "iron-point-parry",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/iron-point-parry",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_Defense_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/iron-point-parry.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "frost cleaving",
+    "slug": "frost-cleaving",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/frost-cleaving",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_GaiaCrash_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/frost-cleaving.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "ice tornado",
+    "slug": "ice-tornado",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ice-tornado",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_SpinAttack_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/ice-tornado.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "valiant brawl",
+    "slug": "valiant-brawl",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/valiant-brawl",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_MainAttack_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/valiant-brawl.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "precision dash",
+    "slug": "precision-dash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/precision-dash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_KN_SR_DashAttack_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/precision-dash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "stunning blow",
+    "slug": "stunning-blow",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/stunning-blow",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_KN_SR_ShockStun_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/stunning-blow.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "death blow",
+    "slug": "death-blow",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/death-blow",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_S_CounterAttack_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/death-blow.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "davincis courage",
+    "slug": "davincis-courage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/davincis-courage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_ShieldBuff_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/davincis-courage.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "guillotine blade",
+    "slug": "guillotine-blade",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/guillotine-blade",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_PowerAttack.webp",
+    "iconPath": "src/assets/icons/greatsword/guillotine-blade.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "gaia crash",
+    "slug": "gaia-crash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/gaia-crash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_GaiaCrash.webp",
+    "iconPath": "src/assets/icons/greatsword/gaia-crash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "devastating tornado",
+    "slug": "devastating-tornado",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/devastating-tornado",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_BladeDance_1.webp",
+    "iconPath": "src/assets/icons/greatsword/devastating-tornado.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "willbreaker",
+    "slug": "willbreaker",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/willbreaker",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_DefenseDebuffAttack.webp",
+    "iconPath": "src/assets/icons/greatsword/willbreaker.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "ascending slash",
+    "slug": "ascending-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ascending-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_UpperAttack.webp",
+    "iconPath": "src/assets/icons/greatsword/ascending-slash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "devastating smash",
+    "slug": "devastating-smash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/devastating-smash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_LeapAttack.webp",
+    "iconPath": "src/assets/icons/greatsword/devastating-smash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "blood devotion",
+    "slug": "blood-devotion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/blood-devotion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_DamageReceive.webp",
+    "iconPath": "src/assets/icons/greatsword/blood-devotion.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "robust constitution",
+    "slug": "robust-constitution",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/robust-constitution",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_HPMaxUP_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/robust-constitution.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "vital force",
+    "slug": "vital-force",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/vital-force",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_KN_CO_BounceAttack_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/vital-force.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "cold warrior",
+    "slug": "cold-warrior",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cold-warrior",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_KN_CO_Focusattack_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/cold-warrior.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "victors morale",
+    "slug": "victors-morale",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/victors-morale",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_SkillSucceedRewardMana_AA.webp",
+    "iconPath": "src/assets/icons/greatsword/victors-morale.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "raging frenzy",
+    "slug": "raging-frenzy",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/raging-frenzy",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_StunSuccecsDamageBoost.webp",
+    "iconPath": "src/assets/icons/greatsword/raging-frenzy.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "barbarians dash",
+    "slug": "barbarians-dash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/barbarians-dash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_SkillMaster.webp",
+    "iconPath": "src/assets/icons/greatsword/barbarians-dash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "indomitable armor",
+    "slug": "indomitable-armor",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/indomitable-armor",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_HittedBuff.webp",
+    "iconPath": "src/assets/icons/greatsword/indomitable-armor.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Bold Steps Weapon Mastery Movement Speed 6.5% ▲",
+    "slug": "bold-steps",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/bold-steps",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_3.webp",
+    "iconPath": "src/assets/icons/greatsword/bold-steps.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Charging Slash Active Wrath Attack Rushes to the designated target, dealing damage equal to 320% of Base Damage + 126. Applies Collision: Prone with a(n) 80% chance against Bound, Sleeping, or Stunned targets, or those using Static Defense, for 2.5s. For each Heavy Attack, Collision: Prone duration increases by 1s.",
+    "slug": "charging-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/charging-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_UpperAttack_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/charging-slash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Cruel Smite Active Attacks 3 times in a row, each attack dealing 205% of Base Damage + 71 damage. Damage increases by 120% against monsters. Every time a hit becomes a heavy attack, the remaining cooldown decreases by 20%. On Critical Hit or Heavy Attack, deals 164% + 57 damage to the target within a 3m radius area.",
+    "slug": "cruel-smite",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cruel-smite",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_MainAttack_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/cruel-smite.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "DaVinci's Chill Active Increases Max Health by 1000 and Health Regen by 250 for 12s. Applies Weaken: Frost to a target within a 5m area, decreasing their Movement Speed by 5% for the duration. At 10 stacks, target is Bind: Icebound for 3s. Applying Frost to a target that is Icebound will increase the Bind: Icebound duration by 0.2s.",
+    "slug": "davincis-chill",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/davincis-chill",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_ShieldBuff_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/davincis-chill.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Devoted Sanctuary Active Takes 40% of the damage intended for the party member within a 15m radius area for 6s. Only 70% of damage taken applied. This skill can only be upgraded with a Precious Training Book: Omnipotence.",
+    "slug": "devoted-sanctuary",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/devoted-sanctuary",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_DamageReceive_SP.webp",
+    "iconPath": "src/assets/icons/greatsword/devoted-sanctuary.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Double Slash Common Deals damage equal to 100% of Base Damage.",
+    "slug": "double-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/double-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SW2_BasicAttack.webp",
+    "iconPath": "src/assets/icons/greatsword/double-slash.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Ferocious Glare Weapon Mastery Melee Heavy Attack Chance 100 ▲",
+    "slug": "ferocious-glare",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ferocious-glare",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_3.webp",
+    "iconPath": "src/assets/icons/greatsword/ferocious-glare.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Fierce Attack Weapon Mastery Attack Speed 5% ▲",
+    "slug": "fierce-attack",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fierce-attack",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_2.webp",
+    "iconPath": "src/assets/icons/greatsword/fierce-attack.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Overcome Snare Weapon Mastery Bind Resistance 100 ▲",
+    "slug": "overcome-snare",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/overcome-snare",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_2.webp",
+    "iconPath": "src/assets/icons/greatsword/overcome-snare.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Resolute Focus Weapon Mastery Cooldown Speed 5% ▲",
+    "slug": "resolute-focus",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/resolute-focus",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_3.webp",
+    "iconPath": "src/assets/icons/greatsword/resolute-focus.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Steadfast Will Weapon Mastery Magic Defense 120 ▲",
+    "slug": "steadfast-will",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/steadfast-will",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_1.webp",
+    "iconPath": "src/assets/icons/greatsword/steadfast-will.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Stun Duration Augment Weapon Mastery Stun Duration 0.5s ▲",
+    "slug": "stun-duration-augment",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/stun-duration-augment",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_2.webp",
+    "iconPath": "src/assets/icons/greatsword/stun-duration-augment.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Ultimate Impact Weapon Mastery Stun Chance 75 ▲",
+    "slug": "ultimate-impact",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ultimate-impact",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_1.webp",
+    "iconPath": "src/assets/icons/greatsword/ultimate-impact.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "Wild Destruction Weapon Mastery Bonus Damage 6 ▲",
+    "slug": "wild-destruction",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wild-destruction",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_1.webp",
+    "iconPath": "src/assets/icons/greatsword/wild-destruction.webp"
+  },
+  {
+    "weapon": "Greatsword",
+    "weaponSlug": "greatsword",
+    "name": "skilled healer",
+    "slug": "skilled-healer",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/skilled-healer",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/greatsword/skilled-healer.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "block blade",
+    "slug": "block-blade",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/block-blade",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_CounterMove_ActionSkill_Guard_AA.webp",
+    "iconPath": "src/assets/icons/daggers/block-blade.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "cleaving moonlight",
+    "slug": "cleaving-moonlight",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cleaving-moonlight",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_SpinAttack.webp",
+    "iconPath": "src/assets/icons/daggers/cleaving-moonlight.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "shadow strike",
+    "slug": "shadow-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shadow-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_BlinkStrike_AA.webp",
+    "iconPath": "src/assets/icons/daggers/shadow-strike.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "inject venom",
+    "slug": "inject-venom",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/inject-venom",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_AS_SR_Burning__AA.webp",
+    "iconPath": "src/assets/icons/daggers/inject-venom.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "brutal incision",
+    "slug": "brutal-incision",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-incision",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_DeadlyStrike_AA.webp",
+    "iconPath": "src/assets/icons/daggers/brutal-incision.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "vampiric strike",
+    "slug": "vampiric-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/vampiric-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_BloodStrike.webp",
+    "iconPath": "src/assets/icons/daggers/vampiric-strike.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "frenzied sword dance",
+    "slug": "frenzied-sword-dance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/frenzied-sword-dance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/WP_DA_DA_S_SonicAttack.webp",
+    "iconPath": "src/assets/icons/daggers/frenzied-sword-dance.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "umbral spirit",
+    "slug": "umbral-spirit",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/umbral-spirit",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_ShadowChaser.webp",
+    "iconPath": "src/assets/icons/daggers/umbral-spirit.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "knife throwing",
+    "slug": "knife-throwing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/knife-throwing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_PoisonDagger_AA.webp",
+    "iconPath": "src/assets/icons/daggers/knife-throwing.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "ankle strike",
+    "slug": "ankle-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ankle-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_LegAttack.webp",
+    "iconPath": "src/assets/icons/daggers/ankle-strike.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "camouflage cloak",
+    "slug": "camouflage-cloak",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/camouflage-cloak",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_AS_SR_Hide.webp",
+    "iconPath": "src/assets/icons/daggers/camouflage-cloak.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "fatal stigma",
+    "slug": "fatal-stigma",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fatal-stigma",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_DelayDamage.webp",
+    "iconPath": "src/assets/icons/daggers/fatal-stigma.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "phantom smokescreen",
+    "slug": "phantom-smokescreen",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/phantom-smokescreen",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_Smoke.webp",
+    "iconPath": "src/assets/icons/daggers/phantom-smokescreen.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "assassins step",
+    "slug": "assassins-step",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/assassins-step",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_AS_CO_Acceleration_AA.webp",
+    "iconPath": "src/assets/icons/daggers/assassins-step.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "assassins instincts",
+    "slug": "assassins-instincts",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/assassins-instincts",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_MeleeAccuracy_AA.webp",
+    "iconPath": "src/assets/icons/daggers/assassins-instincts.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "murderous energy",
+    "slug": "murderous-energy",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/murderous-energy",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_PoisonBuff_AA.webp",
+    "iconPath": "src/assets/icons/daggers/murderous-energy.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "shadow walker",
+    "slug": "shadow-walker",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shadow-walker",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_MoveSkillEvasion_AA.webp",
+    "iconPath": "src/assets/icons/daggers/shadow-walker.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "destructive fang",
+    "slug": "destructive-fang",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/destructive-fang",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_PoisonTargetOffHandAttack.webp",
+    "iconPath": "src/assets/icons/daggers/destructive-fang.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "assassination stance",
+    "slug": "assassination-stance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/assassination-stance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_EvasionBuff.webp",
+    "iconPath": "src/assets/icons/daggers/assassination-stance.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "wrathful edge",
+    "slug": "wrathful-edge",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wrathful-edge",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_CriticalDamageUp.webp",
+    "iconPath": "src/assets/icons/daggers/wrathful-edge.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Ambidextrous Weapon Mastery Off-Hand Weapon Activation Rate 6% ▲",
+    "slug": "ambidextrous",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ambidextrous",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_1.webp",
+    "iconPath": "src/assets/icons/daggers/ambidextrous.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Bloodlust Weapon Mastery Attack Speed 6.5% ▲",
+    "slug": "bloodlust-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/bloodlust-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_3.webp",
+    "iconPath": "src/assets/icons/daggers/bloodlust-2.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Debuff Immunity Weapon Mastery Debuff Duration 6% ▼",
+    "slug": "debuff-immunity",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/debuff-immunity",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_1.webp",
+    "iconPath": "src/assets/icons/daggers/debuff-immunity.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Lightning Infusion Active Adds Weaken: Thunderclouds effect to all attacks for 9s. Thunderclouds lasts for 6s, and decreases Melee, Ranged, Magic Endurance by 20 per stack. Stacks up to 20 times, up to a maximum total of 800 endurance reduction from all user-inflicted stacks. Reusing the skill within 9s will trigger a stabbing attack with both hands, each attack dealing 155% +37 damage, then dealing an additional 255% +61 damage. Applies Weaken: Thunderclouds to every target within a 3m radius of the primary target.",
+    "slug": "lightning-infusion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/lightning-infusion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_PoisonEnchant_SP.webp",
+    "iconPath": "src/assets/icons/daggers/lightning-infusion.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Lightning Throw Active Throws 5 knives to the designated direction up to 4.8 times the normal Attack Range. Each knife deals 60% of Base Damage. applies the Weaken effect that decreases Magic, Melee, and Ranged Endurance by 150. If the target has Wet or Thunderclouds, a random enemy within a 5m radius will receive the same damage.",
+    "slug": "lightning-throw",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/lightning-throw",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_PoisonDagger_SP.webp",
+    "iconPath": "src/assets/icons/daggers/lightning-throw.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Mad Sword Dance Active Approach the target and deal 190% + 38 of the basic damage. Attacks 3 times consecutively. Can be used one more time within 3s. This skill can only be upgraded with a Precious Training Book: Omnipotence.",
+    "slug": "mad-sword-dance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mad-sword-dance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_SonicAttack_SP.webp",
+    "iconPath": "src/assets/icons/daggers/mad-sword-dance.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Master of Evasion Weapon Mastery All Evasion 105 ▲",
+    "slug": "master-of-evasion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/master-of-evasion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_2.webp",
+    "iconPath": "src/assets/icons/daggers/master-of-evasion.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Mutilation Common Deals 100% of Base Damage.",
+    "slug": "mutilation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mutilation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_BasicStrike.webp",
+    "iconPath": "src/assets/icons/daggers/mutilation.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Shrewd Judgment Weapon Mastery Cooldown Speed 5% ▲",
+    "slug": "shrewd-judgment",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/shrewd-judgment",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_3.webp",
+    "iconPath": "src/assets/icons/daggers/shrewd-judgment.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Sorrowful Silence Weapon Mastery Silence Chance 100 ▲",
+    "slug": "sorrowful-silence",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/sorrowful-silence",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_2.webp",
+    "iconPath": "src/assets/icons/daggers/sorrowful-silence.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Strong Will Weapon Mastery Weaken Resistance 125 ▲",
+    "slug": "strong-will",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/strong-will",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_3.webp",
+    "iconPath": "src/assets/icons/daggers/strong-will.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Thunder Spirit Active On Melee Critical Hit, deals 57% of Base Damage +27 Bonus Damage for 6s. If the target is affected by Wet or Thunderclouds, deal 45.6% of Base Damage + 22 to 2 random enemies within a 5m radius of the target.",
+    "slug": "thunder-spirit",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/thunder-spirit",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_ShadowChaser_SP.webp",
+    "iconPath": "src/assets/icons/daggers/thunder-spirit.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Thundering Bomb Active Deals 260% of Base Damage + 85 damage and removes the target's Thunderclouds effect. Damage increases by 15% against monsters. When the target's remaining Health is 50% or less, Critical Hit Chance increases by 600. If the target is affected by Weaken: Thunderclouds, they take 52% + 17 Bonus Damage, and the damage is boosted by 100% per stack. Critical Damage increases by 20%.",
+    "slug": "thundering-bomb",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/thundering-bomb",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_DA_DeadlyStrike_SP.webp",
+    "iconPath": "src/assets/icons/daggers/thundering-bomb.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Vengeful Grudge Weapon Mastery Critical Damage 8% ▲",
+    "slug": "vengeful-grudge",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/vengeful-grudge",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_2.webp",
+    "iconPath": "src/assets/icons/daggers/vengeful-grudge.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "Weakening Terror Weapon Mastery Weaken Chance 75 ▲",
+    "slug": "weakening-terror",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/weakening-terror",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_1.webp",
+    "iconPath": "src/assets/icons/daggers/weakening-terror.webp"
+  },
+  {
+    "weapon": "Daggers",
+    "weaponSlug": "daggers",
+    "name": "silent dash",
+    "slug": "silent-dash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/silent-dash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_DA_0.webp",
+    "iconPath": "src/assets/icons/daggers/silent-dash.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "rupturing parry",
+    "slug": "rupturing-parry",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/rupturing-parry",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_DefenseAction_Evasion_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/rupturing-parry.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "quick fire",
+    "slug": "quick-fire",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/quick-fire",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_RapidShot_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/quick-fire.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "nimble leap",
+    "slug": "nimble-leap",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/nimble-leap",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_Step_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/nimble-leap.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "mortal mark",
+    "slug": "mortal-mark",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mortal-mark",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_ArmorBreakShot_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/mortal-mark.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "recoil shot",
+    "slug": "recoil-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/recoil-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/WP_CR_AddShot.webp",
+    "iconPath": "src/assets/icons/crossbow/recoil-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "multi shot",
+    "slug": "multi-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/multi-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_BuckShot_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/multi-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "wind snatcher",
+    "slug": "wind-snatcher",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wind-snatcher",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_RobShot.webp",
+    "iconPath": "src/assets/icons/crossbow/wind-snatcher.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "selfless diffusion",
+    "slug": "selfless-diffusion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/selfless-diffusion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_GhostWalk_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/selfless-diffusion.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "mother natures protest",
+    "slug": "mother-natures-protest",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mother-natures-protest",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_AddProjectile.webp",
+    "iconPath": "src/assets/icons/crossbow/mother-natures-protest.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "mana exchange",
+    "slug": "mana-exchange",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mana-exchange",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_BloodToSoul.webp",
+    "iconPath": "src/assets/icons/crossbow/mana-exchange.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "explosive trap",
+    "slug": "explosive-trap",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/explosive-trap",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_TauntTrap.webp",
+    "iconPath": "src/assets/icons/crossbow/explosive-trap.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "merciless barrage",
+    "slug": "merciless-barrage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/merciless-barrage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_FuriousFire.webp",
+    "iconPath": "src/assets/icons/crossbow/merciless-barrage.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "weak point shot",
+    "slug": "weak-point-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/weak-point-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_WeakPointShot.webp",
+    "iconPath": "src/assets/icons/crossbow/weak-point-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "eagle vision",
+    "slug": "eagle-vision",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/eagle-vision",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_DistanceRangeAcc_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/eagle-vision.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "natures power",
+    "slug": "natures-power",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/natures-power",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_PeaceTimeBuff_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/natures-power.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "ambidexterity",
+    "slug": "ambidexterity",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ambidexterity",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_OffHandMaxDmg_AA.webp",
+    "iconPath": "src/assets/icons/crossbow/ambidexterity.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "piercing strike",
+    "slug": "piercing-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/piercing-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_CriticalAttack.webp",
+    "iconPath": "src/assets/icons/crossbow/piercing-strike.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "bloodlust",
+    "slug": "bloodlust",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/bloodlust",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ContinuousAttackBonus.webp",
+    "iconPath": "src/assets/icons/crossbow/bloodlust.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "corrupt nail",
+    "slug": "corrupt-nail",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/corrupt-nail",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_S_WeakenAccuracy.webp",
+    "iconPath": "src/assets/icons/crossbow/corrupt-nail.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "detection",
+    "slug": "detection",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/detection",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_AfterImage.webp",
+    "iconPath": "src/assets/icons/crossbow/detection.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Annihilation Barrage Shot Active Shoot arrows with both hands 16 times each to a 6m radius area. Arrows deal 27% of Base Damage + 17 to the enemy hit. On each consecutive hit to the same target, damage increases by 8% (stacks up to 10 times). The number of attacks can be increased up to 24 times each, based on the Attack Chance of the equipped Off-Hand Weapon.",
+    "slug": "annihilation-barrage-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/annihilation-barrage-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_FuriousFire_SP.webp",
+    "iconPath": "src/assets/icons/crossbow/annihilation-barrage-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Basic Shot Common Deals damage equal to 100% of Base Damage.",
+    "slug": "basic-shot-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/basic-shot-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_BasicShot.webp",
+    "iconPath": "src/assets/icons/crossbow/basic-shot-2.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Brutal Wound Weapon Mastery Ranged Damage Dealt 5% ▲",
+    "slug": "brutal-wound",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-wound",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_3.webp",
+    "iconPath": "src/assets/icons/crossbow/brutal-wound.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Calm Aim Weapon Mastery Ranged Heavy Attack Chance 60 ▲",
+    "slug": "calm-aim",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/calm-aim",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_1.webp",
+    "iconPath": "src/assets/icons/crossbow/calm-aim.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Cold Rage Weapon Mastery Off-Hand Weapon Activation Rate 6% ▲",
+    "slug": "cold-rage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cold-rage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_1.webp",
+    "iconPath": "src/assets/icons/crossbow/cold-rage.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Collision Shot Active",
+    "slug": "collision-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/collision-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_BuckShot_SP_2.webp",
+    "iconPath": "src/assets/icons/crossbow/collision-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Detonation Mark Active Deals 280% of Base Damage + 109 damage and has a(n) 100% chance to Weaken and Mark the target for3s. Damage accumulates until the Mark ends, at which point the Mark explodes and deals Bonus Damage to the target equal to 40% of the total accumulated damage. Stacks up to 2 times. Marked targets receive 60% less Incoming Heal. The Mark's accumulating damage can only be applied to one target at a time.",
+    "slug": "detonation-mark",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/detonation-mark",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_ArmorBreakShot_SP.webp",
+    "iconPath": "src/assets/icons/crossbow/detonation-mark.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Dynamic Duo Weapon Mastery Amitoi Healing 30% ▲",
+    "slug": "dynamic-duo",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/dynamic-duo",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_1.webp",
+    "iconPath": "src/assets/icons/crossbow/dynamic-duo.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Keen Vision Weapon Mastery Ranged Hit Chance 80 ▲",
+    "slug": "keen-vision",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/keen-vision",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_2.webp",
+    "iconPath": "src/assets/icons/crossbow/keen-vision.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Long Strides Weapon Mastery Movement Speed 6.5% ▲",
+    "slug": "long-strides",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/long-strides",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_3.webp",
+    "iconPath": "src/assets/icons/crossbow/long-strides.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Precise Casting Weapon Mastery Mana Cost Efficiency 10% ▲",
+    "slug": "precise-casting",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/precise-casting",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_3.webp",
+    "iconPath": "src/assets/icons/crossbow/precise-casting.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Rapid Shot Active",
+    "slug": "rapid-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/rapid-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_BuckShot_SP.webp",
+    "iconPath": "src/assets/icons/crossbow/rapid-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Rapid-Fire Weapon Mastery Attack Speed 5% ▲",
+    "slug": "rapid-fire",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/rapid-fire",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_2.webp",
+    "iconPath": "src/assets/icons/crossbow/rapid-fire.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Revitalize Weapon Mastery Health Regen 56 ▲",
+    "slug": "revitalize",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/revitalize",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_2.webp",
+    "iconPath": "src/assets/icons/crossbow/revitalize.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "Wave Shot Active Can be used only when the user is affected by Repulsive Force from using a skill that moves the user. When used, consumes 1 Repulsive Force and deals 310% of Base Damage + 32. Repulsive Force stacks up to 3 times, and when it reaches 3 stacks, it turns into Wave Shot. Wave Shot When used, consumes all Repulsive Force stacks to deal 930% of Base Damage + 96 damage and has a(n) 90% chance to apply Collision: Push. When the pushed target hits the wall, it becomes Stunned for 3s.",
+    "slug": "wave-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wave-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_CR_AddShot_SP.webp",
+    "iconPath": "src/assets/icons/crossbow/wave-shot.webp"
+  },
+  {
+    "weapon": "Crossbow",
+    "weaponSlug": "crossbow",
+    "name": "mystical regen",
+    "slug": "mystical-regen",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mystical-regen",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_CR_0.webp",
+    "iconPath": "src/assets/icons/crossbow/mystical-regen.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "overtaker",
+    "slug": "overtaker",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/overtaker",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_DefenceAction_AA.webp",
+    "iconPath": "src/assets/icons/longbow/overtaker.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "zephyrs nock",
+    "slug": "zephyrs-nock",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/zephyrs-nock",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_StrongShot_AA.webp",
+    "iconPath": "src/assets/icons/longbow/zephyrs-nock.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "ensnaring arrow",
+    "slug": "ensnaring-arrow",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ensnaring-arrow",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_BindShot_AA.webp",
+    "iconPath": "src/assets/icons/longbow/ensnaring-arrow.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "decisive sniping",
+    "slug": "decisive-sniping",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/decisive-sniping",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_PowerShot_AA.webp",
+    "iconPath": "src/assets/icons/longbow/decisive-sniping.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "strafing",
+    "slug": "strafing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/strafing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_MultiShot_AA.webp",
+    "iconPath": "src/assets/icons/longbow/strafing.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "natures blessing",
+    "slug": "natures-blessing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/natures-blessing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_RegenAura_AA.webp",
+    "iconPath": "src/assets/icons/longbow/natures-blessing.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "blitz",
+    "slug": "blitz",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/blitz",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_DoubleShot.webp",
+    "iconPath": "src/assets/icons/longbow/blitz.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "brutal arrow",
+    "slug": "brutal-arrow",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-arrow",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_DropShot.webp",
+    "iconPath": "src/assets/icons/longbow/brutal-arrow.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "arrow vortex",
+    "slug": "arrow-vortex",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/arrow-vortex",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_TornadoShot.webp",
+    "iconPath": "src/assets/icons/longbow/arrow-vortex.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "healing touch",
+    "slug": "healing-touch",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/healing-touch",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_S_RegenHeal.webp",
+    "iconPath": "src/assets/icons/longbow/healing-touch.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "deadly marker",
+    "slug": "deadly-marker",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/deadly-marker",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_AttackMark.webp",
+    "iconPath": "src/assets/icons/longbow/deadly-marker.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "purifying touch",
+    "slug": "purifying-touch",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/purifying-touch",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_AbnormalDispel_PowerUp.webp",
+    "iconPath": "src/assets/icons/longbow/purifying-touch.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "flash arrow",
+    "slug": "flash-arrow",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/flash-arrow",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_Detection.webp",
+    "iconPath": "src/assets/icons/longbow/flash-arrow.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "rapidfire stance",
+    "slug": "rapidfire-stance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/rapidfire-stance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_InplaceAttack_AA.webp",
+    "iconPath": "src/assets/icons/longbow/rapidfire-stance.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "steady aim",
+    "slug": "steady-aim",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/steady-aim",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_BindAccuracyBoost_AA.webp",
+    "iconPath": "src/assets/icons/longbow/steady-aim.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "snipers sense",
+    "slug": "snipers-sense",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/snipers-sense",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_DistanceCritical_AA.webp",
+    "iconPath": "src/assets/icons/longbow/snipers-sense.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "roxies arrowhead",
+    "slug": "roxies-arrowhead",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/roxies-arrowhead",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_WindBonusProjectile.webp",
+    "iconPath": "src/assets/icons/longbow/roxies-arrowhead.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "distorted sanctuary",
+    "slug": "distorted-sanctuary",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/distorted-sanctuary",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_AuraDefenceUp_AA.webp",
+    "iconPath": "src/assets/icons/longbow/distorted-sanctuary.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "earths blessing",
+    "slug": "earths-blessing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/earths-blessing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_NatureForce.webp",
+    "iconPath": "src/assets/icons/longbow/earths-blessing.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "devoted shield",
+    "slug": "devoted-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/devoted-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_AbnormalShield.webp",
+    "iconPath": "src/assets/icons/longbow/devoted-shield.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Basic Shot Common Deals damage equal to 100% of Base Damage.",
+    "slug": "basic-shot",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/basic-shot",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_BasicShot.webp",
+    "iconPath": "src/assets/icons/longbow/basic-shot.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Brutal Sniper Weapon Mastery Critical Damage 10% ▲",
+    "slug": "brutal-sniper",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-sniper",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_3.webp",
+    "iconPath": "src/assets/icons/longbow/brutal-sniper.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Decisive Bombardment Active Skill's effect is enhanced based on the charging time. Shoots an arrow in the designated direction to deal 740% of Base Damage + 424 to 1184% + 678.4. Damage increases by 60% against monsters. On hit, increases Critical Hit Chance by 200 to 400 for 3s. Ignore target's Shield Block Chance.",
+    "slug": "decisive-bombardment",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/decisive-bombardment",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/WP_BO_S_PowerShot_Charge_SP.webp",
+    "iconPath": "src/assets/icons/longbow/decisive-bombardment.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Dew of Vitality Weapon Mastery Health Regen 42 ▲",
+    "slug": "dew-of-vitality",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/dew-of-vitality",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_1.webp",
+    "iconPath": "src/assets/icons/longbow/dew-of-vitality.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Flash Wave Active The skill effect is enhanced based on the charging time. Send a large arrow in a designated direction to deal 430% of Base Damage 470 to 860% + 940 to every enemy within the range. Allies within the area receive healing over time that is equal to 57% of Base Damage + 62 to 114% + 124 for 6s. This skill can only be upgraded with a Precious Active Skill Growth Book: Omnipotence.",
+    "slug": "flash-wave",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/flash-wave",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_Detection_SP.webp",
+    "iconPath": "src/assets/icons/longbow/flash-wave.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Gale Arrowhead Weapon Mastery Cooldown Speed 4% ▲",
+    "slug": "gale-arrowhead",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/gale-arrowhead",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_2.webp",
+    "iconPath": "src/assets/icons/longbow/gale-arrowhead.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Harmonious Mind Weapon Mastery Mana Regen 56 ▲",
+    "slug": "harmonious-mind",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/harmonious-mind",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_0.webp",
+    "iconPath": "src/assets/icons/longbow/harmonious-mind.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Honed Thorns Weapon Mastery Max Damage 12 ▲",
+    "slug": "honed-thorns",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/honed-thorns",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_1.webp",
+    "iconPath": "src/assets/icons/longbow/honed-thorns.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Impeding Spikes Weapon Mastery Bind Chance 75 ▲",
+    "slug": "impeding-spikes",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/impeding-spikes",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_1.webp",
+    "iconPath": "src/assets/icons/longbow/impeding-spikes.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Limit Break Active",
+    "slug": "limit-break",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/limit-break",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_S_DoubleShot.webp",
+    "iconPath": "src/assets/icons/longbow/limit-break.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Mortal Nock Weapon Mastery Increases Skill Boost Chance by 40.",
+    "slug": "mortal-nock",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mortal-nock",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_2.webp",
+    "iconPath": "src/assets/icons/longbow/mortal-nock.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Phantom Snare Weapon Mastery Bind Duration 1s ▲",
+    "slug": "phantom-snare",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/phantom-snare",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_3.webp",
+    "iconPath": "src/assets/icons/longbow/phantom-snare.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Song of Grace Weapon Mastery All CC Resistances (except Weaken Resistance) 37.5 ▲",
+    "slug": "song-of-grace",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/song-of-grace",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_3.webp",
+    "iconPath": "src/assets/icons/longbow/song-of-grace.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Spell Breaker Weapon Mastery Skill Damage Resist 80 ▲",
+    "slug": "spell-breaker",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/spell-breaker",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_BO_2.webp",
+    "iconPath": "src/assets/icons/longbow/spell-breaker.webp"
+  },
+  {
+    "weapon": "Longbow",
+    "weaponSlug": "longbow",
+    "name": "Tornado Active Creates a 4m radius Tornado that moves in the designated direction. The tornado deals 150% of Base Damage + 43 to enemies in range, and applies Gale for 6s, which causes Collision: Push with a 70% chance to float targets in the air for 2s. Can attack the enemy multiple times while in the area, but the Collision Effect does not stack. The tornado cannot climb steep hills.",
+    "slug": "tornado",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/tornado",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_BO_TornadoShot_SP.webp",
+    "iconPath": "src/assets/icons/longbow/tornado.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "chaotic shield",
+    "slug": "chaotic-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/chaotic-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_DefenceAction_AA.webp",
+    "iconPath": "src/assets/icons/wand/chaotic-shield.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "touch of despair",
+    "slug": "touch-of-despair",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/touch-of-despair",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_Corruption_AA.webp",
+    "iconPath": "src/assets/icons/wand/touch-of-despair.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "curse explosion",
+    "slug": "curse-explosion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/curse-explosion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseBurst_AA.webp",
+    "iconPath": "src/assets/icons/wand/curse-explosion.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "swift healing",
+    "slug": "swift-healing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/swift-healing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_S_Heal_AA.webp",
+    "iconPath": "src/assets/icons/wand/swift-healing.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "corrupted magic circle",
+    "slug": "corrupted-magic-circle",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/corrupted-magic-circle",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_CurseArea_AA.webp",
+    "iconPath": "src/assets/icons/wand/corrupted-magic-circle.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "cursed nightmare",
+    "slug": "cursed-nightmare",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cursed-nightmare",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_Sleep_AA.webp",
+    "iconPath": "src/assets/icons/wand/cursed-nightmare.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "fountain of life",
+    "slug": "fountain-of-life",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fountain-of-life",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_HealField.webp",
+    "iconPath": "src/assets/icons/wand/fountain-of-life.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "clays salvation",
+    "slug": "clays-salvation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/clays-salvation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_S_HealAll.webp",
+    "iconPath": "src/assets/icons/wand/clays-salvation.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "time for punishment",
+    "slug": "time-for-punishment",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/time-for-punishment",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_Decay.webp",
+    "iconPath": "src/assets/icons/wand/time-for-punishment.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "karmic haze",
+    "slug": "karmic-haze",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/karmic-haze",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseSpread.webp",
+    "iconPath": "src/assets/icons/wand/karmic-haze.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "blessed barrier",
+    "slug": "blessed-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/blessed-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_DefenseUp.webp",
+    "iconPath": "src/assets/icons/wand/blessed-barrier.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "invincible wall",
+    "slug": "invincible-wall",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/invincible-wall",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_MagicShield_SP.webp",
+    "iconPath": "src/assets/icons/wand/invincible-wall.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "ray of disaster",
+    "slug": "ray-of-disaster",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ray-of-disaster",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_LinkLaser_SP.webp",
+    "iconPath": "src/assets/icons/wand/ray-of-disaster.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "full of corruption",
+    "slug": "full-of-corruption",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/full-of-corruption",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseKillBonus_AA.webp",
+    "iconPath": "src/assets/icons/wand/full-of-corruption.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "devotion and emptiness",
+    "slug": "devotion-and-emptiness",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/devotion-and-emptiness",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_DayHealNightCurse_AA.webp",
+    "iconPath": "src/assets/icons/wand/devotion-and-emptiness.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "wraiths beckon",
+    "slug": "wraiths-beckon",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wraiths-beckon",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseDuration_AA.webp",
+    "iconPath": "src/assets/icons/wand/wraiths-beckon.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "vampiric contract",
+    "slug": "vampiric-contract",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/vampiric-contract",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseAttackHeal_AA.webp",
+    "iconPath": "src/assets/icons/wand/vampiric-contract.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "noble revival",
+    "slug": "noble-revival",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/noble-revival",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_HealEfficiencyByMaxCost.webp",
+    "iconPath": "src/assets/icons/wand/noble-revival.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "saints oath",
+    "slug": "saints-oath",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/saints-oath",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_HealEffectUpWhenSkillDamageTaken.webp",
+    "iconPath": "src/assets/icons/wand/saints-oath.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "selfless soul",
+    "slug": "selfless-soul",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/selfless-soul",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_SupportAllyCostRegenUp.webp",
+    "iconPath": "src/assets/icons/wand/selfless-soul.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Burning Time Active Has a(n) 90% chance to apply Weaken: Curse. On Hit, decreases Shield Block Chance by 20% and reduces Mana by 50 for 9s. For monsters, Time for Punishment is applied instead.",
+    "slug": "burning-time",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/burning-time",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_Corruption_AA.webp",
+    "iconPath": "src/assets/icons/wand/burning-time.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Decaying Touch Active Applies Weaken: Curse to target to deal 85% of Base Damage + 95 per sec for 9s. Does not wake up Sleeping targets.",
+    "slug": "decaying-touch",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/decaying-touch",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_CurseArea_SP.webp",
+    "iconPath": "src/assets/icons/wand/decaying-touch.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Enchanting Time Active",
+    "slug": "enchanting-time",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/enchanting-time",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_S_Decay_SP.webp",
+    "iconPath": "src/assets/icons/wand/enchanting-time.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Endless Curse Weapon Mastery Curse Duration 1s ▲",
+    "slug": "endless-curse",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/endless-curse",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_2.webp",
+    "iconPath": "src/assets/icons/wand/endless-curse.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Janice's Rage Active",
+    "slug": "janices-rage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/janices-rage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_S_HealAll_SP.webp",
+    "iconPath": "src/assets/icons/wand/janices-rage.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Magic Orb Common Deals damage equal to 100% of Base Damage.",
+    "slug": "magic-orb",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/magic-orb",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_S_BasicAttack.webp",
+    "iconPath": "src/assets/icons/wand/magic-orb.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Merciless Wraith Weapon Mastery Heavy Attack Chance 100 ▲",
+    "slug": "merciless-wraith",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/merciless-wraith",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_3.webp",
+    "iconPath": "src/assets/icons/wand/merciless-wraith.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Pure Healing Weapon Mastery Healing 8% ▲",
+    "slug": "pure-healing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/pure-healing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_0.webp",
+    "iconPath": "src/assets/icons/wand/pure-healing.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Redemptive Penance Weapon Mastery Healing 8% ▲",
+    "slug": "redemptive-penance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/redemptive-penance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_2.webp",
+    "iconPath": "src/assets/icons/wand/redemptive-penance.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Revitalizing Meditation Weapon Mastery Mana Regen 56 ▲",
+    "slug": "revitalizing-meditation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/revitalizing-meditation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_2.webp",
+    "iconPath": "src/assets/icons/wand/revitalizing-meditation.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Searing Pain Weapon Mastery Magic Critical Hit Chance 60 ▲",
+    "slug": "searing-pain",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/searing-pain",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_1.webp",
+    "iconPath": "src/assets/icons/wand/searing-pain.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Spell of Retribution Weapon Mastery Increases Skill Boost Chance by 50.",
+    "slug": "spell-of-retribution",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/spell-of-retribution",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_3.webp",
+    "iconPath": "src/assets/icons/wand/spell-of-retribution.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Spiritual Focus Weapon Mastery Mana Cost Efficiency 6% ▲",
+    "slug": "spiritual-focus",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/spiritual-focus",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_1.webp",
+    "iconPath": "src/assets/icons/wand/spiritual-focus.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Unsatiable Greed Weapon Mastery Cooldown Speed 5% ▲",
+    "slug": "unsatiable-greed",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/unsatiable-greed",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_3.webp",
+    "iconPath": "src/assets/icons/wand/unsatiable-greed.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Valorous Barrier Active Increases an ally's Max Damage by 92 for 6s.",
+    "slug": "valorous-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/valorous-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_DefenseUp_SP.webp",
+    "iconPath": "src/assets/icons/wand/valorous-barrier.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Witch's Contract Weapon Mastery Curse Damage 6% ▲",
+    "slug": "witchs-contract",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/witchs-contract",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_WA_GR_1.webp",
+    "iconPath": "src/assets/icons/wand/witchs-contract.webp"
+  },
+  {
+    "weapon": "Wand",
+    "weaponSlug": "wand",
+    "name": "Witching Hour Active Duration of the user's Curses increases by 5s. Not applicable to Sleep.",
+    "slug": "witching-hour",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/witching-hour",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_WA_GR_CurseSpread_SP.webp",
+    "iconPath": "src/assets/icons/wand/witching-hour.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "mystic shield",
+    "slug": "mystic-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mystic-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_defenceAction_AA.webp",
+    "iconPath": "src/assets/icons/staff/mystic-shield.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "ice spear bombardment",
+    "slug": "ice-spear-bombardment",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ice-spear-bombardment",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_IceSpear_SP.webp",
+    "iconPath": "src/assets/icons/staff/ice-spear-bombardment.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "serial fire bombs",
+    "slug": "serial-fire-bombs",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/serial-fire-bombs",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_WideAreaAttack_AA.webp",
+    "iconPath": "src/assets/icons/staff/serial-fire-bombs.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "inferno wave",
+    "slug": "inferno-wave",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/inferno-wave",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_WideAreaDebuffAttack_AA.webp",
+    "iconPath": "src/assets/icons/staff/inferno-wave.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "frost smokescreen",
+    "slug": "frost-smokescreen",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/frost-smokescreen",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_AoeTeleport_AA.webp",
+    "iconPath": "src/assets/icons/staff/frost-smokescreen.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "chain lightning",
+    "slug": "chain-lightning",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/chain-lightning",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_MainAttack_AA.webp",
+    "iconPath": "src/assets/icons/staff/chain-lightning.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "inner peace",
+    "slug": "inner-peace",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/inner-peace",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_ManaRengeUp_AA.webp",
+    "iconPath": "src/assets/icons/staff/inner-peace.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "salvation chain",
+    "slug": "salvation-chain",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/salvation-chain",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_BringSkill.webp",
+    "iconPath": "src/assets/icons/staff/salvation-chain.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "fireball barrage",
+    "slug": "fireball-barrage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fireball-barrage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_FireCombo.webp",
+    "iconPath": "src/assets/icons/staff/fireball-barrage.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "ice spear",
+    "slug": "ice-spear",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ice-spear",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_IceSpear.webp",
+    "iconPath": "src/assets/icons/staff/ice-spear.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "icebound tomb",
+    "slug": "icebound-tomb",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/icebound-tomb",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_IceFreeze.webp",
+    "iconPath": "src/assets/icons/staff/icebound-tomb.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "high focus",
+    "slug": "high-focus",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/high-focus",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_GlobalCoolDownBuff.webp",
+    "iconPath": "src/assets/icons/staff/high-focus.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "judgment lightning",
+    "slug": "judgment-lightning",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/judgment-lightning",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_PowerAttack.webp",
+    "iconPath": "src/assets/icons/staff/judgment-lightning.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "infernal meteor",
+    "slug": "infernal-meteor",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/infernal-meteor",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_Meteor.webp",
+    "iconPath": "src/assets/icons/staff/infernal-meteor.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "manaball eruption",
+    "slug": "manaball-eruption",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/manaball-eruption",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_AddProjectile_AA.webp",
+    "iconPath": "src/assets/icons/staff/manaball-eruption.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "asceticism",
+    "slug": "asceticism",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/asceticism",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_ManaRegenBuff_AA.webp",
+    "iconPath": "src/assets/icons/staff/asceticism.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "mana amp",
+    "slug": "mana-amp",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mana-amp",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_MaxManaUp_AA.webp",
+    "iconPath": "src/assets/icons/staff/mana-amp.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "flame condensation",
+    "slug": "flame-condensation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/flame-condensation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_FireLightningForce_AA.webp",
+    "iconPath": "src/assets/icons/staff/flame-condensation.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "echoic barrier",
+    "slug": "echoic-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/echoic-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_SilenceToleranceBuff.webp",
+    "iconPath": "src/assets/icons/staff/echoic-barrier.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "frost master",
+    "slug": "frost-master",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/frost-master",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_SlowDuration.webp",
+    "iconPath": "src/assets/icons/staff/frost-master.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "forbidden sanctuary",
+    "slug": "forbidden-sanctuary",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/forbidden-sanctuary",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_HitDamageReductionBuff.webp",
+    "iconPath": "src/assets/icons/staff/forbidden-sanctuary.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Brutal Destruction Weapon Mastery Magic Damage Dealt 5% ▲",
+    "slug": "brutal-destruction-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-destruction-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_3.webp",
+    "iconPath": "src/assets/icons/staff/brutal-destruction-2.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Brutal Destruction Weapon Mastery Magic Damage Dealt 5% ▲",
+    "slug": "brutal-destruction",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-destruction",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_3.webp",
+    "iconPath": "src/assets/icons/staff/brutal-destruction.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Burning Smokescreen Active",
+    "slug": "burning-smokescreen",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/burning-smokescreen",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_AoeTeleport_SP.webp",
+    "iconPath": "src/assets/icons/staff/burning-smokescreen.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Fatal Incantation Weapon Mastery Magic Critical Hit Chance 60 ▲",
+    "slug": "fatal-incantation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fatal-incantation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_1.webp",
+    "iconPath": "src/assets/icons/staff/fatal-incantation.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Focused Fire Bombs Active A Fire skill that deals 510% of Base Damage + 516. Has a(n) 80% chance to Weaken the target for 6s, reducing Healing Received by 80%. Has a(n) 80% chance to apply 2 stacks of Weaken: Burning to all enemies within a 3m radius area from the target. Charging time increases damage by up to 120%. Stacks up to 5 times. Damage increases by 120% against monsters. Burning lasts for 12s, and deals 3.4% of Base Damage + 15 per stack. Stacks up to 10 times.",
+    "slug": "focused-fire-bombs",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/focused-fire-bombs",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_WideAreaAttack_SP.webp",
+    "iconPath": "src/assets/icons/staff/focused-fire-bombs.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Frenzied Lightning Wave Active",
+    "slug": "frenzied-lightning-wave",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/frenzied-lightning-wave",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_WideAreaDebuffAttack_SP.webp",
+    "iconPath": "src/assets/icons/staff/frenzied-lightning-wave.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Hellfire Rain Active A special skill that can only be grown with Precious Active Skill Growth Books: Omnipotence. Deals 666% of Base Damage + 74 to targets within a 4m radius and apply Weaken: Burning. A Fire skill which drops 12 small meteors randomly to deal 444% of Base Damage + 49 and apply one Weaken: Burning stack. Damage increases by 40% against monsters. Ignore target's Shield Block Chance.",
+    "slug": "hellfire-rain",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/hellfire-rain",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_S_Meteor_SP.webp",
+    "iconPath": "src/assets/icons/staff/hellfire-rain.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Icebound Armor Active Apply Petrification: Freeze to the user, protecting against PvP attacks. Has a(n) 80% chance to Weaken enemies within 3m of the user, decreasing their Movement Speed by 29% for 4s. Applies Frost.",
+    "slug": "icebound-armor",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/icebound-armor",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_IceFreeze.webp",
+    "iconPath": "src/assets/icons/staff/icebound-armor.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Ignition Booster Weapon Mastery Burning Chance 5% ▲",
+    "slug": "ignition-booster",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ignition-booster",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_2.webp",
+    "iconPath": "src/assets/icons/staff/ignition-booster.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Jumping Chain Active Move to the party member within the range.",
+    "slug": "jumping-chain",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/jumping-chain",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_BringSkill.webp",
+    "iconPath": "src/assets/icons/staff/jumping-chain.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Magic Orb Common Deals damage equal to 100% of Base Damage.",
+    "slug": "magic-orb-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/magic-orb-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_BasicAttack.webp",
+    "iconPath": "src/assets/icons/staff/magic-orb-2.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Mana Blessing Weapon Mastery Mana Regen 56 ▲",
+    "slug": "mana-blessing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mana-blessing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_2.webp",
+    "iconPath": "src/assets/icons/staff/mana-blessing.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Mana Intensification Weapon Mastery Increases Skill Boost Chance by 40.",
+    "slug": "mana-intensification",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mana-intensification",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_2.webp",
+    "iconPath": "src/assets/icons/staff/mana-intensification.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Radiant Composure Weapon Mastery Mana Regen 56 ▲",
+    "slug": "radiant-composure",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/radiant-composure",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_0.webp",
+    "iconPath": "src/assets/icons/staff/radiant-composure.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Redemptive Barrier Active Creates a shield that lasts for 6s, and the user loses Mana instead of Health. This skill can only be upgraded with a Precious Active Skill Growth Book: Omnipotence.",
+    "slug": "redemptive-barrier",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/redemptive-barrier",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_BringSkill_SP.webp",
+    "iconPath": "src/assets/icons/staff/redemptive-barrier.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Reverberation Shield Weapon Mastery Silence Resistance 125 ▲",
+    "slug": "reverberation-shield",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/reverberation-shield",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_3.webp",
+    "iconPath": "src/assets/icons/staff/reverberation-shield.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Severe Burns Weapon Mastery Burning Damage 10% ▲",
+    "slug": "severe-burns",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/severe-burns",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_1.webp",
+    "iconPath": "src/assets/icons/staff/severe-burns.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Spell Flexibility Weapon Mastery Mana Cost Efficiency 6% ▲",
+    "slug": "spell-flexibility",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/spell-flexibility",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_1.webp",
+    "iconPath": "src/assets/icons/staff/spell-flexibility.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Thunder's Blessing Active Increases Mana Regen by 960% for 6s. Creates a 5m radius zone where lightning hits 5 times per sec, dealing 120% of Base Damage to a random enemy in range. Skill is disabled if the user moves. If the user is Wet, the Mana Regen Boost is doubled. If the user is not Wet, Mana Cost Efficiency increases by 96% for 9s when the skill ends.",
+    "slug": "thunders-blessing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/thunders-blessing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_ManaRengeUp_SP.webp",
+    "iconPath": "src/assets/icons/staff/thunders-blessing.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Time Dilation Weapon Mastery Cooldown Speed 5% ▲",
+    "slug": "time-dilation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/time-dilation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_ST_3.webp",
+    "iconPath": "src/assets/icons/staff/time-dilation.webp"
+  },
+  {
+    "weapon": "Staff",
+    "weaponSlug": "staff",
+    "name": "Victorious Energy Active Magic, Melee, and Ranged Hit Chance increase by 460 and Magic and Melee Evasion increase by 460 for 12s.",
+    "slug": "victorious-energy",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/victorious-energy",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_ST_GlobalCoolDownBuff_SP.webp",
+    "iconPath": "src/assets/icons/staff/victorious-energy.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Create Skill Tier list",
+    "slug": "create",
+    "pageUrl": "https://throneandliberty.gameslantern.com/tier-lists/skills/create",
+    "iconUrl": null,
+    "iconPath": null
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "patient block",
+    "slug": "patient-block",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/patient-block",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DefenceAction.webp",
+    "iconPath": "src/assets/icons/spear/patient-block.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "culling arc",
+    "slug": "culling-arc",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/culling-arc",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_ThrustPull.webp",
+    "iconPath": "src/assets/icons/spear/culling-arc.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "gale rush",
+    "slug": "gale-rush",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/gale-rush",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DashAttack.webp",
+    "iconPath": "src/assets/icons/spear/gale-rush.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "javelin surge",
+    "slug": "javelin-surge",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/javelin-surge",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_SpearThrower.webp",
+    "iconPath": "src/assets/icons/spear/javelin-surge.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "abyssal cleave",
+    "slug": "abyssal-cleave",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/abyssal-cleave",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_StunAttack.webp",
+    "iconPath": "src/assets/icons/spear/abyssal-cleave.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "vicious fury",
+    "slug": "vicious-fury",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/vicious-fury",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_RapidThrust.webp",
+    "iconPath": "src/assets/icons/spear/vicious-fury.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "cataclysm",
+    "slug": "cataclysm",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cataclysm",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DefenceAttack.webp",
+    "iconPath": "src/assets/icons/spear/cataclysm.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "bloodleech aura",
+    "slug": "bloodleech-aura",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/bloodleech-aura",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_BloodAura.webp",
+    "iconPath": "src/assets/icons/spear/bloodleech-aura.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "unyielding sentinel",
+    "slug": "unyielding-sentinel",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/unyielding-sentinel",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_AbnormalTolerance.webp",
+    "iconPath": "src/assets/icons/spear/unyielding-sentinel.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "rising slash",
+    "slug": "rising-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/rising-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_CrossAttack.webp",
+    "iconPath": "src/assets/icons/spear/rising-slash.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "tempest strike",
+    "slug": "tempest-strike",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/tempest-strike",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_PushAttack.webp",
+    "iconPath": "src/assets/icons/spear/tempest-strike.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "cyclonic fury",
+    "slug": "cyclonic-fury",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/cyclonic-fury",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_RapidAttack.webp",
+    "iconPath": "src/assets/icons/spear/cyclonic-fury.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "death from above",
+    "slug": "death-from-above",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/death-from-above",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DropAttack.webp",
+    "iconPath": "src/assets/icons/spear/death-from-above.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "nimble steps",
+    "slug": "nimble-steps",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/nimble-steps",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_MoveBuff.webp",
+    "iconPath": "src/assets/icons/spear/nimble-steps.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "imposing form",
+    "slug": "imposing-form",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/imposing-form",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_TwoHandWeapon.webp",
+    "iconPath": "src/assets/icons/spear/imposing-form.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "fatal precision",
+    "slug": "fatal-precision",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/fatal-precision",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_WeakenBonus.webp",
+    "iconPath": "src/assets/icons/spear/fatal-precision.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "mortal wrath",
+    "slug": "mortal-wrath",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/mortal-wrath",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_LowHpAttack.webp",
+    "iconPath": "src/assets/icons/spear/mortal-wrath.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "retaliatory strike 2",
+    "slug": "retaliatory-strike-2",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/retaliatory-strike-2",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_ComboBuff.webp",
+    "iconPath": "src/assets/icons/spear/retaliatory-strike-2.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "death knell",
+    "slug": "death-knell",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/death-knell",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_KillBonus.webp",
+    "iconPath": "src/assets/icons/spear/death-knell.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "malice surge",
+    "slug": "malice-surge",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/malice-surge",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_AttackedBuff.webp",
+    "iconPath": "src/assets/icons/spear/malice-surge.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Ascending Cleave Active Use while jumping to deal 150% of Base Damage to enemies within a 2m range. Has a(n) 80% chance to apply Collision: Prone for 2.9s. Use while stationary for the same effect as Abyssal Cleave.",
+    "slug": "ascending-cleave",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/ascending-cleave",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_StunAttack_SP.webp",
+    "iconPath": "src/assets/icons/spear/ascending-cleave.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Brutal Fury Active Stabs the designated target 5 times consecutively, dealing 180% of Base Damage + 50 per strike to all targets within a 1.5m range. Damage increases by 40% against monsters. At 5 Burst stacks, this skill can be reused up to 2 additional times within 1s.",
+    "slug": "brutal-fury",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/brutal-fury",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_RapidThrust_SP_1.webp",
+    "iconPath": "src/assets/icons/spear/brutal-fury.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Constricting Tempest Active Connects a chain to the designated target for 3s. The chain reduces Magic, Melee, and Ranged Hit Chance by 440. Has a(n) 90% chance to apply Collision: Pull and Bind for 5.5s. The chain disappears if the target moves further than 16m from the user.",
+    "slug": "constricting-tempest",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/constricting-tempest",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_PushAttack_SP_1.webp",
+    "iconPath": "src/assets/icons/spear/constricting-tempest.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Enforcer Active Magic, Melee, and Ranged Magic Hit Chance increase by 410 for 6s. After 3s, increases All CC Chance by 90 per target within a 8m radius for 3s. (Up to 5 targets.) The Hit Chance Increase effect's remaining duration increases by 0.2s per incoming hit, up to 15 times.",
+    "slug": "enforcer",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/enforcer",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_AbnormalTolerance_SP2.webp",
+    "iconPath": "src/assets/icons/spear/enforcer.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Explosive Fury Active Swings a spear at a target and deals 360% of Base Damage + 100 to enemies within 1.6 times of the attack range, with a width of 2m. On Critical Hit, applies Weaken: Ignite. Damage increases by 40% against monsters. Can be used up to 5 times consecutively. On dealing damage, gain the Ember effect.",
+    "slug": "explosive-fury",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/explosive-fury",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_RapidThrust_SP_2.webp",
+    "iconPath": "src/assets/icons/spear/explosive-fury.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Flaming Arc Active Stabs with a spear 2 times. Each attack deals 190% of Base Damage + 53. On Critical Hit, applies Weaken: Ignite. At 5 ignite stacks, damage increases by 20%. Damage increases by 55% against monsters. Ability to use Spiral Slash afterwards. Spiral Slash Spin and attack the target and targets within range 2 times. Each attack deals 190% of Base Damage + 53. On Critical Hit, applies Weaken: Ignite. At 5 Ignite stacks, damage increases by 20%. Damage increases by 55% against monsters. Ignite lasts for 9s and each stack deals 3.4% of Base Damage + 15. Stacks up to 10 times. Explodes at 10 stacks and deals 460% of Base Damage + 266 to enemies within a 3m radius. The Weaken: Ignite effect is the same for all skills.",
+    "slug": "flaming-arc",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/flaming-arc",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_ThrustPull_SP.webp",
+    "iconPath": "src/assets/icons/spear/flaming-arc.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Intense Flames Weapon Mastery Ignite Damage 10% ▲",
+    "slug": "intense-flames",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/intense-flames",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/intense-flames.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Javelin Inferno Active Throws a spear at the designated target to deal 257% of Base Damage + 95. Spreads up to 3 times to 2 random targets within a 4m radius. 33% boosted damage against monsters. On Critical Hit, applies Weaken: Ignite. Javelin Inferno can only be used upon gaining the Ember effect. Once the Javelin Inferno specialization is activated, Ember can be obtained by defeating an enemy by spear or upon dealing damage using the Explosive Fury skill, which is a specialization of the Vicious Fury skill Ember stacks up to 5 times. Consumes 1 Ember stack.",
+    "slug": "javelin-inferno",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/javelin-inferno",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_SpearThrower_SP.webp",
+    "iconPath": "src/assets/icons/spear/javelin-inferno.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Nature's Gamble Weapon Mastery Attack Speed 6.5% ▲",
+    "slug": "natures-gamble",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/natures-gamble",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/natures-gamble.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Overprepared Weapon Mastery Cooldown Speed 3% ▲",
+    "slug": "overprepared",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/overprepared",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/overprepared.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Phoenix Barrage Active Stabs 10 times with 1.6 times of the attack range and a 50 degree arc in the designated direction. Each attack deals 91% of Base Damage + 23. On Critical Hit, applies Weaken: Ignite. Damage increases by 125% against monsters.",
+    "slug": "phoenix-barrage",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/phoenix-barrage",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_RapidAttack_SP.webp",
+    "iconPath": "src/assets/icons/spear/phoenix-barrage.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Piercing Spear Weapon Mastery Shield Block Penetration Chance 8% ▲",
+    "slug": "piercing-spear",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/piercing-spear",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/piercing-spear.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Sentinel's Bastion Active Magic, Melee, and Ranged Heavy Attack Chance increases by 200 for party members within a 16m radius for 6s.",
+    "slug": "sentinels-bastion",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/sentinels-bastion",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_AbnormalTolerance_SP.webp",
+    "iconPath": "src/assets/icons/spear/sentinels-bastion.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Skillful Path Weapon Mastery CC Chance 50 ▲",
+    "slug": "skillful-path",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/skillful-path",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/skillful-path.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Slaughtering Slash Active Dashes toward a target to deal 160% of Base Damage + 67. Damage increases by 80% against monsters. Attacks 6 times in a row, splitting the attack if there is another target within 6m. Each attack deals 22% increased damage per stack of the user's Burst or Ignite on the target and causes it to explode.",
+    "slug": "slaughtering-slash",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/slaughtering-slash",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_CrossAttack_SP.webp",
+    "iconPath": "src/assets/icons/spear/slaughtering-slash.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Steady Charge Weapon Mastery Movement Speed 6.5% ▲",
+    "slug": "steady-charge",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/steady-charge",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/steady-charge.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Steel Stance Weapon Mastery Damage Reduction 8 ▲",
+    "slug": "steel-stance",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/steel-stance",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/steel-stance.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Swing Common Deals damage equal to 100% of Base Damage.",
+    "slug": "swing",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/swing",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_BasicAttack.webp",
+    "iconPath": "src/assets/icons/spear/swing.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Unshakable Mind Weapon Mastery Skill Damage Resist 80 ▲",
+    "slug": "unshakable-mind",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/unshakable-mind",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/unshakable-mind.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Unyielding Determination Weapon Mastery Magic, Melee, and Ranged Endurance 105 ▲",
+    "slug": "unyielding-determination",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/unyielding-determination",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/unyielding-determination.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Will of Annihilation Weapon Mastery Increases Skill Boost by 50.",
+    "slug": "will-of-annihilation",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/will-of-annihilation",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WM_SW2_0.webp",
+    "iconPath": "src/assets/icons/spear/will-of-annihilation.webp"
+  },
+  {
+    "weapon": "Spear",
+    "weaponSlug": "spear",
+    "name": "Wreak Havoc Active Wrath Attack Deals 270% of Base Damage + 84 to the target. Has a(n) 80% chance to apply Weaken: Defense Skills Disabled for 6s. Only deals damage to monsters. Has a(n) 80% chance to Stun a target using Static Defense for 3s. This skill can only be upgraded with a Precious Training Book: Omnipotence.",
+    "slug": "wreak-havoc",
+    "pageUrl": "https://throneandliberty.gameslantern.com/skills/wreak-havoc",
+    "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DefenceAttack_SP.webp",
+    "iconPath": "src/assets/icons/spear/wreak-havoc.webp"
+  }
+]
