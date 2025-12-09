@@ -78,7 +78,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "fabolyzer",
+        "owner": "PtPetrov",
         "repo": "fabolyzer",
         "releaseType": "draft"
       }
