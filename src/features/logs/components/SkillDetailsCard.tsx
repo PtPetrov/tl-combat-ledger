@@ -97,7 +97,7 @@ export const SkillDetailsCard: React.FC<SkillDetailsCardProps> = ({
             {featuredSkill && getSkillIconPath(featuredSkill.skillName) && (
               <Box
                 component="img"
-                src={`/${getSkillIconPath(featuredSkill.skillName)}`}
+                src={getSkillIconPath(featuredSkill.skillName)}
                 alt={featuredSkill.skillName}
                 sx={{
                   width: 46,

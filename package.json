@@ -48,17 +48,7 @@
       "buildResources": "resources"
     },
     "files": [
-      {
-        "from": "dist/renderer",
-        "to": "renderer",
-        "filter": [
-          "**/*"
-        ]
-      },
-      "dist/main.js",
-      "dist/logWorker.js",
-      "dist/logs.js",
-      "dist/preload.js",
+      "dist/**/*",
       "package.json"
     ],
     "asar": true,

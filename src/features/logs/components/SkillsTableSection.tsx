@@ -14,6 +14,14 @@ import {
 import { formatInteger } from "../utils/formatters";
 import skillsData from "../../../assets/skills.json";
 
+const iconAssets = import.meta.glob<string>(
+  "../../../assets/icons/**/*",
+  {
+    eager: true,
+    as: "url",
+  }
+) as Record<string, string>;
+
 // ---- Skill icon lookup -----------------------------------------------------
 
 interface SkillMeta {
@@ -44,15 +52,20 @@ const skillIconMap = (() => {
   (skillsData as SkillMeta[]).forEach((s) => {
     if (!s.iconPath) return;
 
+    const cleaned = s.iconPath.replace(/^src\//, "");
+    const assetKey = `../../../${cleaned}`;
+    const assetUrl = iconAssets[assetKey];
+    if (!assetUrl) return;
+
     const fullNorm = normalizeName(s.name);
     if (!map.has(fullNorm)) {
-      map.set(fullNorm, s.iconPath);
+      map.set(fullNorm, assetUrl);
     }
 
     const baseName = getBaseSkillName(s.name);
     const baseNorm = normalizeName(baseName);
     if (baseNorm && !map.has(baseNorm)) {
-      map.set(baseNorm, s.iconPath);
+      map.set(baseNorm, assetUrl);
     }
   });
 
@@ -318,7 +331,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                       {iconPath && (
                         <Box
                           component="img"
-                          src={`/${iconPath}`}
+                          src={iconPath}
                           alt={skill.skillName}
                           sx={{
                             width: 52,

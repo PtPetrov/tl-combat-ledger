@@ -9,6 +9,7 @@ import {
   TargetBreakdown,
   TargetSessionSummary,
 } from "../types/logTypes";
+import type { UpdatesApi } from "../types/updateTypes";
 
 type LogsApi = {
   getDefaultDirectories: () => Promise<string[]>;
@@ -80,6 +81,7 @@ declare global {
   interface Window {
     tlcla?: {
       logs?: LogsApi;
+      updates?: UpdatesApi;
     };
   }
 }

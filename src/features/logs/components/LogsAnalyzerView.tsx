@@ -1,5 +1,5 @@
 // src/components/logs/LogsAnalyzerView.tsx
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
 import {
   LoadState,
@@ -24,6 +24,10 @@ import {
   sectionSpacing,
 } from "./layoutTokens";
 import { useDynamicLayoutHeights } from "../hooks/useDynamicLayoutHeights";
+import type {
+  UpdateStatusPayload,
+  UpdatesApi,
+} from "../types/updateTypes";
 
 export interface LogsAnalyzerViewProps {
   defaultDirs: string[];
@@ -117,6 +121,10 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedSkill, setSelectedSkill] =
     useState<ExtendedSkillBreakdown | null>(null);
+  const [updateStatus, setUpdateStatus] =
+    useState<UpdateStatusPayload | null>(null);
+  const updatesApiRef = useRef<UpdatesApi | null>(null);
+  const [hasUpdateBridge, setHasUpdateBridge] = useState(false);
   const { viewportHeight, mainAreaHeight, timelineHeight, attackCardHeight } =
     useDynamicLayoutHeights();
 
@@ -137,6 +145,38 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         : (currentTopSkills[0] as ExtendedSkillBreakdown);
     });
   }, [summaryState, currentTopSkills]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const api = window.tlcla?.updates;
+    if (!api) return;
+    updatesApiRef.current = api;
+    setHasUpdateBridge(true);
+
+    const unsubscribe = api.onStatus((status) => {
+      setUpdateStatus(status);
+    });
+
+    api.checkForUpdates().catch((error) => {
+      console.warn("Update check failed", error);
+    });
+
+    return () => {
+      unsubscribe?.();
+    };
+  }, []);
+
+  const handleCheckForUpdates = useCallback(() => {
+    updatesApiRef.current?.checkForUpdates().catch((error) => {
+      console.warn("Failed to check for updates", error);
+    });
+  }, []);
+
+  const handleInstallUpdate = useCallback(() => {
+    updatesApiRef.current?.installUpdate().catch((error) => {
+      console.warn("Failed to install update", error);
+    });
+  }, []);
 
   return (
     <Box
@@ -162,6 +202,13 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         isCompareActive={isCompareActive}
         showCompareControl={showCompareControl}
         contextLabel={viewLabel}
+        updateStatus={hasUpdateBridge ? updateStatus : null}
+        onCheckForUpdates={
+          hasUpdateBridge ? handleCheckForUpdates : undefined
+        }
+        onInstallUpdate={
+          hasUpdateBridge ? handleInstallUpdate : undefined
+        }
       />
       <DefaultDirectoriesRow
         defaultDirs={defaultDirs}

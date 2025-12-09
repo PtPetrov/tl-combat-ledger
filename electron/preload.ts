@@ -55,6 +55,13 @@ type ParsedLogSummary = {
   timeline: DamageTimelineBucket[];
 };
 
+type UpdateStatusPayload = {
+  state: "idle" | "checking" | "available" | "downloading" | "ready" | "error";
+  version?: string;
+  percent?: number;
+  message?: string;
+};
+
 const logsApi = {
   getDefaultDirectories(): Promise<string[]> {
     return ipcRenderer.invoke("logs:getDefaultDirectories");
@@ -82,9 +89,26 @@ const windowApi = {
   },
 };
 
+const updatesApi = {
+  checkForUpdates(): Promise<void> {
+    return ipcRenderer.invoke("updates:check");
+  },
+  installUpdate(): Promise<void> {
+    return ipcRenderer.invoke("updates:install");
+  },
+  onStatus(callback: (payload: UpdateStatusPayload) => void) {
+    const handler = (_event: unknown, payload: UpdateStatusPayload) => {
+      callback(payload);
+    };
+    ipcRenderer.on("updates:status", handler);
+    return () => ipcRenderer.removeListener("updates:status", handler);
+  },
+};
+
 contextBridge.exposeInMainWorld("tlcla", {
   logs: logsApi,
   window: windowApi,
+  updates: updatesApi,
 });
 
 export {};

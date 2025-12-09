@@ -1,13 +1,18 @@
 // src/components/logs/AnalyzerHeader.tsx
 import React from "react";
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, IconButton, Tooltip, Typography } from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
+import logoImage from "@/assets/images/logo.png";
+import type { UpdateStatusPayload } from "../types/updateTypes";
 
 export interface AnalyzerHeaderProps {
   onToggleCompare?: () => void;
   isCompareActive?: boolean;
   showCompareControl?: boolean;
   contextLabel?: string;
+  updateStatus?: UpdateStatusPayload | null;
+  onCheckForUpdates?: () => void;
+  onInstallUpdate?: () => void;
 }
 
 export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
@@ -16,17 +21,112 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     isCompareActive,
     showCompareControl = true,
     contextLabel,
-  }) => (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: { xs: "flex-start", md: "center" },
-        flexWrap: { xs: "wrap", md: "nowrap" },
-        justifyContent: "space-between",
-        rowGap: 1.2,
-        mb: 0,
-      }}
-    >
+    updateStatus,
+    onCheckForUpdates,
+    onInstallUpdate,
+  }) => {
+    const renderUpdateControl = () => {
+      if (!onCheckForUpdates && !onInstallUpdate) {
+        return null;
+      }
+
+      const status = updateStatus;
+
+      if (status?.state === "ready" && onInstallUpdate) {
+        return (
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={onInstallUpdate}
+            sx={{
+              textTransform: "none",
+              fontWeight: 600,
+              letterSpacing: 0.02,
+            }}
+          >
+            Restart to Update
+          </Button>
+        );
+      }
+
+      if (status?.state === "downloading") {
+        const percent = Math.round(status.percent ?? 0);
+        return (
+          <Button
+            variant="outlined"
+            disabled
+            startIcon={<CircularProgress size={16} />}
+            sx={{ textTransform: "none" }}
+          >
+            Downloading… {percent}%
+          </Button>
+        );
+      }
+
+      if (status?.state === "checking") {
+        return (
+          <Button
+            variant="outlined"
+            disabled
+            startIcon={<CircularProgress size={16} />}
+            sx={{ textTransform: "none" }}
+          >
+            Checking updates…
+          </Button>
+        );
+      }
+
+      if (status?.state === "error") {
+        return (
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={onCheckForUpdates}
+            sx={{ textTransform: "none" }}
+          >
+            Retry Update
+          </Button>
+        );
+      }
+
+      if (status?.state === "available") {
+        return (
+          <Button
+            variant="outlined"
+            disabled
+            sx={{ textTransform: "none" }}
+          >
+            Update available…
+          </Button>
+        );
+      }
+
+      if (onCheckForUpdates) {
+        return (
+          <Button
+            variant="outlined"
+            onClick={onCheckForUpdates}
+            sx={{ textTransform: "none" }}
+          >
+            Check for updates
+          </Button>
+        );
+      }
+
+      return null;
+    };
+
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: { xs: "flex-start", md: "center" },
+          flexWrap: { xs: "wrap", md: "nowrap" },
+          justifyContent: "space-between",
+          rowGap: 1.2,
+          mb: 0,
+        }}
+      >
       <Box
         sx={{
           display: "grid",
@@ -37,7 +137,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
       >
         <Box
           component="img"
-          src="/src/assets/images/logo.png"
+          src={logoImage}
           alt="Fabolyzer logo"
           sx={{ width: 90, height: 90, borderRadius: 0.75 }}
         />
@@ -114,9 +214,11 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
             </Tooltip>
           )}
         </Box>
+        {renderUpdateControl()}
       </Box>
     </Box>
-  )
+    );
+  }
 );
 
 AnalyzerHeader.displayName = "AnalyzerHeader";

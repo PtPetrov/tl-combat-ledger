@@ -17,6 +17,13 @@ let ipcRegistered = false;
 const isDev = !app.isPackaged;
 const workerScript = path.join(__dirname, "logWorker.js");
 
+type UpdateStatusPayload = {
+  state: "idle" | "checking" | "available" | "downloading" | "ready" | "error";
+  version?: string;
+  percent?: number;
+  message?: string;
+};
+
 const gotInstanceLock = app.requestSingleInstanceLock();
 
 if (!gotInstanceLock) {
@@ -119,6 +126,24 @@ function parseSummaryInWorker(filePath: string): Promise<ParsedLogSummary> {
   });
 }
 
+function sendUpdateStatus(payload: UpdateStatusPayload) {
+  if (!mainWindow) return;
+  mainWindow.webContents.send("updates:status", payload);
+}
+
+async function triggerUpdateCheck() {
+  if (isDev) {
+    sendUpdateStatus({ state: "error", message: "Updates unavailable in development" });
+    return;
+  }
+  try {
+    await autoUpdater.checkForUpdates();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    sendUpdateStatus({ state: "error", message });
+  }
+}
+
 function initAutoUpdater() {
   if (isDev) {
     console.info("Auto-updater disabled in development mode");
@@ -127,24 +152,44 @@ function initAutoUpdater() {
 
   autoUpdater.autoDownload = true;
   autoUpdater.logger = console as any;
+  sendUpdateStatus({ state: "idle" });
 
-  autoUpdater.on("update-available", () => {
+  autoUpdater.on("checking-for-update", () => {
+    console.info("Checking for updates");
+    sendUpdateStatus({ state: "checking" });
+  });
+
+  autoUpdater.on("update-available", (info) => {
     console.info("Update available. Downloading...");
+    sendUpdateStatus({ state: "available", version: info?.version });
   });
 
   autoUpdater.on("update-not-available", () => {
     console.info("No updates available");
+    sendUpdateStatus({ state: "idle" });
+  });
+
+  autoUpdater.on("download-progress", (progress) => {
+    sendUpdateStatus({
+      state: "downloading",
+      percent: progress?.percent,
+    });
+  });
+
+  autoUpdater.on("update-downloaded", (info) => {
+    console.info("Update downloaded. It will install on next restart.");
+    sendUpdateStatus({ state: "ready", version: info?.version });
   });
 
   autoUpdater.on("error", (error) => {
     console.error("Auto-updater error", error);
+    sendUpdateStatus({
+      state: "error",
+      message: error instanceof Error ? error.message : String(error),
+    });
   });
 
-  autoUpdater.on("update-downloaded", () => {
-    console.info("Update downloaded. It will install on next restart.");
-  });
-
-  autoUpdater.checkForUpdatesAndNotify();
+  void triggerUpdateCheck();
 }
 
 /* ------------------------------------------------------------------ */
@@ -188,6 +233,15 @@ function registerIpcHandlers() {
       throw new Error("filePath is required for logs:parseSummary");
     }
     return parseSummaryInWorker(filePath);
+  });
+
+  ipcMain.handle("updates:check", async () => {
+    await triggerUpdateCheck();
+  });
+
+  ipcMain.handle("updates:install", () => {
+    if (isDev) return;
+    autoUpdater.quitAndInstall();
   });
 
   // Frameless window controls, used by TopBar via preload.ts
