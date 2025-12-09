@@ -1,13 +1,13 @@
 {
-  "name": "tlcla",
-  "version": "0.1.0",
+  "name": "fabolyzer",
+  "version": "0.1.1",
   "description": "Throne and Liberty Combat Log Analyzer",
   "main": "dist/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/fabolyzer/fabolyzer.git"
   },
-  "author": "TLCLA",
+  "author": "nOtDeviL",
   "license": "MIT",
   "scripts": {
     "dev:renderer": "vite dev",
