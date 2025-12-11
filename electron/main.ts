@@ -38,6 +38,12 @@ function createMainWindow() {
   const primaryDisplay = screen.getPrimaryDisplay();
   const { x, y, width, height } = primaryDisplay.workArea;
 
+  // Resolve icon for window/taskbar (dev uses local resources, prod uses packaged resources).
+  const resourcesPath = isDev
+    ? path.join(__dirname, "..", "resources")
+    : process.resourcesPath;
+  const iconPath = path.join(resourcesPath, "icon.ico");
+
   mainWindow = new BrowserWindow({
     x,
     y,
@@ -53,6 +59,7 @@ function createMainWindow() {
     frame: false, // custom top bar
     titleBarStyle: "hidden",
     transparent: false,
+    icon: iconPath,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: false,

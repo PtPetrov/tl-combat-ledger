@@ -32,15 +32,12 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     onInstallUpdate,
   }) => {
     const renderUpdateControl = () => {
-      if (!onCheckForUpdates && !onInstallUpdate) {
-        return null;
-      }
-
       const status = updateStatus;
       const devDisabled =
         status?.state === "error" &&
         status?.message?.toLowerCase?.().includes("development");
 
+      // Only render when an update is available/downloading/ready.
       if (status?.state === "ready" && onInstallUpdate) {
         return (
           <Button
@@ -72,40 +69,6 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
         );
       }
 
-      if (status?.state === "checking") {
-        return (
-          <Button
-            variant="outlined"
-            disabled
-            startIcon={<CircularProgress size={16} />}
-            sx={{ textTransform: "none" }}
-          >
-            Checking updates…
-          </Button>
-        );
-      }
-
-      if (devDisabled) {
-        return (
-          <Button variant="outlined" disabled sx={{ textTransform: "none" }}>
-            Updates unavailable in dev
-          </Button>
-        );
-      }
-
-      if (status?.state === "error") {
-        return (
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={onCheckForUpdates}
-            sx={{ textTransform: "none" }}
-          >
-            Retry Update
-          </Button>
-        );
-      }
-
       if (status?.state === "available") {
         return (
           <Button
@@ -118,18 +81,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
         );
       }
 
-      if (onCheckForUpdates) {
-        return (
-          <Button
-            variant="outlined"
-            onClick={onCheckForUpdates}
-            sx={{ textTransform: "none" }}
-          >
-            Check for updates
-          </Button>
-        );
-      }
-
+      // Hide the button in all other states (idle/checking/error/dev).
       return null;
     };
 
