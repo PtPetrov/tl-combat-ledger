@@ -10,6 +10,9 @@ export interface AnalyzerHeaderProps {
   isCompareActive?: boolean;
   showCompareControl?: boolean;
   contextLabel?: string;
+  defaultDirs?: string[];
+  selectedDir?: string | null;
+  onSelectDefaultDir?: (dir: string) => void;
   updateStatus?: UpdateStatusPayload | null;
   onCheckForUpdates?: () => void;
   onInstallUpdate?: () => void;
@@ -21,6 +24,9 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     isCompareActive,
     showCompareControl = true,
     contextLabel,
+    defaultDirs = [],
+    selectedDir = null,
+    onSelectDefaultDir,
     updateStatus,
     onCheckForUpdates,
     onInstallUpdate,
@@ -31,6 +37,9 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
       }
 
       const status = updateStatus;
+      const devDisabled =
+        status?.state === "error" &&
+        status?.message?.toLowerCase?.().includes("development");
 
       if (status?.state === "ready" && onInstallUpdate) {
         return (
@@ -76,6 +85,14 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
         );
       }
 
+      if (devDisabled) {
+        return (
+          <Button variant="outlined" disabled sx={{ textTransform: "none" }}>
+            Updates unavailable in dev
+          </Button>
+        );
+      }
+
       if (status?.state === "error") {
         return (
           <Button
@@ -116,6 +133,80 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
       return null;
     };
 
+    const renderDefaultDirButtons = () => {
+      if (!defaultDirs?.length) return null;
+
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1,
+            rowGap: 1,
+            minWidth: 0,
+          }}
+        >
+          {defaultDirs.map((dir) => {
+            const isSelected = dir === selectedDir;
+            return (
+              <Box
+                key={dir}
+                component="button"
+                type="button"
+                onClick={() => onSelectDefaultDir?.(dir)}
+                sx={{
+                  maxWidth: "100%",
+                  borderRadius: "999px",
+                  border: "1px solid",
+                  borderColor: isSelected
+                    ? "rgba(99,102,241,0.8)"
+                    : "rgba(71,85,105,0.8)",
+                  background: isSelected
+                    ? "linear-gradient(120deg, rgba(99,102,241,0.12), rgba(129,140,248,0.12))"
+                    : "rgba(15,23,42,0.75)",
+                  boxShadow: isSelected
+                    ? "0 0 0 1px rgba(129,140,248,0.3), 0 10px 30px rgba(15,23,42,0.9)"
+                    : "0 0 0 1px rgba(15,23,42,0.8)",
+                  color: isSelected ? "#e0e7ff" : "#cbd5e1",
+                  px: { xs: 1.6, md: 1.8 },
+                  py: 0.9,
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.01em",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.6,
+                  transition: "all 140ms ease",
+                  backdropFilter: "blur(6px)",
+                  "&:hover": {
+                    borderColor: "rgba(129,140,248,0.9)",
+                    color: "#e2e8f0",
+                    background: "rgba(79,70,229,0.14)",
+                  },
+                  "&:active": {
+                    transform: "translateY(1px)",
+                  },
+                }}
+              >
+                <Box
+                  component="span"
+                  sx={{
+                    maxWidth: "100%",
+                    whiteSpace: "normal",
+                    wordBreak: "break-all",
+                    textAlign: "left",
+                  }}
+                >
+                  {dir}
+                </Box>
+              </Box>
+            );
+          })}
+        </Box>
+      );
+    };
+
     return (
       <Box
         sx={{
@@ -127,10 +218,10 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
           mb: 0,
         }}
       >
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "auto 1fr",
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
           gap: { xs: 1, md: 1.2 },
           alignItems: "center",
         }}
@@ -138,7 +229,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
         <Box
           component="img"
           src={logoImage}
-          alt="Fabolyzer logo"
+          alt="TL Combat Ledger logo"
           sx={{ width: 90, height: 90, borderRadius: 0.75 }}
         />
         <Box
@@ -162,16 +253,16 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
                 fontWeight: 800,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#4f46e5",
-                fontSize: "1.8rem",
-              }}
-            >
-              Fabolyzer
-            </Typography>
-            {contextLabel && (
-              <Typography
-                component="span"
-                sx={{
+              color: "#4f46e5",
+              fontSize: "1.8rem",
+            }}
+          >
+            TL Combat Ledger
+          </Typography>
+          {contextLabel && (
+            <Typography
+              component="span"
+              sx={{
                   fontSize: "1rem",
                   fontWeight: 500,
                   color: "text.secondary",
@@ -193,28 +284,30 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 2,
+          gap: 1.1,
+          flexWrap: "wrap",
+          justifyContent: { xs: "flex-start", md: "flex-end" },
           alignSelf: { xs: "flex-end", md: "center" },
+          maxWidth: "100%",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-          {showCompareControl && onToggleCompare && (
-            <Tooltip title="Compare logs" placement="bottom">
-              <IconButton
-                aria-label="Compare logs"
-                onClick={onToggleCompare}
-                sx={{
-                  color: isCompareActive ? "#a5b4fc" : "rgba(226,232,240,0.9)",
-                  transition: "color 150ms ease",
-                  "&:hover": { color: "#c7d2fe" },
-                }}
-              >
-                <CompareIcon sx={{ fontSize: "1.7rem" }} />
-              </IconButton>
-            </Tooltip>
-          )}
-        </Box>
+        {renderDefaultDirButtons()}
         {renderUpdateControl()}
+        {showCompareControl && onToggleCompare && (
+          <Tooltip title="Compare logs" placement="bottom">
+            <IconButton
+              aria-label="Compare logs"
+              onClick={onToggleCompare}
+              sx={{
+                color: isCompareActive ? "#a5b4fc" : "rgba(226,232,240,0.9)",
+                transition: "color 150ms ease",
+                "&:hover": { color: "#c7d2fe" },
+              }}
+            >
+              <CompareIcon sx={{ fontSize: "1.7rem" }} />
+            </IconButton>
+          </Tooltip>
+        )}
       </Box>
     </Box>
     );

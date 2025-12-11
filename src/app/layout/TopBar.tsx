@@ -51,7 +51,7 @@ const TopBar: React.FC = () => {
           fontSize: "0.85rem",
         }}
       >
-        Fabolyzer – TL Combat Log Analyzer
+        TL Combat Ledger – TL Combat Log Analyzer
       </Typography>
 
       <Box

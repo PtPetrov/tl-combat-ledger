@@ -89,6 +89,12 @@ const windowApi = {
   },
 };
 
+const appApi = {
+  getVersion(): Promise<string> {
+    return ipcRenderer.invoke("app:getVersion");
+  },
+};
+
 const updatesApi = {
   checkForUpdates(): Promise<void> {
     return ipcRenderer.invoke("updates:check");
@@ -108,6 +114,7 @@ const updatesApi = {
 contextBridge.exposeInMainWorld("tlcla", {
   logs: logsApi,
   window: windowApi,
+  app: appApi,
   updates: updatesApi,
 });
 

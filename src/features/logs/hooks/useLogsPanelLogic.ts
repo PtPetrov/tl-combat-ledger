@@ -18,6 +18,10 @@ type LogsApi = {
   parseSummary: (filePath: string) => Promise<ParsedLogSummary>;
 };
 
+type AppApi = {
+  getVersion: () => Promise<string>;
+};
+
 export interface TimelineSeries {
   key: string; // data key in chart data
   label: string; // legend label
@@ -80,6 +84,7 @@ export interface UseLogsPanelLogicResult {
 declare global {
   interface Window {
     tlcla?: {
+      app?: AppApi;
       logs?: LogsApi;
       updates?: UpdatesApi;
     };

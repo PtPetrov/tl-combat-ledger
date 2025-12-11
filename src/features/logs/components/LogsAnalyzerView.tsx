@@ -9,7 +9,6 @@ import {
 } from "../types/logTypes";
 import { TimelineSession, TimelineSeries } from "../hooks/useLogsPanelLogic";
 import { AnalyzerHeader } from "./AnalyzerHeader";
-import { DefaultDirectoriesRow } from "./DefaultDirectoriesRow";
 import { SessionsRow } from "./SessionsRow";
 import { SkillsTableSection } from "./SkillsTableSection";
 import { StatsPanel } from "./StatsPanel";
@@ -150,6 +149,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
     if (typeof window === "undefined") return;
     const api = window.tlcla?.updates;
     if (!api) return;
+    const isDevBuild = import.meta.env.DEV;
     updatesApiRef.current = api;
     setHasUpdateBridge(true);
 
@@ -157,9 +157,11 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
       setUpdateStatus(status);
     });
 
-    api.checkForUpdates().catch((error) => {
-      console.warn("Update check failed", error);
-    });
+    if (!isDevBuild) {
+      api.checkForUpdates().catch((error) => {
+        console.warn("Update check failed", error);
+      });
+    }
 
     return () => {
       unsubscribe?.();
@@ -202,6 +204,9 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         isCompareActive={isCompareActive}
         showCompareControl={showCompareControl}
         contextLabel={viewLabel}
+        defaultDirs={defaultDirs}
+        selectedDir={selectedDir}
+        onSelectDefaultDir={onSelectDefaultDir}
         updateStatus={hasUpdateBridge ? updateStatus : null}
         onCheckForUpdates={
           hasUpdateBridge ? handleCheckForUpdates : undefined
@@ -209,11 +214,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         onInstallUpdate={
           hasUpdateBridge ? handleInstallUpdate : undefined
         }
-      />
-      <DefaultDirectoriesRow
-        defaultDirs={defaultDirs}
-        selectedDir={selectedDir}
-        onSelectDefaultDir={onSelectDefaultDir}
       />
 
       <Box

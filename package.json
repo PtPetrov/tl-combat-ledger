@@ -42,7 +42,7 @@
   },
   "build": {
     "appId": "com.fabolyzer.app",
-    "productName": "Fabolyzer",
+    "productName": "TL Combat Ledger",
     "directories": {
       "output": "release",
       "buildResources": "resources"

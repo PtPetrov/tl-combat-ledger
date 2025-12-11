@@ -45,8 +45,8 @@ function createMainWindow() {
     height,
     show: false,
     useContentSize: false,
-    resizable: false,
-    maximizable: false,
+    resizable: true,
+    maximizable: true,
     fullscreenable: true,
     backgroundColor: "#050814",
     title: "TL Combat Log Analyzer",
@@ -78,7 +78,7 @@ function createMainWindow() {
     if (!mainWindow) return;
     mainWindow.show();
     mainWindow.focus();
-    // Trigger fullscreen only after the first paint to avoid flicker on Windows
+    // Start fullscreen by default; custom maximize control will toggle out.
     mainWindow.setFullScreen(true);
   });
 
@@ -251,10 +251,27 @@ function registerIpcHandlers() {
 
   ipcMain.on("window:toggleMaximize", () => {
     if (!mainWindow) return;
-    // Fullscreen window is fixed size; no-op to avoid unexpected behavior.
-    if (!mainWindow.isFullScreen()) {
-      mainWindow.setFullScreen(true);
+    if (mainWindow.isFullScreen()) {
+      const { workArea } = screen.getPrimaryDisplay();
+      const targetWidth = Math.round(workArea.width * 0.5);
+      const targetHeight = Math.round(workArea.height * 0.5);
+      const targetX =
+        workArea.x + Math.round((workArea.width - targetWidth) / 2);
+      const targetY =
+        workArea.y + Math.round((workArea.height - targetHeight) / 2);
+
+      mainWindow.setFullScreen(false);
+      mainWindow.setBounds({
+        x: targetX,
+        y: targetY,
+        width: targetWidth,
+        height: targetHeight,
+      });
+      mainWindow.focus();
+      return;
     }
+
+    mainWindow.setFullScreen(true);
   });
 
   ipcMain.on("window:close", () => {
