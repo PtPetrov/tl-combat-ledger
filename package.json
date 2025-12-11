@@ -1,6 +1,6 @@
 {
   "name": "fabolyzer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Throne and Liberty Combat Log Analyzer",
   "main": "dist/main.js",
   "repository": {
@@ -80,7 +80,7 @@
         "provider": "github",
         "owner": "PtPetrov",
         "repo": "fabolyzer",
-        "releaseType": "draft"
+        "releaseType": "release"
       }
     ]
   }
