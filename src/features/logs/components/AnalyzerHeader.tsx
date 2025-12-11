@@ -1,8 +1,9 @@
 // src/components/logs/AnalyzerHeader.tsx
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, CircularProgress, IconButton, Tooltip, Typography } from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
-import logoImage from "@/assets/images/logo.png";
+// Use explicit URL import so Vite emits the asset and we always get a valid path.
+import logoImage from "@/assets/images/logo.png?url";
 import type { UpdateStatusPayload } from "../types/updateTypes";
 
 export interface AnalyzerHeaderProps {
@@ -31,6 +32,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     onCheckForUpdates,
     onInstallUpdate,
   }) => {
+    const [logoFailed, setLogoFailed] = useState(false);
     const renderUpdateControl = () => {
       const status = updateStatus;
       const devDisabled =
@@ -182,8 +184,35 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
           component="img"
           src={logoImage}
           alt="TL Combat Ledger logo"
-          sx={{ width: 90, height: 90, borderRadius: 0.75 }}
+          onError={() => setLogoFailed(true)}
+          sx={{
+            width: 90,
+            height: 90,
+            borderRadius: 0.75,
+            display: logoFailed ? "none" : "block",
+          }}
         />
+        {logoFailed && (
+          <Box
+            sx={{
+              width: 90,
+              height: 90,
+              borderRadius: 0.75,
+              bgcolor: "rgba(79,70,229,0.1)",
+              border: "1px solid rgba(129,140,248,0.3)",
+              color: "#e0e7ff",
+              display: "grid",
+              placeItems: "center",
+              fontWeight: 800,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              fontSize: "0.95rem",
+            }}
+            aria-label="TL Combat Ledger"
+          >
+            TL
+          </Box>
+        )}
         <Box
           sx={{
             display: "flex",
