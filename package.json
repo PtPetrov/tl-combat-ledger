@@ -1,11 +1,11 @@
 {
-  "name": "fabolyzer",
-  "version": "0.1.3",
-  "description": "Throne and Liberty Combat Log Analyzer",
+  "name": "tl-combat-ledger",
+  "version": "0.1.4",
+  "description": "Throne and Liberty Combat Ledger",
   "main": "dist/main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fabolyzer/fabolyzer.git"
+    "url": "https://github.com/PtPetrov/tl-combat-ledger.git"
   },
   "author": "nOtDeviL",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "vite": "^5.4.8"
   },
   "build": {
-    "appId": "com.fabolyzer.app",
+    "appId": "com.tlcombatledger.app",
     "productName": "TL Combat Ledger",
     "directories": {
       "output": "release",
@@ -61,11 +61,11 @@
           ]
         }
       ],
-      "artifactName": "Fabolyzer-${version}-setup-${arch}.${ext}",
+      "artifactName": "TL-Combat-Ledger-${version}-setup-${arch}.${ext}",
       "signingHashAlgorithms": [
         "sha256"
       ],
-      "publisherName": "Fabolyzer",
+      "publisherName": "TL Combat Ledger",
       "rfc3161TimeStampServer": "http://timestamp.digicert.com"
     },
     "nsis": {
@@ -73,13 +73,13 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Fabolyzer"
+      "shortcutName": "TL Combat Ledger"
     },
     "publish": [
       {
         "provider": "github",
         "owner": "PtPetrov",
-        "repo": "fabolyzer",
+        "repo": "tl-combat-ledger",
         "releaseType": "release"
       }
     ]

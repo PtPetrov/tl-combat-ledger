@@ -49,7 +49,7 @@ function createMainWindow() {
     maximizable: true,
     fullscreenable: true,
     backgroundColor: "#050814",
-    title: "TL Combat Log Analyzer",
+    title: "TL Combat Ledger",
     frame: false, // custom top bar
     titleBarStyle: "hidden",
     transparent: false,
