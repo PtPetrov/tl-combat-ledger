@@ -171,7 +171,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
                   color: isSelected ? "#e0e7ff" : "#cbd5e1",
                   px: { xs: 1.6, md: 1.8 },
                   py: 0.9,
-                  fontSize: "1.05rem",
+                  fontSize: { xs: "0.9rem", md: "0.95rem" },
                   letterSpacing: "0.01em",
                   cursor: "pointer",
                   display: "inline-flex",
@@ -236,7 +236,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 0.35,
+            gap: 0.175,
             minWidth: 0,
           }}
         >

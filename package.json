@@ -1,6 +1,6 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Throne and Liberty Combat Ledger",
   "main": "dist/main.js",
   "repository": {
@@ -63,6 +63,7 @@
       ],
       "artifactName": "TL-Combat-Ledger-${version}-setup-${arch}.${ext}",
       "icon": "resources/icon.ico",
+      "verifyUpdateCodeSignature": false,
       "signingHashAlgorithms": [
         "sha256"
       ],
