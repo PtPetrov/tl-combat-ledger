@@ -1,9 +1,16 @@
 // src/components/logs/AnalyzerHeader.tsx
 import React, { useState } from "react";
-import { Box, Button, CircularProgress, IconButton, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
-// Use explicit URL import so Vite emits the asset and we always get a valid path.
-import logoImage from "@/assets/images/logo.png?url";
+// Inline the logo to avoid any file-path issues in packaged builds.
+import logoImage from "@/assets/images/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
 
 export interface AnalyzerHeaderProps {
@@ -32,7 +39,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     onCheckForUpdates,
     onInstallUpdate,
   }) => {
-    const [logoFailed, setLogoFailed] = useState(false);
+    const [logoHidden, setLogoHidden] = useState(false);
     const renderUpdateControl = () => {
       const status = updateStatus;
       const devDisabled =
@@ -73,11 +80,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
 
       if (status?.state === "available") {
         return (
-          <Button
-            variant="outlined"
-            disabled
-            sx={{ textTransform: "none" }}
-          >
+          <Button variant="outlined" disabled sx={{ textTransform: "none" }}>
             Update available…
           </Button>
         );
@@ -176,121 +179,100 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
           sx={{
             display: "grid",
             gridTemplateColumns: "auto 1fr",
-          gap: { xs: 1, md: 1.2 },
-          alignItems: "center",
-        }}
-      >
-        <Box
-          component="img"
-          src={logoImage}
-          alt="TL Combat Ledger logo"
-          onError={() => setLogoFailed(true)}
-          sx={{
-            width: 90,
-            height: 90,
-            borderRadius: 0.75,
-            display: logoFailed ? "none" : "block",
+            gap: { xs: 1, md: 1.2 },
+            alignItems: "center",
           }}
-        />
-        {logoFailed && (
+        >
           <Box
+            component="img"
+            src={logoImage}
+            alt="TL Combat Ledger logo"
+            onError={() => setLogoHidden(true)}
             sx={{
               width: 90,
               height: 90,
               borderRadius: 0.75,
-              bgcolor: "rgba(79,70,229,0.1)",
-              border: "1px solid rgba(129,140,248,0.3)",
-              color: "#e0e7ff",
-              display: "grid",
-              placeItems: "center",
-              fontWeight: 800,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              fontSize: "0.95rem",
+              display: logoHidden ? "none" : "block",
             }}
-            aria-label="TL Combat Ledger"
-          >
-            TL
-          </Box>
-        )}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 0.175,
-            minWidth: 0,
-          }}
-        >
+          />
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              gap: { xs: 0.4, md: 0.6 },
-              flexWrap: "wrap",
+              flexDirection: "column",
+              gap: 0.175,
+              minWidth: 0,
             }}
           >
-            <Typography
+            <Box
               sx={{
-                fontWeight: 800,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-              color: "#4f46e5",
-              fontSize: "1.8rem",
-            }}
-          >
-            TL Combat Ledger
-          </Typography>
-          {contextLabel && (
-            <Typography
-              component="span"
-              sx={{
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                  color: "text.secondary",
-                  letterSpacing: 0,
-                  ml: 0.6,
-                }}
-              >
-                {contextLabel}
-              </Typography>
-            )}
-          </Box>
-          <Typography color="text.secondary" sx={{ fontSize: "1.2rem" }}>
-            Select a log, then a target and session to inspect each rotation.
-          </Typography>
-        </Box>
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 1.1,
-          flexWrap: "wrap",
-          justifyContent: { xs: "flex-start", md: "flex-end" },
-          alignSelf: { xs: "flex-end", md: "center" },
-          maxWidth: "100%",
-        }}
-      >
-        {renderDefaultDirButtons()}
-        {renderUpdateControl()}
-        {showCompareControl && onToggleCompare && (
-          <Tooltip title="Compare logs" placement="bottom">
-            <IconButton
-              aria-label="Compare logs"
-              onClick={onToggleCompare}
-              sx={{
-                color: isCompareActive ? "#a5b4fc" : "rgba(226,232,240,0.9)",
-                transition: "color 150ms ease",
-                "&:hover": { color: "#c7d2fe" },
+                display: "flex",
+                alignItems: "center",
+                gap: { xs: 0.4, md: 0.6 },
+                flexWrap: "wrap",
               }}
             >
-              <CompareIcon sx={{ fontSize: "1.7rem" }} />
-            </IconButton>
-          </Tooltip>
-        )}
+              <Typography
+                sx={{
+                  fontWeight: 800,
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "#4f46e5",
+                  fontSize: "1.8rem",
+                }}
+              >
+                TL Combat Ledger
+              </Typography>
+              {contextLabel && (
+                <Typography
+                  component="span"
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: 500,
+                    color: "text.secondary",
+                    letterSpacing: 0,
+                    ml: 0.6,
+                  }}
+                >
+                  {contextLabel}
+                </Typography>
+              )}
+            </Box>
+            <Typography color="text.secondary" sx={{ fontSize: "1.2rem" }}>
+              Select a log, then a target and session to inspect each rotation.
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1.1,
+            flexWrap: "wrap",
+            justifyContent: { xs: "flex-start", md: "flex-end" },
+            alignSelf: { xs: "flex-end", md: "center" },
+            maxWidth: "100%",
+          }}
+        >
+          {renderDefaultDirButtons()}
+          {renderUpdateControl()}
+          {showCompareControl && onToggleCompare && (
+            <Tooltip title="Compare logs" placement="bottom">
+              <IconButton
+                aria-label="Compare logs"
+                onClick={onToggleCompare}
+                sx={{
+                  color: isCompareActive ? "#a5b4fc" : "rgba(226,232,240,0.9)",
+                  transition: "color 150ms ease",
+                  "&:hover": { color: "#c7d2fe" },
+                }}
+              >
+                <CompareIcon sx={{ fontSize: "1.7rem" }} />
+              </IconButton>
+            </Tooltip>
+          )}
+        </Box>
       </Box>
-    </Box>
     );
   }
 );
