@@ -267,7 +267,7 @@ body {
 
 @media (max-width: 600px) {
   .page {
-    padding: 20px 14px 18px;
+    padding: 20px 0 18px;
     gap: 20px;
   }
 
@@ -305,6 +305,10 @@ body {
     line-height: 1.45;
   }
 
+  .hero-text {
+    padding: 0 20px;
+  }
+
   .actions {
     width: 100%;
   }
@@ -323,6 +327,7 @@ body {
   }
 
   .hero-card {
+    display: none;
     max-width: 360px;
   }
 
