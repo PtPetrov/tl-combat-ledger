@@ -4,13 +4,24 @@ const clampValue = (value: number, min: number, max: number): number =>
   Math.max(min, Math.min(max, value));
 
 const STATIC_UI_OFFSET = 210;
-const MIN_VIEWPORT = 720;
+const DEFAULT_VIEWPORT = 720;
 
 const calculateHeights = (viewportHeight: number) => {
-  const safeHeight = Math.max(viewportHeight, MIN_VIEWPORT);
-  const mainAreaHeight = Math.max(safeHeight - STATIC_UI_OFFSET, 520);
-  const timelineHeight = clampValue(mainAreaHeight * 0.35, 200, 360);
-  const attackCardHeight = clampValue((mainAreaHeight - timelineHeight) * 0.4, 240, 420);
+  const safeHeight = Math.max(viewportHeight, 0);
+  const mainAreaHeight = Math.max(safeHeight - STATIC_UI_OFFSET, 0);
+
+  const timelineTarget = mainAreaHeight * 0.35;
+  const timelineHeight = Math.min(
+    clampValue(timelineTarget, 180, 320),
+    mainAreaHeight
+  );
+
+  const remainingHeight = Math.max(mainAreaHeight - timelineHeight, 0);
+  const attackCardTarget = remainingHeight * 0.4;
+  const attackCardHeight = Math.min(
+    clampValue(attackCardTarget, 200, 420),
+    remainingHeight
+  );
 
   return {
     viewportHeight: safeHeight,
@@ -21,7 +32,7 @@ const calculateHeights = (viewportHeight: number) => {
 };
 
 const getViewportHeight = (): number =>
-  typeof window === "undefined" ? MIN_VIEWPORT : window.innerHeight;
+  typeof window === "undefined" ? DEFAULT_VIEWPORT : window.innerHeight;
 
 export const useDynamicLayoutHeights = () => {
   const [viewportHeight, setViewportHeight] = useState(getViewportHeight);

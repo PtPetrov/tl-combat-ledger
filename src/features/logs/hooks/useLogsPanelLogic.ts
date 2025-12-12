@@ -1,5 +1,5 @@
 // src/components/logs/useLogsPanelLogic.ts
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   DamageTimelineBucket,
   LoadState,
@@ -22,12 +22,85 @@ type AppApi = {
   getVersion: () => Promise<string>;
 };
 
+type LogDisplayNameMap = Record<string, string>;
+type LogFavoritesMap = Record<string, true>;
+
 export interface TimelineSeries {
   key: string; // data key in chart data
   label: string; // legend label
 }
 
 export const OVERALL_TIMELINE_KEY = "__overallDamage";
+
+const LOG_DISPLAY_NAMES_STORAGE_KEY = "tlcla:logDisplayNames";
+const LOG_DISPLAY_NAMES_CHANGED_EVENT = "tlcla:logDisplayNamesChanged";
+const LOG_FAVORITES_STORAGE_KEY = "tlcla:logFavorites";
+const LOG_FAVORITES_CHANGED_EVENT = "tlcla:logFavoritesChanged";
+
+const readLogDisplayNames = (): LogDisplayNameMap => {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(LOG_DISPLAY_NAMES_STORAGE_KEY);
+    if (!raw) return {};
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return {};
+    return parsed as LogDisplayNameMap;
+  } catch (error) {
+    console.warn("[logs] Failed to read log display names", error);
+    return {};
+  }
+};
+
+const writeLogDisplayNames = (next: LogDisplayNameMap) => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      LOG_DISPLAY_NAMES_STORAGE_KEY,
+      JSON.stringify(next)
+    );
+  } catch (error) {
+    console.warn("[logs] Failed to persist log display names", error);
+  }
+  window.dispatchEvent(new Event(LOG_DISPLAY_NAMES_CHANGED_EVENT));
+};
+
+const readLogFavorites = (): LogFavoritesMap => {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(LOG_FAVORITES_STORAGE_KEY);
+    if (!raw) return {};
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return {};
+    const entries = Object.entries(parsed as Record<string, unknown>);
+    const next: LogFavoritesMap = {};
+    for (const [filePath, value] of entries) {
+      if (value === true) next[filePath] = true;
+    }
+    return next;
+  } catch (error) {
+    console.warn("[logs] Failed to read log favourites", error);
+    return {};
+  }
+};
+
+const writeLogFavorites = (next: LogFavoritesMap) => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      LOG_FAVORITES_STORAGE_KEY,
+      JSON.stringify(next)
+    );
+  } catch (error) {
+    console.warn("[logs] Failed to persist log favourites", error);
+  }
+  window.dispatchEvent(new Event(LOG_FAVORITES_CHANGED_EVENT));
+};
+
+const getBasenameFromPath = (filePath: string): string => {
+  const normalized = filePath.replace(/\\/g, "/");
+  const idx = normalized.lastIndexOf("/");
+  return idx >= 0 ? normalized.slice(idx + 1) : filePath;
+};
 
 export interface TimelineSession {
   id: number;
@@ -40,6 +113,7 @@ export interface UseLogsPanelLogicResult {
   defaultDirs: string[];
   selectedDir: string | null;
   logs: LogFileInfo[];
+  logFavorites: LogFavoritesMap;
   state: LoadState;
   error: string | null;
   hasLogs: boolean;
@@ -79,6 +153,8 @@ export interface UseLogsPanelLogicResult {
   handleSelectDefaultDir: (dir: string) => void;
   handleSelectTarget: (targetName: string | null) => void;
   handleSelectSession: (sessionId: number | null) => void;
+  handleRenameLog: (log: LogFileInfo, nextName: string) => void;
+  handleToggleLogFavorite: (log: LogFileInfo) => void;
 }
 
 declare global {
@@ -115,6 +191,167 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     null
   );
 
+  const [logDisplayNames, setLogDisplayNames] = useState<LogDisplayNameMap>(
+    () => readLogDisplayNames()
+  );
+  const [logFavorites, setLogFavorites] = useState<LogFavoritesMap>(() =>
+    readLogFavorites()
+  );
+
+  const isSyncingLogDisplayNamesRef = useRef(false);
+  const hasInitializedLogDisplayNamesRef = useRef(false);
+  const isSyncingLogFavoritesRef = useRef(false);
+  const hasInitializedLogFavoritesRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleChanged = () => {
+      isSyncingLogDisplayNamesRef.current = true;
+      setLogDisplayNames(readLogDisplayNames());
+    };
+
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === LOG_DISPLAY_NAMES_STORAGE_KEY) {
+        handleChanged();
+      }
+    };
+
+    window.addEventListener(LOG_DISPLAY_NAMES_CHANGED_EVENT, handleChanged);
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      window.removeEventListener(
+        LOG_DISPLAY_NAMES_CHANGED_EVENT,
+        handleChanged
+      );
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleChanged = () => {
+      isSyncingLogFavoritesRef.current = true;
+      setLogFavorites(readLogFavorites());
+    };
+
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === LOG_FAVORITES_STORAGE_KEY) {
+        handleChanged();
+      }
+    };
+
+    window.addEventListener(LOG_FAVORITES_CHANGED_EVENT, handleChanged);
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      window.removeEventListener(LOG_FAVORITES_CHANGED_EVENT, handleChanged);
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasInitializedLogDisplayNamesRef.current) {
+      hasInitializedLogDisplayNamesRef.current = true;
+      return;
+    }
+
+    if (isSyncingLogDisplayNamesRef.current) {
+      isSyncingLogDisplayNamesRef.current = false;
+      return;
+    }
+
+    writeLogDisplayNames(logDisplayNames);
+  }, [logDisplayNames]);
+
+  useEffect(() => {
+    if (!hasInitializedLogFavoritesRef.current) {
+      hasInitializedLogFavoritesRef.current = true;
+      return;
+    }
+
+    if (isSyncingLogFavoritesRef.current) {
+      isSyncingLogFavoritesRef.current = false;
+      return;
+    }
+
+    writeLogFavorites(logFavorites);
+  }, [logFavorites]);
+
+  useEffect(() => {
+    setLogs((prev) => {
+      if (prev.length === 0) return prev;
+      let changed = false;
+      const next = prev.map((log) => {
+        const name =
+          logDisplayNames[log.path] ?? getBasenameFromPath(log.path);
+        if (log.name === name) return log;
+        changed = true;
+        return { ...log, name };
+      });
+      return changed ? next : prev;
+    });
+
+    setSelectedLog((prev) => {
+      if (!prev) return prev;
+      const name = logDisplayNames[prev.path] ?? getBasenameFromPath(prev.path);
+      if (prev.name === name) return prev;
+      return { ...prev, name };
+    });
+  }, [logDisplayNames]);
+
+  const applyLogDisplayNames = useCallback(
+    (files: LogFileInfo[]): LogFileInfo[] =>
+      files.map((file) => ({
+        ...file,
+        name: logDisplayNames[file.path] ?? file.name,
+      })),
+    [logDisplayNames]
+  );
+
+  const handleRenameLog = useCallback((log: LogFileInfo, nextName: string) => {
+    const originalName = getBasenameFromPath(log.path);
+    const trimmed = nextName.trim();
+    const nextDisplayName =
+      trimmed && trimmed !== originalName ? trimmed : "";
+
+    setLogDisplayNames((prev) => {
+      const next: LogDisplayNameMap = { ...prev };
+      if (nextDisplayName) next[log.path] = nextDisplayName;
+      else delete next[log.path];
+      return next;
+    });
+
+    setLogs((prev) =>
+      prev.map((item) => {
+        if (item.path !== log.path) return item;
+        return {
+          ...item,
+          name: nextDisplayName || originalName,
+        };
+      })
+    );
+
+    setSelectedLog((prev) => {
+      if (!prev || prev.path !== log.path) return prev;
+      return {
+        ...prev,
+        name: nextDisplayName || originalName,
+      };
+    });
+  }, []);
+
+  const handleToggleLogFavorite = useCallback((log: LogFileInfo) => {
+    setLogFavorites((prev) => {
+      const next: LogFavoritesMap = { ...prev };
+      if (next[log.path]) delete next[log.path];
+      else next[log.path] = true;
+      return next;
+    });
+  }, []);
+
   // Bootstrap: get default directories & first folder logs
   useEffect(() => {
     const api = getLogsApi();
@@ -141,7 +378,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
           setSelectedDir(dir);
           const files = await api.listFiles(dir);
           if (cancelled) return;
-          setLogs(files);
+          setLogs(applyLogDisplayNames(files));
           setState("loaded");
         } else {
           setState("idle");
@@ -159,7 +396,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [applyLogDisplayNames]);
 
   const loadLogsForDirectory = useCallback(async (dir: string) => {
     const api = getLogsApi();
@@ -176,14 +413,14 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
 
     try {
       const files = await api.listFiles(dir);
-      setLogs(files);
+      setLogs(applyLogDisplayNames(files));
       setState("loaded");
     } catch (err) {
       console.error("[logs] listFiles failed", err);
       setError("Failed to list combat logs.");
       setState("error");
     }
-  }, []);
+  }, [applyLogDisplayNames]);
 
   const loadSummary = useCallback(async (log: LogFileInfo) => {
     const api = getLogsApi();
@@ -471,6 +708,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     defaultDirs,
     selectedDir,
     logs,
+    logFavorites,
     state,
     error,
     hasLogs,
@@ -503,5 +741,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     handleSelectDefaultDir,
     handleSelectTarget,
     handleSelectSession,
+    handleRenameLog,
+    handleToggleLogFavorite,
   };
 };

@@ -35,8 +35,22 @@ if (!gotInstanceLock) {
  * Rendering is handled by the React app in the renderer bundle.
  */
 function createMainWindow() {
-  const primaryDisplay = screen.getPrimaryDisplay();
-  const { x, y, width, height } = primaryDisplay.workArea;
+  const ASPECT_RATIO = 16 / 9;
+  const AREA_SCALE = Math.sqrt(0.5); // ~50% of screen area
+
+  const display = screen.getDisplayNearestPoint(screen.getCursorScreenPoint());
+  const { width: workWidth, height: workHeight } = display.workArea;
+
+  const maxWidth = Math.round(workWidth * AREA_SCALE);
+  const maxHeight = Math.round(workHeight * AREA_SCALE);
+
+  let defaultWidth = maxWidth;
+  let defaultHeight = Math.round(defaultWidth / ASPECT_RATIO);
+
+  if (defaultHeight > maxHeight) {
+    defaultHeight = maxHeight;
+    defaultWidth = Math.round(defaultHeight * ASPECT_RATIO);
+  }
 
   // Resolve icon for window/taskbar (dev uses local resources, prod uses packaged resources).
   const resourcesPath = isDev
@@ -45,10 +59,11 @@ function createMainWindow() {
   const iconPath = path.join(resourcesPath, "icon.ico");
 
   mainWindow = new BrowserWindow({
-    x,
-    y,
-    width,
-    height,
+    width: defaultWidth,
+    height: defaultHeight,
+    minWidth: defaultWidth,
+    minHeight: defaultHeight,
+    center: true,
     show: false,
     useContentSize: false,
     resizable: true,
@@ -69,6 +84,9 @@ function createMainWindow() {
     },
   });
 
+  // Lock window resizing to a 16:9 aspect ratio.
+  mainWindow.setAspectRatio(ASPECT_RATIO);
+
   if (isDev) {
     mainWindow.loadURL("http://localhost:5173");
   } else {
@@ -85,8 +103,6 @@ function createMainWindow() {
     if (!mainWindow) return;
     mainWindow.show();
     mainWindow.focus();
-    // Start fullscreen by default; custom maximize control will toggle out.
-    mainWindow.setFullScreen(true);
   });
 
   mainWindow.on("closed", () => {
@@ -258,27 +274,13 @@ function registerIpcHandlers() {
 
   ipcMain.on("window:toggleMaximize", () => {
     if (!mainWindow) return;
-    if (mainWindow.isFullScreen()) {
-      const { workArea } = screen.getPrimaryDisplay();
-      const targetWidth = Math.round(workArea.width * 0.5);
-      const targetHeight = Math.round(workArea.height * 0.5);
-      const targetX =
-        workArea.x + Math.round((workArea.width - targetWidth) / 2);
-      const targetY =
-        workArea.y + Math.round((workArea.height - targetHeight) / 2);
-
-      mainWindow.setFullScreen(false);
-      mainWindow.setBounds({
-        x: targetX,
-        y: targetY,
-        width: targetWidth,
-        height: targetHeight,
-      });
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize();
       mainWindow.focus();
       return;
     }
 
-    mainWindow.setFullScreen(true);
+    mainWindow.maximize();
   });
 
   ipcMain.on("window:close", () => {

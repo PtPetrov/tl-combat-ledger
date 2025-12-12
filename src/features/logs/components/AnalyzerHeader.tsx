@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
 // Inline the logo to avoid any file-path issues in packaged builds.
-import logoImage from "@/assets/images/logo.png?inline";
+import logoImage from "../../../../resources/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
 
 export interface AnalyzerHeaderProps {

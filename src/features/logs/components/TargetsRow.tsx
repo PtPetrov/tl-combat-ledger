@@ -1,7 +1,7 @@
 // src/components/logs/TargetsRow.tsx
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import DangerousIcon from "@mui/icons-material/Dangerous";
+import PersonIcon from "@mui/icons-material/Person";
 import { LoadState, TargetBreakdown } from "../types/logTypes";
 import { scrollBarStyles } from "../utils/logsViewUtils";
 
@@ -24,8 +24,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
     fillHeight = false,
   }) => {
     const showTargets = summaryState === "loaded" && topTargets.length > 0;
-    const TARGET_ROW_HEIGHT = 52;
-    const TARGET_VIEWPORT_ROWS = 12;
+    const TARGET_VIEWPORT_ROWS = 15;
 
     return (
       <Box
@@ -48,7 +47,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
-            <DangerousIcon
+            <PersonIcon
               sx={{ fontSize: "1.2rem", color: "text.secondary" }}
             />
             <Typography
@@ -120,9 +119,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
               ...scrollBarStyles,
               flex: fillHeight ? 1 : undefined,
               minHeight: fillHeight ? 0 : undefined,
-              maxHeight: fillHeight
-                ? undefined
-                : TARGET_ROW_HEIGHT * TARGET_VIEWPORT_ROWS,
+              maxHeight: `calc(${TARGET_VIEWPORT_ROWS} * 3.3rem)`,
             }}
           >
             <Box
@@ -145,7 +142,8 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                       width: "100%",
                       textAlign: "left",
                       px: 1.6,
-                      py: 0.65,
+                      py: 0.75,
+                      minHeight: "3.3rem",
                       cursor: "pointer",
                       backgroundColor: isSelected
                         ? "rgba(99,102,241,0.18)"
@@ -154,9 +152,8 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                         backgroundColor: "rgba(99,102,241,0.12)",
                       },
                       display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      gap: 0.15,
+                      alignItems: "center",
+                      justifyContent: "flex-start",
                       borderRadius: 0,
                       color: isSelected ? "#e0e7ff" : "inherit",
                     }}
@@ -168,6 +165,8 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                         textOverflow: "ellipsis",
                         whiteSpace: "nowrap",
                         fontSize: "0.9rem",
+                        width: "100%",
+                        textAlign: "left",
                       }}
                     >
                       {t.targetName}

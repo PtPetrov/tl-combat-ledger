@@ -74,25 +74,31 @@ const normalizeWeaponKey = (weapon: string): string => normalize(weapon);
 /* Build lookup tables from JSON                                      */
 /* ------------------------------------------------------------------ */
 
-const skillToWeaponMap: Map<string, string> = (() => {
-  const map = new Map<string, string>();
+const skillToWeaponsMap: Map<string, Set<string>> = (() => {
+  const map = new Map<string, Set<string>>();
 
   (skillsData as SkillMeta[]).forEach((s) => {
     const baseWeapon = normalizeWeaponNameFromSkill(s.weapon);
     const weaponKey = baseWeapon;
 
+    const addMapping = (key: string) => {
+      if (!key) return;
+      const existing = map.get(key);
+      if (existing) {
+        existing.add(weaponKey);
+      } else {
+        map.set(key, new Set([weaponKey]));
+      }
+    };
+
     // Full skill name
     const fullNorm = normalize(s.name);
-    if (!map.has(fullNorm)) {
-      map.set(fullNorm, weaponKey);
-    }
+    addMapping(fullNorm);
 
     // Trimmed skill name
     const trimmed = trimSkillNameSuffix(s.name);
     const trimmedNorm = normalize(trimmed);
-    if (trimmedNorm && !map.has(trimmedNorm)) {
-      map.set(trimmedNorm, weaponKey);
-    }
+    addMapping(trimmedNorm);
   });
 
   return map;
@@ -139,19 +145,58 @@ const inferClassFromSkills = (skills: SkillBreakdown[]): InferredClassInfo => {
 
   // Aggregate damage by weapon
   const damageByWeapon = new Map<string, number>();
+  const ambiguousSkills: Array<{ candidates: string[]; damage: number }> = [];
 
   for (const skill of skills) {
     const trimmed = trimSkillNameSuffix(skill.skillName);
     const normName = normalize(trimmed);
-    const weapon = skillToWeaponMap.get(normName);
-    if (!weapon) continue;
+    const weapons = skillToWeaponsMap.get(normName);
+    if (!weapons || weapons.size === 0) continue;
 
-    const prev = damageByWeapon.get(weapon) ?? 0;
-    damageByWeapon.set(weapon, prev + skill.totalDamage);
+    if (weapons.size === 1) {
+      const weapon = Array.from(weapons)[0];
+      const prev = damageByWeapon.get(weapon) ?? 0;
+      damageByWeapon.set(weapon, prev + skill.totalDamage);
+    } else {
+      ambiguousSkills.push({
+        candidates: Array.from(weapons),
+        damage: skill.totalDamage,
+      });
+    }
   }
 
   if (damageByWeapon.size === 0) {
     return { primaryWeapons: [], detectedClass: null };
+  }
+
+  // Resolve ambiguous skills (e.g. "Basic Shot") by assigning them to weapons
+  // already supported by unambiguous skills; otherwise distribute evenly.
+  if (ambiguousSkills.length) {
+    for (const amb of ambiguousSkills) {
+      const supportedCandidates = amb.candidates.filter((w) =>
+        damageByWeapon.has(w)
+      );
+
+      if (supportedCandidates.length) {
+        const best = supportedCandidates.reduce((bestWeapon, current) => {
+          const bestScore = damageByWeapon.get(bestWeapon) ?? 0;
+          const currentScore = damageByWeapon.get(current) ?? 0;
+          return currentScore > bestScore ? current : bestWeapon;
+        }, supportedCandidates[0]);
+
+        damageByWeapon.set(best, (damageByWeapon.get(best) ?? 0) + amb.damage);
+        continue;
+      }
+
+      const share =
+        amb.candidates.length > 0 ? amb.damage / amb.candidates.length : 0;
+      for (const weapon of amb.candidates) {
+        damageByWeapon.set(
+          weapon,
+          (damageByWeapon.get(weapon) ?? 0) + share
+        );
+      }
+    }
   }
 
   // Sort weapons by total damage desc
@@ -195,9 +240,12 @@ export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
       inferClassFromSkills(currentTopSkills);
 
     const displayName = characterName || "Unknown character";
-    const weaponsLabel = primaryWeapons.length
-      ? primaryWeapons.join(" + ")
-      : "Unknown weapons";
+    const weaponsLabel =
+      primaryWeapons.length === 1
+        ? "Please, make sure you use both your weapon skills in order to determen the class and the weapons"
+        : primaryWeapons.length
+          ? primaryWeapons.join(" + ")
+          : "Unknown weapons";
 
     const classLabel = detectedClass
       ? detectedClass.className

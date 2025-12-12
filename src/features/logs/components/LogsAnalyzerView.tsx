@@ -32,6 +32,7 @@ export interface LogsAnalyzerViewProps {
   defaultDirs: string[];
   selectedDir: string | null;
   logs: LogFileInfo[];
+  logFavorites: Record<string, true>;
   state: LoadState;
   error: string | null;
   hasLogs: boolean;
@@ -68,6 +69,8 @@ export interface LogsAnalyzerViewProps {
   onSelectFolder: () => void;
   onRefresh: () => void;
   onSelectLog: (log: LogFileInfo) => void;
+  onRenameLog: (log: LogFileInfo, nextName: string) => void;
+  onToggleLogFavorite: (log: LogFileInfo) => void;
   onSelectDefaultDir: (dir: string) => void;
   onSelectTarget: (targetName: string | null) => void;
   onSelectSession: (sessionId: number | null) => void;
@@ -81,6 +84,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   defaultDirs,
   selectedDir,
   logs,
+  logFavorites,
   state,
   error,
   hasLogs,
@@ -109,6 +113,8 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   onSelectFolder,
   onRefresh,
   onSelectLog,
+  onRenameLog,
+  onToggleLogFavorite,
   onSelectDefaultDir,
   onSelectTarget,
   onSelectSession,
@@ -185,8 +191,8 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: viewportHeight,
-        minHeight: viewportHeight,
+        height: "100%",
+        minHeight: 0,
         width: "100%",
         minWidth: 0,
         bgcolor: "#020617",
@@ -224,7 +230,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
           minHeight: 0,
           flex: 1,
           overflow: "hidden",
-          height: mainAreaHeight,
         }}
       >
         <LogsTargetsSidebar
@@ -234,6 +239,9 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
           hasLogs={hasLogs}
           selectedLog={selectedLog}
           onSelectLog={onSelectLog}
+          onRenameLog={onRenameLog}
+          logFavorites={logFavorites}
+          onToggleLogFavorite={onToggleLogFavorite}
           onRefresh={onRefresh}
           onSelectFolder={onSelectFolder}
           selectedDir={selectedDir}
@@ -244,7 +252,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
           onSelectTarget={onSelectTarget}
           isOpen={isSidebarOpen}
           onToggle={() => setIsSidebarOpen((prev) => !prev)}
-          contentHeight={mainAreaHeight}
         />
 
         <Box

@@ -1,6 +1,7 @@
 // src/components/logs/SessionsRow.tsx
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { TimelineSession } from "../hooks/useLogsPanelLogic";
 
 export interface SessionsRowProps {
@@ -29,16 +30,36 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
           gap: 0.7,
         }}
       >
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            color: "text.secondary",
-            fontSize: "1.1rem",
-          }}
-        >
-          Sessions for {selectedTargetName}
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
+          <Tooltip
+            title={
+              "A session groups consecutive attacks on this target while you're in combat. Leaving combat ends the session; attacking again after that starts a new one."
+            }
+            placement="bottom-start"
+          >
+            <IconButton
+              size="small"
+              aria-label="What is a session?"
+              sx={{
+                width: 28,
+                height: 28,
+                color: "text.secondary",
+              }}
+            >
+              <InfoOutlinedIcon sx={{ fontSize: "1.15rem" }} />
+            </IconButton>
+          </Tooltip>
+          <Typography
+            sx={{
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "text.secondary",
+              fontSize: "1.1rem",
+            }}
+          >
+            Sessions for {selectedTargetName}
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",

@@ -1,19 +1,35 @@
 // src/components/logs/LogsRow.tsx
 import React from "react";
-import { Box, CircularProgress, IconButton, Tooltip as MuiTooltip, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  IconButton,
+  InputBase,
+  Tooltip as MuiTooltip,
+  Typography,
+} from "@mui/material";
 import DescriptionIcon from "@mui/icons-material/Description";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { LoadState, LogFileInfo } from "../types/logTypes";
 import { formatShortDate, scrollBarStyles } from "../utils/logsViewUtils";
 
 export interface LogsRowProps {
   logs: LogFileInfo[];
+  logFavorites: Record<string, true>;
   state: LoadState;
   error: string | null;
   hasLogs: boolean;
   selectedLog: LogFileInfo | null;
   onSelectLog: (log: LogFileInfo) => void;
+  onRenameLog: (log: LogFileInfo, nextName: string) => void;
+  onToggleLogFavorite: (log: LogFileInfo) => void;
   onRefresh: () => void;
   onSelectFolder: () => void;
   selectedDir: string | null;
@@ -23,16 +39,55 @@ export interface LogsRowProps {
 export const LogsRow: React.FC<LogsRowProps> = React.memo(
   ({
     logs,
+    logFavorites,
     state,
     error,
     hasLogs,
     selectedLog,
     onSelectLog,
+    onRenameLog,
+    onToggleLogFavorite,
     onRefresh,
     onSelectFolder,
     selectedDir,
     fillHeight = false,
   }) => {
+    const [renamingPath, setRenamingPath] = React.useState<string | null>(null);
+    const [renameDraft, setRenameDraft] = React.useState("");
+    const renameInputRef = React.useRef<HTMLInputElement | null>(null);
+    const cancelNextRenameCommitRef = React.useRef(false);
+    const [showFavouritesOnly, setShowFavouritesOnly] = React.useState(false);
+
+    React.useEffect(() => {
+      if (!renamingPath) return;
+      requestAnimationFrame(() => {
+        renameInputRef.current?.focus();
+        renameInputRef.current?.select();
+      });
+    }, [renamingPath]);
+
+    const beginRename = React.useCallback((log: LogFileInfo) => {
+      cancelNextRenameCommitRef.current = false;
+      setRenamingPath(log.path);
+      setRenameDraft(log.name);
+    }, []);
+
+    const cancelRename = React.useCallback(() => {
+      cancelNextRenameCommitRef.current = true;
+      setRenamingPath(null);
+      setRenameDraft("");
+    }, []);
+
+    const commitRename = React.useCallback(
+      (log: LogFileInfo) => {
+        onRenameLog(log, renameDraft);
+        cancelNextRenameCommitRef.current = true;
+        setRenamingPath(null);
+        setRenameDraft("");
+      },
+      [onRenameLog, renameDraft]
+    );
+
     const containerStyles = fillHeight
       ? {
           display: "flex",
@@ -44,6 +99,10 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
 
     const refreshDisabled = !selectedDir || state === "loading";
     const browseDisabled = state === "loading";
+    const visibleLogs = showFavouritesOnly
+      ? logs.filter((log) => Boolean(logFavorites[log.path]))
+      : logs;
+    const visibleLogsCount = visibleLogs.length;
 
     return (
       <Box sx={containerStyles}>
@@ -71,7 +130,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                 lineHeight: 1,
               }}
             >
-              Logs
+              {showFavouritesOnly ? "Favourite Logs" : "Logs"}
             </Typography>
             <Typography
               color="text.secondary"
@@ -81,43 +140,78 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                 textTransform: "uppercase",
               }}
             >
-              ({logs.length})
+              ({visibleLogsCount})
             </Typography>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 0.75 }}>
-            <MuiTooltip title="Refresh current folder">
-              <span>
+            {showFavouritesOnly ? (
+              <MuiTooltip title="Back to all logs">
                 <IconButton
                   size="small"
-                  onClick={onRefresh}
-                  disabled={refreshDisabled}
+                  onClick={() => setShowFavouritesOnly(false)}
                   sx={{
                     width: 34,
                     height: 34,
                     color: "#a5b4fc",
                   }}
+                  aria-label="Back to all logs"
                 >
-                  <RefreshIcon sx={{ fontSize: "1.15rem" }} />
+                  <ArrowBackIcon sx={{ fontSize: "1.15rem" }} />
                 </IconButton>
-              </span>
-            </MuiTooltip>
-            <MuiTooltip title="Browse for log folder">
-              <span>
-                <IconButton
-                  size="small"
-                  onClick={onSelectFolder}
-                  disabled={browseDisabled}
-                  sx={{
-                    width: 34,
-                    height: 34,
-                    color: "#a5b4fc",
-                  }}
-                >
-                  <FolderOpenIcon sx={{ fontSize: "1.15rem" }} />
-                </IconButton>
-              </span>
-            </MuiTooltip>
+              </MuiTooltip>
+            ) : (
+              <>
+                <MuiTooltip title="Refresh current folder">
+                  <span>
+                    <IconButton
+                      size="small"
+                      onClick={onRefresh}
+                      disabled={refreshDisabled}
+                      sx={{
+                        width: 34,
+                        height: 34,
+                        color: "#a5b4fc",
+                      }}
+                    >
+                      <RefreshIcon sx={{ fontSize: "1.15rem" }} />
+                    </IconButton>
+                  </span>
+                </MuiTooltip>
+                <MuiTooltip title="Browse for log folder">
+                  <span>
+                    <IconButton
+                      size="small"
+                      onClick={onSelectFolder}
+                      disabled={browseDisabled}
+                      sx={{
+                        width: 34,
+                        height: 34,
+                        color: "#a5b4fc",
+                      }}
+                    >
+                      <FolderOpenIcon sx={{ fontSize: "1.15rem" }} />
+                    </IconButton>
+                  </span>
+                </MuiTooltip>
+                <MuiTooltip title="Show favourite logs">
+                  <span>
+                    <IconButton
+                      size="small"
+                      onClick={() => setShowFavouritesOnly(true)}
+                      sx={{
+                        width: 34,
+                        height: 34,
+                        color: "#a5b4fc",
+                      }}
+                      aria-label="Show favourite logs"
+                    >
+                      <FavoriteIcon sx={{ fontSize: "1.15rem" }} />
+                    </IconButton>
+                  </span>
+                </MuiTooltip>
+              </>
+            )}
           </Box>
         </Box>
 
@@ -142,7 +236,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
             pr: 0.5,
             flex: fillHeight ? 1 : undefined,
             minHeight: fillHeight ? 0 : undefined,
-            maxHeight: "calc(6 * 3.3rem)",
+            maxHeight: "calc(7 * 3.3rem)",
           }}
         >
           <Box
@@ -152,9 +246,11 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
               gap: 1,
             }}
           >
-            {hasLogs ? (
-              logs.map((log) => {
+            {visibleLogsCount > 0 ? (
+              visibleLogs.map((log) => {
                 const isActive = selectedLog?.path === log.path;
+                const isRenaming = renamingPath === log.path;
+                const isFavourite = Boolean(logFavorites[log.path]);
                 return (
                   <Box
                     key={log.path}
@@ -182,19 +278,67 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                         display: "flex",
                         flexDirection: "column",
                         minWidth: 0,
+                        flex: 1,
                       }}
                     >
-                      <Typography
-                        sx={{
-                          fontWeight: 600,
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                          fontSize: "0.9rem",
-                        }}
-                      >
-                        {log.name}
-                      </Typography>
+                      {isRenaming ? (
+                        <InputBase
+                          inputRef={renameInputRef}
+                          value={renameDraft}
+                          onChange={(event) => setRenameDraft(event.target.value)}
+                          onBlur={() => {
+                            if (cancelNextRenameCommitRef.current) {
+                              cancelNextRenameCommitRef.current = false;
+                              return;
+                            }
+                            commitRename(log);
+                          }}
+                          onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                              event.preventDefault();
+                              commitRename(log);
+                              return;
+                            }
+                            if (event.key === "Escape") {
+                              event.preventDefault();
+                              cancelRename();
+                            }
+                          }}
+                          onClick={(event) => event.stopPropagation()}
+                          onMouseDown={(event) => event.stopPropagation()}
+                          fullWidth
+                          sx={{
+                            fontWeight: 600,
+                            fontSize: "0.9rem",
+                            minWidth: 0,
+                            px: 0.75,
+                            py: 0.25,
+                            borderRadius: "2px",
+                            border: "1px solid rgba(99,102,241,0.35)",
+                            backgroundColor: "rgba(2,6,23,0.55)",
+                            color: isActive ? "#e0e7ff" : "inherit",
+                            "& input": {
+                              padding: 0,
+                              minWidth: 0,
+                            },
+                          }}
+                          inputProps={{
+                            "aria-label": "Rename log (in-app only)",
+                          }}
+                        />
+                      ) : (
+                        <Typography
+                          sx={{
+                            fontWeight: 600,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                            fontSize: "0.9rem",
+                          }}
+                        >
+                          {log.name}
+                        </Typography>
+                      )}
                       <Typography
                         sx={{
                           fontSize: "0.75rem",
@@ -204,12 +348,153 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                         {formatShortDate(log.modifiedAt)}
                       </Typography>
                     </Box>
+
+                    {(isActive || isRenaming) && (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 0.25,
+                          flexShrink: 0,
+                          alignSelf: "center",
+                        }}
+                        onClick={(event) => event.stopPropagation()}
+                        onMouseDown={(event) => event.stopPropagation()}
+                      >
+                        {isRenaming ? (
+                          <>
+                            <MuiTooltip title="Save in-app name">
+                              <IconButton
+                                size="small"
+                                aria-label="Save in-app name"
+                                onMouseDown={(event) => {
+                                  event.preventDefault();
+                                }}
+                                onClick={() => commitRename(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "#a5b4fc",
+                                }}
+                              >
+                                <CheckIcon sx={{ fontSize: "1.05rem" }} />
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip title="Cancel rename">
+                              <IconButton
+                                size="small"
+                                aria-label="Cancel rename"
+                                onMouseDown={(event) => {
+                                  event.preventDefault();
+                                }}
+                                onClick={cancelRename}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "text.secondary",
+                                }}
+                              >
+                                <CloseIcon sx={{ fontSize: "1.05rem" }} />
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip
+                              title={
+                                isFavourite
+                                  ? "Remove from favourites"
+                                  : "Add to favourites"
+                              }
+                            >
+                              <IconButton
+                                size="small"
+                                aria-label={
+                                  isFavourite
+                                    ? "Remove from favourites"
+                                    : "Add to favourites"
+                                }
+                                onMouseDown={(event) => {
+                                  event.preventDefault();
+                                }}
+                                onClick={() => onToggleLogFavorite(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: isFavourite ? "#fb7185" : "#a5b4fc",
+                                }}
+                              >
+                                {isFavourite ? (
+                                  <FavoriteIcon sx={{ fontSize: "1.05rem" }} />
+                                ) : (
+                                  <FavoriteBorderIcon
+                                    sx={{ fontSize: "1.05rem" }}
+                                  />
+                                )}
+                              </IconButton>
+                            </MuiTooltip>
+                          </>
+                        ) : (
+                          <>
+                            <MuiTooltip title="Rename (in-app only)">
+                              <IconButton
+                                size="small"
+                                aria-label="Rename (in-app only)"
+                                onClick={() => beginRename(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "#a5b4fc",
+                                  opacity: 0.92,
+                                  "&:hover": { opacity: 1 },
+                                }}
+                              >
+                                <DriveFileRenameOutlineIcon
+                                  sx={{ fontSize: "1.05rem" }}
+                                />
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip
+                              title={
+                                isFavourite
+                                  ? "Remove from favourites"
+                                  : "Add to favourites"
+                              }
+                            >
+                              <IconButton
+                                size="small"
+                                aria-label={
+                                  isFavourite
+                                    ? "Remove from favourites"
+                                    : "Add to favourites"
+                                }
+                                onClick={() => onToggleLogFavorite(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: isFavourite ? "#fb7185" : "#a5b4fc",
+                                  opacity: 0.92,
+                                  "&:hover": { opacity: 1 },
+                                }}
+                              >
+                                {isFavourite ? (
+                                  <FavoriteIcon sx={{ fontSize: "1.05rem" }} />
+                                ) : (
+                                  <FavoriteBorderIcon
+                                    sx={{ fontSize: "1.05rem" }}
+                                  />
+                                )}
+                              </IconButton>
+                            </MuiTooltip>
+                          </>
+                        )}
+                      </Box>
+                    )}
                   </Box>
                 );
               })
             ) : (
               <Typography color="text.secondary" sx={{ fontSize: "1.2rem" }}>
-                No log files found in the selected folder.
+                {showFavouritesOnly
+                  ? "No favourited logs yet."
+                  : "No log files found in the selected folder."}
               </Typography>
             )}
           </Box>

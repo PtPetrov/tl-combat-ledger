@@ -3,7 +3,7 @@ import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DescriptionIcon from "@mui/icons-material/Description";
-import DangerousIcon from "@mui/icons-material/Dangerous";
+import PersonIcon from "@mui/icons-material/Person";
 import { LoadState, LogFileInfo, TargetBreakdown } from "../types/logTypes";
 import { LogsRow } from "./LogsRow";
 import { TargetsRow } from "./TargetsRow";
@@ -16,6 +16,9 @@ export interface LogsTargetsSidebarProps {
   hasLogs: boolean;
   selectedLog: LogFileInfo | null;
   onSelectLog: (log: LogFileInfo) => void;
+  onRenameLog: (log: LogFileInfo, nextName: string) => void;
+  logFavorites: Record<string, true>;
+  onToggleLogFavorite: (log: LogFileInfo) => void;
   onRefresh: () => void;
   onSelectFolder: () => void;
   selectedDir: string | null;
@@ -38,6 +41,9 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
     hasLogs,
     selectedLog,
     onSelectLog,
+    onRenameLog,
+    logFavorites,
+    onToggleLogFavorite,
     onRefresh,
     onSelectFolder,
     selectedDir,
@@ -79,8 +85,10 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
         sx={{
           position: "relative",
           flexShrink: 0,
-          height: "97%",
-          minHeight: "97%",
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          minHeight: 0,
           width: {
             xs: "100%",
             md: isOpen ? 320 : 64,
@@ -135,6 +143,9 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
                 hasLogs={hasLogs}
                 selectedLog={selectedLog}
                 onSelectLog={onSelectLog}
+                onRenameLog={onRenameLog}
+                logFavorites={logFavorites}
+                onToggleLogFavorite={onToggleLogFavorite}
                 onRefresh={onRefresh}
                 onSelectFolder={onSelectFolder}
                 selectedDir={selectedDir}
@@ -235,7 +246,7 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
               }}
             >
               <DescriptionIcon sx={{ fontSize: "1.6rem" }} />
-              <DangerousIcon sx={{ fontSize: "1.6rem" }} />
+              <PersonIcon sx={{ fontSize: "1.6rem" }} />
             </Box>
             <Tooltip title="Show logs & targets">
               <IconButton
