@@ -2,6 +2,7 @@
 import { app, BrowserWindow, ipcMain, dialog, screen } from "electron";
 import * as path from "path";
 import * as url from "url";
+import * as fs from "node:fs/promises";
 import { Worker } from "node:worker_threads";
 import { autoUpdater } from "electron-updater";
 
@@ -154,6 +155,32 @@ function sendUpdateStatus(payload: UpdateStatusPayload) {
   mainWindow.webContents.send("updates:status", payload);
 }
 
+type ExportResult = {
+  canceled: boolean;
+  filePath?: string;
+  error?: string;
+};
+
+const sanitizeBaseFileName = (value: string): string => {
+  const trimmed = value.trim();
+  if (!trimmed) return "TL Combat Ledger";
+  return trimmed
+    .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+    .replace(/\s+/g, " ")
+    .slice(0, 160)
+    .trim();
+};
+
+const buildDefaultExportPath = (suggestedFileName: unknown, ext: string) => {
+  const base =
+    typeof suggestedFileName === "string"
+      ? sanitizeBaseFileName(suggestedFileName)
+      : "TL Combat Ledger";
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const fileName = `${base} - ${stamp}.${ext}`;
+  return path.join(app.getPath("downloads"), fileName);
+};
+
 async function triggerUpdateCheck() {
   if (isDev) {
     sendUpdateStatus({ state: "error", message: "Updates unavailable in development" });
@@ -266,6 +293,76 @@ function registerIpcHandlers() {
     if (isDev) return;
     autoUpdater.quitAndInstall();
   });
+
+  ipcMain.handle(
+    "export:png",
+    async (
+      _event,
+      payload?: {
+        suggestedFileName?: string;
+      }
+    ): Promise<ExportResult> => {
+      if (!mainWindow) return { canceled: true, error: "No active window" };
+
+      try {
+        const result = await dialog.showSaveDialog(mainWindow, {
+          title: "Export view as PNG",
+          defaultPath: buildDefaultExportPath(payload?.suggestedFileName, "png"),
+          filters: [{ name: "PNG Image", extensions: ["png"] }],
+        });
+
+        if (result.canceled || !result.filePath) {
+          return { canceled: true };
+        }
+
+        const image = await mainWindow.webContents.capturePage();
+        await fs.writeFile(result.filePath, image.toPNG());
+        return { canceled: false, filePath: result.filePath };
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        dialog.showErrorBox("Export failed", message);
+        return { canceled: true, error: message };
+      }
+    }
+  );
+
+  ipcMain.handle(
+    "export:pdf",
+    async (
+      _event,
+      payload?: {
+        suggestedFileName?: string;
+      }
+    ): Promise<ExportResult> => {
+      if (!mainWindow) return { canceled: true, error: "No active window" };
+
+      try {
+        const result = await dialog.showSaveDialog(mainWindow, {
+          title: "Export view as PDF",
+          defaultPath: buildDefaultExportPath(payload?.suggestedFileName, "pdf"),
+          filters: [{ name: "PDF", extensions: ["pdf"] }],
+        });
+
+        if (result.canceled || !result.filePath) {
+          return { canceled: true };
+        }
+
+        const pdf = await mainWindow.webContents.printToPDF({
+          printBackground: true,
+          landscape: true,
+          pageSize: "A4",
+          preferCSSPageSize: true,
+        });
+
+        await fs.writeFile(result.filePath, pdf);
+        return { canceled: false, filePath: result.filePath };
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        dialog.showErrorBox("Export failed", message);
+        return { canceled: true, error: message };
+      }
+    }
+  );
 
   // Frameless window controls, used by TopBar via preload.ts
   ipcMain.on("window:minimize", () => {

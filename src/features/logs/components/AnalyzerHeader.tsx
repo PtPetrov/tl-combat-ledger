@@ -5,10 +5,17 @@ import {
   Button,
   CircularProgress,
   IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
   Tooltip,
   Typography,
 } from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 // Inline the logo to avoid any file-path issues in packaged builds.
 import logoImage from "../../../../resources/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
@@ -24,6 +31,7 @@ export interface AnalyzerHeaderProps {
   updateStatus?: UpdateStatusPayload | null;
   onCheckForUpdates?: () => void;
   onInstallUpdate?: () => void;
+  exportFileBaseName?: string;
 }
 
 export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
@@ -38,8 +46,44 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     updateStatus,
     onCheckForUpdates,
     onInstallUpdate,
+    exportFileBaseName,
   }) => {
     const [logoHidden, setLogoHidden] = useState(false);
+    const [exportAnchorEl, setExportAnchorEl] = useState<HTMLElement | null>(
+      null
+    );
+    const [isExporting, setIsExporting] = useState(false);
+
+    const exportApi =
+      typeof window !== "undefined" ? window.tlcla?.export : undefined;
+    const hasExportBridge = Boolean(exportApi);
+
+    const handleOpenExportMenu = (event: React.MouseEvent<HTMLElement>) => {
+      setExportAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseExportMenu = () => {
+      setExportAnchorEl(null);
+    };
+
+    const handleExport = async (format: "png" | "pdf") => {
+      if (!exportApi) return;
+      setIsExporting(true);
+      handleCloseExportMenu();
+
+      try {
+        if (format === "png") {
+          await exportApi.savePng(exportFileBaseName);
+          return;
+        }
+        await exportApi.savePdf(exportFileBaseName);
+      } catch (error) {
+        console.warn("Export failed", error);
+      } finally {
+        setIsExporting(false);
+      }
+    };
+
     const renderUpdateControl = () => {
       const status = updateStatus;
       const devDisabled =
@@ -271,6 +315,63 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
               </IconButton>
             </Tooltip>
           )}
+
+          <Tooltip
+            title={
+              hasExportBridge
+                ? "Export view"
+                : "Export available only in the app"
+            }
+            placement="bottom"
+          >
+            <span>
+              <IconButton
+                aria-label="Export view"
+                onClick={handleOpenExportMenu}
+                disabled={!hasExportBridge || isExporting}
+                sx={{
+                  color: "rgba(226,232,240,0.9)",
+                  transition: "color 150ms ease",
+                  "&:hover": { color: "#c7d2fe" },
+                }}
+              >
+                <IosShareIcon sx={{ fontSize: "1.65rem" }} />
+              </IconButton>
+            </span>
+          </Tooltip>
+          <Menu
+            anchorEl={exportAnchorEl}
+            open={Boolean(exportAnchorEl)}
+            onClose={handleCloseExportMenu}
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            slotProps={{
+              paper: {
+                sx: {
+                  mt: 0.6,
+                  borderRadius: "10px",
+                  border: "1px solid rgba(30,41,59,0.85)",
+                  backgroundColor: "rgba(2,6,23,0.98)",
+                  boxShadow:
+                    "0 18px 42px rgba(2,6,23,0.75), 0 0 0 1px rgba(15,23,42,0.95)",
+                  minWidth: 200,
+                },
+              },
+            }}
+          >
+            <MenuItem onClick={() => handleExport("png")}>
+              <ListItemIcon sx={{ minWidth: 34, color: "#a5b4fc" }}>
+                <ImageOutlinedIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Export as PNG" />
+            </MenuItem>
+            <MenuItem onClick={() => handleExport("pdf")}>
+              <ListItemIcon sx={{ minWidth: 34, color: "#a5b4fc" }}>
+                <PictureAsPdfOutlinedIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Export as PDF" />
+            </MenuItem>
+          </Menu>
         </Box>
       </Box>
     );

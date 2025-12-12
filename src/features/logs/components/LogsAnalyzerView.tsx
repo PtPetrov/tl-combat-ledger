@@ -220,6 +220,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         onInstallUpdate={
           hasUpdateBridge ? handleInstallUpdate : undefined
         }
+        exportFileBaseName={selectedSummaryTitle}
       />
 
       <Box

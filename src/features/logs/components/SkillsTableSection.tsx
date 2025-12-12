@@ -13,6 +13,7 @@ import {
 } from "../utils/logsViewUtils";
 import { formatInteger } from "../utils/formatters";
 import skillsData from "../../../assets/skills.json";
+import masterySkillsData from "../../../assets/weaponMasterySkills.json";
 
 const iconAssets = import.meta.glob<string>(
   "../../../assets/icons/**/*",
@@ -27,6 +28,11 @@ const iconAssets = import.meta.glob<string>(
 interface SkillMeta {
   name: string;
   iconPath: string | null;
+}
+
+interface MasterySkillMeta {
+  name: string;
+  iconPath: string;
 }
 
 // Normalize a name so we can match "Detonation Mark" with
@@ -49,7 +55,12 @@ const getBaseSkillName = (name: string) => {
 const skillIconMap = (() => {
   const map = new Map<string, string>();
 
-  (skillsData as SkillMeta[]).forEach((s) => {
+  const entries: Array<SkillMeta | MasterySkillMeta> = [
+    ...(skillsData as SkillMeta[]),
+    ...(masterySkillsData as MasterySkillMeta[]),
+  ];
+
+  entries.forEach((s) => {
     if (!s.iconPath) return;
 
     const cleaned = s.iconPath.replace(/^src\//, "");
@@ -74,7 +85,10 @@ const skillIconMap = (() => {
 
 export const getSkillIconPath = (skillName: string): string | undefined => {
   const norm = normalizeName(skillName);
-  return skillIconMap.get(norm);
+  return (
+    skillIconMap.get(norm) ??
+    skillIconMap.get(normalizeName(getBaseSkillName(skillName)))
+  );
 };
 
 // ---------------------------------------------------------------------------

@@ -22,6 +22,17 @@ type AppApi = {
   getVersion: () => Promise<string>;
 };
 
+type ExportResult = {
+  canceled: boolean;
+  filePath?: string;
+  error?: string;
+};
+
+type ExportApi = {
+  savePng: (suggestedFileName?: string) => Promise<ExportResult>;
+  savePdf: (suggestedFileName?: string) => Promise<ExportResult>;
+};
+
 type LogDisplayNameMap = Record<string, string>;
 type LogFavoritesMap = Record<string, true>;
 
@@ -163,6 +174,7 @@ declare global {
       app?: AppApi;
       logs?: LogsApi;
       updates?: UpdatesApi;
+      export?: ExportApi;
     };
   }
 }

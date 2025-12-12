@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Overcome Crisis",
+    "slug": "overcome-crisis",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/overcome-crisis",
+    "iconPath": "src/assets/icons/mastery/overcome-crisis.png"
+  },
+  {
+    "name": "Destruction Spear",
+    "slug": "destruction-spear",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/destruction-spear",
+    "iconPath": "src/assets/icons/mastery/destruction-spear.png"
+  },
+  {
+    "name": "Spirit of Defiance",
+    "slug": "spirit-of-defiance",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/spirit-of-defiance",
+    "iconPath": "src/assets/icons/mastery/spirit-of-defiance.png"
+  },
+  {
+    "name": "Deadly Survival Instinct",
+    "slug": "deadly-survival-instinct",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/deadly-survival-instinct",
+    "iconPath": "src/assets/icons/mastery/deadly-survival-instinct.png"
+  },
+  {
+    "name": "Fountain of Revitalization",
+    "slug": "fountain-of-revitalization",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/fountain-of-revitalization",
+    "iconPath": "src/assets/icons/mastery/fountain-of-revitalization.png"
+  },
+  {
+    "name": "Deadly Viper",
+    "slug": "deadly-viper",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/deadly-viper",
+    "iconPath": "src/assets/icons/mastery/deadly-viper.png"
+  },
+  {
+    "name": "Potential",
+    "slug": "potential",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/potential",
+    "iconPath": "src/assets/icons/mastery/potential.png"
+  },
+  {
+    "name": "Dragon Ascent",
+    "slug": "dragon-ascent",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/dragon-ascent",
+    "iconPath": "src/assets/icons/mastery/dragon-ascent.png"
+  },
+  {
+    "name": "Falling Flower",
+    "slug": "falling-flower",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/falling-flower",
+    "iconPath": "src/assets/icons/mastery/falling-flower.png"
+  },
+  {
+    "name": "Indomitable Stance",
+    "slug": "indomitable-stance",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/indomitable-stance",
+    "iconPath": "src/assets/icons/mastery/indomitable-stance.png"
+  },
+  {
+    "name": "Lightning Speed",
+    "slug": "lightning-speed",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/lightning-speed",
+    "iconPath": "src/assets/icons/mastery/lightning-speed.png"
+  },
+  {
+    "name": "Time Bomb",
+    "slug": "time-bomb",
+    "url": "https://throneandliberty.gameslantern.com/specialization-skill/time-bomb",
+    "iconPath": "src/assets/icons/mastery/time-bomb.png"
+  }
+]

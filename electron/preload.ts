@@ -62,6 +62,12 @@ type UpdateStatusPayload = {
   message?: string;
 };
 
+type ExportResult = {
+  canceled: boolean;
+  filePath?: string;
+  error?: string;
+};
+
 const logsApi = {
   getDefaultDirectories(): Promise<string[]> {
     return ipcRenderer.invoke("logs:getDefaultDirectories");
@@ -111,11 +117,21 @@ const updatesApi = {
   },
 };
 
+const exportApi = {
+  savePng(suggestedFileName?: string): Promise<ExportResult> {
+    return ipcRenderer.invoke("export:png", { suggestedFileName });
+  },
+  savePdf(suggestedFileName?: string): Promise<ExportResult> {
+    return ipcRenderer.invoke("export:pdf", { suggestedFileName });
+  },
+};
+
 contextBridge.exposeInMainWorld("tlcla", {
   logs: logsApi,
   window: windowApi,
   app: appApi,
   updates: updatesApi,
+  export: exportApi,
 });
 
 export {};
