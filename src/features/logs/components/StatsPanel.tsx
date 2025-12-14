@@ -6,6 +6,7 @@ import {
   formatInteger,
   formatNumber,
 } from "../utils/formatters";
+import { getTargetIconPath } from "../utils/targetIcons";
 import {
   cardGap,
   cardPaddingX,
@@ -33,6 +34,9 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
 }) => {
   const showStats = summaryState === "loaded";
   const targetLabel = selectedTargetName ?? "All targets";
+  const targetIconPath = selectedTargetName
+    ? getTargetIconPath(selectedTargetName)
+    : undefined;
   const sessionLabel =
     selectedSessionId != null ? `Session ${selectedSessionId}` : "All sessions";
 
@@ -68,9 +72,25 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
       {showStats ? (
         <>
           <Box>
-            <Typography sx={{ fontSize: "1.8rem", fontWeight: 700 }}>
-              {targetLabel}
-            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.2 }}>
+              {targetIconPath && (
+                <Box
+                  component="img"
+                  src={targetIconPath}
+                  alt={targetLabel}
+                  sx={{
+                    width: 46,
+                    height: 46,
+                    borderRadius: 1,
+                    objectFit: "cover",
+                    flexShrink: 0,
+                  }}
+                />
+              )}
+              <Typography sx={{ fontSize: "1.8rem", fontWeight: 700 }}>
+                {targetLabel}
+              </Typography>
+            </Box>
             <Typography
               sx={{
                 fontSize: "1rem",

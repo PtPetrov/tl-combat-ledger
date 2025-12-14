@@ -30,7 +30,6 @@ type ExportResult = {
 
 type ExportApi = {
   savePng: (suggestedFileName?: string) => Promise<ExportResult>;
-  savePdf: (suggestedFileName?: string) => Promise<ExportResult>;
 };
 
 type LogDisplayNameMap = Record<string, string>;
@@ -121,7 +120,6 @@ export interface TimelineSession {
 }
 
 export interface UseLogsPanelLogicResult {
-  defaultDirs: string[];
   selectedDir: string | null;
   logs: LogFileInfo[];
   logFavorites: LogFavoritesMap;
@@ -161,7 +159,6 @@ export interface UseLogsPanelLogicResult {
   handleSelectFolder: () => void;
   handleRefresh: () => void;
   handleSelectLog: (log: LogFileInfo) => void;
-  handleSelectDefaultDir: (dir: string) => void;
   handleSelectTarget: (targetName: string | null) => void;
   handleSelectSession: (sessionId: number | null) => void;
   handleRenameLog: (log: LogFileInfo, nextName: string) => void;
@@ -185,7 +182,6 @@ const getLogsApi = (): LogsApi | undefined => {
 };
 
 export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
-  const [defaultDirs, setDefaultDirs] = useState<string[]>([]);
   const [selectedDir, setSelectedDir] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogFileInfo[]>([]);
   const [state, setState] = useState<LoadState>("idle");
@@ -383,8 +379,6 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
         const dirs = await api.getDefaultDirectories();
         if (cancelled) return;
 
-        setDefaultDirs(dirs);
-
         if (dirs.length > 0) {
           const dir = dirs[0];
           setSelectedDir(dir);
@@ -478,14 +472,6 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     if (!selectedDir) return;
     await loadLogsForDirectory(selectedDir);
   }, [selectedDir, loadLogsForDirectory]);
-
-  const handleSelectDefaultDir = useCallback(
-    async (dir: string) => {
-      setSelectedDir(dir);
-      await loadLogsForDirectory(dir);
-    },
-    [loadLogsForDirectory]
-  );
 
   const handleSelectLog = useCallback(
     async (log: LogFileInfo) => {
@@ -717,7 +703,6 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   }, [timeline, timelineSeries, selectedTargetName]);
 
   return {
-    defaultDirs,
     selectedDir,
     logs,
     logFavorites,
@@ -750,7 +735,6 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     handleSelectFolder,
     handleRefresh,
     handleSelectLog,
-    handleSelectDefaultDir,
     handleSelectTarget,
     handleSelectSession,
     handleRenameLog,

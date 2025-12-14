@@ -2815,5 +2815,196 @@
     "pageUrl": "https://throneandliberty.gameslantern.com/skills/wreak-havoc",
     "iconUrl": "https://gameslantern.com/storage/sites/throne-and-liberty/skills/S_WP_SP_DefenceAttack_SP.webp",
     "iconPath": "src/assets/icons/spear/wreak-havoc.webp"
+  },
+
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Astral Overseer",
+    "slug": "astral-overseer",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_OrbControl",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_OrbControl.webp",
+    "iconPath": "src/assets/icons/orb/astral-overseer.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Barrier",
+    "slug": "barrier",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_DefenseActionSkill",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_DefenseActionSkill.webp",
+    "iconPath": "src/assets/icons/orb/barrier.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Constellation Link",
+    "slug": "constellation-link",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_SoulLink",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_SoulLink.webp",
+    "iconPath": "src/assets/icons/orb/constellation-link.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Dimensional Bomb",
+    "slug": "dimensional-bomb",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_BasicAttack",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_BasicAttack.webp",
+    "iconPath": "src/assets/icons/orb/dimensional-bomb.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Distortion Veil",
+    "slug": "distortion-veil",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_Shield",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_Shield.webp",
+    "iconPath": "src/assets/icons/orb/distortion-veil.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Eternal Veil",
+    "slug": "eternal-veil",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_ShieldUp",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_ShieldUp.webp",
+    "iconPath": "src/assets/icons/orb/eternal-veil.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Guardian Defensive Wall",
+    "slug": "guardian-defensive-wall",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_PartyBarrier",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_PartyBarrier.webp",
+    "iconPath": "src/assets/icons/orb/guardian-defensive-wall.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Interstellar Explosion",
+    "slug": "interstellar-explosion",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_OrbExplosion",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_OrbExplosion.webp",
+    "iconPath": "src/assets/icons/orb/interstellar-explosion.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Pulsating Galaxy",
+    "slug": "pulsating-galaxy",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_CastingMastery",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_CastingMastery.webp",
+    "iconPath": "src/assets/icons/orb/pulsating-galaxy.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Restoring Constellation",
+    "slug": "restoring-constellation",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_Restoration",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_Restoration.webp",
+    "iconPath": "src/assets/icons/orb/restoring-constellation.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Rift Fracture",
+    "slug": "rift-fracture",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_ExpandRift",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_ExpandRift.webp",
+    "iconPath": "src/assets/icons/orb/rift-fracture.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Star Destroyer",
+    "slug": "star-destroyer",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_RollingBall",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_RollingBall.webp",
+    "iconPath": "src/assets/icons/orb/star-destroyer.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Starcalling",
+    "slug": "starcalling",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_OrbSummon",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_OrbSummon.webp",
+    "iconPath": "src/assets/icons/orb/starcalling.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Stellar Cycle",
+    "slug": "stellar-cycle",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_Circulation",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_Circulation.webp",
+    "iconPath": "src/assets/icons/orb/stellar-cycle.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Stellar Dash",
+    "slug": "stellar-dash",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_Laser",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_Laser.webp",
+    "iconPath": "src/assets/icons/orb/stellar-dash.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Stellar Echo",
+    "slug": "stellar-echo",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Passive_SubProjectile",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Passive_SubProjectile.webp",
+    "iconPath": "src/assets/icons/orb/stellar-echo.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Summon Constellation",
+    "slug": "summon-constellation",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_OrbShoot",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_OrbShoot.webp",
+    "iconPath": "src/assets/icons/orb/summon-constellation.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Summon Satellite",
+    "slug": "summon-satellite",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_Satellite",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_Satellite.webp",
+    "iconPath": "src/assets/icons/orb/summon-satellite.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Supernova Collapse",
+    "slug": "supernova-collapse",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_GravityCollapse",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_GravityCollapse.webp",
+    "iconPath": "src/assets/icons/orb/supernova-collapse.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Temporal Leap",
+    "slug": "temporal-leap",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_Phasing",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_Phasing.webp",
+    "iconPath": "src/assets/icons/orb/temporal-leap.webp"
+  },
+  {
+    "weapon": "Orb",
+    "weaponSlug": "orb",
+    "name": "Void Slash",
+    "slug": "void-slash",
+    "pageUrl": "https://questlog.gg/throne-and-liberty/en/db/skill-set/SkillSet_WP_ORB_Active_OrbitSlash",
+    "iconUrl": "https://cdn.questlog.gg/throne-and-liberty/assets/Game/Image/Skill/Active/S_WP_ORB_Active_OrbitSlash.webp",
+    "iconPath": "src/assets/icons/orb/void-slash.webp"
   }
+
 ]

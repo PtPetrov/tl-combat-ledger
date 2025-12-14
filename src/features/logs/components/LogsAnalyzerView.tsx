@@ -29,7 +29,6 @@ import type {
 } from "../types/updateTypes";
 
 export interface LogsAnalyzerViewProps {
-  defaultDirs: string[];
   selectedDir: string | null;
   logs: LogFileInfo[];
   logFavorites: Record<string, true>;
@@ -71,7 +70,6 @@ export interface LogsAnalyzerViewProps {
   onSelectLog: (log: LogFileInfo) => void;
   onRenameLog: (log: LogFileInfo, nextName: string) => void;
   onToggleLogFavorite: (log: LogFileInfo) => void;
-  onSelectDefaultDir: (dir: string) => void;
   onSelectTarget: (targetName: string | null) => void;
   onSelectSession: (sessionId: number | null) => void;
   onToggleCompare?: () => void;
@@ -81,7 +79,6 @@ export interface LogsAnalyzerViewProps {
 }
 
 export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
-  defaultDirs,
   selectedDir,
   logs,
   logFavorites,
@@ -115,7 +112,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   onSelectLog,
   onRenameLog,
   onToggleLogFavorite,
-  onSelectDefaultDir,
   onSelectTarget,
   onSelectSession,
   onToggleCompare,
@@ -123,6 +119,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   showCompareControl = true,
   viewLabel,
 }) => {
+  const compareLayoutActive = Boolean(isCompareActive);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedSkill, setSelectedSkill] =
     useState<ExtendedSkillBreakdown | null>(null);
@@ -210,9 +207,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         isCompareActive={isCompareActive}
         showCompareControl={showCompareControl}
         contextLabel={viewLabel}
-        defaultDirs={defaultDirs}
-        selectedDir={selectedDir}
-        onSelectDefaultDir={onSelectDefaultDir}
         updateStatus={hasUpdateBridge ? updateStatus : null}
         onCheckForUpdates={
           hasUpdateBridge ? handleCheckForUpdates : undefined
@@ -321,11 +315,29 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
               display: "grid",
               gridTemplateColumns: {
                 xs: "1fr",
-                lg: "minmax(0, 0.7fr) minmax(0, 0.3fr)",
+                lg: compareLayoutActive
+                  ? "1fr"
+                  : "minmax(0, 0.7fr) minmax(0, 0.3fr)",
               },
+              gridTemplateRows: compareLayoutActive
+                ? "auto minmax(0, 1fr)"
+                : undefined,
               gap: sectionSpacing,
             }}
           >
+            {compareLayoutActive && (
+              <Box sx={{ minHeight: 0 }}>
+                <SkillDetailsCard
+                  summaryState={summaryState}
+                  currentTopSkills={currentTopSkills}
+                  currentDurationSeconds={currentDurationSeconds}
+                  selectedSkill={selectedSkill}
+                  maxHeight={attackCardHeight}
+                  layout="compare"
+                />
+              </Box>
+            )}
+
             <Box
               sx={{
                 minHeight: 0,
@@ -414,20 +426,17 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
               </Box>
             </Box>
 
-            <Box
-              sx={{
-                minHeight: 0,
-                height: "100%",
-              }}
-            >
-              <SkillDetailsCard
-                summaryState={summaryState}
-                currentTopSkills={currentTopSkills}
-                currentDurationSeconds={currentDurationSeconds}
-                selectedSkill={selectedSkill}
-                maxHeight={attackCardHeight}
-              />
-            </Box>
+            {!compareLayoutActive && (
+              <Box sx={{ minHeight: 0, height: "100%" }}>
+                <SkillDetailsCard
+                  summaryState={summaryState}
+                  currentTopSkills={currentTopSkills}
+                  currentDurationSeconds={currentDurationSeconds}
+                  selectedSkill={selectedSkill}
+                  maxHeight={attackCardHeight}
+                />
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

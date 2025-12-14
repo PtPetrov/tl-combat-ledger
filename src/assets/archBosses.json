@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Ascended Tevent",
+    "image": "icons/arch-bosses/ascended-tevent.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Ascended Queen Bellandir",
+    "image": "icons/arch-bosses/ascended-queen-bellandir.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Giant Cordy Ghost",
+    "image": null,
+    "category": "arch-boss"
+  },
+  {
+    "name": "Giant Cordy",
+    "image": "icons/arch-bosses/giant-cordy.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Ascended Giant Cordy",
+    "image": "icons/arch-bosses/ascended-giant-cordy.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Deluzhnoa",
+    "image": "icons/arch-bosses/deluzhnoa.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Ascended Deluzhnoa",
+    "image": "icons/arch-bosses/ascended-deluzhnoa.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Calanthia of Destruction",
+    "image": "icons/arch-bosses/calanthia-of-destruction.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Calanthia",
+    "image": "icons/arch-bosses/calanthia.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Dragaryle",
+    "image": "icons/arch-bosses/dragaryle.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Vulkan",
+    "image": "icons/arch-bosses/vulkan.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Zairos",
+    "image": "icons/arch-bosses/zairos.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Radeth",
+    "image": "icons/arch-bosses/radeth.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "Tevent",
+    "image": "icons/arch-bosses/tevent.png",
+    "category": "arch-boss"
+  },
+  {
+    "name": "#테벤트",
+    "image": null,
+    "category": "arch-boss"
+  },
+  {
+    "name": "Queen Bellandir",
+    "image": "icons/arch-bosses/queen-bellandir.png",
+    "category": "arch-boss"
+  }
+]

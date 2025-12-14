@@ -121,9 +121,6 @@ const exportApi = {
   savePng(suggestedFileName?: string): Promise<ExportResult> {
     return ipcRenderer.invoke("export:png", { suggestedFileName });
   },
-  savePdf(suggestedFileName?: string): Promise<ExportResult> {
-    return ipcRenderer.invoke("export:pdf", { suggestedFileName });
-  },
 };
 
 contextBridge.exposeInMainWorld("tlcla", {

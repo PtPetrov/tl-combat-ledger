@@ -25,3 +25,6 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Local scripts (dev-only)
+/scripts/check-*

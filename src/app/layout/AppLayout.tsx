@@ -2,6 +2,7 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 import TopBar from "./TopBar";
+import FooterBar from "./FooterBar";
 
 type AppLayoutProps = {
   children: React.ReactNode;
@@ -38,6 +39,8 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       >
         {children}
       </Box>
+
+      <FooterBar />
     </Box>
   );
 };

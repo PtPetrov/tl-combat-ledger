@@ -1,0 +1,398 @@
+[
+  {
+    "name": "Silver Reaper's Gag Order",
+    "image": "icons/skill-cores/silver-reaper-s-gag-order.png"
+  },
+  {
+    "name": "Morokai's Thunderbolt",
+    "image": "icons/skill-cores/morokai-s-thunderbolt.png"
+  },
+  {
+    "name": "Adentus's Fury",
+    "image": "icons/skill-cores/adentus-s-fury.png"
+  },
+  {
+    "name": "Junobote's Void",
+    "image": "icons/skill-cores/junobote-s-void.png"
+  },
+  {
+    "name": "Ancient Demonic Beast's Footsteps",
+    "image": "icons/skill-cores/ancient-demonic-beast-s-footsteps.png"
+  },
+  {
+    "name": "Chernobog's Sleep Venom",
+    "image": "icons/skill-cores/chernobog-s-sleep-venom.png"
+  },
+  {
+    "name": "Cornelius's Shock",
+    "image": "icons/skill-cores/cornelius-s-shock.png"
+  },
+  {
+    "name": "Nirma's Magic Pulse",
+    "image": "icons/skill-cores/nirma-s-magic-pulse.png"
+  },
+  {
+    "name": "Ahzreil's Magic Defensive Wall",
+    "image": "icons/skill-cores/ahzreil-s-magic-defensive-wall.png"
+  },
+  {
+    "name": "Ancient Demonic Beast's Strike",
+    "image": "icons/skill-cores/ancient-demonic-beast-s-strike.png"
+  },
+  {
+    "name": "Minezerok's Lamentation",
+    "image": "icons/skill-cores/minezerok-s-lamentation.png"
+  },
+  {
+    "name": "Kowazan's Frenzy",
+    "image": "icons/skill-cores/kowazan-s-frenzy.png"
+  },
+  {
+    "name": "Silver Reaper's Soul Harvest",
+    "image": "icons/skill-cores/silver-reaper-s-soul-harvest.png"
+  },
+  {
+    "name": "Malakar's Blazing Wind",
+    "image": "icons/skill-cores/malakar-s-blazing-wind.png"
+  },
+  {
+    "name": "Kowazan's Flame Spirit",
+    "image": "icons/skill-cores/kowazan-s-flame-spirit.png"
+  },
+  {
+    "name": "Witch Worshipper's Anathema",
+    "image": "icons/skill-cores/witch-worshipper-s-anathema.png"
+  },
+  {
+    "name": "Grand Aelon's Spirit",
+    "image": "icons/skill-cores/grand-aelon-s-spirit.png"
+  },
+  {
+    "name": "Witch Worshipper's Temptation",
+    "image": "icons/skill-cores/witch-worshipper-s-temptation.png"
+  },
+  {
+    "name": "Talus's Glacier",
+    "image": "icons/skill-cores/talus-s-glacier.png"
+  },
+  {
+    "name": "Aridus's Fury",
+    "image": "icons/skill-cores/aridus-s-fury.png"
+  },
+  {
+    "name": "Silver Reaper's Sentence",
+    "image": "icons/skill-cores/silver-reaper-s-sentence.png"
+  },
+  {
+    "name": "Excavator's Barrier",
+    "image": "icons/skill-cores/excavator-s-barrier.png"
+  },
+  {
+    "name": "Witch Worshipper's Corrosive Curse",
+    "image": "icons/skill-cores/witch-worshipper-s-corrosive-curse.png"
+  },
+  {
+    "name": "Junobote's Inferno",
+    "image": "icons/skill-cores/junobote-s-inferno.png"
+  },
+  {
+    "name": "Ancient Demonic Beast's Command",
+    "image": "icons/skill-cores/ancient-demonic-beast-s-command.png"
+  },
+  {
+    "name": "Talus's Transcendent Barrier",
+    "image": "icons/skill-cores/talus-s-transcendent-barrier.png"
+  },
+  {
+    "name": "Enraged Deluzhnoa's Cold",
+    "image": "icons/skill-cores/enraged-deluzhnoa-s-cold.png"
+  },
+  {
+    "name": "Enraged Giant Cordy's Spore Poison",
+    "image": "icons/skill-cores/enraged-giant-cordy-s-spore-poison.png"
+  },
+  {
+    "name": "Enraged Giant Cordy's Bog",
+    "image": "icons/skill-cores/enraged-giant-cordy-s-bog.png"
+  },
+  {
+    "name": "Enraged Deluzhnoa's Hail",
+    "image": "icons/skill-cores/enraged-deluzhnoa-s-hail.png"
+  },
+  {
+    "name": "Enraged Deluzhnoa's Barrier",
+    "image": "icons/skill-cores/enraged-deluzhnoa-s-barrier.png"
+  },
+  {
+    "name": "Enraged Deluzhnoa's Touch",
+    "image": "icons/skill-cores/enraged-deluzhnoa-s-touch.png"
+  },
+  {
+    "name": "Enraged Giant Cordy's Blessing",
+    "image": "icons/skill-cores/enraged-giant-cordy-s-blessing.png"
+  },
+  {
+    "name": "Enraged Deluzhnoa's Waves",
+    "image": "icons/skill-cores/enraged-deluzhnoa-s-waves.png"
+  },
+  {
+    "name": "Enraged Giant Cordy's Forest Resonance",
+    "image": "icons/skill-cores/enraged-giant-cordy-s-forest-resonance.png"
+  },
+  {
+    "name": "Will Eruption",
+    "image": "icons/skill-cores/will-eruption.png"
+  },
+  {
+    "name": "Resolute Breakthrough",
+    "image": "icons/skill-cores/resolute-breakthrough.png"
+  },
+  {
+    "name": "Hemotoxic Dagger",
+    "image": "icons/skill-cores/hemotoxic-dagger.png"
+  },
+  {
+    "name": "Acidic Poison",
+    "image": "icons/skill-cores/acidic-poison.png"
+  },
+  {
+    "name": "Stealthy Arrowhead",
+    "image": "icons/skill-cores/stealthy-arrowhead.png"
+  },
+  {
+    "name": "Swift Judgment",
+    "image": "icons/skill-cores/swift-judgment.png"
+  },
+  {
+    "name": "Blessed Haze",
+    "image": "icons/skill-cores/blessed-haze.png"
+  },
+  {
+    "name": "Spiral Assault",
+    "image": "icons/skill-cores/spiral-assault.png"
+  },
+  {
+    "name": "Void Echo",
+    "image": "icons/skill-cores/void-echo.png"
+  },
+  {
+    "name": "Deadly Grave",
+    "image": "icons/skill-cores/deadly-grave.png"
+  },
+  {
+    "name": "Shining Moon",
+    "image": "icons/skill-cores/shining-moon.png"
+  },
+  {
+    "name": "Limuny's Last Shot",
+    "image": "icons/skill-cores/limuny-s-last-shot.png"
+  },
+  {
+    "name": "Deluzhnoa's Cold",
+    "image": "icons/skill-cores/deluzhnoa-s-cold.png"
+  },
+  {
+    "name": "Judgment Wave",
+    "image": "icons/skill-cores/judgment-wave.png"
+  },
+  {
+    "name": "Blazing Tornado",
+    "image": "icons/skill-cores/blazing-tornado.png"
+  },
+  {
+    "name": "Pakilo's Cruelty",
+    "image": "icons/skill-cores/pakilo-s-cruelty.png"
+  },
+  {
+    "name": "Night Panther",
+    "image": "icons/skill-cores/night-panther.png"
+  },
+  {
+    "name": "Wild Barrage",
+    "image": "icons/skill-cores/wild-barrage.png"
+  },
+  {
+    "name": "Akman's Fragment",
+    "image": "icons/skill-cores/akman-s-fragment.png"
+  },
+  {
+    "name": "Giant Cordy's Bog",
+    "image": "icons/skill-cores/giant-cordy-s-bog.png"
+  },
+  {
+    "name": "Lightning Spear",
+    "image": "icons/skill-cores/lightning-spear.png"
+  },
+  {
+    "name": "Icebound Gust",
+    "image": "icons/skill-cores/icebound-gust.png"
+  },
+  {
+    "name": "Daigon's Fury",
+    "image": "icons/skill-cores/daigon-s-fury.png"
+  },
+  {
+    "name": "Deluzhnoa's Hail",
+    "image": "icons/skill-cores/deluzhnoa-s-hail.png"
+  },
+  {
+    "name": "Mortal Stigma",
+    "image": "icons/skill-cores/mortal-stigma.png"
+  },
+  {
+    "name": "Frenzied Slash",
+    "image": "icons/skill-cores/frenzied-slash.png"
+  },
+  {
+    "name": "Norn's Temptation",
+    "image": "icons/skill-cores/norn-s-temptation.png"
+  },
+  {
+    "name": "Purgatorial Barrier",
+    "image": "icons/skill-cores/purgatorial-barrier.png"
+  },
+  {
+    "name": "Devastating Chain",
+    "image": "icons/skill-cores/devastating-chain.png"
+  },
+  {
+    "name": "Kaiser's Thirst",
+    "image": "icons/skill-cores/kaiser-s-thirst.png"
+  },
+  {
+    "name": "Nightmarish Magic Circle",
+    "image": "icons/skill-cores/nightmarish-magic-circle.png"
+  },
+  {
+    "name": "Invigorating Salvation",
+    "image": "icons/skill-cores/invigorating-salvation.png"
+  },
+  {
+    "name": "King Khanzaizin's Barrier",
+    "image": "icons/skill-cores/king-khanzaizin-s-barrier.png"
+  },
+  {
+    "name": "Giant Cordy's Blessing",
+    "image": "icons/skill-cores/giant-cordy-s-blessing.png"
+  },
+  {
+    "name": "Grayeye's Thunderstorm",
+    "image": "icons/skill-cores/grayeye-s-thunderstorm.png"
+  },
+  {
+    "name": "Daigon's Storm",
+    "image": "icons/skill-cores/daigon-s-storm.png"
+  },
+  {
+    "name": "Deckman's Rampage",
+    "image": "icons/skill-cores/deckman-s-rampage.png"
+  },
+  {
+    "name": "Black Anvil Passion",
+    "image": "icons/skill-cores/black-anvil-passion.png"
+  },
+  {
+    "name": "Grayeye's Vitality",
+    "image": "icons/skill-cores/grayeye-s-vitality.png"
+  },
+  {
+    "name": "Deluzhnoa's Barrier",
+    "image": "icons/skill-cores/deluzhnoa-s-barrier.png"
+  },
+  {
+    "name": "Deluzhnoa's Touch",
+    "image": "icons/skill-cores/deluzhnoa-s-touch.png"
+  },
+  {
+    "name": "Leviathan's Specter",
+    "image": "icons/skill-cores/leviathan-s-specter.png"
+  },
+  {
+    "name": "Leviathan's Sting",
+    "image": "icons/skill-cores/leviathan-s-sting.png"
+  },
+  {
+    "name": "Limuny's Tragedy",
+    "image": "icons/skill-cores/limuny-s-tragedy.png"
+  },
+  {
+    "name": "Giant Cordy's Spore Poison",
+    "image": "icons/skill-cores/giant-cordy-s-spore-poison.png"
+  },
+  {
+    "name": "Pakilo Naru's Barrier",
+    "image": "icons/skill-cores/pakilo-naru-s-barrier.png"
+  },
+  {
+    "name": "Scared to Death",
+    "image": "icons/skill-cores/scared-to-death.png"
+  },
+  {
+    "name": "Crimson's Lantern",
+    "image": "icons/skill-cores/crimson-s-lantern.png"
+  },
+  {
+    "name": "Deluzhnoa's Waves",
+    "image": "icons/skill-cores/deluzhnoa-s-waves.png"
+  },
+  {
+    "name": "Wind Blades",
+    "image": "icons/skill-cores/wind-blades.png"
+  },
+  {
+    "name": "Enraged Tevent's Bombardment",
+    "image": "icons/skill-cores/enraged-tevent-s-bombardment.png"
+  },
+  {
+    "name": "Enraged Tevent's Despair Trap",
+    "image": "icons/skill-cores/enraged-tevent-s-despair-trap.png"
+  },
+  {
+    "name": "Enraged Queen Bellandir's Corruptive Venom",
+    "image": "icons/skill-cores/enraged-queen-bellandir-s-corruptive-venom.png"
+  },
+  {
+    "name": "Enraged Queen Bellandir's Explosive Insect",
+    "image": "icons/skill-cores/enraged-queen-bellandir-s-explosive-insect.png"
+  },
+  {
+    "name": "Enraged Tevent's Furious Rage",
+    "image": "icons/skill-cores/enraged-tevent-s-furious-rage.png"
+  },
+  {
+    "name": "Enraged Queen Bellandir's Quicksand",
+    "image": "icons/skill-cores/enraged-queen-bellandir-s-quicksand.png"
+  },
+  {
+    "name": "Enraged Tevent's Hunger",
+    "image": "icons/skill-cores/enraged-tevent-s-hunger.png"
+  },
+  {
+    "name": "Enraged Queen Bellandir's Hunger",
+    "image": "icons/skill-cores/enraged-queen-bellandir-s-hunger.png"
+  },
+  {
+    "name": "Magical Harmony",
+    "image": "icons/skill-cores/magical-harmony.png"
+  },
+  {
+    "name": "Nebula's Protection",
+    "image": "icons/skill-cores/nebula-s-protection.png"
+  },
+  {
+    "name": "False Time",
+    "image": "icons/skill-cores/false-time.png"
+  },
+  {
+    "name": "Primal Brothers' Thunder Strike",
+    "image": "icons/skill-cores/primal-brothers-thunder-strike.png"
+  },
+  {
+    "name": "Giant Cordy's Forest Resonance",
+    "image": "icons/skill-cores/giant-cordy-s-forest-resonance.png"
+  },
+  {
+    "name": "Enraged Tevent's Corruption",
+    "image": "icons/skill-cores/enraged-tevent-s-corruption.png"
+  }
+]

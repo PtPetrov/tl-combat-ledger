@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Ascended Morokai",
+    "image": "icons/bosses/ascended-morokai.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Adentus",
+    "image": "icons/bosses/ascended-adentus.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Cornelius",
+    "image": "icons/bosses/ascended-cornelius.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Minezerok",
+    "image": "icons/bosses/ascended-minezerok.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Grand Aelon",
+    "image": "icons/bosses/ascended-grand-aelon.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Ahzreil",
+    "image": "icons/bosses/ascended-ahzreil.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Aridus",
+    "image": "icons/bosses/ascended-aridus.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Nirma",
+    "image": "icons/bosses/ascended-nirma.png",
+    "category": "boss"
+  },
+  {
+    "name": "Star-Engulfed Demonhoof Head Shaman",
+    "image": "icons/bosses/star-engulfed-demonhoof-head-shaman.png",
+    "category": "boss"
+  },
+  {
+    "name": "Star-Engulfed Living Armor Archwizard",
+    "image": "icons/bosses/star-engulfed-living-armor-archwizard.png",
+    "category": "boss"
+  },
+  {
+    "name": "Star-Engulfed Dark Enforcer",
+    "image": "icons/bosses/star-engulfed-dark-enforcer.png",
+    "category": "boss"
+  },
+  {
+    "name": "Chaos Golem-17",
+    "image": null,
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Excavator-9",
+    "image": "icons/bosses/ascended-excavator-9.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Chernobog",
+    "image": "icons/bosses/ascended-chernobog.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Talus",
+    "image": "icons/bosses/ascended-talus.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Malakar",
+    "image": "icons/bosses/ascended-malakar.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Kowazan",
+    "image": "icons/bosses/ascended-kowazan.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Junobote",
+    "image": "icons/bosses/ascended-junobote.png",
+    "category": "boss"
+  },
+  {
+    "name": "Ascended Lycan Kowazan",
+    "image": "icons/bosses/ascended-lycan-kowazan.png",
+    "category": "boss"
+  }
+]

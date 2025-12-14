@@ -14,12 +14,14 @@ import {
 import { formatInteger } from "../utils/formatters";
 import skillsData from "../../../assets/skills.json";
 import masterySkillsData from "../../../assets/weaponMasterySkills.json";
+import skillCoresData from "../../../assets/skillCores.json";
 
 const iconAssets = import.meta.glob<string>(
-  "../../../assets/icons/**/*",
+  "../../../assets/icons/{crossbow,daggers,greatsword,longbow,mastery,orb,spear,staff,sword-shield,wand,skill-cores}/**/*",
   {
     eager: true,
-    as: "url",
+    query: "?url",
+    import: "default",
   }
 ) as Record<string, string>;
 
@@ -33,6 +35,11 @@ interface SkillMeta {
 interface MasterySkillMeta {
   name: string;
   iconPath: string;
+}
+
+interface SkillCoreMeta {
+  name: string;
+  image: string;
 }
 
 // Normalize a name so we can match "Detonation Mark" with
@@ -52,20 +59,33 @@ const getBaseSkillName = (name: string) => {
   return name;
 };
 
+const resolveIconAssetUrl = (rawPath: string): string | undefined => {
+  let cleaned = rawPath.replace(/^src\//, "");
+
+  if (!cleaned.startsWith("assets/")) {
+    if (cleaned.startsWith("icons/") || cleaned.startsWith("images/")) {
+      cleaned = `assets/${cleaned}`;
+    }
+  }
+
+  const assetKey = `../../../${cleaned}`;
+  return iconAssets[assetKey];
+};
+
 const skillIconMap = (() => {
   const map = new Map<string, string>();
 
-  const entries: Array<SkillMeta | MasterySkillMeta> = [
+  const entries: Array<SkillMeta | MasterySkillMeta | SkillCoreMeta> = [
     ...(skillsData as SkillMeta[]),
     ...(masterySkillsData as MasterySkillMeta[]),
+    ...(skillCoresData as SkillCoreMeta[]),
   ];
 
   entries.forEach((s) => {
-    if (!s.iconPath) return;
+    const iconPath = "iconPath" in s ? s.iconPath : s.image;
+    if (!iconPath) return;
 
-    const cleaned = s.iconPath.replace(/^src\//, "");
-    const assetKey = `../../../${cleaned}`;
-    const assetUrl = iconAssets[assetKey];
+    const assetUrl = resolveIconAssetUrl(iconPath);
     if (!assetUrl) return;
 
     const fullNorm = normalizeName(s.name);
@@ -264,7 +284,6 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
           display: "flex",
           flexDirection: "column",
           minHeight: 0,
-          maxHeight: "96%",
           paddingBottom: "8px",
           background:
             "radial-gradient(circle at top, rgba(15,23,42,0.98), rgba(5,8,20,1))",

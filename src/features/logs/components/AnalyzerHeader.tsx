@@ -5,17 +5,11 @@ import {
   Button,
   CircularProgress,
   IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
   Tooltip,
   Typography,
 } from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
 import IosShareIcon from "@mui/icons-material/IosShare";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 // Inline the logo to avoid any file-path issues in packaged builds.
 import logoImage from "../../../../resources/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
@@ -25,9 +19,6 @@ export interface AnalyzerHeaderProps {
   isCompareActive?: boolean;
   showCompareControl?: boolean;
   contextLabel?: string;
-  defaultDirs?: string[];
-  selectedDir?: string | null;
-  onSelectDefaultDir?: (dir: string) => void;
   updateStatus?: UpdateStatusPayload | null;
   onCheckForUpdates?: () => void;
   onInstallUpdate?: () => void;
@@ -40,43 +31,24 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
     isCompareActive,
     showCompareControl = true,
     contextLabel,
-    defaultDirs = [],
-    selectedDir = null,
-    onSelectDefaultDir,
     updateStatus,
     onCheckForUpdates,
     onInstallUpdate,
     exportFileBaseName,
   }) => {
     const [logoHidden, setLogoHidden] = useState(false);
-    const [exportAnchorEl, setExportAnchorEl] = useState<HTMLElement | null>(
-      null
-    );
     const [isExporting, setIsExporting] = useState(false);
 
     const exportApi =
       typeof window !== "undefined" ? window.tlcla?.export : undefined;
     const hasExportBridge = Boolean(exportApi);
 
-    const handleOpenExportMenu = (event: React.MouseEvent<HTMLElement>) => {
-      setExportAnchorEl(event.currentTarget);
-    };
-
-    const handleCloseExportMenu = () => {
-      setExportAnchorEl(null);
-    };
-
-    const handleExport = async (format: "png" | "pdf") => {
+    const handleExport = async () => {
       if (!exportApi) return;
       setIsExporting(true);
-      handleCloseExportMenu();
 
       try {
-        if (format === "png") {
-          await exportApi.savePng(exportFileBaseName);
-          return;
-        }
-        await exportApi.savePdf(exportFileBaseName);
+        await exportApi.savePng(exportFileBaseName);
       } catch (error) {
         console.warn("Export failed", error);
       } finally {
@@ -132,80 +104,6 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
 
       // Hide the button in all other states (idle/checking/error/dev).
       return null;
-    };
-
-    const renderDefaultDirButtons = () => {
-      if (!defaultDirs?.length) return null;
-
-      return (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: 1,
-            rowGap: 1,
-            minWidth: 0,
-          }}
-        >
-          {defaultDirs.map((dir) => {
-            const isSelected = dir === selectedDir;
-            return (
-              <Box
-                key={dir}
-                component="button"
-                type="button"
-                onClick={() => onSelectDefaultDir?.(dir)}
-                sx={{
-                  maxWidth: "100%",
-                  borderRadius: "999px",
-                  border: "1px solid",
-                  borderColor: isSelected
-                    ? "rgba(99,102,241,0.8)"
-                    : "rgba(71,85,105,0.8)",
-                  background: isSelected
-                    ? "linear-gradient(120deg, rgba(99,102,241,0.12), rgba(129,140,248,0.12))"
-                    : "rgba(15,23,42,0.75)",
-                  boxShadow: isSelected
-                    ? "0 0 0 1px rgba(129,140,248,0.3), 0 10px 30px rgba(15,23,42,0.9)"
-                    : "0 0 0 1px rgba(15,23,42,0.8)",
-                  color: isSelected ? "#e0e7ff" : "#cbd5e1",
-                  px: { xs: 1.6, md: 1.8 },
-                  py: 0.9,
-                  fontSize: { xs: "0.9rem", md: "0.95rem" },
-                  letterSpacing: "0.01em",
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 0.6,
-                  transition: "all 140ms ease",
-                  backdropFilter: "blur(6px)",
-                  "&:hover": {
-                    borderColor: "rgba(129,140,248,0.9)",
-                    color: "#e2e8f0",
-                    background: "rgba(79,70,229,0.14)",
-                  },
-                  "&:active": {
-                    transform: "translateY(1px)",
-                  },
-                }}
-              >
-                <Box
-                  component="span"
-                  sx={{
-                    maxWidth: "100%",
-                    whiteSpace: "normal",
-                    wordBreak: "break-all",
-                    textAlign: "left",
-                  }}
-                >
-                  {dir}
-                </Box>
-              </Box>
-            );
-          })}
-        </Box>
-      );
     };
 
     return (
@@ -298,7 +196,6 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
             maxWidth: "100%",
           }}
         >
-          {renderDefaultDirButtons()}
           {renderUpdateControl()}
           {showCompareControl && onToggleCompare && (
             <Tooltip title="Compare logs" placement="bottom">
@@ -318,16 +215,14 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
 
           <Tooltip
             title={
-              hasExportBridge
-                ? "Export view"
-                : "Export available only in the app"
+              hasExportBridge ? (isExporting ? "Exporting…" : "Export as PNG") : "Export available only in the app"
             }
             placement="bottom"
           >
             <span>
               <IconButton
-                aria-label="Export view"
-                onClick={handleOpenExportMenu}
+                aria-label="Export as PNG"
+                onClick={handleExport}
                 disabled={!hasExportBridge || isExporting}
                 sx={{
                   color: "rgba(226,232,240,0.9)",
@@ -339,39 +234,6 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
               </IconButton>
             </span>
           </Tooltip>
-          <Menu
-            anchorEl={exportAnchorEl}
-            open={Boolean(exportAnchorEl)}
-            onClose={handleCloseExportMenu}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
-            slotProps={{
-              paper: {
-                sx: {
-                  mt: 0.6,
-                  borderRadius: "10px",
-                  border: "1px solid rgba(30,41,59,0.85)",
-                  backgroundColor: "rgba(2,6,23,0.98)",
-                  boxShadow:
-                    "0 18px 42px rgba(2,6,23,0.75), 0 0 0 1px rgba(15,23,42,0.95)",
-                  minWidth: 200,
-                },
-              },
-            }}
-          >
-            <MenuItem onClick={() => handleExport("png")}>
-              <ListItemIcon sx={{ minWidth: 34, color: "#a5b4fc" }}>
-                <ImageOutlinedIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Export as PNG" />
-            </MenuItem>
-            <MenuItem onClick={() => handleExport("pdf")}>
-              <ListItemIcon sx={{ minWidth: 34, color: "#a5b4fc" }}>
-                <PictureAsPdfOutlinedIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Export as PDF" />
-            </MenuItem>
-          </Menu>
         </Box>
       </Box>
     );

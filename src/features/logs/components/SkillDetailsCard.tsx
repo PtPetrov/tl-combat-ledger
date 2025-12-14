@@ -26,6 +26,7 @@ interface SkillDetailsCardProps {
   currentDurationSeconds: number | null;
   selectedSkill: ExtendedSkillBreakdown | null;
   maxHeight?: number | null;
+  layout?: "default" | "compare";
 }
 
 type SectionData = {
@@ -40,6 +41,7 @@ export const SkillDetailsCard: React.FC<SkillDetailsCardProps> = ({
   currentDurationSeconds,
   selectedSkill,
   maxHeight = null,
+  layout = "default",
 }) => {
   const featuredSkill =
     summaryState === "loaded"
@@ -69,7 +71,7 @@ export const SkillDetailsCard: React.FC<SkillDetailsCardProps> = ({
         flexDirection: "column",
         gap: cardGap,
         height: "auto",
-        maxHeight: "100%",
+        maxHeight: maxHeight ?? "100%",
         minHeight: 0,
         overflow: "hidden",
       }}
@@ -120,9 +122,24 @@ export const SkillDetailsCard: React.FC<SkillDetailsCardProps> = ({
               ...scrollBarStyles,
             }}
           >
-            {sections.map((section) => (
-              <SkillDetailSection key={section.title} data={section} />
-            ))}
+            {layout === "compare" ? (
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: { xs: "1fr", sm: "repeat(3, 1fr)" },
+                  gap: 1,
+                  alignItems: "start",
+                }}
+              >
+                {sections.map((section) => (
+                  <SkillDetailSection key={section.title} data={section} />
+                ))}
+              </Box>
+            ) : (
+              sections.map((section) => (
+                <SkillDetailSection key={section.title} data={section} />
+              ))
+            )}
           </Box>
         </>
       ) : (
@@ -154,6 +171,7 @@ const SkillDetailSection = ({ data }: { data: SectionData }) => (
       display: "flex",
       flexDirection: "column",
       gap: 1.1,
+      minWidth: 0,
     }}
   >
     <Box

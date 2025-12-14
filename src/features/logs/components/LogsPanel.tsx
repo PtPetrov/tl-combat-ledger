@@ -13,7 +13,6 @@ type AnalyzerViewBaseProps = Omit<
 >;
 
 const buildAnalyzerViewProps = ({
-  defaultDirs,
   selectedDir,
   logs,
   logFavorites,
@@ -47,11 +46,9 @@ const buildAnalyzerViewProps = ({
   handleSelectLog,
   handleRenameLog,
   handleToggleLogFavorite,
-  handleSelectDefaultDir,
   handleSelectTarget,
   handleSelectSession,
 }: UseLogsPanelLogicResult): AnalyzerViewBaseProps => ({
-  defaultDirs,
   selectedDir,
   logs,
   logFavorites,
@@ -85,7 +82,6 @@ const buildAnalyzerViewProps = ({
   onSelectLog: handleSelectLog,
   onRenameLog: handleRenameLog,
   onToggleLogFavorite: handleToggleLogFavorite,
-  onSelectDefaultDir: handleSelectDefaultDir,
   onSelectTarget: handleSelectTarget,
   onSelectSession: handleSelectSession,
 });

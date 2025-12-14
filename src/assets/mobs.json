@@ -1,0 +1,2672 @@
+[
+  {
+    "name": "Abandoned Test Subject-37",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Adentus",
+    "image": "icons/mobs/adentus.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Adventurer Going to the Summit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Agile Ogre Spy",
+    "image": "icons/mobs/agile-ogre-spy.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ahzreil",
+    "image": "icons/mobs/ahzreil.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Akman",
+    "image": "icons/mobs/akman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ambush Commander",
+    "image": "icons/mobs/ambush-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Ancient Guardian Archer",
+    "image": "icons/mobs/ancient-guardian-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ancient Guardian Archwizard",
+    "image": "icons/mobs/ancient-guardian-archwizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Ancient Guardian Lancer",
+    "image": "icons/mobs/ancient-guardian-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ancient Guardian Swordsman",
+    "image": "icons/mobs/ancient-guardian-swordsman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Arbiter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Assassin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Hammer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Healer",
+    "image": "icons/mobs/arkeum-healer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Knight",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Mace",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Shadowmancer",
+    "image": "icons/mobs/arkeum-shadowmancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Soldier",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Arkeum Wizard",
+    "image": "icons/mobs/arkeum-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Armadillo",
+    "image": "icons/mobs/armadillo.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ashen Chief Terror Bird",
+    "image": "icons/mobs/ashen-chief-terror-bird.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ashen Evil Eye Sentry",
+    "image": "icons/mobs/ashen-evil-eye-sentry.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Ashen Ravenous Zombie",
+    "image": "icons/mobs/ashen-ravenous-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Bael",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Barrier Guardian General",
+    "image": "icons/mobs/barrier-guardian-general.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Basilisk",
+    "image": "icons/mobs/basilisk.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Bat",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Belkros",
+    "image": "icons/mobs/belkros.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Belmore",
+    "image": "icons/mobs/belmore.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Big Tidebully Goblin",
+    "image": "icons/mobs/big-tidebully-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Blackhowl Wolf",
+    "image": "icons/mobs/blackhowl-wolf.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Blade Beast",
+    "image": "icons/mobs/blade-beast.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Blatras",
+    "image": "icons/mobs/blatras.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Blood Spectral Wizard",
+    "image": "icons/mobs/blood-spectral-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Bomb Zombie",
+    "image": "icons/mobs/bomb-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Broktu",
+    "image": "icons/mobs/broktu.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Brutal Goblin Butcher",
+    "image": "icons/mobs/brutal-goblin-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Brutal Wolf",
+    "image": "icons/mobs/brutal-wolf.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Archwizard",
+    "image": "icons/mobs/chaos-archwizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Golem-115",
+    "image": "icons/mobs/chaos-golem-115.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Possessed Patroller",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Possessed Warrior",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Possessed Wizard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Specter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Chaos Wraith",
+    "image": "icons/mobs/chaos-wraith.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cheeky Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Chernobog",
+    "image": "icons/mobs/chernobog.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Chief Golden Goblin",
+    "image": "icons/mobs/chief-golden-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Chief Gray Sandworm",
+    "image": "icons/mobs/chief-gray-sandworm.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Chief Sandworm",
+    "image": "icons/mobs/chief-sandworm.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Clay",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Combat Golem",
+    "image": "icons/mobs/combat-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Contaminated Test Subject",
+    "image": "icons/mobs/contaminated-test-subject.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Corrupt Lycan Butcher",
+    "image": "icons/mobs/corrupt-lycan-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Corrupt Orc Brawler Chief",
+    "image": "icons/mobs/corrupt-orc-brawler-chief.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Corrupt Spectral Wizard",
+    "image": "icons/mobs/corrupt-spectral-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Corrupted Imp",
+    "image": "icons/mobs/corrupted-imp.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cowardly Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Cruel Orc Butcher",
+    "image": "icons/mobs/cruel-orc-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Executioner",
+    "image": "icons/mobs/cultist-executioner.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Man",
+    "image": "icons/mobs/cultist-man.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Monk",
+    "image": "icons/mobs/cultist-monk.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Shaman",
+    "image": "icons/mobs/cultist-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Wizard",
+    "image": "icons/mobs/cultist-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cultist Woman",
+    "image": "icons/mobs/cultist-woman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Cursed Archer",
+    "image": "icons/mobs/cursed-archer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Daigon",
+    "image": "icons/mobs/daigon.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Dark Specter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Deadly Mandrake",
+    "image": "icons/mobs/deadly-mandrake.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Death Summoner",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Decaying Plague Zombie",
+    "image": "icons/mobs/decaying-plague-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Decaying Slaughtering Zombie",
+    "image": "icons/mobs/decaying-slaughtering-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Decaying Sluggish Zombie",
+    "image": "icons/mobs/decaying-sluggish-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Decaying Test Subject",
+    "image": "icons/mobs/decaying-test-subject.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Decaying Zombie Mutt",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Deckman",
+    "image": "icons/mobs/deckman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Deformed Test Subject",
+    "image": "icons/mobs/deformed-test-subject.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Desperate Zombie",
+    "image": "icons/mobs/desperate-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Destroyed Rock Golem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Destruction Zombie",
+    "image": "icons/mobs/destruction-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Detection Spirit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Drakhoul Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Drakhoul Combat Soldier",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Drakhoul Foot Soldier",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Drakhoul Wizard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Draug",
+    "image": "icons/mobs/draug.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Dren",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Dry Branch Soldier",
+    "image": "icons/mobs/dry-branch-soldier.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Dwarf Brawler",
+    "image": "icons/mobs/dwarf-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Dwarf Commander",
+    "image": "icons/mobs/dwarf-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Dwarf Sniper",
+    "image": "icons/mobs/dwarf-sniper.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Dwarf Wizard",
+    "image": "icons/mobs/dwarf-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Earth Heart Guardian Fighter",
+    "image": "icons/mobs/earth-heart-guardian-fighter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Earth Heart Guardian Spearmen",
+    "image": "icons/mobs/earth-heart-guardian-spearmen.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Eccentric Gourmand",
+    "image": "icons/mobs/eccentric-gourmand.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Elite Arkeum Riot Squad Captain",
+    "image": "icons/mobs/elite-arkeum-riot-squad-captain.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Elite Arkeum Shadowmancer",
+    "image": "icons/mobs/elite-arkeum-shadowmancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Elite Grinding Golem",
+    "image": "icons/mobs/elite-grinding-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Embergourd",
+    "image": "icons/mobs/embergourd.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Arkeum Arbiter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Arkeum Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Arkeum Healer",
+    "image": "icons/mobs/enchanted-arkeum-healer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Arkeum Wizard",
+    "image": "icons/mobs/enchanted-arkeum-wizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Ashen Evil Eye Sentry",
+    "image": "icons/mobs/enchanted-ashen-evil-eye-sentry.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Evil Eye",
+    "image": "icons/mobs/enchanted-evil-eye.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Evil Eye Sentry",
+    "image": "icons/mobs/enchanted-evil-eye-sentry.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Fire Orc Brawler",
+    "image": "icons/mobs/enchanted-fire-orc-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Fire Orc Commander",
+    "image": "icons/mobs/enchanted-fire-orc-commander.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Fire Orc Shaman",
+    "image": "icons/mobs/enchanted-fire-orc-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Imp Lancer",
+    "image": "icons/mobs/enchanted-imp-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Mutant",
+    "image": "icons/mobs/enchanted-mutant.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Sand Basilisk",
+    "image": "icons/mobs/enchanted-sand-basilisk.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Wraith Hound",
+    "image": "icons/mobs/enchanted-wraith-hound.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Wraith Knight",
+    "image": "icons/mobs/enchanted-wraith-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Wraith Tamer",
+    "image": "icons/mobs/enchanted-wraith-tamer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enchanted Wraith Warlock",
+    "image": "icons/mobs/enchanted-wraith-warlock.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Enraged Guardian Phantom",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Etched Golem",
+    "image": "icons/mobs/etched-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil Eye",
+    "image": "icons/mobs/evil-eye.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil Eye Sentry",
+    "image": "icons/mobs/evil-eye-sentry.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil God's Enforcer",
+    "image": "icons/mobs/evil-god-s-enforcer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil God's Monk",
+    "image": "icons/mobs/evil-god-s-monk.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil God's Shaman",
+    "image": "icons/mobs/evil-god-s-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil God's Wizard",
+    "image": "icons/mobs/evil-god-s-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Evil Spirit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Excavating Golem",
+    "image": "icons/mobs/excavating-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Excavation Golem",
+    "image": "icons/mobs/excavation-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Excavator-9",
+    "image": "icons/mobs/excavator-9.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Exodus",
+    "image": "icons/mobs/exodus.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Expert Graverobber",
+    "image": "icons/mobs/expert-graverobber.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Exploding Flame Desert Wizard",
+    "image": "icons/mobs/exploding-flame-desert-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Exploding Shark",
+    "image": "icons/mobs/exploding-shark.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Explosion Golem",
+    "image": "icons/mobs/explosion-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Explosive Bighorn Sheep",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Explosive Golem",
+    "image": "icons/mobs/explosive-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Explosive Transporter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Feathered Terror Bird",
+    "image": "icons/mobs/feathered-terror-bird.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fierce Wolf",
+    "image": "icons/mobs/fierce-wolf.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Heart Guardian Charger",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Heart Guardian Warrior",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Archer",
+    "image": "icons/mobs/fire-orc-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Brawler",
+    "image": "icons/mobs/fire-orc-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Chief Priest",
+    "image": "icons/mobs/fire-orc-chief-priest.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Commander",
+    "image": "icons/mobs/fire-orc-commander.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Shaman",
+    "image": "icons/mobs/fire-orc-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fire Orc Soldier",
+    "image": "icons/mobs/fire-orc-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Flame Area Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Flame Plunderer",
+    "image": "icons/mobs/flame-plunderer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Flame Tornado",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Flame Wraith",
+    "image": "icons/mobs/flame-wraith.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fog Blood Spider",
+    "image": "icons/mobs/fog-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fog Kotori",
+    "image": "icons/mobs/fog-kotori.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fog Mitran",
+    "image": "icons/mobs/fog-mitran.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fog Mitran Chief",
+    "image": "icons/mobs/fog-mitran-chief.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Forgotten Combat Golem",
+    "image": "icons/mobs/forgotten-combat-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Forgotten Dwarf Brawler",
+    "image": "icons/mobs/forgotten-dwarf-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Forgotten Dwarf Commander",
+    "image": "icons/mobs/forgotten-dwarf-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Forgotten Dwarf Sniper",
+    "image": "icons/mobs/forgotten-dwarf-sniper.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Forgotten Dwarf Wizard",
+    "image": "icons/mobs/forgotten-dwarf-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fracture Golem",
+    "image": "icons/mobs/fracture-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Fragment of Obsession",
+    "image": "icons/mobs/fragment-of-obsession.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Ancient Guardian Archer",
+    "image": "icons/mobs/frenzied-ancient-guardian-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Ancient Guardian Archwizard",
+    "image": "icons/mobs/frenzied-ancient-guardian-archwizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Ancient Guardian Lancer",
+    "image": "icons/mobs/frenzied-ancient-guardian-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Ancient Guardian Swordsman",
+    "image": "icons/mobs/frenzied-ancient-guardian-swordsman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Fog Blood Spider",
+    "image": "icons/mobs/frenzied-fog-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Fog Kotori",
+    "image": "icons/mobs/frenzied-fog-kotori.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Fog Mitran",
+    "image": "icons/mobs/frenzied-fog-mitran.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Immortal Guardian Captain",
+    "image": "icons/mobs/frenzied-immortal-guardian-captain.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Immortal Knight",
+    "image": "icons/mobs/frenzied-immortal-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Immortal Warrior",
+    "image": "icons/mobs/frenzied-immortal-warrior.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Orc Brawler",
+    "image": "icons/mobs/frenzied-orc-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Orc Chief Priest",
+    "image": "icons/mobs/frenzied-orc-chief-priest.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Orc Shaman",
+    "image": "icons/mobs/frenzied-orc-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Orc Soldier",
+    "image": "icons/mobs/frenzied-orc-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Recon Unit Archer",
+    "image": "icons/mobs/frenzied-recon-unit-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Recon Unit Commander",
+    "image": "icons/mobs/frenzied-recon-unit-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Recon Unit Foot Soldier",
+    "image": "icons/mobs/frenzied-recon-unit-foot-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Frenzied Thorny Blood Spider",
+    "image": "icons/mobs/frenzied-thorny-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Full Moon Wolf",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Furry Bighorn Sheep",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gaitan",
+    "image": "icons/mobs/gaitan.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gallu Archer",
+    "image": "icons/mobs/gallu-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gallu Knight",
+    "image": "icons/mobs/gallu-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gallu Soldier",
+    "image": "icons/mobs/gallu-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gaudian",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Crystal Scorpion",
+    "image": "icons/mobs/giant-crystal-scorpion.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Eccentric Gourmand",
+    "image": "icons/mobs/giant-eccentric-gourmand.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Gray Lycan Butcher",
+    "image": "icons/mobs/giant-gray-lycan-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Monstrous Wraith",
+    "image": "icons/mobs/giant-monstrous-wraith.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Mutant Mushroom",
+    "image": "icons/mobs/giant-mutant-mushroom.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Giant Orc Porter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gift Thief Goblin",
+    "image": "icons/mobs/gift-thief-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Agitator",
+    "image": "icons/mobs/goblin-agitator.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Butcher",
+    "image": "icons/mobs/goblin-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Fighter",
+    "image": "icons/mobs/goblin-fighter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Shaman",
+    "image": "icons/mobs/goblin-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Stone Thrower",
+    "image": "icons/mobs/goblin-stone-thrower.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Goblin Strongarm",
+    "image": "icons/mobs/goblin-strongarm.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Golden Goblin",
+    "image": "icons/mobs/golden-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Golem Debris",
+    "image": "icons/mobs/golem-debris.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Assassin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Barbarian",
+    "image": "icons/mobs/gramaut-barbarian.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Barrier Shaman",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Butcher",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Cold Snap Shaman",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Flame Shaman",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Mystic Archer",
+    "image": "icons/mobs/gramaut-mystic-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Shaman",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Gramaut Warrior",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Grand Aelon",
+    "image": "icons/mobs/grand-aelon.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Crystal Scorpion",
+    "image": "icons/mobs/gray-crystal-scorpion.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Lycan Fighter",
+    "image": "icons/mobs/gray-lycan-fighter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Lycan Scout",
+    "image": "icons/mobs/gray-lycan-scout.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Lycan Sentry",
+    "image": "icons/mobs/gray-lycan-sentry.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Lycan Swashbuckler",
+    "image": "icons/mobs/gray-lycan-swashbuckler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Gray Wolf",
+    "image": "icons/mobs/gray-wolf.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Grayeye",
+    "image": "icons/mobs/grayeye.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Greedy Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Grimturg",
+    "image": "icons/mobs/grimturg.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Grok",
+    "image": "icons/mobs/grok.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Grumpy Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Guard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Guard Captain",
+    "image": "icons/mobs/guard-captain.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Guardian Golem",
+    "image": "icons/mobs/guardian-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Guardian Spirit of Intelligence",
+    "image": "icons/mobs/guardian-spirit-of-intelligence.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Gugbarg",
+    "image": "icons/mobs/gugbarg.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Hammer Golem",
+    "image": "icons/mobs/hammer-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Hardened Shell Archer",
+    "image": "icons/mobs/hardened-shell-archer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Haylock",
+    "image": "icons/mobs/haylock.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Headcrusher Terror Bird",
+    "image": "icons/mobs/headcrusher-terror-bird.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Healing Area Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Healing Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Heavy Armor Commander",
+    "image": "icons/mobs/heavy-armor-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Hela",
+    "image": "icons/mobs/hela.png",
+    "category": "mobs"
+  },
+  {
+    "name": "High Drakhoul Slaughterer",
+    "image": "icons/mobs/high-drakhoul-slaughterer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High Drakhoul Wizard",
+    "image": "icons/mobs/high-drakhoul-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Arbiter",
+    "image": "icons/mobs/high-ranking-arkeum-arbiter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Black Mage",
+    "image": "icons/mobs/high-ranking-arkeum-black-mage.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Healer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Knight",
+    "image": "icons/mobs/high-ranking-arkeum-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Riot Squad Captain",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Shadowmancer",
+    "image": "icons/mobs/high-ranking-arkeum-shadowmancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Arkeum Soldier",
+    "image": "icons/mobs/high-ranking-arkeum-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "High-Ranking Drakhoul Combatant",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Hooded Arbelest",
+    "image": "icons/mobs/hooded-arbelest.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Hooded Dreadshot",
+    "image": "icons/mobs/hooded-dreadshot.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Immortal Guardian",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Immortal Guardian Captain",
+    "image": "icons/mobs/immortal-guardian-captain.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Immortal Knight",
+    "image": "icons/mobs/immortal-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Immortal Warrior",
+    "image": "icons/mobs/immortal-warrior.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Imp",
+    "image": "icons/mobs/imp.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Imp Lancer",
+    "image": "icons/mobs/imp-lancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infiltration Archer",
+    "image": "icons/mobs/infiltration-archer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infiltration Captain",
+    "image": "icons/mobs/infiltration-captain.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infiltration Commander",
+    "image": "icons/mobs/infiltration-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infiltration Foot Soldier",
+    "image": "icons/mobs/infiltration-foot-soldier.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infiltration Wizard",
+    "image": "icons/mobs/infiltration-wizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Infuriated Reptilian Executioner",
+    "image": "icons/mobs/infuriated-reptilian-executioner.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Infuriated Reptilian Gladiator",
+    "image": "icons/mobs/infuriated-reptilian-gladiator.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Iron Giant Murdock",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Iska",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Jack-o'-Lantern",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Javelin Golem",
+    "image": "icons/mobs/javelin-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Kaiser Crimson",
+    "image": "icons/mobs/kaiser-crimson.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Kaligras",
+    "image": "icons/mobs/kaligras.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Karchars",
+    "image": "icons/mobs/karchars.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Kertaki",
+    "image": "icons/mobs/kertaki.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "King Khanzaizin",
+    "image": "icons/mobs/king-khanzaizin.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Knight of the Arbor",
+    "image": "icons/mobs/knight-of-the-arbor.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Knight of the Rose",
+    "image": "icons/mobs/knight-of-the-rose.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Kotori",
+    "image": "icons/mobs/kotori.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Lazarus Ghost",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Lethal Venom Cobra",
+    "image": "icons/mobs/lethal-venom-cobra.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Leviathan",
+    "image": "icons/mobs/leviathan.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Lightning Jump Attacker",
+    "image": "icons/mobs/lightning-jump-attacker.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Limuny Bercant",
+    "image": "icons/mobs/limuny-bercant.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Lionhead",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Long-Armed Ogre Fighter",
+    "image": "icons/mobs/long-armed-ogre-fighter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Lord Commander",
+    "image": "icons/mobs/lord-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Lucien",
+    "image": "icons/mobs/lucien.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Lycan Kowazan",
+    "image": "icons/mobs/lycan-kowazan.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Magic Commander",
+    "image": "icons/mobs/magic-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Malakar",
+    "image": "icons/mobs/malakar.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Mandrake",
+    "image": "icons/mobs/mandrake.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Manticus Brothers",
+    "image": "icons/mobs/manticus-brothers.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Marta",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Master Torture Technician",
+    "image": "icons/mobs/master-torture-technician.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Maun",
+    "image": "icons/mobs/maun.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Mean Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Medikesle",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Mining Stone Golem",
+    "image": "icons/mobs/mining-stone-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Molgras",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Monstrous Wraith",
+    "image": "icons/mobs/monstrous-wraith.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Morokai",
+    "image": "icons/mobs/morokai.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Murderous Fiend",
+    "image": "icons/mobs/murderous-fiend.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Murdock",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Chef",
+    "image": "icons/mobs/mutant-chef.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Exterminator",
+    "image": "icons/mobs/mutant-exterminator.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Gardener",
+    "image": "icons/mobs/mutant-gardener.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Goat",
+    "image": "icons/mobs/mutant-goat.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Guard",
+    "image": "icons/mobs/mutant-guard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Guard Dog",
+    "image": "icons/mobs/mutant-guard-dog.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Killer",
+    "image": "icons/mobs/mutant-killer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Kotori",
+    "image": "icons/mobs/mutant-kotori.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Mitran",
+    "image": "icons/mobs/mutant-mitran.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Mushroom",
+    "image": "icons/mobs/mutant-mushroom.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Peacock",
+    "image": "icons/mobs/mutant-peacock.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Sharpshooter",
+    "image": "icons/mobs/mutant-sharpshooter.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Slaughterer",
+    "image": "icons/mobs/mutant-slaughterer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Spearman",
+    "image": "icons/mobs/mutant-spearman.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Test Subject",
+    "image": "icons/mobs/mutant-test-subject.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Mutant Venomancer",
+    "image": "icons/mobs/mutant-venomancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Namarch",
+    "image": "icons/mobs/namarch.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Namera",
+    "image": "icons/mobs/namera.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Necrotic Doll",
+    "image": "icons/mobs/necrotic-doll.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Necrotic Horror",
+    "image": "icons/mobs/necrotic-horror.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Nerzatum",
+    "image": "icons/mobs/nerzatum.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Nerzatum Wraith",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Night Wolf",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Nightmare Conductor",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Norn Bercant",
+    "image": "icons/mobs/norn-bercant.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Old Wizard's Eye",
+    "image": "icons/mobs/old-wizard-s-eye.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "One-Eyed Ogre Clubber",
+    "image": "icons/mobs/one-eyed-ogre-clubber.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Archer",
+    "image": "icons/mobs/orc-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Brawler",
+    "image": "icons/mobs/orc-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Butcher",
+    "image": "icons/mobs/orc-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Chief Priest",
+    "image": "icons/mobs/orc-chief-priest.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Commander",
+    "image": "icons/mobs/orc-commander.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Elder Shaman",
+    "image": "icons/mobs/orc-elder-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Executioner",
+    "image": "icons/mobs/orc-executioner.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Fighter",
+    "image": "icons/mobs/orc-fighter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Hunter",
+    "image": "icons/mobs/orc-hunter.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Shadow Elder",
+    "image": "icons/mobs/orc-shadow-elder.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Shadowmancer",
+    "image": "icons/mobs/orc-shadowmancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Shaman",
+    "image": "icons/mobs/orc-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Soldier",
+    "image": "icons/mobs/orc-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Orc Spearmaster",
+    "image": "icons/mobs/orc-spearmaster.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pakilo Naru",
+    "image": "icons/mobs/pakilo-naru.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Phantom Killer",
+    "image": "icons/mobs/phantom-killer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Plague Zombie",
+    "image": "icons/mobs/plague-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Plateau Goat",
+    "image": "icons/mobs/plateau-goat.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Plateau Peacock",
+    "image": "icons/mobs/plateau-peacock.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Destroyer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Gallu Archer",
+    "image": "icons/mobs/possessed-gallu-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Gallu Knight",
+    "image": "icons/mobs/possessed-gallu-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Gallu Soldier",
+    "image": "icons/mobs/possessed-gallu-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Patroller",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Warrior",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Possessed Wizard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Protective Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin",
+    "image": "icons/mobs/pumpkin.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Archer",
+    "image": "icons/mobs/pumpkin-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Head Harvester",
+    "image": "icons/mobs/pumpkin-head-harvester.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Lancer",
+    "image": "icons/mobs/pumpkin-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Mandrake",
+    "image": "icons/mobs/pumpkin-mandrake.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Shield Soldier",
+    "image": "icons/mobs/pumpkin-shield-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Pumpkin Watch Captain",
+    "image": "icons/mobs/pumpkin-watch-captain.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Quillix",
+    "image": "icons/mobs/quillix.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Rafadriel",
+    "image": "icons/mobs/rafadriel.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Ravenous Zombie",
+    "image": "icons/mobs/ravenous-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Recon Unit Archer",
+    "image": "icons/mobs/recon-unit-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Recon Unit Commander",
+    "image": "icons/mobs/recon-unit-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Recon Unit Foot Soldier",
+    "image": "icons/mobs/recon-unit-foot-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Red Goblin Bomber",
+    "image": "icons/mobs/red-goblin-bomber.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Red Goblin Shaman",
+    "image": "icons/mobs/red-goblin-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Relic Robber Goblin",
+    "image": "icons/mobs/relic-robber-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Arkeum Knight",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Arkeum Soldier",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Bomber",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Condemned",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Mad Dog",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Murderer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Prisoner",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Shapeshift Bomber",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Resurrected Zaroth",
+    "image": "icons/mobs/resurrected-zaroth.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Revenger Skeleton Commander",
+    "image": "icons/mobs/revenger-skeleton-commander.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Revived Watchdog",
+    "image": "icons/mobs/revived-watchdog.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Roaring Avolos Umbramancer",
+    "image": "icons/mobs/roaring-avolos-umbramancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Rock Golem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Rock Golem Assassin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Rock Golem Chief",
+    "image": "icons/mobs/rock-golem-chief.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Rock Golem Wizard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Rose Kotori",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Rough Ogre Shieldman",
+    "image": "icons/mobs/rough-ogre-shieldman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Rudgurt",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Rushing Explosive Transporter",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Sacrificed Cultist Spirit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Sand Armored Rat",
+    "image": "icons/mobs/sand-armored-rat.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Sand Basilisk",
+    "image": "icons/mobs/sand-basilisk.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Sand Scorpion",
+    "image": "icons/mobs/sand-scorpion.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Sand Turtle",
+    "image": "icons/mobs/sand-turtle.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Scared Spirit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Scorpos",
+    "image": "icons/mobs/scorpos.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Shakarux",
+    "image": "icons/mobs/shakarux.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Shrewd Wolf",
+    "image": "icons/mobs/shrewd-wolf.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Shrouded Knight",
+    "image": "icons/mobs/shrouded-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Shrouded Knight-Master",
+    "image": "icons/mobs/shrouded-knight-master.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Shrouded Knight-Master Golem",
+    "image": "icons/mobs/shrouded-knight-master-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Shupenir",
+    "image": "icons/mobs/shupenir.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Silent Punisher",
+    "image": "icons/mobs/silent-punisher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Skeleton Archer",
+    "image": "icons/mobs/skeleton-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Skeleton Knight",
+    "image": "icons/mobs/skeleton-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Skeleton Lancer",
+    "image": "icons/mobs/skeleton-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Skeleton Soldier",
+    "image": "icons/mobs/skeleton-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Sluggish Zombie",
+    "image": "icons/mobs/sluggish-zombie.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Spectral Wizard",
+    "image": "icons/mobs/spectral-wizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineback Lizard",
+    "image": "icons/mobs/spineback-lizard.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Archer",
+    "image": "icons/mobs/spineflower-archer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Dreadshot",
+    "image": "icons/mobs/spineflower-dreadshot.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Elite Guard",
+    "image": "icons/mobs/spineflower-elite-guard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Guards",
+    "image": "icons/mobs/spineflower-guards.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Veiled Blade",
+    "image": "icons/mobs/spineflower-veiled-blade.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Spineflower Veiled Stalker",
+    "image": "icons/mobs/spineflower-veiled-stalker.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Acid Ant",
+    "image": "icons/mobs/starlit-acid-ant.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Ant Larva",
+    "image": "icons/mobs/starlit-ant-larva.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Aeromancer",
+    "image": "icons/mobs/starlit-avolos-aeromancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Geomancer",
+    "image": "icons/mobs/starlit-avolos-geomancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Guardian",
+    "image": "icons/mobs/starlit-avolos-guardian.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Hydromancer",
+    "image": "icons/mobs/starlit-avolos-hydromancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Pyromancer",
+    "image": "icons/mobs/starlit-avolos-pyromancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Avolos Tracker",
+    "image": "icons/mobs/starlit-avolos-tracker.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Charging Ant",
+    "image": "icons/mobs/starlit-charging-ant.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Dark Assassin",
+    "image": "icons/mobs/starlit-dark-assassin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Dark Enforcer",
+    "image": "icons/mobs/starlit-dark-enforcer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Dark Shaman",
+    "image": "icons/mobs/starlit-dark-shaman.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Dark Wizard",
+    "image": "icons/mobs/starlit-dark-wizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Demonhoof Berserker",
+    "image": "icons/mobs/starlit-demonhoof-berserker.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Demonhoof Butcher",
+    "image": "icons/mobs/starlit-demonhoof-butcher.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Demonhoof Tracker",
+    "image": "icons/mobs/starlit-demonhoof-tracker.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Lethal Venom Abomination",
+    "image": "icons/mobs/starlit-lethal-venom-abomination.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Living Armor Archer",
+    "image": "icons/mobs/starlit-living-armor-archer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Living Armor Foot Soldier",
+    "image": "icons/mobs/starlit-living-armor-foot-soldier.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Living Armor Lancer",
+    "image": "icons/mobs/starlit-living-armor-lancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Reptilian Fighter",
+    "image": "icons/mobs/starlit-reptilian-fighter.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Reptilian Lancer",
+    "image": "icons/mobs/starlit-reptilian-lancer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Reptilian Sentry",
+    "image": "icons/mobs/starlit-reptilian-sentry.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Reptilian Soldier",
+    "image": "icons/mobs/starlit-reptilian-soldier.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Shade Assassin",
+    "image": "icons/mobs/starlit-shade-assassin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Shade Enforcer",
+    "image": "icons/mobs/starlit-shade-enforcer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Shade Monk",
+    "image": "icons/mobs/starlit-shade-monk.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Shade Shaman",
+    "image": "icons/mobs/starlit-shade-shaman.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Shade Wizard",
+    "image": "icons/mobs/starlit-shade-wizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Soldier Ant",
+    "image": "icons/mobs/starlit-soldier-ant.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Steelclaw Abomination",
+    "image": "icons/mobs/starlit-steelclaw-abomination.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starlit Worker Ant",
+    "image": "icons/mobs/starlit-worker-ant.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Starving Ant",
+    "image": "icons/mobs/starving-ant.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Starving Blood Ant",
+    "image": "icons/mobs/starving-blood-ant.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Stone Golem Debris",
+    "image": "icons/mobs/stone-golem-debris.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Stubborn Red Goblin",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Sturdy Root Gardener",
+    "image": "icons/mobs/sturdy-root-gardener.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Ancient Guardian Archer",
+    "image": "icons/mobs/summoned-ancient-guardian-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Ancient Guardian Archwizard",
+    "image": "icons/mobs/summoned-ancient-guardian-archwizard.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Ancient Guardian Lancer",
+    "image": "icons/mobs/summoned-ancient-guardian-lancer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Ancient Guardian Swordsman",
+    "image": "icons/mobs/summoned-ancient-guardian-swordsman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Fog Blood Spider",
+    "image": "icons/mobs/summoned-fog-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Fog Kotori",
+    "image": "icons/mobs/summoned-fog-kotori.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Fog Mitran",
+    "image": "icons/mobs/summoned-fog-mitran.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Fog Mitran Chief",
+    "image": "icons/mobs/summoned-fog-mitran-chief.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Immortal Guardian Captain",
+    "image": "icons/mobs/summoned-immortal-guardian-captain.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Immortal Knight",
+    "image": "icons/mobs/summoned-immortal-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Immortal Warrior",
+    "image": "icons/mobs/summoned-immortal-warrior.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Orc Brawler",
+    "image": "icons/mobs/summoned-orc-brawler.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Orc Chief Priest",
+    "image": "icons/mobs/summoned-orc-chief-priest.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Orc Shaman",
+    "image": "icons/mobs/summoned-orc-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Orc Soldier",
+    "image": "icons/mobs/summoned-orc-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Recon Unit Archer",
+    "image": "icons/mobs/summoned-recon-unit-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Recon Unit Commander",
+    "image": "icons/mobs/summoned-recon-unit-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Recon Unit Foot Soldier",
+    "image": "icons/mobs/summoned-recon-unit-foot-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoned Thorny Blood Spider",
+    "image": "icons/mobs/summoned-thorny-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoning Ritual Berserker",
+    "image": "icons/mobs/summoning-ritual-berserker.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoning Ritual Butcher",
+    "image": "icons/mobs/summoning-ritual-butcher.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoning Ritual Chief Priest",
+    "image": "icons/mobs/summoning-ritual-chief-priest.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoning Ritual Shaman",
+    "image": "icons/mobs/summoning-ritual-shaman.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Summoning Ritual Tracker",
+    "image": "icons/mobs/summoning-ritual-tracker.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Surgical Large Nail",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Swamp Area Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Swamp Totem",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Talus",
+    "image": "icons/mobs/talus.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tentacle Sandflower",
+    "image": "icons/mobs/tentacle-sandflower.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Terrified Spirit",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Test Subject's Soul",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Thick-Billed Terror Bird",
+    "image": "icons/mobs/thick-billed-terror-bird.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Thorny Blood Spider",
+    "image": "icons/mobs/thorny-blood-spider.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Thorny Vine Assassin",
+    "image": "icons/mobs/thorny-vine-assassin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Thorny Vine Gatekeeper",
+    "image": "icons/mobs/thorny-vine-gatekeeper.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Thorny Vine Witch",
+    "image": "icons/mobs/thorny-vine-witch.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tidebully Goblin",
+    "image": "icons/mobs/tidebully-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Torture Chamber Warden",
+    "image": "icons/mobs/torture-chamber-warden.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tough Vine Hunter",
+    "image": "icons/mobs/tough-vine-hunter.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Tower Explosive Scorpion",
+    "image": "icons/mobs/tower-explosive-scorpion.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tower Scorpion",
+    "image": "icons/mobs/tower-scorpion.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tower Skeleton Archer",
+    "image": "icons/mobs/tower-skeleton-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tower Skeleton Soldier",
+    "image": "icons/mobs/tower-skeleton-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Tradepack Goblin",
+    "image": "icons/mobs/tradepack-goblin.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Training Drakhoul Archer",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Training Drakhoul Combatant",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Training Drakhoul Infantry",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Training Drakhoul Wizard",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Transport Golem",
+    "image": "icons/mobs/transport-golem.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Treant Warrior Chief",
+    "image": "icons/mobs/treant-warrior-chief.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Treasure Goblin",
+    "image": "icons/mobs/treasure-goblin.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Turka",
+    "image": "icons/mobs/turka.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Two-Handed Ogre Clubber",
+    "image": "icons/mobs/two-handed-ogre-clubber.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Umbrakan",
+    "image": "icons/mobs/umbrakan.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Unleashed Soul",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Veiled Blade",
+    "image": "icons/mobs/veiled-blade.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Veiled Stalker",
+    "image": "icons/mobs/veiled-stalker.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Velentra",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Verence",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Watch Captain",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Watchman",
+    "image": null,
+    "category": "mobs"
+  },
+  {
+    "name": "Water Golem Archer",
+    "image": "icons/mobs/water-golem-archer.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Golem Commander",
+    "image": "icons/mobs/water-golem-commander.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Golem Foot Soldier",
+    "image": "icons/mobs/water-golem-foot-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Golem Magic Soldier",
+    "image": "icons/mobs/water-golem-magic-soldier.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Golem Scout",
+    "image": "icons/mobs/water-golem-scout.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Heart Guardian Knight",
+    "image": "icons/mobs/water-heart-guardian-knight.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Water Heart Guardian Shielder",
+    "image": "icons/mobs/water-heart-guardian-shielder.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Wedge Golem",
+    "image": "icons/mobs/wedge-golem.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "White Beard Ogre Shaman",
+    "image": "icons/mobs/white-beard-ogre-shaman.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Brute",
+    "image": "icons/mobs/wraith-brute.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Controller",
+    "image": "icons/mobs/wraith-controller.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Harbinger",
+    "image": "icons/mobs/wraith-harbinger.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Hound",
+    "image": "icons/mobs/wraith-hound.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Knight",
+    "image": "icons/mobs/wraith-knight.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Spellblade",
+    "image": "icons/mobs/wraith-spellblade.webp",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Tamer",
+    "image": "icons/mobs/wraith-tamer.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Wraith Warlock",
+    "image": "icons/mobs/wraith-warlock.png",
+    "category": "mobs"
+  },
+  {
+    "name": "Zombie Mutt",
+    "image": "icons/mobs/zombie-mutt.webp",
+    "category": "mobs"
+  }
+]

@@ -326,44 +326,6 @@ function registerIpcHandlers() {
     }
   );
 
-  ipcMain.handle(
-    "export:pdf",
-    async (
-      _event,
-      payload?: {
-        suggestedFileName?: string;
-      }
-    ): Promise<ExportResult> => {
-      if (!mainWindow) return { canceled: true, error: "No active window" };
-
-      try {
-        const result = await dialog.showSaveDialog(mainWindow, {
-          title: "Export view as PDF",
-          defaultPath: buildDefaultExportPath(payload?.suggestedFileName, "pdf"),
-          filters: [{ name: "PDF", extensions: ["pdf"] }],
-        });
-
-        if (result.canceled || !result.filePath) {
-          return { canceled: true };
-        }
-
-        const pdf = await mainWindow.webContents.printToPDF({
-          printBackground: true,
-          landscape: true,
-          pageSize: "A4",
-          preferCSSPageSize: true,
-        });
-
-        await fs.writeFile(result.filePath, pdf);
-        return { canceled: false, filePath: result.filePath };
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        dialog.showErrorBox("Export failed", message);
-        return { canceled: true, error: message };
-      }
-    }
-  );
-
   // Frameless window controls, used by TopBar via preload.ts
   ipcMain.on("window:minimize", () => {
     if (mainWindow) mainWindow.minimize();
