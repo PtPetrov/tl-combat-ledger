@@ -110,6 +110,53 @@
     return "landing";
   };
 
+  const initInspectionGuards = () => {
+    // Best-effort only: browsers do not allow reliably blocking devtools.
+    document.addEventListener(
+      "contextmenu",
+      (event) => {
+        event.preventDefault();
+      },
+      { capture: true }
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        const key = String(event.key || "").toLowerCase();
+        const ctrlOrCmd = event.ctrlKey || event.metaKey;
+
+        // F12
+        if (key === "f12") {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        // Ctrl/Cmd+Shift+I/J/C/K (Chrome/Edge/Firefox devtools)
+        if (ctrlOrCmd && event.shiftKey && ["i", "j", "c", "k"].includes(key)) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        // Cmd+Option+I/J/C (macOS)
+        if (event.metaKey && event.altKey && ["i", "j", "c"].includes(key)) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        // View source (Ctrl/Cmd+U)
+        if (ctrlOrCmd && key === "u") {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      },
+      { capture: true }
+    );
+  };
+
   const initLandingAnalytics = () => {
     const page = getCurrentLandingPage();
 
@@ -163,6 +210,7 @@
     }
   }
 
+  initInspectionGuards();
   initLandingAnalytics();
   fetchLatest();
 })();

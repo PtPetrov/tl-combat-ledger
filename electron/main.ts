@@ -1,5 +1,6 @@
 // electron/main/main.ts
-import { app, BrowserWindow, ipcMain, dialog, screen } from "electron";
+import { app, BrowserWindow, ipcMain, dialog, screen, Menu } from "electron";
+import type { Display } from "electron";
 import * as path from "path";
 import * as url from "url";
 import * as fs from "node:fs/promises";
@@ -19,6 +20,16 @@ let ipcRegistered = false;
 
 const isDev = !app.isPackaged;
 const workerScript = path.join(__dirname, "logWorker.js");
+const lockInspector = !isDev;
+
+function getRecommendedZoomFactor(display: Display): number {
+  const physicalWidth = Math.round(display.workAreaSize.width * display.scaleFactor);
+  const physicalHeight = Math.round(display.workAreaSize.height * display.scaleFactor);
+
+  // Target: on 1920x1080 (or smaller) displays, scale UI down so more fits onscreen.
+  if (physicalWidth <= 1920 && physicalHeight <= 1080) return 0.85;
+  return 1;
+}
 
 type UpdateStatusPayload = {
   state: "idle" | "checking" | "available" | "downloading" | "ready" | "error";
@@ -38,22 +49,25 @@ if (!gotInstanceLock) {
  * Rendering is handled by the React app in the renderer bundle.
  */
 function createMainWindow() {
-  const ASPECT_RATIO = 16 / 9;
   const AREA_SCALE = Math.sqrt(0.5); // ~50% of screen area
 
   const display = screen.getDisplayNearestPoint(screen.getCursorScreenPoint());
   const { width: workWidth, height: workHeight } = display.workArea;
+  const zoomFactor = getRecommendedZoomFactor(display);
 
   const maxWidth = Math.round(workWidth * AREA_SCALE);
   const maxHeight = Math.round(workHeight * AREA_SCALE);
 
-  let defaultWidth = maxWidth;
-  let defaultHeight = Math.round(defaultWidth / ASPECT_RATIO);
+  const defaultWidth = maxWidth;
+  const defaultHeight = maxHeight;
 
-  if (defaultHeight > maxHeight) {
-    defaultHeight = maxHeight;
-    defaultWidth = Math.round(defaultHeight * ASPECT_RATIO);
-  }
+  const x = Math.round(display.workArea.x + (workWidth - defaultWidth) / 2);
+  const y = Math.round(display.workArea.y + (workHeight - defaultHeight) / 2);
+
+  const requestedMinWidth = 960;
+  const requestedMinHeight = 540;
+  let minWidth = Math.min(requestedMinWidth, workWidth);
+  const minHeight = Math.min(requestedMinHeight, workHeight);
 
   // Resolve icon for window/taskbar (dev uses local resources, prod uses packaged resources).
   const resourcesPath = isDev
@@ -64,9 +78,10 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: defaultWidth,
     height: defaultHeight,
-    minWidth: defaultWidth,
-    minHeight: defaultHeight,
-    center: true,
+    x,
+    y,
+    minWidth,
+    minHeight,
     show: false,
     useContentSize: false,
     resizable: true,
@@ -83,12 +98,56 @@ function createMainWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       sandbox: true, // small extra hardening
-      devTools: isDev,
+      devTools: !lockInspector,
+      zoomFactor,
     },
   });
 
-  // Lock window resizing to a 16:9 aspect ratio.
-  mainWindow.setAspectRatio(ASPECT_RATIO);
+  // Hide application menu / menu bar to remove any devtools entry points.
+  mainWindow.setMenuBarVisibility(false);
+  mainWindow.setAutoHideMenuBar(true);
+
+  if (lockInspector) {
+    // Disable right-click context menu to prevent "Inspect Element".
+    mainWindow.webContents.on("context-menu", (event) => {
+      event.preventDefault();
+    });
+
+    // Block common devtools / inspect shortcuts.
+    mainWindow.webContents.on("before-input-event", (event, input) => {
+      if (input.type !== "keyDown") return;
+      const key = (input.key || "").toLowerCase();
+
+      if (key === "f12") {
+        event.preventDefault();
+        return;
+      }
+
+      const ctrlOrCmd = process.platform === "darwin" ? input.meta : input.control;
+
+      // Ctrl/Cmd+Shift+I/J/C/K (Chrome/Edge/Firefox devtools)
+      if (ctrlOrCmd && input.shift && ["i", "j", "c", "k"].includes(key)) {
+        event.preventDefault();
+        return;
+      }
+
+      // Cmd+Option+I/J/C (macOS)
+      if (input.meta && input.alt && ["i", "j", "c"].includes(key)) {
+        event.preventDefault();
+        return;
+      }
+
+      // View source (Ctrl/Cmd+U) and other quick entry points.
+      if (ctrlOrCmd && key === "u") {
+        event.preventDefault();
+      }
+    });
+
+    // If anything manages to open devtools, immediately close it.
+    mainWindow.webContents.on("devtools-opened", () => {
+      mainWindow?.webContents.closeDevTools();
+    });
+  }
 
   if (isDev) {
     mainWindow.loadURL("http://localhost:5173");
@@ -104,9 +163,76 @@ function createMainWindow() {
 
   mainWindow.once("ready-to-show", () => {
     if (!mainWindow) return;
+    ensureWindowWithinWorkArea();
+    applyZoomForCurrentDisplay();
     mainWindow.show();
     mainWindow.focus();
   });
+
+  const ensureWindowWithinWorkArea = () => {
+    if (!mainWindow) return;
+    if (mainWindow.isMaximized() || mainWindow.isFullScreen()) return;
+    const currentDisplay = screen.getDisplayMatching(mainWindow.getBounds());
+    const workArea = currentDisplay.workArea;
+
+    const bounds = mainWindow.getBounds();
+    let width = bounds.width;
+    let height = bounds.height;
+
+    if (width > workArea.width || height > workArea.height) {
+      const scale = Math.min(workArea.width / width, workArea.height / height);
+      width = Math.floor(width * scale);
+      height = Math.floor(height * scale);
+    }
+
+    let nextX = bounds.x;
+    let nextY = bounds.y;
+
+    const maxX = workArea.x + workArea.width - width;
+    const maxY = workArea.y + workArea.height - height;
+
+    nextX = Math.min(Math.max(nextX, workArea.x), maxX);
+    nextY = Math.min(Math.max(nextY, workArea.y), maxY);
+
+    if (
+      nextX !== bounds.x ||
+      nextY !== bounds.y ||
+      width !== bounds.width ||
+      height !== bounds.height
+    ) {
+      mainWindow.setBounds({ x: nextX, y: nextY, width, height });
+    }
+  };
+
+  const applyZoomForCurrentDisplay = () => {
+    if (!mainWindow) return;
+    const currentDisplay = screen.getDisplayMatching(mainWindow.getBounds());
+    const nextZoom = getRecommendedZoomFactor(currentDisplay);
+    const currentZoom = mainWindow.webContents.getZoomFactor();
+    if (Math.abs(currentZoom - nextZoom) < 0.001) return;
+    mainWindow.webContents.setZoomFactor(nextZoom);
+  };
+
+  mainWindow.on("unmaximize", () => {
+    ensureWindowWithinWorkArea();
+  });
+  mainWindow.on("leave-full-screen", () => {
+    ensureWindowWithinWorkArea();
+  });
+
+  let zoomUpdateTimer: NodeJS.Timeout | null = null;
+  const scheduleApplyZoom = () => {
+    if (zoomUpdateTimer) clearTimeout(zoomUpdateTimer);
+    zoomUpdateTimer = setTimeout(() => {
+      zoomUpdateTimer = null;
+      ensureWindowWithinWorkArea();
+      applyZoomForCurrentDisplay();
+    }, 150);
+  };
+
+  // Keep scaling correct if the window is moved between monitors.
+  mainWindow.on("move", scheduleApplyZoom);
+  mainWindow.on("resize", scheduleApplyZoom);
 
   mainWindow.on("closed", () => {
     mainWindow = null;
@@ -394,6 +520,9 @@ if (gotInstanceLock) {
   });
 
   app.whenReady().then(() => {
+    if (lockInspector) {
+      Menu.setApplicationMenu(null);
+    }
     registerIpcHandlers();
     createMainWindow();
     initAutoUpdater();

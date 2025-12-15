@@ -14,7 +14,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <Box
       sx={{
-        width: "100vw",
+        width: "100%",
         height: "100%",
         minHeight: 0,
         display: "flex",
