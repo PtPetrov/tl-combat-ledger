@@ -3,6 +3,8 @@ import { Box, Typography } from "@mui/material";
 import { TelemetryControl } from "./TelemetryControl";
 
 const FooterBar: React.FC = () => {
+  const footerText = "Made for the Throne & Liberty community by nOtDeviL";
+
   return (
     <Box
       sx={{
@@ -16,20 +18,22 @@ const FooterBar: React.FC = () => {
         flexShrink: 0,
       }}
     >
-      <Box sx={{ width: 34 }} />
-      <Typography
-        variant="caption"
-        sx={{
-          fontWeight: 500,
-          letterSpacing: "0.16em",
-          color: "#9ca3af",
-          fontSize: "0.85rem",
-          textAlign: "center",
-          flex: 1,
-        }}
-      >
-        Made by nOtDeviL
-      </Typography>
+      <Box sx={{ display: "flex", alignItems: "center", minWidth: 0, flex: 1 }}>
+        <Typography
+          variant="caption"
+          noWrap
+          title={footerText}
+          sx={{
+            fontWeight: 500,
+            letterSpacing: "0.08em",
+            color: "#9ca3af",
+            fontSize: "0.8rem",
+            minWidth: 0,
+          }}
+        >
+          {footerText}
+        </Typography>
+      </Box>
       <TelemetryControl />
     </Box>
   );

@@ -12,6 +12,7 @@ import {
 } from "./logs";
 import type { ParsedLogSummary } from "./logs";
 import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
+import { trackUsageEvent } from "./analytics";
 
 let mainWindow: BrowserWindow | null = null;
 let ipcRegistered = false;
@@ -338,6 +339,22 @@ function registerIpcHandlers() {
       update: { crashReportsEnabled?: boolean; usageStatsEnabled?: boolean }
     ) => {
       return setTelemetrySettings(update);
+    }
+  );
+
+  ipcMain.handle(
+    "analytics:trackUsage",
+    async (
+      _event,
+      payload: {
+        eventName: string;
+        props?: Record<string, string | number | boolean>;
+      }
+    ) => {
+      if (!payload?.eventName || typeof payload.eventName !== "string") return;
+      const settings = getTelemetrySettings();
+      if (!settings.usageStatsEnabled) return;
+      await trackUsageEvent(payload.eventName, payload.props);
     }
   );
 

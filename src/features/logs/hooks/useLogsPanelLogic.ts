@@ -186,6 +186,12 @@ declare global {
           usageStatsEnabled: boolean;
         }>;
       };
+      analytics?: {
+        trackUsage: (
+          eventName: string,
+          props?: Record<string, string | number | boolean>
+        ) => Promise<void>;
+      };
     };
   }
 }

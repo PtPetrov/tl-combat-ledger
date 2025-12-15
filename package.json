@@ -1,6 +1,6 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Throne and Liberty Combat Ledger",
   "main": "dist/main.js",
   "repository": {
@@ -19,6 +19,7 @@
     "package:win": "npm run build && electron-builder --win --x64"
   },
   "dependencies": {
+    "@aptabase/electron": "^0.3.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.0",

@@ -117,8 +117,7 @@ const notify = (settings: TelemetrySettings) => {
 };
 
 const initSentryIfNeeded = async () => {
-  const shouldInit =
-    currentSettings.crashReportsEnabled || currentSettings.usageStatsEnabled;
+  const shouldInit = currentSettings.crashReportsEnabled;
   if (!shouldInit || sentryInitialized) return;
 
   const appVersion = await window.tlcla?.app?.getVersion?.().catch(() => null);
@@ -205,16 +204,7 @@ export const updateTelemetrySettings = async (
 
 export const trackUsage = (eventName: string) => {
   if (!currentSettings.usageStatsEnabled) return;
-  if (!sentryInitialized) return;
-
-  Sentry.captureEvent({
-    message: `usage:${eventName}`,
-    level: "info",
-    tags: {
-      telemetry: "usage",
-      usage_event: eventName,
-    },
-  });
+  void window.tlcla?.analytics?.trackUsage?.(eventName);
 };
 
 export const flushTelemetry = async (timeoutMs = 2000): Promise<boolean> => {

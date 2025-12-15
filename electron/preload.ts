@@ -73,6 +73,8 @@ type TelemetrySettings = {
   usageStatsEnabled: boolean;
 };
 
+type AnalyticsProps = Record<string, string | number | boolean>;
+
 const logsApi = {
   getDefaultDirectories(): Promise<string[]> {
     return ipcRenderer.invoke("logs:getDefaultDirectories");
@@ -139,6 +141,12 @@ const telemetryApi = {
   },
 };
 
+const analyticsApi = {
+  trackUsage(eventName: string, props?: AnalyticsProps): Promise<void> {
+    return ipcRenderer.invoke("analytics:trackUsage", { eventName, props });
+  },
+};
+
 contextBridge.exposeInMainWorld("tlcla", {
   logs: logsApi,
   window: windowApi,
@@ -146,6 +154,7 @@ contextBridge.exposeInMainWorld("tlcla", {
   updates: updatesApi,
   export: exportApi,
   telemetry: telemetryApi,
+  analytics: analyticsApi,
 });
 
 export {};
