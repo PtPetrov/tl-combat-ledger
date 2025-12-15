@@ -11,6 +11,7 @@ import {
   listLogFilesInDirectory,
 } from "./logs";
 import type { ParsedLogSummary } from "./logs";
+import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
 
 let mainWindow: BrowserWindow | null = null;
 let ipcRegistered = false;
@@ -323,6 +324,20 @@ function registerIpcHandlers() {
         dialog.showErrorBox("Export failed", message);
         return { canceled: true, error: message };
       }
+    }
+  );
+
+  ipcMain.handle("telemetry:getSettings", () => {
+    return getTelemetrySettings();
+  });
+
+  ipcMain.handle(
+    "telemetry:setSettings",
+    (
+      _event,
+      update: { crashReportsEnabled?: boolean; usageStatsEnabled?: boolean }
+    ) => {
+      return setTelemetrySettings(update);
     }
   );
 

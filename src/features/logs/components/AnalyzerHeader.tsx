@@ -13,6 +13,7 @@ import IosShareIcon from "@mui/icons-material/IosShare";
 // Inline the logo to avoid any file-path issues in packaged builds.
 import logoImage from "../../../../resources/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
+import { trackUsage } from "../../../telemetry/telemetry";
 
 export interface AnalyzerHeaderProps {
   onToggleCompare?: () => void;
@@ -48,6 +49,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
       setIsExporting(true);
 
       try {
+        trackUsage("export.png");
         await exportApi.savePng(exportFileBaseName);
       } catch (error) {
         console.warn("Export failed", error);

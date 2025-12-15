@@ -6,6 +6,7 @@ import {
   UseLogsPanelLogicResult,
 } from "../hooks/useLogsPanelLogic";
 import { LogsAnalyzerView, LogsAnalyzerViewProps } from "./LogsAnalyzerView";
+import { trackUsage } from "../../../telemetry/telemetry";
 
 type AnalyzerViewBaseProps = Omit<
   LogsAnalyzerViewProps,
@@ -92,7 +93,11 @@ const LogsPanel: React.FC = () => {
   const primaryProps = buildAnalyzerViewProps(primaryLogic);
 
   const handleToggleCompare = () => {
-    setIsCompareMode((prev) => !prev);
+    setIsCompareMode((prev) => {
+      const next = !prev;
+      trackUsage(next ? "compare.enabled" : "compare.disabled");
+      return next;
+    });
   };
 
   const primaryView = (

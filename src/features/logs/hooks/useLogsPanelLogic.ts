@@ -10,6 +10,7 @@ import {
   TargetSessionSummary,
 } from "../types/logTypes";
 import type { UpdatesApi } from "../types/updateTypes";
+import { trackUsage } from "../../../telemetry/telemetry";
 
 type LogsApi = {
   getDefaultDirectories: () => Promise<string[]>;
@@ -172,6 +173,19 @@ declare global {
       logs?: LogsApi;
       updates?: UpdatesApi;
       export?: ExportApi;
+      telemetry?: {
+        getSettings: () => Promise<{
+          crashReportsEnabled: boolean;
+          usageStatsEnabled: boolean;
+        }>;
+        setSettings: (next: {
+          crashReportsEnabled?: boolean;
+          usageStatsEnabled?: boolean;
+        }) => Promise<{
+          crashReportsEnabled: boolean;
+          usageStatsEnabled: boolean;
+        }>;
+      };
     };
   }
 }
@@ -476,6 +490,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   const handleSelectLog = useCallback(
     async (log: LogFileInfo) => {
       setSelectedLog(log);
+      trackUsage("log.opened");
       await loadSummary(log);
     },
     [loadSummary]

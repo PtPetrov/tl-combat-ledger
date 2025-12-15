@@ -68,6 +68,11 @@ type ExportResult = {
   error?: string;
 };
 
+type TelemetrySettings = {
+  crashReportsEnabled: boolean;
+  usageStatsEnabled: boolean;
+};
+
 const logsApi = {
   getDefaultDirectories(): Promise<string[]> {
     return ipcRenderer.invoke("logs:getDefaultDirectories");
@@ -123,12 +128,24 @@ const exportApi = {
   },
 };
 
+const telemetryApi = {
+  getSettings(): Promise<TelemetrySettings> {
+    return ipcRenderer.invoke("telemetry:getSettings");
+  },
+  setSettings(
+    next: Partial<TelemetrySettings>
+  ): Promise<TelemetrySettings> {
+    return ipcRenderer.invoke("telemetry:setSettings", next);
+  },
+};
+
 contextBridge.exposeInMainWorld("tlcla", {
   logs: logsApi,
   window: windowApi,
   app: appApi,
   updates: updatesApi,
   export: exportApi,
+  telemetry: telemetryApi,
 });
 
 export {};
