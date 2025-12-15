@@ -16,6 +16,12 @@ type TargetCategoryFilter = "all" | TargetCategoryKey;
 const TARGET_ROW_HEIGHT_PX = 64;
 const TARGET_VIRTUALIZE_THRESHOLD = 80;
 const TARGET_VIRTUALIZE_OVERSCAN = 8;
+const TARGET_CATEGORY_ORDER: TargetCategoryKey[] = [
+  "boss",
+  "arch-boss",
+  "mobs",
+  "dummy",
+];
 
 export interface TargetsRowProps {
   summaryState: LoadState;
@@ -44,6 +50,30 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const [scrollTop, setScrollTop] = useState(0);
     const [viewportHeight, setViewportHeight] = useState(0);
+
+    const availableCategoryKeys = useMemo(() => {
+      const counts: Record<TargetCategoryKey, number> = {
+        boss: 0,
+        "arch-boss": 0,
+        mobs: 0,
+        dummy: 0,
+      };
+
+      topTargets.forEach((t) => {
+        const key = getTargetCategoryKey(t.targetName);
+        if (!key) return;
+        counts[key] += 1;
+      });
+
+      return TARGET_CATEGORY_ORDER.filter((key) => counts[key] > 0);
+    }, [topTargets]);
+
+    useEffect(() => {
+      if (selectedCategory === "all") return;
+      if (availableCategoryKeys.includes(selectedCategory)) return;
+      setSelectedCategory("all");
+      onSelectTarget(null);
+    }, [availableCategoryKeys, onSelectTarget, selectedCategory]);
 
     const filteredTargets = useMemo(() => {
       if (selectedCategory === "all") return topTargets;
@@ -132,6 +162,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
           <FormControl size="small" sx={{ minWidth: 180 }}>
             <Select
               value={selectedCategory}
+              disabled={!showTargets}
               onChange={(e) => {
                 const nextCategory = e.target.value as TargetCategoryFilter;
                 setSelectedCategory(nextCategory);
@@ -151,6 +182,9 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                 "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                   borderColor: "rgba(99,102,241,0.85)",
                 },
+                "&.Mui-disabled": {
+                  opacity: 0.75,
+                },
                 "& .MuiSelect-select": {
                   py: 0.55,
                   fontSize: "0.9rem",
@@ -158,12 +192,11 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
               }}
             >
               <MenuItem value="all">All targets</MenuItem>
-              <MenuItem value="boss">{TARGET_CATEGORY_LABELS.boss}</MenuItem>
-              <MenuItem value="arch-boss">
-                {TARGET_CATEGORY_LABELS["arch-boss"]}
-              </MenuItem>
-              <MenuItem value="mobs">{TARGET_CATEGORY_LABELS.mobs}</MenuItem>
-              <MenuItem value="dummy">{TARGET_CATEGORY_LABELS.dummy}</MenuItem>
+              {availableCategoryKeys.map((key) => (
+                <MenuItem key={key} value={key}>
+                  {TARGET_CATEGORY_LABELS[key]}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>

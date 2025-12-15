@@ -127,8 +127,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
     useState<UpdateStatusPayload | null>(null);
   const updatesApiRef = useRef<UpdatesApi | null>(null);
   const [hasUpdateBridge, setHasUpdateBridge] = useState(false);
-  const { viewportHeight, mainAreaHeight, timelineHeight, attackCardHeight } =
-    useDynamicLayoutHeights();
+  const { timelineHeight } = useDynamicLayoutHeights();
 
   useEffect(() => {
     if (summaryState !== "loaded" || currentTopSkills.length === 0) {
@@ -332,7 +331,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                   currentTopSkills={currentTopSkills}
                   currentDurationSeconds={currentDurationSeconds}
                   selectedSkill={selectedSkill}
-                  maxHeight={attackCardHeight}
                   layout="compare"
                 />
               </Box>
@@ -433,7 +431,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                   currentTopSkills={currentTopSkills}
                   currentDurationSeconds={currentDurationSeconds}
                   selectedSkill={selectedSkill}
-                  maxHeight={attackCardHeight}
                 />
               </Box>
             )}

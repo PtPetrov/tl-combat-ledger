@@ -1,0 +1,15 @@
+{
+  "name": "TL Combat Ledger",
+  "short_name": "TL Combat Ledger",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
