@@ -1,5 +1,9 @@
 (function () {
-  const APTABASE_APP_KEY = "A-EU-8575792021";
+  const APTABASE_APP_KEY_RAW = "__TLCL_APTABASE_APP_KEY__";
+  const APTABASE_APP_KEY =
+    APTABASE_APP_KEY_RAW.startsWith("__") && APTABASE_APP_KEY_RAW.endsWith("__")
+      ? ""
+      : APTABASE_APP_KEY_RAW;
   const SESSION_TIMEOUT_SEC = 60 * 60;
 
   const downloadBtn = document.getElementById("download-btn");
@@ -40,6 +44,29 @@
     return `${epoch}${rand}`;
   };
 
+  const newInstallId = () => {
+    try {
+      if (crypto?.randomUUID) return crypto.randomUUID();
+    } catch {
+      // ignore
+    }
+    const epoch = Math.floor(Date.now() / 1000).toString();
+    const rand = Math.floor(Math.random() * 1e12).toString().padStart(12, "0");
+    return `web-${epoch}-${rand}`;
+  };
+
+  const getInstallId = () => {
+    try {
+      const existing = String(localStorage.getItem("tlcl:a:installId") || "").trim();
+      if (existing) return existing;
+      const next = newInstallId();
+      localStorage.setItem("tlcl:a:installId", next);
+      return next;
+    } catch {
+      return newInstallId();
+    }
+  };
+
   const getSessionId = () => {
     try {
       const nowSec = Math.floor(Date.now() / 1000);
@@ -62,14 +89,16 @@
     if (!APTABASE_APP_KEY || !shouldTrack()) return;
 
     const safeEventName = sanitizeString(eventName).slice(0, 80);
-    const safeProps = props
-      ? Object.fromEntries(
-          Object.entries(props).map(([key, value]) => [
-            key,
-            typeof value === "string" ? sanitizeString(value) : value,
-          ])
-        )
-      : undefined;
+    const mergedProps = {
+      ...(props || {}),
+      install_id: getInstallId(),
+    };
+    const safeProps = Object.fromEntries(
+      Object.entries(mergedProps).map(([key, value]) => [
+        key,
+        typeof value === "string" ? sanitizeString(value) : value,
+      ])
+    );
 
     const body = {
       timestamp: new Date().toISOString(),
@@ -108,6 +137,11 @@
     const path = (location.pathname || "/").toLowerCase();
     if (path.endsWith("/features.html") || path.endsWith("/features")) return "features";
     return "landing";
+  };
+
+  const getPageViewEventName = (page) => {
+    if (page === "features") return "Features Page View";
+    return "Landing Page View";
   };
 
   const initInspectionGuards = () => {
@@ -160,18 +194,18 @@
   const initLandingAnalytics = () => {
     const page = getCurrentLandingPage();
 
-    trackAptabaseEvent(`${page}_page_view`);
+    trackAptabaseEvent(getPageViewEventName(page), { page });
 
     if (downloadBtn) {
       downloadBtn.addEventListener("click", () => {
-        trackAptabaseEvent("download_click", { page });
+        trackAptabaseEvent("Download Click", { page });
       });
     }
 
     const featuresLink = document.querySelector('a[href$="features.html"]');
     if (featuresLink) {
       featuresLink.addEventListener("click", () => {
-        trackAptabaseEvent("features_link_click", { from: page });
+        trackAptabaseEvent("Features Link Click", { from: page });
       });
     }
   };

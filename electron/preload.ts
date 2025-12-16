@@ -32,6 +32,15 @@ type DamageTimelineBucket = {
   elapsedSeconds: number;
   totalDamage: number;
   perTarget: Record<string, number>;
+  skills?: Record<string, TimelineSkillContribution[]>;
+};
+
+type TimelineSkillContribution = {
+  skillName: string;
+  damage: number;
+  hits: number;
+  critHits: number;
+  heavyHits: number;
 };
 
 type PerTargetSkillsMap = Record<string, SkillBreakdown[]>;
@@ -70,7 +79,10 @@ type ExportResult = {
 
 type TelemetrySettings = {
   crashReportsEnabled: boolean;
-  usageStatsEnabled: boolean;
+};
+
+type TelemetryPublicConfig = {
+  sentryDsn?: string;
 };
 
 type AnalyticsProps = Record<string, string | number | boolean>;
@@ -138,6 +150,9 @@ const telemetryApi = {
     next: Partial<TelemetrySettings>
   ): Promise<TelemetrySettings> {
     return ipcRenderer.invoke("telemetry:setSettings", next);
+  },
+  getConfig(): Promise<TelemetryPublicConfig> {
+    return ipcRenderer.invoke("telemetry:getConfig");
   },
 };
 

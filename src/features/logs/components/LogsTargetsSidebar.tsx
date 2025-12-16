@@ -51,9 +51,9 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
     topTargets,
     overallTotalDamage,
     selectedTargetName,
-  onSelectTarget,
-  isOpen,
-  onToggle,
+    onSelectTarget,
+    isOpen,
+    onToggle,
   }) => {
     const [appVersion, setAppVersion] = useState<string | null>(null);
 
@@ -189,7 +189,6 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
               sx={{
                 color: "text.secondary",
                 letterSpacing: "0.12em",
-                textTransform: "uppercase",
                 fontSize: "0.95rem",
                 whiteSpace: "nowrap",
                 opacity: appVersion ? 0.85 : 0.6,

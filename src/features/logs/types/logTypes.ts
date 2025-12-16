@@ -50,6 +50,15 @@ export type DamageTimelineBucket = {
   elapsedSeconds: number; // seconds from first event
   totalDamage: number;
   perTarget: Record<string, number>;
+  skills?: Record<string, TimelineSkillContribution[]>;
+};
+
+export type TimelineSkillContribution = {
+  skillName: string;
+  damage: number;
+  hits: number;
+  critHits: number;
+  heavyHits: number;
 };
 
 export type PerTargetSkillsMap = Record<string, SkillBreakdown[]>;

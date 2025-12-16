@@ -1,22 +1,19 @@
 import * as Sentry from "@sentry/electron/renderer";
 import type { TelemetrySettings } from "../types/telemetryTypes";
-import type { Breadcrumb, Event as SentryEvent, StackFrame } from "@sentry/core";
+import type { Breadcrumb, ErrorEvent as SentryErrorEvent, StackFrame } from "@sentry/core";
 import { makeFetchTransport } from "@sentry/browser";
-
-const SENTRY_DSN =
-  "https://3dee2673b463e85030996b15f6e716d6@o4510537255616512.ingest.de.sentry.io/4510537621241936";
 
 type Listener = (settings: TelemetrySettings) => void;
 
 let currentSettings: TelemetrySettings = {
   crashReportsEnabled: false,
-  usageStatsEnabled: false,
 };
 
 let sentryInitialized = false;
 let hasLoadedSettings = false;
 let sentAppStarted = false;
 const listeners = new Set<Listener>();
+let cachedSentryDsn: string | null = null;
 
 const WINDOWS_PATH_RE = /[A-Za-z]:\\(?:[^\\\r\n]+\\)*[^\\\r\n]+/g;
 const POSIX_PATH_RE = /\/(?:[^/\r\n]+\/)*[^/\r\n]+/g;
@@ -43,16 +40,12 @@ const sanitizeUnknown = (value: unknown, depth = 0): unknown => {
   return next;
 };
 
-const isUsageEvent = (event: SentryEvent): boolean =>
-  event.tags?.telemetry === "usage";
-
-const shouldSendEvent = (event: SentryEvent): boolean => {
-  if (isUsageEvent(event)) return currentSettings.usageStatsEnabled;
+const shouldSendEvent = (event: SentryErrorEvent): boolean => {
   return currentSettings.crashReportsEnabled;
 };
 
-const scrubEvent = (event: SentryEvent): SentryEvent => {
-  const next: SentryEvent = { ...event };
+const scrubEvent = (event: SentryErrorEvent): SentryErrorEvent => {
+  const next: SentryErrorEvent = { ...event };
   if (typeof next.message === "string") next.message = sanitizeString(next.message);
 
   if ((next as any).server_name) {
@@ -121,9 +114,16 @@ const initSentryIfNeeded = async () => {
   if (!shouldInit || sentryInitialized) return;
 
   const appVersion = await window.tlcla?.app?.getVersion?.().catch(() => null);
+  if (cachedSentryDsn === null) {
+    cachedSentryDsn = (await window.tlcla?.telemetry
+      ?.getConfig?.()
+      .then((cfg) => (cfg?.sentryDsn ? String(cfg.sentryDsn) : ""))
+      .catch(() => "")) ?? "";
+  }
+  if (!cachedSentryDsn) return;
 
   Sentry.init({
-    dsn: SENTRY_DSN,
+    dsn: cachedSentryDsn,
     // Send directly from the renderer (avoids relying on main-process IPC wiring).
     transport: makeFetchTransport,
     sendDefaultPii: false,
@@ -168,7 +168,7 @@ export const loadTelemetrySettings = async (): Promise<TelemetrySettings> => {
   notify(currentSettings);
 
   await initSentryIfNeeded();
-  if (currentSettings.usageStatsEnabled && !sentAppStarted) {
+  if (!sentAppStarted) {
     trackUsage("app.started");
     sentAppStarted = true;
   }
@@ -181,7 +181,9 @@ export const getTelemetrySettings = (): TelemetrySettings => currentSettings;
 export const subscribeTelemetrySettings = (listener: Listener) => {
   listeners.add(listener);
   if (hasLoadedSettings) listener(currentSettings);
-  return () => listeners.delete(listener);
+  return () => {
+    listeners.delete(listener);
+  };
 };
 
 export const updateTelemetrySettings = async (
@@ -195,16 +197,18 @@ export const updateTelemetrySettings = async (
   notify(currentSettings);
 
   await initSentryIfNeeded();
-  if (currentSettings.usageStatsEnabled && !sentAppStarted) {
+  if (!sentAppStarted) {
     trackUsage("app.started");
     sentAppStarted = true;
   }
   return currentSettings;
 };
 
-export const trackUsage = (eventName: string) => {
-  if (!currentSettings.usageStatsEnabled) return;
-  void window.tlcla?.analytics?.trackUsage?.(eventName);
+export const trackUsage = (
+  eventName: string,
+  props?: Record<string, string | number | boolean>
+) => {
+  void window.tlcla?.analytics?.trackUsage?.(eventName, props);
 };
 
 export const flushTelemetry = async (timeoutMs = 2000): Promise<boolean> => {
@@ -227,9 +231,5 @@ export const sendTestCrashReport = async (): Promise<void> => {
 };
 
 export const sendTestUsageEvent = async (): Promise<void> => {
-  if (!currentSettings.usageStatsEnabled) return;
-  if (!sentryInitialized) return;
-
   trackUsage("telemetry.test");
-  await flushTelemetry(2000);
 };

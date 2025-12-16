@@ -1,12 +1,13 @@
 // src/components/logs/TargetsRow.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Box, FormControl, MenuItem, Select, Typography } from "@mui/material";
+import { Box, FormControl, MenuItem, Select, Tooltip, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { LoadState, TargetBreakdown } from "../types/logTypes";
 import { scrollBarStyles } from "../utils/logsViewUtils";
 import {
   getTargetCategoryKey,
   getTargetIconPath,
+  TARGET_PLACEHOLDER_ICON_PATH,
   TargetCategoryKey,
   TARGET_CATEGORY_LABELS,
 } from "../utils/targetIcons";
@@ -255,6 +256,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                   {renderTargets.map((t) => {
                   const isSelected = t.targetName === selectedTargetName;
                   const iconPath = getTargetIconPath(t.targetName);
+                  const isPlaceholderIcon = iconPath === TARGET_PLACEHOLDER_ICON_PATH;
                   return (
                     <Box
                       component="button"
@@ -290,11 +292,32 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                           display: "flex",
                           alignItems: "center",
                           gap: 1,
-                          minWidth: 0,
-                          flex: 1,
-                        }}
-                      >
-                        {iconPath && (
+                        minWidth: 0,
+                        flex: 1,
+                      }}
+                    >
+                        {isPlaceholderIcon ? (
+                          <Tooltip
+                            title="The correct target image coming soon"
+                            arrow
+                            placement="top"
+                          >
+                            <Box component="span" sx={{ display: "inline-flex" }}>
+                              <Box
+                                component="img"
+                                src={iconPath}
+                                alt={t.targetName}
+                                sx={{
+                                  width: 52,
+                                  height: 52,
+                                  borderRadius: 0,
+                                  objectFit: "cover",
+                                  flexShrink: 0,
+                                }}
+                              />
+                            </Box>
+                          </Tooltip>
+                        ) : (
                           <Box
                             component="img"
                             src={iconPath}

@@ -51,6 +51,15 @@ export type DamageTimelineBucket = {
   elapsedSeconds: number;
   totalDamage: number;
   perTarget: Record<string, number>;
+  skills?: Record<string, TimelineSkillContribution[]>;
+};
+
+export type TimelineSkillContribution = {
+  skillName: string;
+  damage: number;
+  hits: number;
+  critHits: number;
+  heavyHits: number;
 };
 
 export type TargetSessionSummary = {
@@ -134,6 +143,15 @@ type TargetAccumulator = {
 type BucketAccumulator = {
   totalDamage: number;
   perTarget: Map<string, number>;
+  perTargetSkills: Map<string, Map<string, TimelineSkillAccumulator>>;
+};
+
+type TimelineSkillAccumulator = {
+  skillName: string;
+  damage: number;
+  hits: number;
+  critHits: number;
+  heavyHits: number;
 };
 
 type SessionAccumulator = {
@@ -530,11 +548,34 @@ export async function parseLogFileSummary(
         ({
           totalDamage: 0,
           perTarget: new Map<string, number>(),
+          perTargetSkills: new Map<string, Map<string, TimelineSkillAccumulator>>(),
         } as BucketAccumulator);
 
       bucket.totalDamage += damage;
       const current = bucket.perTarget.get(targetName) ?? 0;
       bucket.perTarget.set(targetName, current + damage);
+
+      let skillsForTarget = bucket.perTargetSkills.get(targetName);
+      if (!skillsForTarget) {
+        skillsForTarget = new Map<string, TimelineSkillAccumulator>();
+        bucket.perTargetSkills.set(targetName, skillsForTarget);
+      }
+
+      const existingSkill =
+        skillsForTarget.get(skillName) ||
+        ({
+          skillName,
+          damage: 0,
+          hits: 0,
+          critHits: 0,
+          heavyHits: 0,
+        } as TimelineSkillAccumulator);
+
+      existingSkill.damage += damage;
+      existingSkill.hits += 1;
+      if (crit) existingSkill.critHits += 1;
+      if (heavy) existingSkill.heavyHits += 1;
+      skillsForTarget.set(skillName, existingSkill);
 
       bucketMap.set(bucketKey, bucket);
     }
@@ -796,22 +837,49 @@ export async function parseLogFileSummary(
   const bucketEntries = Array.from(bucketMap.entries()).sort(
     (a, b) => a[0] - b[0]
   );
-  const firstBucketTs =
-    bucketEntries.length > 0 ? bucketEntries[0][0] : firstTimestamp ?? null;
+  const firstBucketTs = bucketEntries.length > 0 ? bucketEntries[0][0] : null;
+  const lastBucketTs =
+    bucketEntries.length > 0 ? bucketEntries[bucketEntries.length - 1][0] : null;
 
-  const timeline: DamageTimelineBucket[] = bucketEntries.map(([ts, bucket]) => {
-    const perTarget: Record<string, number> = {};
-    bucket.perTarget.forEach((value, name) => {
-      perTarget[name] = Math.round(value);
-    });
+  const timeline: DamageTimelineBucket[] = [];
+  if (firstBucketTs != null && lastBucketTs != null) {
+    for (let ts = firstBucketTs; ts <= lastBucketTs; ts += 1000) {
+      const bucket =
+        bucketMap.get(ts) ||
+        ({
+          totalDamage: 0,
+          perTarget: new Map<string, number>(),
+          perTargetSkills: new Map<string, Map<string, TimelineSkillAccumulator>>(),
+        } as BucketAccumulator);
 
-    return {
-      timestampMs: ts,
-      elapsedSeconds: firstBucketTs != null ? (ts - firstBucketTs) / 1000 : 0,
-      totalDamage: Math.round(bucket.totalDamage),
-      perTarget,
-    };
-  });
+      const perTarget: Record<string, number> = {};
+      bucket.perTarget.forEach((value, name) => {
+        perTarget[name] = Math.round(value);
+      });
+
+      const skills: Record<string, TimelineSkillContribution[]> = {};
+      bucket.perTargetSkills.forEach((skillsForTarget, targetName) => {
+        const all = Array.from(skillsForTarget.values())
+          .sort((a, b) => b.damage - a.damage)
+          .map((s) => ({
+            skillName: s.skillName,
+            damage: Math.round(s.damage),
+            hits: s.hits,
+            critHits: s.critHits,
+            heavyHits: s.heavyHits,
+          }));
+        if (all.length) skills[targetName] = all;
+      });
+
+      timeline.push({
+        timestampMs: ts,
+        elapsedSeconds: (ts - firstBucketTs) / 1000,
+        totalDamage: Math.round(bucket.totalDamage),
+        perTarget,
+        skills: Object.keys(skills).length ? skills : undefined,
+      });
+    }
+  }
 
   return {
     filePath,

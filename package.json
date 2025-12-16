@@ -1,8 +1,12 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Throne and Liberty Combat Ledger",
   "main": "dist/main.js",
+  "tlclTelemetry": {
+    "aptabaseAppKey": "",
+    "sentryDsn": ""
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/PtPetrov/tl-combat-ledger.git"

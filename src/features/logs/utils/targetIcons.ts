@@ -27,6 +27,8 @@ export const TARGET_CATEGORY_LABELS: Record<TargetCategoryKey, string> = {
   dummy: "Dummy",
 };
 
+export const TARGET_PLACEHOLDER_ICON_PATH = placeholderLogo;
+
 const normalizeName = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
@@ -98,7 +100,7 @@ export const getTargetIconPath = (targetName: string): string => {
   return (
     targetMetaMap.get(norm)?.iconPath ??
     targetMetaMap.get(normalizeName(getBaseTargetName(targetName)))?.iconPath
-  ) ?? placeholderLogo;
+  ) ?? TARGET_PLACEHOLDER_ICON_PATH;
 };
 
 export const getTargetCategoryKey = (

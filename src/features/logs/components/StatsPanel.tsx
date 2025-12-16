@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Tooltip, Typography } from "@mui/material";
 import { LoadState } from "../types/logTypes";
 import {
   formatDuration,
   formatInteger,
   formatNumber,
 } from "../utils/formatters";
-import { getTargetIconPath } from "../utils/targetIcons";
+import { getTargetIconPath, TARGET_PLACEHOLDER_ICON_PATH } from "../utils/targetIcons";
 import {
   cardGap,
   cardPaddingX,
@@ -37,6 +37,8 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
   const targetIconPath = selectedTargetName
     ? getTargetIconPath(selectedTargetName)
     : undefined;
+  const isPlaceholderIcon =
+    Boolean(targetIconPath) && targetIconPath === TARGET_PLACEHOLDER_ICON_PATH;
   const sessionLabel =
     selectedSessionId != null ? `Session ${selectedSessionId}` : "All sessions";
 
@@ -74,18 +76,41 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
           <Box>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.2 }}>
               {targetIconPath && (
-                <Box
-                  component="img"
-                  src={targetIconPath}
-                  alt={targetLabel}
-                  sx={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: 1,
-                    objectFit: "cover",
-                    flexShrink: 0,
-                  }}
-                />
+                isPlaceholderIcon ? (
+                  <Tooltip
+                    title="The correct target image coming soon"
+                    arrow
+                    placement="top"
+                  >
+                    <Box component="span" sx={{ display: "inline-flex" }}>
+                      <Box
+                        component="img"
+                        src={targetIconPath}
+                        alt={targetLabel}
+                        sx={{
+                          width: 46,
+                          height: 46,
+                          borderRadius: 1,
+                          objectFit: "cover",
+                          flexShrink: 0,
+                        }}
+                      />
+                    </Box>
+                  </Tooltip>
+                ) : (
+                  <Box
+                    component="img"
+                    src={targetIconPath}
+                    alt={targetLabel}
+                    sx={{
+                      width: 46,
+                      height: 46,
+                      borderRadius: 1,
+                      objectFit: "cover",
+                      flexShrink: 0,
+                    }}
+                  />
+                )
               )}
               <Typography sx={{ fontSize: "1.8rem", fontWeight: 700 }}>
                 {targetLabel}

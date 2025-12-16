@@ -66,7 +66,7 @@ export const SkillDetailsCard: React.FC<SkillDetailsCardProps> = ({
         py: cardPaddingY,
         background:
           "linear-gradient(135deg, rgba(15,23,42,0.98), rgba(8,12,24,0.96))",
-        boxShadow: "0 18px 32px rgba(2,6,23,0.7), 0 0 0 1px rgba(15,23,42,0.9)",
+        border: "1px solid rgba(15,23,42,0.9)",
         display: "flex",
         flexDirection: "column",
         gap: cardGap,
@@ -199,7 +199,6 @@ const SkillDetailSection = ({ data }: { data: SectionData }) => (
     <GridStats
       stats={data.stats}
       sideStats={data.sideStats}
-      emphasizeSide={data.title === "Basic Attack"}
     />
   </Box>
 );

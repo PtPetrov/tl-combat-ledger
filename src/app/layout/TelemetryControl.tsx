@@ -19,11 +19,8 @@ import {
 
 const formatStatus = (settings: TelemetrySettings): string => {
   const crash = settings.crashReportsEnabled;
-  const usage = settings.usageStatsEnabled;
-  if (!crash && !usage) return "Telemetry: off";
-  if (crash && usage) return "Telemetry: crash reports + usage stats";
-  if (crash) return "Telemetry: crash reports";
-  return "Telemetry: usage stats";
+  if (crash) return "Crash reports: on";
+  return "Crash reports: off";
 };
 
 export const TelemetryControl: React.FC = () => {
@@ -79,10 +76,7 @@ export const TelemetryControl: React.FC = () => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1.1 }}>
           <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
             <Typography sx={{ fontWeight: 800, letterSpacing: "0.08em" }}>
-              Privacy & Telemetry
-            </Typography>
-            <Typography sx={{ color: "text.secondary", fontSize: "0.85rem" }}>
-              Opt-in
+              Privacy
             </Typography>
           </Box>
 
@@ -109,24 +103,10 @@ export const TelemetryControl: React.FC = () => {
 
           <Divider sx={{ borderColor: "rgba(55,65,81,0.7)" }} />
 
-          <FormControlLabel
-            control={
-              <Switch
-                checked={settings.usageStatsEnabled}
-                onChange={async (_e, checked) => {
-                  try {
-                    await updateTelemetrySettings({ usageStatsEnabled: checked });
-                  } catch (error) {
-                    console.warn("Failed to update usage stats setting", error);
-                  }
-                }}
-              />
-            }
-            label="Anonymous Usage Stats"
-          />
           <Typography sx={{ color: "text.secondary", fontSize: "0.9rem", lineHeight: 1.5 }}>
-            When enabled, we send a small number of “feature used” events (for example: app started,
-            log opened) so we can understand which features matter.
+            Anonymous usage analytics is collected to understand how many users actively use the
+            app and which features matter. This includes a random, anonymous installation ID to
+            estimate unique users.
           </Typography>
 
           <Divider sx={{ borderColor: "rgba(55,65,81,0.7)" }} />

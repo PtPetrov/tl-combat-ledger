@@ -1,9 +1,12 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import NewReleasesOutlinedIcon from "@mui/icons-material/NewReleasesOutlined";
 import { TelemetryControl } from "./TelemetryControl";
+import { useReleaseNotes } from "./ReleaseNotesProvider";
 
 const FooterBar: React.FC = () => {
   const footerText = "Made for the Throne & Liberty community by nOtDeviL";
+  const { openReleaseNotes } = useReleaseNotes();
 
   return (
     <Box
@@ -34,7 +37,27 @@ const FooterBar: React.FC = () => {
           {footerText}
         </Typography>
       </Box>
-      <TelemetryControl />
+      <Box sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
+        <Tooltip
+          title="Release notes"
+          placement="top"
+          enterDelay={250}
+        >
+          <IconButton
+            aria-label="Release notes"
+            onClick={openReleaseNotes}
+            sx={{
+              width: 34,
+              height: 34,
+              color: "rgba(226,232,240,0.9)",
+              "&:hover": { color: "#c7d2fe" },
+            }}
+          >
+            <NewReleasesOutlinedIcon sx={{ fontSize: 20 }} />
+          </IconButton>
+        </Tooltip>
+        <TelemetryControl />
+      </Box>
     </Box>
   );
 };

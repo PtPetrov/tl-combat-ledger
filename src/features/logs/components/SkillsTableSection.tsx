@@ -4,6 +4,7 @@ import {
   Box,
   CircularProgress,
   LinearProgress,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { LoadState, LogFileInfo, SkillBreakdown } from "../types/logTypes";
@@ -15,6 +16,7 @@ import { formatInteger } from "../utils/formatters";
 import skillsData from "../../../assets/skills.json";
 import masterySkillsData from "../../../assets/weaponMasterySkills.json";
 import skillCoresData from "../../../assets/skillCores.json";
+import placeholderLogo from "../../../../resources/logo.png?inline";
 
 const iconAssets = import.meta.glob<string>(
   "../../../assets/icons/{crossbow,daggers,greatsword,longbow,mastery,orb,spear,staff,sword-shield,wand,skill-cores}/**/*",
@@ -119,9 +121,20 @@ export interface SkillsTableSectionProps {
   selectedLog: LogFileInfo | null;
   currentTopSkills: SkillBreakdown[];
   currentTotalDamage: number;
+  sortKey?: SkillsTableSortKey | null;
+  sortDirection?: SkillsTableSortDirection;
   onSelectSkill?: (skill: ExtendedSkillBreakdown) => void;
   selectedSkillName?: string | null;
 }
+
+export type SkillsTableSortKey =
+  | "damage"
+  | "share"
+  | "hits"
+  | "crit"
+  | "heavy";
+
+export type SkillsTableSortDirection = "asc" | "desc";
 
 export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
   ({
@@ -130,6 +143,8 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
     selectedLog,
     currentTopSkills,
     currentTotalDamage,
+    sortKey,
+    sortDirection,
     onSelectSkill,
     selectedSkillName,
   }) => {
@@ -205,7 +220,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
 
     const extendedSkills = currentTopSkills as ExtendedSkillBreakdown[];
 
-    const { rows, totalHits, totalCritHits, totalHeavyDamage, totalHeavyHits } =
+    const { rows: baseRows, totalHits, totalCritHits, totalHeavyDamage, totalHeavyHits } =
       useMemo(() => {
         let hitsSum = 0;
         let critHitsSum = 0;
@@ -268,6 +283,37 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
         };
       }, [extendedSkills, currentTotalDamage]);
 
+    const rows = useMemo(() => {
+      if (!sortKey) return baseRows;
+      const direction = sortDirection === "asc" ? 1 : -1;
+
+      const valueFor = (row: (typeof baseRows)[number]): number => {
+        switch (sortKey) {
+          case "damage":
+            return row.skill.totalDamage ?? 0;
+          case "share":
+            return row.share ?? 0;
+          case "hits":
+            return row.hits ?? 0;
+          case "crit":
+            return row.critRate ?? 0;
+          case "heavy":
+            return row.heavyRate ?? 0;
+          default:
+            return 0;
+        }
+      };
+
+      const sorted = [...baseRows].sort((a, b) => {
+        const av = valueFor(a);
+        const bv = valueFor(b);
+        if (av === bv) return a.index - b.index;
+        return av < bv ? -1 * direction : 1 * direction;
+      });
+
+      return sorted;
+    }, [baseRows, sortDirection, sortKey]);
+
     const totalCritRate = totalHits > 0 ? (totalCritHits / totalHits) * 100 : 0;
     const totalHeavyRate =
       totalHeavyHits > 0 && totalHits > 0
@@ -284,7 +330,6 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
           display: "flex",
           flexDirection: "column",
           minHeight: 0,
-          paddingBottom: "8px",
           background:
             "radial-gradient(circle at top, rgba(15,23,42,0.98), rgba(5,8,20,1))",
         }}
@@ -316,6 +361,23 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                 const oddBg = isTop
                   ? "rgba(55,48,163,0.55)"
                   : "rgba(15,23,42,0.92)";
+                const hasSkillIcon = Boolean(iconPath);
+                const resolvedIconSrc = iconPath ?? placeholderLogo;
+                const iconEl = (
+                  <Box
+                    component="img"
+                    src={resolvedIconSrc}
+                    alt={skill.skillName}
+                    sx={{
+                      width: 52,
+                      height: 52,
+                      borderRadius: 1,
+                      flexShrink: 0,
+                      objectFit: "cover",
+                      opacity: hasSkillIcon ? 1 : 0.92,
+                    }}
+                  />
+                );
 
                 return (
                   <Box
@@ -361,18 +423,18 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {iconPath && (
-                        <Box
-                          component="img"
-                          src={iconPath}
-                          alt={skill.skillName}
-                          sx={{
-                            width: 52,
-                            height: 52,
-                            borderRadius: 1,
-                            flexShrink: 0,
-                          }}
-                        />
+                      {hasSkillIcon ? (
+                        iconEl
+                      ) : (
+                        <Tooltip
+                          title="The correct skills image coming soon"
+                          arrow
+                          placement="top"
+                        >
+                          <Box component="span" sx={{ display: "inline-flex" }}>
+                            {iconEl}
+                          </Box>
+                        </Tooltip>
                       )}
                       <span
                         style={{

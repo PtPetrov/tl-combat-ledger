@@ -176,14 +176,14 @@ declare global {
       telemetry?: {
         getSettings: () => Promise<{
           crashReportsEnabled: boolean;
-          usageStatsEnabled: boolean;
         }>;
         setSettings: (next: {
           crashReportsEnabled?: boolean;
-          usageStatsEnabled?: boolean;
         }) => Promise<{
           crashReportsEnabled: boolean;
-          usageStatsEnabled: boolean;
+        }>;
+        getConfig?: () => Promise<{
+          sentryDsn?: string;
         }>;
       };
       analytics?: {
@@ -465,13 +465,19 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     setSelectedSessionId(null);
 
     try {
+      trackUsage("log.parse.started");
       const parsed = await api.parseSummary(log.path);
       setSummary(parsed);
       setSummaryState("loaded");
+      trackUsage("log.parse.succeeded", {
+        duration_seconds: typeof parsed.durationSeconds === "number" ? parsed.durationSeconds : 0,
+        total_events: parsed.totalEvents,
+      });
     } catch (err) {
       console.error("[logs] parseSummary failed", err);
       setSummaryError("Failed to parse combat log.");
       setSummaryState("error");
+      trackUsage("log.parse.failed");
     }
   }, []);
 
@@ -479,8 +485,13 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     const api = getLogsApi();
     if (!api) return;
     try {
+      trackUsage("logs.folder.select_opened");
       const dir = await api.selectDirectory();
-      if (!dir) return;
+      if (!dir) {
+        trackUsage("logs.folder.select_canceled");
+        return;
+      }
+      trackUsage("logs.folder.selected");
       setSelectedDir(dir);
       await loadLogsForDirectory(dir);
     } catch (err) {
@@ -490,6 +501,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
 
   const handleRefresh = useCallback(async () => {
     if (!selectedDir) return;
+    trackUsage("logs.refresh");
     await loadLogsForDirectory(selectedDir);
   }, [selectedDir, loadLogsForDirectory]);
 

@@ -1,8 +1,9 @@
 // src/components/logs/LogsAnalyzerView.tsx
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, TableSortLabel } from "@mui/material";
 import {
   LoadState,
+  DamageTimelineBucket,
   LogFileInfo,
   SkillBreakdown,
   TargetBreakdown,
@@ -11,6 +12,10 @@ import { TimelineSession, TimelineSeries } from "../hooks/useLogsPanelLogic";
 import { AnalyzerHeader } from "./AnalyzerHeader";
 import { SessionsRow } from "./SessionsRow";
 import { SkillsTableSection } from "./SkillsTableSection";
+import type {
+  SkillsTableSortDirection,
+  SkillsTableSortKey,
+} from "./SkillsTableSection";
 import { StatsPanel } from "./StatsPanel";
 import { CharacterClassView } from "./CharacterClassView";
 import { DamageTimelineCard } from "./DamageTimelineCard";
@@ -27,6 +32,7 @@ import type {
   UpdateStatusPayload,
   UpdatesApi,
 } from "../types/updateTypes";
+import { trackUsage } from "../../../telemetry/telemetry";
 
 export interface LogsAnalyzerViewProps {
   selectedDir: string | null;
@@ -61,6 +67,7 @@ export interface LogsAnalyzerViewProps {
   topTargets: TargetBreakdown[];
 
   hasTimeline: boolean;
+  timeline: DamageTimelineBucket[];
   timelineChartData: Array<Record<string, number>>;
   timelineSeries: TimelineSeries[];
   timelineSessions: TimelineSession[];
@@ -104,6 +111,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   targets,
   topTargets,
   hasTimeline,
+  timeline,
   timelineChartData,
   timelineSeries,
   timelineSessions,
@@ -128,6 +136,10 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   const updatesApiRef = useRef<UpdatesApi | null>(null);
   const [hasUpdateBridge, setHasUpdateBridge] = useState(false);
   const { timelineHeight } = useDynamicLayoutHeights();
+  const [skillsSort, setSkillsSort] = useState<{
+    key: SkillsTableSortKey | null;
+    direction: SkillsTableSortDirection;
+  }>({ key: null, direction: "desc" });
 
   useEffect(() => {
     if (summaryState !== "loaded" || currentTopSkills.length === 0) {
@@ -160,6 +172,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
     });
 
     if (!isDevBuild) {
+      trackUsage("update.check.auto");
       api.checkForUpdates().catch((error) => {
         console.warn("Update check failed", error);
       });
@@ -171,16 +184,45 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   }, []);
 
   const handleCheckForUpdates = useCallback(() => {
+    trackUsage("update.check.manual");
     updatesApiRef.current?.checkForUpdates().catch((error) => {
       console.warn("Failed to check for updates", error);
     });
   }, []);
 
   const handleInstallUpdate = useCallback(() => {
+    trackUsage("update.install");
     updatesApiRef.current?.installUpdate().catch((error) => {
       console.warn("Failed to install update", error);
     });
   }, []);
+
+  const handleSortColumn = useCallback((key: SkillsTableSortKey) => {
+    setSkillsSort((prev) => {
+      if (prev.key === key) {
+        return {
+          key,
+          direction: prev.direction === "desc" ? "asc" : "desc",
+        };
+      }
+      return { key, direction: "desc" };
+    });
+  }, []);
+
+  const sortLabelSx = {
+    justifyContent: "flex-start",
+    "& .MuiTableSortLabel-icon": {
+      color: "rgba(148,163,184,0.55) !important",
+      opacity: 0.65,
+    },
+    "&.Mui-active": {
+      color: "#e0e7ff",
+    },
+    "&.Mui-active .MuiTableSortLabel-icon": {
+      color: "#a5b4fc !important",
+      opacity: 1,
+    },
+  } as const;
 
   return (
     <Box
@@ -299,6 +341,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
             <DamageTimelineCard
               summaryState={summaryState}
               hasTimeline={hasTimeline}
+              timeline={timeline}
               timelineSeries={timelineSeries}
               timelineChartData={timelineChartData}
               selectedTargetName={selectedTargetName}
@@ -348,8 +391,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                   height: "100%",
                   borderRadius: "2px",
                   overflow: "hidden",
-                  boxShadow:
-                    "0 0 0 1px rgba(15,23,42,0.9), 0 18px 40px rgba(15,23,42,0.9)",
+                  border: "1px solid rgba(15,23,42,0.9)",
                   backgroundColor: "#050814",
                   display: "flex",
                   flexDirection: "column",
@@ -368,6 +410,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                   <Box
                     sx={{
                       minWidth: 640,
+                      flex: 1,
                       display: "flex",
                       flexDirection: "column",
                       minHeight: 0,
@@ -390,14 +433,74 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                           "linear-gradient(90deg, rgba(17,24,39,1), rgba(15,23,42,1))",
                         color: "text.secondary",
                       }}
-                    >
-                      <span>Skill</span>
-                      <span>Damage</span>
-                      <span>Share</span>
-                      <span>Hits</span>
-                      <span>Crit</span>
-                      <span>Heavy</span>
-                    </Box>
+	                    >
+	                      <span>Skill</span>
+	                      <TableSortLabel
+	                        active={skillsSort.key === "damage"}
+	                        hideSortIcon
+	                        direction={
+	                          skillsSort.key === "damage"
+	                            ? skillsSort.direction
+	                            : "desc"
+	                        }
+	                        onClick={() => handleSortColumn("damage")}
+	                        sx={sortLabelSx}
+	                      >
+	                        Damage
+	                      </TableSortLabel>
+	                      <TableSortLabel
+	                        active={skillsSort.key === "share"}
+	                        hideSortIcon
+	                        direction={
+	                          skillsSort.key === "share"
+	                            ? skillsSort.direction
+	                            : "desc"
+	                        }
+	                        onClick={() => handleSortColumn("share")}
+	                        sx={sortLabelSx}
+	                      >
+	                        Share
+	                      </TableSortLabel>
+	                      <TableSortLabel
+	                        active={skillsSort.key === "hits"}
+	                        hideSortIcon
+	                        direction={
+	                          skillsSort.key === "hits"
+	                            ? skillsSort.direction
+	                            : "desc"
+	                        }
+	                        onClick={() => handleSortColumn("hits")}
+	                        sx={sortLabelSx}
+	                      >
+	                        Hits
+	                      </TableSortLabel>
+	                      <TableSortLabel
+	                        active={skillsSort.key === "crit"}
+	                        hideSortIcon
+	                        direction={
+	                          skillsSort.key === "crit"
+	                            ? skillsSort.direction
+	                            : "desc"
+	                        }
+	                        onClick={() => handleSortColumn("crit")}
+	                        sx={sortLabelSx}
+	                      >
+	                        Crit
+	                      </TableSortLabel>
+	                      <TableSortLabel
+	                        active={skillsSort.key === "heavy"}
+	                        hideSortIcon
+	                        direction={
+	                          skillsSort.key === "heavy"
+	                            ? skillsSort.direction
+	                            : "desc"
+	                        }
+	                        onClick={() => handleSortColumn("heavy")}
+	                        sx={sortLabelSx}
+	                      >
+	                        Heavy
+	                      </TableSortLabel>
+	                    </Box>
 
                     <Box
                       sx={{
@@ -407,17 +510,19 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                         minHeight: 0,
                       }}
                     >
-                      <SkillsTableSection
-                        summaryState={summaryState}
-                        summaryError={summaryError}
-                        selectedLog={selectedLog}
-                        currentTopSkills={currentTopSkills}
-                        currentTotalDamage={currentTotalDamage}
-                        onSelectSkill={(skill) =>
-                          setSelectedSkill(skill as ExtendedSkillBreakdown)
-                        }
-                        selectedSkillName={selectedSkill?.skillName ?? null}
-                      />
+	                      <SkillsTableSection
+	                        summaryState={summaryState}
+	                        summaryError={summaryError}
+	                        selectedLog={selectedLog}
+	                        currentTopSkills={currentTopSkills}
+	                        currentTotalDamage={currentTotalDamage}
+	                        sortKey={skillsSort.key}
+	                        sortDirection={skillsSort.direction}
+	                        onSelectSkill={(skill) =>
+	                          setSelectedSkill(skill as ExtendedSkillBreakdown)
+	                        }
+	                        selectedSkillName={selectedSkill?.skillName ?? null}
+	                      />
                     </Box>
                   </Box>
                 </Box>

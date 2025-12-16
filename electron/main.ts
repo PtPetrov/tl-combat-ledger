@@ -13,6 +13,7 @@ import {
 } from "./logs";
 import type { ParsedLogSummary } from "./logs";
 import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
+import { getAptabaseAppKey, getSentryDsn } from "./telemetryConfig";
 import { trackUsageEvent } from "./analytics";
 
 let mainWindow: BrowserWindow | null = null;
@@ -21,6 +22,52 @@ let ipcRegistered = false;
 const isDev = !app.isPackaged;
 const workerScript = path.join(__dirname, "logWorker.js");
 const lockInspector = !isDev;
+
+const KNOWN_USAGE_EVENT_NAMES: Record<string, string> = {
+  "app.started": "App Started",
+  "log.opened": "Log Opened",
+  "log.parse.started": "Log Parse Started",
+  "log.parse.succeeded": "Log Parse Succeeded",
+  "log.parse.failed": "Log Parse Failed",
+  "logs.folder.select_opened": "Select Log Folder Opened",
+  "logs.folder.selected": "Log Folder Selected",
+  "logs.folder.select_canceled": "Select Log Folder Canceled",
+  "logs.refresh": "Refresh Logs",
+  "compare.enabled": "Compare Enabled",
+  "compare.disabled": "Compare Disabled",
+  "export.png": "Export PNG",
+  "update.check.auto": "Update Check (Auto)",
+  "update.check.manual": "Update Check (Manual)",
+  "update.install": "Update Install",
+  "telemetry.test": "Telemetry Test",
+};
+
+const humanizeUsageEventName = (raw: string): string => {
+  const trimmed = String(raw ?? "").trim();
+  if (!trimmed) return "Unknown Event";
+  const known = KNOWN_USAGE_EVENT_NAMES[trimmed];
+  if (known) return known;
+
+  const parts = trimmed
+    .replace(/[_/]+/g, " ")
+    .split(".")
+    .flatMap((p) => p.split(/\s+/g))
+    .filter(Boolean);
+
+  if (parts.length === 0) return "Unknown Event";
+
+  const words = parts.map((part) => {
+    const lower = part.toLowerCase();
+    if (["png", "csv", "json", "ui", "ipc", "dps", "hps"].includes(lower)) {
+      return lower.toUpperCase();
+    }
+    return lower.length <= 3
+      ? lower.toUpperCase()
+      : lower[0].toUpperCase() + lower.slice(1);
+  });
+
+  return words.join(" ").slice(0, 80);
+};
 
 function getRecommendedZoomFactor(display: Display): number {
   const physicalWidth = Math.round(display.workAreaSize.width * display.scaleFactor);
@@ -458,11 +505,16 @@ function registerIpcHandlers() {
     return getTelemetrySettings();
   });
 
+  ipcMain.handle("telemetry:getConfig", () => {
+    const sentryDsn = getSentryDsn();
+    return { sentryDsn: sentryDsn || undefined };
+  });
+
   ipcMain.handle(
     "telemetry:setSettings",
     (
       _event,
-      update: { crashReportsEnabled?: boolean; usageStatsEnabled?: boolean }
+      update: { crashReportsEnabled?: boolean }
     ) => {
       return setTelemetrySettings(update);
     }
@@ -478,9 +530,11 @@ function registerIpcHandlers() {
       }
     ) => {
       if (!payload?.eventName || typeof payload.eventName !== "string") return;
-      const settings = getTelemetrySettings();
-      if (!settings.usageStatsEnabled) return;
-      await trackUsageEvent(payload.eventName, payload.props);
+      if (!getAptabaseAppKey()) return;
+      await trackUsageEvent(
+        humanizeUsageEventName(payload.eventName),
+        payload.props
+      );
     }
   );
 

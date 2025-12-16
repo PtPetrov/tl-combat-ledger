@@ -10,20 +10,16 @@ import type {
   TransportMakeRequestResponse,
 } from "@sentry/core";
 import { makeElectronOfflineTransport } from "@sentry/electron/main";
+import { getSentryDsn } from "./telemetryConfig";
 
 export type TelemetrySettings = {
   crashReportsEnabled: boolean;
-  usageStatsEnabled: boolean;
 };
-
-const SENTRY_DSN =
-  "https://3dee2673b463e85030996b15f6e716d6@o4510537255616512.ingest.de.sentry.io/4510537621241936";
 
 const store = new Store<TelemetrySettings>({
   name: "telemetry",
   defaults: {
     crashReportsEnabled: false,
-    usageStatsEnabled: false,
   },
 });
 
@@ -55,11 +51,7 @@ const sanitizeUnknown = (value: unknown, depth = 0): unknown => {
   return next;
 };
 
-const isUsageEvent = (event: SentryErrorEvent): boolean =>
-  event.tags?.telemetry === "usage";
-
 const shouldSendEvent = (event: SentryErrorEvent): boolean => {
-  if (isUsageEvent(event)) return currentSettings.usageStatsEnabled;
   return currentSettings.crashReportsEnabled;
 };
 
@@ -143,10 +135,6 @@ export const setTelemetrySettings = (
       typeof update.crashReportsEnabled === "boolean"
         ? update.crashReportsEnabled
         : currentSettings.crashReportsEnabled,
-    usageStatsEnabled:
-      typeof update.usageStatsEnabled === "boolean"
-        ? update.usageStatsEnabled
-        : currentSettings.usageStatsEnabled,
   };
 
   store.set(next);
@@ -164,8 +152,8 @@ const makeGatedTransport = () => {
 
     return {
       send(envelope: Envelope): PromiseLike<TransportMakeRequestResponse> {
-        // Never send anything unless the user opted into at least one telemetry category.
-        if (!currentSettings.crashReportsEnabled && !currentSettings.usageStatsEnabled) {
+        // Never send anything unless the user opted into crash reports.
+        if (!currentSettings.crashReportsEnabled) {
           return Promise.resolve({ statusCode: 200 });
         }
         return baseTransport.send(envelope);
@@ -180,11 +168,14 @@ const makeGatedTransport = () => {
 export const initSentryBeforeReady = () => {
   if (sentryInitialized) return;
 
+  const dsn = getSentryDsn();
+  if (!dsn) return;
+
   const isDev = !app.isPackaged;
   const release = `tl-combat-ledger@${app.getVersion()}`;
 
   Sentry.init({
-    dsn: SENTRY_DSN,
+    dsn,
     release,
     environment: isDev ? "development" : "production",
     sendDefaultPii: false,

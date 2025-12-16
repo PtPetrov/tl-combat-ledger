@@ -22,6 +22,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Inject landing analytics key
+        env:
+          TLCL_APTABASE_APP_KEY: ${{ secrets.TLCL_APTABASE_APP_KEY }}
+        run: node scripts/inject-telemetry.mjs
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
