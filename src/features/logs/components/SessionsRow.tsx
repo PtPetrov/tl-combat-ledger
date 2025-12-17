@@ -33,13 +33,13 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
           <Tooltip
             title={
-              "A session groups consecutive attacks on this target while you're in combat. Leaving combat ends the session; attacking again after that starts a new one."
+              "A pull groups consecutive attacks on this target while you're in combat. Leaving combat ends the pull; attacking again after that starts a new one."
             }
             placement="bottom-start"
           >
             <IconButton
               size="small"
-              aria-label="What is a session?"
+              aria-label="What is a pull?"
               sx={{
                 width: 28,
                 height: 28,
@@ -57,7 +57,7 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
               fontSize: "1.1rem",
             }}
           >
-            Sessions for {selectedTargetName}
+            Pulls for {selectedTargetName}
           </Typography>
         </Box>
         <Box
@@ -108,7 +108,7 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
                 },
               }}
             >
-              Session {s.id}
+              Pull {s.id}
             </Box>
           ))}
         </Box>

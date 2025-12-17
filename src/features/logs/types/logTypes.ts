@@ -98,7 +98,7 @@ export type ParsedLogSummary = {
   // Per target
   perTargetSkills: PerTargetSkillsMap;
 
-  // Optional: per-target sessions (rotations)
+  // Optional: per-target pulls (rotations)
   perTargetSessions?: PerTargetSessionsMap;
 
   // Damage over time

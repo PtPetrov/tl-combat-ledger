@@ -40,7 +40,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
   const isPlaceholderIcon =
     Boolean(targetIconPath) && targetIconPath === TARGET_PLACEHOLDER_ICON_PATH;
   const sessionLabel =
-    selectedSessionId != null ? `Session ${selectedSessionId}` : "All sessions";
+    selectedSessionId != null ? `Pull ${selectedSessionId}` : "All pulls";
 
   return (
     <Box

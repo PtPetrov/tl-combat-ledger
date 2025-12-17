@@ -29,3 +29,9 @@ Thumbs.db
 
 # Local scripts (dev-only)
 /scripts/check-*
+
+# Local caches
+/.cache/
+/.tmp/
+
+

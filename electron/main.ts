@@ -522,7 +522,7 @@ function registerIpcHandlers() {
 
   ipcMain.handle(
     "analytics:trackUsage",
-    async (
+    (
       _event,
       payload: {
         eventName: string;
@@ -531,10 +531,13 @@ function registerIpcHandlers() {
     ) => {
       if (!payload?.eventName || typeof payload.eventName !== "string") return;
       if (!getAptabaseAppKey()) return;
-      await trackUsageEvent(
+      void trackUsageEvent(
         humanizeUsageEventName(payload.eventName),
         payload.props
-      );
+      ).catch((error) => {
+        if (!isDev) return;
+        console.warn("Failed to send Aptabase usage event", error);
+      });
     }
   );
 

@@ -230,7 +230,7 @@ const inferClassFromSkills = (skills: SkillBreakdown[]): InferredClassInfo => {
 export interface CharacterClassViewProps {
   /** Player / character name extracted from the combat log */
   characterName: string | null;
-  /** Skills for the current scope (overall or target+session) */
+  /** Skills for the current scope (overall or target+pull) */
   currentTopSkills: SkillBreakdown[];
 }
 

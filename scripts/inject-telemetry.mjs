@@ -23,6 +23,15 @@ const maybeInjectPackageJson = () => {
   if (aptabaseAppKey) pkg.tlclTelemetry.aptabaseAppKey = aptabaseAppKey;
   if (sentryDsn) pkg.tlclTelemetry.sentryDsn = sentryDsn;
 
+  // Ensure values are also propagated into the packaged `package.json`.
+  // electron-builder only copies a subset of fields into the app's asar, but
+  // it always merges `build.extraMetadata` into the final metadata.
+  pkg.build = pkg.build ?? {};
+  pkg.build.extraMetadata = pkg.build.extraMetadata ?? {};
+  pkg.build.extraMetadata.tlclTelemetry = pkg.build.extraMetadata.tlclTelemetry ?? {};
+  if (aptabaseAppKey) pkg.build.extraMetadata.tlclTelemetry.aptabaseAppKey = aptabaseAppKey;
+  if (sentryDsn) pkg.build.extraMetadata.tlclTelemetry.sentryDsn = sentryDsn;
+
   writeJson(packageJsonPath, pkg);
 };
 
@@ -39,4 +48,3 @@ const maybeInjectLanding = () => {
 
 maybeInjectPackageJson();
 maybeInjectLanding();
-

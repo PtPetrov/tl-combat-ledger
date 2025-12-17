@@ -1,6 +1,6 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Throne and Liberty Combat Ledger",
   "main": "dist/main.js",
   "tlclTelemetry": {
@@ -20,7 +20,7 @@
     "dev:electron": "npm run build:electron && electron .",
     "build": "npm run build:renderer && npm run build:electron",
     "start": "electron .",
-    "package:win": "npm run build && electron-builder --win --x64"
+    "package:win": "node scripts/inject-telemetry.mjs && npm run build && electron-builder --win --x64"
   },
   "dependencies": {
     "@aptabase/electron": "^0.3.1",
@@ -53,6 +53,12 @@
     "directories": {
       "output": "release",
       "buildResources": "resources"
+    },
+    "extraMetadata": {
+      "tlclTelemetry": {
+        "aptabaseAppKey": "",
+        "sentryDsn": ""
+      }
     },
     "files": [
       "dist/**/*",

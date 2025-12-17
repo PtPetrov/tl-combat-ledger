@@ -182,7 +182,7 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
               )}
             </Box>
             <Typography color="text.secondary" sx={{ fontSize: "1.2rem" }}>
-              Select a log, then a target and session to inspect each rotation.
+              Select a log, then a target and pull to inspect each rotation.
             </Typography>
           </Box>
         </Box>

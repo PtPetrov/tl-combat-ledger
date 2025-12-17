@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import NewReleasesOutlinedIcon from "@mui/icons-material/NewReleasesOutlined";
+import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import { TelemetryControl } from "./TelemetryControl";
 import { useReleaseNotes } from "./ReleaseNotesProvider";
 
@@ -53,7 +53,7 @@ const FooterBar: React.FC = () => {
               "&:hover": { color: "#c7d2fe" },
             }}
           >
-            <NewReleasesOutlinedIcon sx={{ fontSize: 20 }} />
+            <StickyNote2OutlinedIcon sx={{ fontSize: 20 }} />
           </IconButton>
         </Tooltip>
         <TelemetryControl />

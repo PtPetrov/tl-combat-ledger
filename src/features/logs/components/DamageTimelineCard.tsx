@@ -63,6 +63,9 @@ type StabilityDisplayPoint = { x: number; stability: number | null };
 type BurstWindow = { x1: number; x2: number; peakX: number; peak: number };
 type TooltipPoint = { x: number; value: number | null; idx: number; tAbs: number };
 
+const clampNumber = (value: number, min: number, max: number): number =>
+  Math.min(max, Math.max(min, value));
+
 export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
   summaryState,
   hasTimeline,
@@ -149,7 +152,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
 
     let windowStart: number | null = null;
     let windowEnd: number | null = null;
-    let compressSessions = false;
+    let compressPulls = false;
     const GAP_SEC = 4;
     const breaks: number[] = [];
 
@@ -166,7 +169,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
           windowStart = Math.floor(only.startElapsed);
           windowEnd = Math.ceil(only.endElapsed);
         } else {
-          compressSessions = true;
+          compressPulls = true;
         }
       }
     }
@@ -191,8 +194,8 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
       dps: seriesValueForPoint(point),
     }));
 
-    if (compressSessions && selectedTargetName) {
-      const sessions = [...timelineSessions]
+    if (compressPulls && selectedTargetName) {
+      const pulls = [...timelineSessions]
         .sort((a, b) => a.startElapsed - b.startElapsed)
         .map((s) => ({
           start: Math.floor(s.startElapsed),
@@ -201,11 +204,11 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
         .filter((s) => s.end >= s.start);
 
       let offset = 0;
-      const segments = sessions.map((s, idx) => {
+      const segments = pulls.map((s, idx) => {
         const duration = Math.max(0, s.end - s.start);
         const seg = { ...s, offset, duration };
         offset += duration + GAP_SEC;
-        if (idx < sessions.length - 1) {
+        if (idx < pulls.length - 1) {
           breaks.push(seg.offset + seg.duration + GAP_SEC / 2);
         }
         return seg;
@@ -317,8 +320,8 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
   const xLabel =
     xAxisMode === "relative"
       ? isAllSessionsForTarget
-        ? "Session time (gaps trimmed)"
-        : "Time since session start"
+        ? "Pull time (gaps trimmed)"
+        : "Time since pull start"
       : "Timestamp";
 
   const switchSx = {
@@ -421,195 +424,187 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
     return out;
   }, [isAllSessionsForTarget, sessionBreakXs, stabilitySeries]);
 
-  const burstOverlay = useMemo<BurstWindow[]>(() => {
-    if (!baseDpsSeries.length) return [];
+  const burstAnalysis = useMemo((): {
+    overlay: BurstWindow[];
+    intensityByIdx: Map<number, number>;
+  } => {
+    const intensityByIdx = new Map<number, number>();
+    if (!baseDpsSeries.length) return { overlay: [], intensityByIdx };
 
     const dps = baseDpsSeries;
     const maxGapSeconds = 1.5;
 
-    const percentile = (arr: number[], p: number): number => {
-      if (!arr.length) return 0;
-      const idx = Math.min(arr.length - 1, Math.max(0, Math.floor(arr.length * p)));
-      return arr[idx];
+    // Burst windows are detected as local DPS spike windows (short-term smoothed DPS vs rolling
+    // median baseline), with hysteresis + minimum duration, to match rotation “burst window”
+    // meaning rather than global percentile spikes.
+    const smoothSec = 3;
+    const baselineSec = 25;
+    const startRatio = 1.4;
+    const endRatio = 1.2;
+    const minLenSec = 4;
+    const mergeGapSec = 2;
+    const refractorySec = 6;
+    const eps = 1;
+
+    const toFiniteNonNegative = (v: unknown): number => {
+      const n = typeof v === "number" ? v : Number(v);
+      if (!Number.isFinite(n)) return 0;
+      return Math.max(0, n);
     };
 
-    const buildBursts = (threshold: number): BurstWindow[] => {
-      const minRunPoints = 3; // ~3s minimum
-      const bursts: BurstWindow[] = [];
-
-      let runStart = -1;
-      let runPeak = -1;
-      let runPeakX = 0;
-      for (let i = 0; i < dps.length; i++) {
-        const isGap =
-          i > 0 &&
-          Number.isFinite(dps[i].x) &&
-          Number.isFinite(dps[i - 1].x) &&
-          dps[i].x - dps[i - 1].x > maxGapSeconds;
-
-        if (isGap && runStart >= 0) {
-          const endIndex = i - 1;
-          const len = endIndex - runStart + 1;
-          if (len >= minRunPoints) {
-            bursts.push({
-              x1: dps[runStart].x,
-              x2: dps[endIndex].x,
-              peakX: runPeakX,
-              peak: runPeak,
-            });
-          }
-          runStart = -1;
-          runPeak = -1;
-          runPeakX = 0;
-        }
-
-        const v = dps[i].value;
-        const isBurst = Number.isFinite(v) && v >= threshold;
-
-        if (isBurst) {
-          if (runStart < 0) {
-            runStart = i;
-            runPeak = v;
-            runPeakX = dps[i].x;
-          } else if (v > runPeak) {
-            runPeak = v;
-            runPeakX = dps[i].x;
-          }
-        }
-
-        const isRunEnd = runStart >= 0 && (!isBurst || i === dps.length - 1);
-        if (isRunEnd) {
-          const endIndex = isBurst && i === dps.length - 1 ? i : i - 1;
-          const len = endIndex - runStart + 1;
-          if (len >= minRunPoints) {
-            bursts.push({
-              x1: dps[runStart].x,
-              x2: dps[endIndex].x,
-              peakX: runPeakX,
-              peak: runPeak,
-            });
-          }
-          runStart = -1;
-          runPeak = -1;
-          runPeakX = 0;
-        }
+    const movingAverageCentered = (arr: number[], windowSize: number): number[] => {
+      const out = new Array(arr.length).fill(0);
+      const half = Math.max(0, Math.floor(windowSize / 2));
+      for (let i = 0; i < arr.length; i++) {
+        const start = Math.max(0, i - half);
+        const end = Math.min(arr.length - 1, i + half);
+        let sum = 0;
+        for (let j = start; j <= end; j++) sum += arr[j];
+        out[i] = sum / Math.max(1, end - start + 1);
       }
-
-      return bursts;
+      return out;
     };
 
-    const values = dps
-      .map((p) => p.value)
-      .filter((v) => Number.isFinite(v) && v > 0)
-      .sort((a, b) => a - b);
+    const median = (values: number[]): number => {
+      if (!values.length) return 0;
+      const sorted = [...values].sort((a, b) => a - b);
+      const mid = Math.floor(sorted.length / 2);
+      if (sorted.length % 2 === 1) return sorted[mid];
+      return (sorted[mid - 1] + sorted[mid]) / 2;
+    };
 
-    if (!values.length) return [];
+    const rollingMedianCentered = (arr: number[], windowSize: number): number[] => {
+      const out = new Array(arr.length).fill(0);
+      const half = Math.max(0, Math.floor(windowSize / 2));
+      for (let i = 0; i < arr.length; i++) {
+        const start = Math.max(0, i - half);
+        const end = Math.min(arr.length - 1, i + half);
+        out[i] = median(arr.slice(start, end + 1));
+      }
+      return out;
+    };
 
-    let maxIndex = 0;
-    let maxValue = -1;
-    for (let i = 0; i < dps.length; i++) {
-      if (dps[i].value > maxValue) {
-        maxValue = dps[i].value;
-        maxIndex = i;
+    type BurstCandidate = BurstWindow & {
+      score: number;
+      segmentId: number;
+    };
+
+    const segments: Array<{ start: number; end: number }> = [];
+    let segStart = 0;
+    for (let i = 1; i <= dps.length; i++) {
+      const isBoundary =
+        i === dps.length ||
+        (Number.isFinite(dps[i]?.x) &&
+          Number.isFinite(dps[i - 1]?.x) &&
+          dps[i].x - dps[i - 1].x > maxGapSeconds);
+
+      if (isBoundary) {
+        segments.push({ start: segStart, end: i - 1 });
+        segStart = i;
       }
     }
-    if (maxValue <= 0) return [];
-    const maxX = dps[maxIndex].x;
 
-    // Try progressively lower thresholds until we find at least one burst window.
-    const thresholds = [
-      percentile(values, 0.9),
-      percentile(values, 0.85),
-      percentile(values, 0.8),
-      percentile(values, 0.75),
-    ].filter((v, idx, arr) => idx === 0 || v < arr[idx - 1]);
+    const bursts: BurstCandidate[] = [];
 
-    let bursts: BurstWindow[] = [];
-    for (const t of thresholds) {
-      bursts = buildBursts(t);
-      if (bursts.length) break;
-    }
+    for (let segmentId = 0; segmentId < segments.length; segmentId++) {
+      const { start, end } = segments[segmentId];
+      const len = end - start + 1;
+      if (len < minLenSec) continue;
 
-    const buildPeakWindow = (peakIdx: number): BurstWindow => {
-      const peakVal = dps[peakIdx].value;
-      const peakX = dps[peakIdx].x;
+      const raw = new Array(len).fill(0).map((_, i) => toFiniteNonNegative(dps[start + i].value));
+      const smoothed = movingAverageCentered(raw, smoothSec);
+      const baseline = rollingMedianCentered(smoothed, baselineSec);
+      const ratios = smoothed.map((v, i) => v / Math.max(baseline[i], eps));
+      const ratiosStable = movingAverageCentered(ratios, smoothSec);
 
-      const ratios = [0.95, 0.9, 0.85, 0.8, 0.75, 0.7];
-      for (const r of ratios) {
-        const threshold = peakVal * r;
-        let start = peakIdx;
-        let end = peakIdx;
-
-        while (
-          start > 0 &&
-          dps[start].x - dps[start - 1].x <= maxGapSeconds &&
-          dps[start - 1].value >= threshold
-        ) {
-          start -= 1;
-        }
-        while (
-          end < dps.length - 1 &&
-          dps[end + 1].x - dps[end].x <= maxGapSeconds &&
-          dps[end + 1].value >= threshold
-        ) {
-          end += 1;
-        }
-
-        if (end - start + 1 >= 3) {
-          return {
-            x1: dps[start].x,
-            x2: dps[end].x,
-            peakX,
-            peak: peakVal,
-          };
-        }
+      // Burst intensity is derived from the same local ratio (smoothed DPS vs rolling baseline).
+      // Ramp from 0% at/below endRatio up to 100% at/above startRatio (stable across segments).
+      const intensityRaw = new Array(len).fill(0).map((_, i) => {
+        const r = ratiosStable[i];
+        if (r <= endRatio) return 0;
+        if (r >= startRatio) return 100;
+        return ((r - endRatio) / (startRatio - endRatio)) * 100;
+      });
+      const intensityStable = movingAverageCentered(intensityRaw, smoothSec);
+      for (let i = 0; i < len; i++) {
+        const pct = Math.round(intensityStable[i]);
+        intensityByIdx.set(dps[start + i].idx, clampNumber(pct, 0, 100));
       }
 
-      let start = peakIdx;
-      let end = peakIdx;
-      while (
-        start > 0 &&
-        peakIdx - start < 2 &&
-        dps[start].x - dps[start - 1].x <= maxGapSeconds
-      ) {
-        start -= 1;
-      }
-      while (
-        end < dps.length - 1 &&
-        end - peakIdx < 2 &&
-        dps[end + 1].x - dps[end].x <= maxGapSeconds
-      ) {
-        end += 1;
-      }
+      let inBurst = false;
+      let runStartIdx = -1;
+      let lastEndIdx = -1_000_000;
 
-      return {
-        x1: dps[start].x,
-        x2: dps[end].x,
-        peakX,
-        peak: peakVal,
+      const emitBurst = (runStart: number, runEnd: number) => {
+        const runLen = runEnd - runStart + 1;
+        if (runLen < minLenSec) return;
+
+        // Choose the peak at the highest observed DPS point inside the burst window, so the dot
+        // visually lands on the peak of the DPS curve.
+        let peakIdx = runStart;
+        let peak = raw[runStart];
+        let score = 0;
+        for (let i = runStart; i <= runEnd; i++) {
+          if (
+            raw[i] > peak ||
+            (raw[i] === peak && ratiosStable[i] > ratiosStable[peakIdx])
+          ) {
+            peakIdx = i;
+            peak = raw[i];
+          }
+          score += Math.max(0, smoothed[i] - baseline[i]);
+        }
+
+        bursts.push({
+          x1: dps[start + runStart].x,
+          x2: dps[start + runEnd].x,
+          peakX: dps[start + peakIdx].x,
+          peak,
+          score,
+          segmentId,
+        });
       };
-    };
 
-    const containsGlobalPeak = bursts.some((b) => maxX >= b.x1 && maxX <= b.x2);
-    if (!containsGlobalPeak) {
-      bursts.push(buildPeakWindow(maxIndex));
+      for (let i = 0; i < len; i++) {
+        const ratio = ratios[i];
+
+        if (!inBurst) {
+          if (ratio >= startRatio && i - lastEndIdx > refractorySec) {
+            inBurst = true;
+            runStartIdx = i;
+          }
+          continue;
+        }
+
+        if (ratio <= endRatio) {
+          emitBurst(runStartIdx, i - 1);
+          inBurst = false;
+          runStartIdx = -1;
+          lastEndIdx = i - 1;
+        }
+      }
+
+      if (inBurst && runStartIdx >= 0) {
+        emitBurst(runStartIdx, len - 1);
+      }
     }
 
     const merged = bursts
       .sort((a, b) => a.x1 - b.x1)
-      .reduce<BurstWindow[]>((acc, current) => {
+      .reduce<BurstCandidate[]>((acc, current) => {
         const last = acc[acc.length - 1];
         if (!last) return [current];
 
-        if (current.x1 <= last.x2 + 0.5) {
-          const peakInfo =
-            current.peak > last.peak
-              ? { peakX: current.peakX, peak: current.peak }
-              : { peakX: last.peakX, peak: last.peak };
-
+        if (
+          current.segmentId === last.segmentId &&
+          current.x1 <= last.x2 + mergeGapSec
+        ) {
           last.x2 = Math.max(last.x2, current.x2);
-          last.peakX = peakInfo.peakX;
-          last.peak = peakInfo.peak;
+          last.score += current.score;
+          if (current.peak > last.peak) {
+            last.peak = current.peak;
+            last.peakX = current.peakX;
+          }
           return acc;
         }
 
@@ -617,11 +612,17 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
         return acc;
       }, []);
 
-    return merged
-      .sort((a, b) => b.peak - a.peak)
+    const overlay = merged
+      .sort((a, b) => (b.score !== a.score ? b.score - a.score : b.peak - a.peak))
       .slice(0, 4)
-      .sort((a, b) => a.x1 - b.x1);
+      .sort((a, b) => a.x1 - b.x1)
+      .map(({ x1, x2, peakX, peak }) => ({ x1, x2, peakX, peak }));
+
+    return { overlay, intensityByIdx };
   }, [baseDpsSeries]);
+
+  const burstOverlay = burstAnalysis.overlay;
+  const burstIntensityByIdx = burstAnalysis.intensityByIdx;
 
   const buildSkillRows = (
     skills: TimelineSkillContribution[] | undefined
@@ -676,6 +677,9 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
       showBurst &&
       Number.isFinite(point?.x) &&
       burstOverlay.some((b) => point!.x >= b.x1 && point!.x <= b.x2);
+    const burstIntensityPct =
+      showBurst && idx >= 0 ? burstIntensityByIdx.get(idx) ?? 0 : 0;
+    const burstIntensityDisplayPct = isInBurst ? 100 : burstIntensityPct;
 
     const resolveRelativeTime = (): number => {
       if (selectedTargetName && timelineSessions.length) {
@@ -694,7 +698,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
       return Number.isFinite(point?.x) ? Number(point!.x) : 0;
     };
 
-    const titleTime = `Time since session start ${formatTime(resolveRelativeTime())}`;
+    const titleTime = `Time since pull start ${formatTime(resolveRelativeTime())}`;
     const secondaryTime =
       null;
 
@@ -805,10 +809,13 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               sx={{
                 fontSize: "0.95rem",
                 fontWeight: 900,
-                color: isInBurst ? "rgba(239,68,68,0.95)" : "rgba(226,232,240,0.6)",
+                color:
+                  isInBurst && burstIntensityDisplayPct > 0
+                    ? "rgba(239,68,68,0.95)"
+                    : "rgba(226,232,240,0.6)",
               }}
             >
-              {isInBurst ? "Active" : "No"}
+              {burstIntensityDisplayPct}%
             </Typography>
           </Box>
         </Box>
@@ -1000,7 +1007,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               }
               label={
                 <Tooltip
-                  title="Highlights high-DPS windows (bursts) compared to the rest of the session."
+                  title="Highlights rotation burst windows using local spikes: smoothed DPS vs a rolling median baseline (segment-aware with hysteresis). Tooltip shows Burst % intensity ramping up before a burst and holding at 100% during it."
                   arrow
                   placement="top"
                 >
@@ -1169,7 +1176,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                 viewMode === "dps" &&
                 burstOverlay.map((b) => (
                   <ReferenceDot
-                    key={`peak-${b.peakX}`}
+                    key={`peak-${b.x1}-${b.peakX}`}
                     x={b.peakX}
                     y={b.peak}
                     yAxisId="left"

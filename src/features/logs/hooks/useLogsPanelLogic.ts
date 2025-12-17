@@ -602,7 +602,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     const targetRow = targets.find((t) => t.targetName === selectedTargetName);
     const skillsForTarget = perTargetSkills[selectedTargetName] ?? [];
 
-    // Specific session selected
+    // Specific pull selected
     if (activeSession) {
       const dps =
         activeSession.durationSeconds > 0
@@ -619,16 +619,16 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
       };
     }
 
-    // All sessions for this target
+    // All pulls for this target
     if (sessionsForTarget.length > 0) {
-      // Combine session data for derived stats while keeping the aggregated
+      // Combine pull data for derived stats while keeping the aggregated
       // target totals as the source of truth.
       const sessionTotals = sessionsForTarget.reduce(
-        (acc, session) => {
-          acc.damage += session.totalDamage;
-          acc.events += session.totalEvents;
-          acc.duration += session.durationSeconds;
-          acc.critHits += session.critHits;
+        (acc, pull) => {
+          acc.damage += pull.totalDamage;
+          acc.events += pull.totalEvents;
+          acc.duration += pull.durationSeconds;
+          acc.critHits += pull.critHits;
           return acc;
         },
         {

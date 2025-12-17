@@ -208,7 +208,9 @@ export const trackUsage = (
   eventName: string,
   props?: Record<string, string | number | boolean>
 ) => {
-  void window.tlcla?.analytics?.trackUsage?.(eventName, props);
+  void window.tlcla?.analytics
+    ?.trackUsage?.(eventName, props)
+    ?.catch(() => undefined);
 };
 
 export const flushTelemetry = async (timeoutMs = 2000): Promise<boolean> => {
