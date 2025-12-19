@@ -1,6 +1,6 @@
 import { parentPort, workerData } from "node:worker_threads";
 import { parseLogFileSummary } from "./logs";
-import type { ParsedLogSummary } from "./logs";
+import type { ParsedLogSummary } from "../shared/types";
 
 type WorkerPayload = {
   filePath: string;

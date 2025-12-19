@@ -17,9 +17,19 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "@shared/*": [
+                "shared/*"
+            ]
+        }
     },
     "include": [
-        "src"
-, "electron/logs.ts"    ]
+        "src",
+        "shared"
+    ]
 }

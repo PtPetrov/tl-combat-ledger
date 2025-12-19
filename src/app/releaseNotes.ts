@@ -6,6 +6,17 @@ export type ReleaseNotesPatch = {
 // Newest patch first.
 export const RELEASE_NOTES: ReleaseNotesPatch[] = [
   {
+    version: "0.2.8",
+    notes: [
+      "Renamed Share to Ratio in the skills table and added a Crit+Heavy column.",
+      "Improved Damage Over Time overlays: renamed Stability to Rotation consistency and clarified Burst damage labeling/tooltips.",
+      "Refreshed the Target Overview layout (more compact, better alignment with table columns) and moved Compare/Export buttons into their own column.",
+      "Moved the Character card above Logs and updated its layout (class + weapon combo row, weapons shown as “A | B”).",
+      "Added Pull numbering formatting (e.g. Pull # 1) in tabs and overview.",
+      "Improved default zoom scaling for 1080p/1440p displays.",
+    ],
+  },
+  {
     version: "0.2.7",
     notes: [
       "Refactored Burst detection to use local spikes (smoothed DPS vs rolling median baseline) with hysteresis, minimum duration, refractory time, and gap/segment awareness.",

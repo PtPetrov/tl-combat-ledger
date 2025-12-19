@@ -166,40 +166,13 @@ export interface UseLogsPanelLogicResult {
   handleToggleLogFavorite: (log: LogFileInfo) => void;
 }
 
-declare global {
-  interface Window {
-    tlcla?: {
-      app?: AppApi;
-      logs?: LogsApi;
-      updates?: UpdatesApi;
-      export?: ExportApi;
-      telemetry?: {
-        getSettings: () => Promise<{
-          crashReportsEnabled: boolean;
-        }>;
-        setSettings: (next: {
-          crashReportsEnabled?: boolean;
-        }) => Promise<{
-          crashReportsEnabled: boolean;
-        }>;
-        getConfig?: () => Promise<{
-          sentryDsn?: string;
-        }>;
-      };
-      analytics?: {
-        trackUsage: (
-          eventName: string,
-          props?: Record<string, string | number | boolean>
-        ) => Promise<void>;
-      };
-    };
-  }
-}
-
 const getLogsApi = (): LogsApi | undefined => {
   if (typeof window === "undefined") return undefined;
   return window.tlcla?.logs;
 };
+
+const LOGS_API_UNAVAILABLE_MESSAGE =
+  "Logs API not available. Run the app via Electron (`npm run dev` or `npm run dev:electron`).";
 
 export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   const [selectedDir, setSelectedDir] = useState<string | null>(null);
@@ -384,9 +357,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   useEffect(() => {
     const api = getLogsApi();
     if (!api) {
-      setError(
-        "Logs API not available. Make sure you run the app via Electron."
-      );
+      setError(LOGS_API_UNAVAILABLE_MESSAGE);
       setState("error");
       return;
     }
@@ -427,9 +398,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   const loadLogsForDirectory = useCallback(async (dir: string) => {
     const api = getLogsApi();
     if (!api) {
-      setError(
-        "Logs API not available. Make sure you run the app via Electron."
-      );
+      setError(LOGS_API_UNAVAILABLE_MESSAGE);
       setState("error");
       return;
     }
@@ -451,9 +420,7 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
   const loadSummary = useCallback(async (log: LogFileInfo) => {
     const api = getLogsApi();
     if (!api) {
-      setSummaryError(
-        "Logs API not available. Make sure you run the app via Electron."
-      );
+      setSummaryError(LOGS_API_UNAVAILABLE_MESSAGE);
       setSummaryState("error");
       return;
     }

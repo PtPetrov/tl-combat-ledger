@@ -11,10 +11,7 @@ import type {
 } from "@sentry/core";
 import { makeElectronOfflineTransport } from "@sentry/electron/main";
 import { getSentryDsn } from "./telemetryConfig";
-
-export type TelemetrySettings = {
-  crashReportsEnabled: boolean;
-};
+import type { TelemetrySettings } from "../shared/types";
 
 const store = new Store<TelemetrySettings>({
   name: "telemetry",

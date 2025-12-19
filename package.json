@@ -1,8 +1,8 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Throne and Liberty Combat Ledger",
-  "main": "dist/main.js",
+  "main": "dist/electron/main.js",
   "tlclTelemetry": {
     "aptabaseAppKey": "",
     "sentryDsn": ""
@@ -14,6 +14,7 @@
   "author": "nOtDeviL",
   "license": "MIT",
   "scripts": {
+    "dev": "node scripts/dev.mjs",
     "dev:renderer": "vite dev",
     "build:renderer": "vite build",
     "build:electron": "tsc -p tsconfig.electron.json",

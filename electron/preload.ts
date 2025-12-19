@@ -1,168 +1,120 @@
 import { contextBridge, ipcRenderer } from "electron";
+import type {
+  AnalyticsProps,
+  ExportResult,
+  LogFileInfo,
+  ParsedLogSummary,
+  TelemetryPublicConfig,
+  TelemetrySettings,
+  UpdateStatusPayload,
+} from "../shared/types";
+import type { TlclaApi } from "../shared/tlcla";
 
-type LogFileInfo = {
-  name: string;
-  path: string;
-  size: number;
-  modifiedAt: number;
-};
+// NOTE: With `webPreferences.sandbox: true`, preload scripts have a restricted
+// environment. Keep this file self-contained at runtime (avoid importing local
+// modules) to ensure the bridge is available in all environments (e.g. WSL2).
+type IpcContract = typeof import("../shared/ipc").IPC;
+const IPC = {
+  APP_GET_VERSION: "app:getVersion",
 
-type SkillBreakdown = {
-  skillName: string;
-  totalHits: number;
-  totalDamage: number;
-  maxHit: number;
-  avgHit: number;
-  critHits: number;
-  critRate: number;
-};
+  LOGS_GET_DEFAULT_DIRECTORIES: "logs:getDefaultDirectories",
+  LOGS_SELECT_DIRECTORY: "logs:selectDirectory",
+  LOGS_LIST_FILES: "logs:listFiles",
+  LOGS_PARSE_SUMMARY: "logs:parseSummary",
 
-type TargetBreakdown = {
-  targetName: string;
-  totalHits: number;
-  totalDamage: number;
-  maxHit: number;
-  avgHit: number;
-  critHits: number;
-  critRate: number;
-};
+  UPDATES_CHECK: "updates:check",
+  UPDATES_INSTALL: "updates:install",
+  UPDATES_STATUS: "updates:status",
 
-type DamageTimelineBucket = {
-  timestampMs: number;
-  elapsedSeconds: number;
-  totalDamage: number;
-  perTarget: Record<string, number>;
-  skills?: Record<string, TimelineSkillContribution[]>;
-};
+  EXPORT_PNG: "export:png",
 
-type TimelineSkillContribution = {
-  skillName: string;
-  damage: number;
-  hits: number;
-  critHits: number;
-  heavyHits: number;
-};
+  TELEMETRY_GET_SETTINGS: "telemetry:getSettings",
+  TELEMETRY_SET_SETTINGS: "telemetry:setSettings",
+  TELEMETRY_GET_CONFIG: "telemetry:getConfig",
 
-type PerTargetSkillsMap = Record<string, SkillBreakdown[]>;
+  ANALYTICS_TRACK_USAGE: "analytics:trackUsage",
 
-type ParsedLogSummary = {
-  filePath: string;
-  fileName: string;
-  characterName: string | null;
-  totalEvents: number;
-  durationSeconds: number | null;
-  startTime: string | null;
-  endTime: string | null;
-  totalDamage: number;
-  totalHealing: number;
-  dps: number | null;
-  hps: number | null;
-  critRate: number | null;
-  skills: SkillBreakdown[];
-  targets: TargetBreakdown[];
-  perTargetSkills: PerTargetSkillsMap;
-  timeline: DamageTimelineBucket[];
-};
-
-type UpdateStatusPayload = {
-  state: "idle" | "checking" | "available" | "downloading" | "ready" | "error";
-  version?: string;
-  percent?: number;
-  message?: string;
-};
-
-type ExportResult = {
-  canceled: boolean;
-  filePath?: string;
-  error?: string;
-};
-
-type TelemetrySettings = {
-  crashReportsEnabled: boolean;
-};
-
-type TelemetryPublicConfig = {
-  sentryDsn?: string;
-};
-
-type AnalyticsProps = Record<string, string | number | boolean>;
+  WINDOW_MINIMIZE: "window:minimize",
+  WINDOW_TOGGLE_MAXIMIZE: "window:toggleMaximize",
+  WINDOW_CLOSE: "window:close",
+} as const satisfies IpcContract;
 
 const logsApi = {
   getDefaultDirectories(): Promise<string[]> {
-    return ipcRenderer.invoke("logs:getDefaultDirectories");
+    return ipcRenderer.invoke(IPC.LOGS_GET_DEFAULT_DIRECTORIES);
   },
   selectDirectory(): Promise<string | null> {
-    return ipcRenderer.invoke("logs:selectDirectory");
+    return ipcRenderer.invoke(IPC.LOGS_SELECT_DIRECTORY);
   },
   listFiles(directory: string): Promise<LogFileInfo[]> {
-    return ipcRenderer.invoke("logs:listFiles", directory);
+    return ipcRenderer.invoke(IPC.LOGS_LIST_FILES, directory);
   },
   parseSummary(filePath: string): Promise<ParsedLogSummary> {
-    return ipcRenderer.invoke("logs:parseSummary", filePath);
+    return ipcRenderer.invoke(IPC.LOGS_PARSE_SUMMARY, filePath);
   },
 };
 
 const windowApi = {
   minimize() {
-    ipcRenderer.send("window:minimize");
+    ipcRenderer.send(IPC.WINDOW_MINIMIZE);
   },
   toggleMaximize() {
-    ipcRenderer.send("window:toggleMaximize");
+    ipcRenderer.send(IPC.WINDOW_TOGGLE_MAXIMIZE);
   },
   close() {
-    ipcRenderer.send("window:close");
+    ipcRenderer.send(IPC.WINDOW_CLOSE);
   },
 };
 
 const appApi = {
   getVersion(): Promise<string> {
-    return ipcRenderer.invoke("app:getVersion");
+    return ipcRenderer.invoke(IPC.APP_GET_VERSION);
   },
 };
 
 const updatesApi = {
   checkForUpdates(): Promise<void> {
-    return ipcRenderer.invoke("updates:check");
+    return ipcRenderer.invoke(IPC.UPDATES_CHECK);
   },
   installUpdate(): Promise<void> {
-    return ipcRenderer.invoke("updates:install");
+    return ipcRenderer.invoke(IPC.UPDATES_INSTALL);
   },
   onStatus(callback: (payload: UpdateStatusPayload) => void) {
     const handler = (_event: unknown, payload: UpdateStatusPayload) => {
       callback(payload);
     };
-    ipcRenderer.on("updates:status", handler);
-    return () => ipcRenderer.removeListener("updates:status", handler);
+    ipcRenderer.on(IPC.UPDATES_STATUS, handler);
+    return () => ipcRenderer.removeListener(IPC.UPDATES_STATUS, handler);
   },
 };
 
 const exportApi = {
   savePng(suggestedFileName?: string): Promise<ExportResult> {
-    return ipcRenderer.invoke("export:png", { suggestedFileName });
+    return ipcRenderer.invoke(IPC.EXPORT_PNG, { suggestedFileName });
   },
 };
 
 const telemetryApi = {
   getSettings(): Promise<TelemetrySettings> {
-    return ipcRenderer.invoke("telemetry:getSettings");
+    return ipcRenderer.invoke(IPC.TELEMETRY_GET_SETTINGS);
   },
   setSettings(
     next: Partial<TelemetrySettings>
   ): Promise<TelemetrySettings> {
-    return ipcRenderer.invoke("telemetry:setSettings", next);
+    return ipcRenderer.invoke(IPC.TELEMETRY_SET_SETTINGS, next);
   },
   getConfig(): Promise<TelemetryPublicConfig> {
-    return ipcRenderer.invoke("telemetry:getConfig");
+    return ipcRenderer.invoke(IPC.TELEMETRY_GET_CONFIG);
   },
 };
 
 const analyticsApi = {
   trackUsage(eventName: string, props?: AnalyticsProps): Promise<void> {
-    return ipcRenderer.invoke("analytics:trackUsage", { eventName, props });
+    return ipcRenderer.invoke(IPC.ANALYTICS_TRACK_USAGE, { eventName, props });
   },
 };
 
-contextBridge.exposeInMainWorld("tlcla", {
+const tlcla: TlclaApi = {
   logs: logsApi,
   window: windowApi,
   app: appApi,
@@ -170,6 +122,8 @@ contextBridge.exposeInMainWorld("tlcla", {
   export: exportApi,
   telemetry: telemetryApi,
   analytics: analyticsApi,
-});
+};
+
+contextBridge.exposeInMainWorld("tlcla", tlcla);
 
 export {};

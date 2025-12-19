@@ -7,11 +7,12 @@ import * as fs from "node:fs/promises";
 import { Worker } from "node:worker_threads";
 import { autoUpdater } from "electron-updater";
 
+import { IPC } from "../shared/ipc";
+import type { ExportResult, ParsedLogSummary, UpdateStatusPayload } from "../shared/types";
 import {
   getDefaultLogDirectories,
   listLogFilesInDirectory,
 } from "./logs";
-import type { ParsedLogSummary } from "./logs";
 import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
 import { getAptabaseAppKey, getSentryDsn } from "./telemetryConfig";
 import { trackUsageEvent } from "./analytics";
@@ -20,6 +21,19 @@ let mainWindow: BrowserWindow | null = null;
 let ipcRegistered = false;
 
 const isDev = !app.isPackaged;
+const isWsl =
+  process.platform === "linux" &&
+  (Boolean(process.env.WSL_DISTRO_NAME) ||
+    Boolean(process.env.WSL_INTEROP) ||
+    Boolean(process.env.WSLENV));
+
+// WSL2 commonly fails to initialize Electron's GPU process, which can result in a blank
+// window or degraded rendering. Prefer software rendering in that environment.
+if (isWsl) {
+  app.disableHardwareAcceleration();
+  app.commandLine.appendSwitch("disable-gpu");
+}
+
 const workerScript = path.join(__dirname, "logWorker.js");
 const lockInspector = !isDev;
 
@@ -80,13 +94,6 @@ function getRecommendedZoomFactor(display: Display): number {
   return 1;
 }
 
-type UpdateStatusPayload = {
-  state: "idle" | "checking" | "available" | "downloading" | "ready" | "error";
-  version?: string;
-  percent?: number;
-  message?: string;
-};
-
 const gotInstanceLock = app.requestSingleInstanceLock();
 
 if (!gotInstanceLock) {
@@ -120,7 +127,7 @@ function createMainWindow() {
 
   // Resolve icon for window/taskbar (dev uses local resources, prod uses packaged resources).
   const resourcesPath = isDev
-    ? path.join(__dirname, "..", "resources")
+    ? path.join(app.getAppPath(), "resources")
     : process.resourcesPath;
   const iconPath = path.join(resourcesPath, "icon.ico");
 
@@ -203,7 +210,7 @@ function createMainWindow() {
   } else {
     mainWindow.loadURL(
       url.format({
-        pathname: path.join(__dirname, "renderer/index.html"),
+        pathname: path.join(__dirname, "..", "renderer", "index.html"),
         protocol: "file:",
         slashes: true,
       })
@@ -329,14 +336,8 @@ function parseSummaryInWorker(filePath: string): Promise<ParsedLogSummary> {
 
 function sendUpdateStatus(payload: UpdateStatusPayload) {
   if (!mainWindow) return;
-  mainWindow.webContents.send("updates:status", payload);
+  mainWindow.webContents.send(IPC.UPDATES_STATUS, payload);
 }
-
-type ExportResult = {
-  canceled: boolean;
-  filePath?: string;
-  error?: string;
-};
 
 const sanitizeBaseFileName = (value: string): string => {
   const trimmed = value.trim();
@@ -427,15 +428,15 @@ function registerIpcHandlers() {
   if (ipcRegistered) return;
   ipcRegistered = true;
 
-  ipcMain.handle("app:getVersion", () => {
+  ipcMain.handle(IPC.APP_GET_VERSION, () => {
     return app.getVersion();
   });
 
-  ipcMain.handle("logs:getDefaultDirectories", () => {
+  ipcMain.handle(IPC.LOGS_GET_DEFAULT_DIRECTORIES, () => {
     return getDefaultLogDirectories();
   });
 
-  ipcMain.handle("logs:selectDirectory", async () => {
+  ipcMain.handle(IPC.LOGS_SELECT_DIRECTORY, async () => {
     if (!mainWindow) return null;
 
     const result = await dialog.showOpenDialog(mainWindow, {
@@ -450,29 +451,29 @@ function registerIpcHandlers() {
     return result.filePaths[0];
   });
 
-  ipcMain.handle("logs:listFiles", async (_event, directory: string) => {
+  ipcMain.handle(IPC.LOGS_LIST_FILES, async (_event, directory: string) => {
     if (!directory || typeof directory !== "string") return [];
     return listLogFilesInDirectory(directory);
   });
 
-  ipcMain.handle("logs:parseSummary", async (_event, filePath: string) => {
+  ipcMain.handle(IPC.LOGS_PARSE_SUMMARY, async (_event, filePath: string) => {
     if (!filePath || typeof filePath !== "string") {
       throw new Error("filePath is required for logs:parseSummary");
     }
     return parseSummaryInWorker(filePath);
   });
 
-  ipcMain.handle("updates:check", async () => {
+  ipcMain.handle(IPC.UPDATES_CHECK, async () => {
     await triggerUpdateCheck();
   });
 
-  ipcMain.handle("updates:install", () => {
+  ipcMain.handle(IPC.UPDATES_INSTALL, () => {
     if (isDev) return;
     autoUpdater.quitAndInstall();
   });
 
   ipcMain.handle(
-    "export:png",
+    IPC.EXPORT_PNG,
     async (
       _event,
       payload?: {
@@ -503,17 +504,17 @@ function registerIpcHandlers() {
     }
   );
 
-  ipcMain.handle("telemetry:getSettings", () => {
+  ipcMain.handle(IPC.TELEMETRY_GET_SETTINGS, () => {
     return getTelemetrySettings();
   });
 
-  ipcMain.handle("telemetry:getConfig", () => {
+  ipcMain.handle(IPC.TELEMETRY_GET_CONFIG, () => {
     const sentryDsn = getSentryDsn();
     return { sentryDsn: sentryDsn || undefined };
   });
 
   ipcMain.handle(
-    "telemetry:setSettings",
+    IPC.TELEMETRY_SET_SETTINGS,
     (
       _event,
       update: { crashReportsEnabled?: boolean }
@@ -523,7 +524,7 @@ function registerIpcHandlers() {
   );
 
   ipcMain.handle(
-    "analytics:trackUsage",
+    IPC.ANALYTICS_TRACK_USAGE,
     (
       _event,
       payload: {
@@ -544,11 +545,11 @@ function registerIpcHandlers() {
   );
 
   // Frameless window controls, used by TopBar via preload.ts
-  ipcMain.on("window:minimize", () => {
+  ipcMain.on(IPC.WINDOW_MINIMIZE, () => {
     if (mainWindow) mainWindow.minimize();
   });
 
-  ipcMain.on("window:toggleMaximize", () => {
+  ipcMain.on(IPC.WINDOW_TOGGLE_MAXIMIZE, () => {
     if (!mainWindow) return;
     if (mainWindow.isMaximized()) {
       mainWindow.unmaximize();
@@ -559,7 +560,7 @@ function registerIpcHandlers() {
     mainWindow.maximize();
   });
 
-  ipcMain.on("window:close", () => {
+  ipcMain.on(IPC.WINDOW_CLOSE, () => {
     if (mainWindow) mainWindow.close();
   });
 }

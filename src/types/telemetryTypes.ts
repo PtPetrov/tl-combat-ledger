@@ -1,3 +1,1 @@
-export type TelemetrySettings = {
-  crashReportsEnabled: boolean;
-};
+export type { TelemetrySettings } from "../../shared/types";
