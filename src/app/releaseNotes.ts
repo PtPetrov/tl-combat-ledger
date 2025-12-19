@@ -6,7 +6,7 @@ export type ReleaseNotesPatch = {
 // Newest patch first.
 export const RELEASE_NOTES: ReleaseNotesPatch[] = [
   {
-    version: "0.2.8",
+    version: "0.2.9",
     notes: [
       "Renamed Share to Ratio in the skills table and added a Crit+Heavy column.",
       "Improved Damage Over Time overlays: renamed Stability to Rotation consistency and clarified Burst damage labeling/tooltips.",
