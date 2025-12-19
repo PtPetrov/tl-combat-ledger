@@ -4,59 +4,27 @@ import {
   Box,
   Button,
   CircularProgress,
-  IconButton,
-  Tooltip,
   Typography,
 } from "@mui/material";
-import CompareIcon from "@mui/icons-material/Compare";
-import IosShareIcon from "@mui/icons-material/IosShare";
 // Inline the logo to avoid any file-path issues in packaged builds.
 import logoImage from "../../../../resources/logo.png?inline";
 import type { UpdateStatusPayload } from "../types/updateTypes";
-import { trackUsage } from "../../../telemetry/telemetry";
 
 export interface AnalyzerHeaderProps {
-  onToggleCompare?: () => void;
-  isCompareActive?: boolean;
-  showCompareControl?: boolean;
   contextLabel?: string;
   updateStatus?: UpdateStatusPayload | null;
   onCheckForUpdates?: () => void;
   onInstallUpdate?: () => void;
-  exportFileBaseName?: string;
 }
 
 export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
   ({
-    onToggleCompare,
-    isCompareActive,
-    showCompareControl = true,
     contextLabel,
     updateStatus,
     onCheckForUpdates,
     onInstallUpdate,
-    exportFileBaseName,
   }) => {
     const [logoHidden, setLogoHidden] = useState(false);
-    const [isExporting, setIsExporting] = useState(false);
-
-    const exportApi =
-      typeof window !== "undefined" ? window.tlcla?.export : undefined;
-    const hasExportBridge = Boolean(exportApi);
-
-    const handleExport = async () => {
-      if (!exportApi) return;
-      setIsExporting(true);
-
-      try {
-        trackUsage("export.png");
-        await exportApi.savePng(exportFileBaseName);
-      } catch (error) {
-        console.warn("Export failed", error);
-      } finally {
-        setIsExporting(false);
-      }
-    };
 
     const renderUpdateControl = () => {
       const status = updateStatus;
@@ -199,43 +167,6 @@ export const AnalyzerHeader: React.FC<AnalyzerHeaderProps> = React.memo(
           }}
         >
           {renderUpdateControl()}
-          {showCompareControl && onToggleCompare && (
-            <Tooltip title="Compare logs" placement="bottom">
-              <IconButton
-                aria-label="Compare logs"
-                onClick={onToggleCompare}
-                sx={{
-                  color: isCompareActive ? "#a5b4fc" : "rgba(226,232,240,0.9)",
-                  transition: "color 150ms ease",
-                  "&:hover": { color: "#c7d2fe" },
-                }}
-              >
-                <CompareIcon sx={{ fontSize: "1.7rem" }} />
-              </IconButton>
-            </Tooltip>
-          )}
-
-          <Tooltip
-            title={
-              hasExportBridge ? (isExporting ? "Exporting…" : "Export as PNG") : "Export available only in the app"
-            }
-            placement="bottom"
-          >
-            <span>
-              <IconButton
-                aria-label="Export as PNG"
-                onClick={handleExport}
-                disabled={!hasExportBridge || isExporting}
-                sx={{
-                  color: "rgba(226,232,240,0.9)",
-                  transition: "color 150ms ease",
-                  "&:hover": { color: "#c7d2fe" },
-                }}
-              >
-                <IosShareIcon sx={{ fontSize: "1.65rem" }} />
-              </IconButton>
-            </span>
-          </Tooltip>
         </Box>
       </Box>
     );

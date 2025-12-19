@@ -73,8 +73,10 @@ function getRecommendedZoomFactor(display: Display): number {
   const physicalWidth = Math.round(display.workAreaSize.width * display.scaleFactor);
   const physicalHeight = Math.round(display.workAreaSize.height * display.scaleFactor);
 
-  // Target: on 1920x1080 (or smaller) displays, scale UI down so more fits onscreen.
-  if (physicalWidth <= 1920 && physicalHeight <= 1080) return 0.85;
+  // Target: scale UI down on smaller displays so more fits onscreen.
+  // Use height-based thresholds so ultrawide (e.g. 2560x1080) behaves as expected.
+  if (physicalHeight <= 1080) return 0.8;
+  if (physicalHeight <= 1440) return 0.9;
   return 1;
 }
 

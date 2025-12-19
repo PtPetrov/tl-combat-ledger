@@ -232,10 +232,11 @@ export interface CharacterClassViewProps {
   characterName: string | null;
   /** Skills for the current scope (overall or target+pull) */
   currentTopSkills: SkillBreakdown[];
+  variant?: "main" | "sidebar";
 }
 
 export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
-  ({ characterName, currentTopSkills }) => {
+  ({ characterName, currentTopSkills, variant = "main" }) => {
     const { primaryWeapons, detectedClass } =
       inferClassFromSkills(currentTopSkills);
 
@@ -244,41 +245,64 @@ export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
       primaryWeapons.length === 1
         ? "Please, make sure you use both your weapon skills in order to determen the class and the weapons"
         : primaryWeapons.length
-          ? primaryWeapons.join(" + ")
+          ? primaryWeapons.join(" | ")
           : "Unknown weapons";
 
     const classLabel = detectedClass
       ? detectedClass.className
       : "Unknown class";
 
+    const isSidebar = variant === "sidebar";
+
     return (
       <Box
         sx={{
           borderRadius: "2px",
-          px: cardPaddingX,
-          py: cardPaddingY,
-          background:
-            "linear-gradient(135deg, rgba(15,23,42,0.98), rgba(5,8,20,0.95))",
-          boxShadow:
-            "0 18px 32px rgba(2,6,23,0.7), 0 0 0 1px rgba(15,23,42,0.9)",
+          px: isSidebar ? 1 : cardPaddingX,
+          py: isSidebar ? 1 : cardPaddingY,
+          background: isSidebar
+            ? "rgba(10,16,28,0.9)"
+            : "linear-gradient(135deg, rgba(15,23,42,0.98), rgba(5,8,20,0.95))",
+          border: isSidebar ? "1px solid rgba(30,41,59,0.6)" : undefined,
+          boxShadow: isSidebar
+            ? "none"
+            : "0 18px 32px rgba(2,6,23,0.7), 0 0 0 1px rgba(15,23,42,0.9)",
           display: "flex",
           flexDirection: "column",
-          gap: cardGap,
+          gap: isSidebar ? 0.9 : cardGap,
           minHeight: 0,
-          justifyContent: "center",
+          justifyContent: isSidebar ? "flex-start" : "center",
           alignItems: "flex-start",
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "0.95rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.2em",
-            color: "rgba(226,232,240,0.7)",
-          }}
-        >
-          Character Loadout
-        </Typography>
+        {isSidebar ? (
+          <Typography
+            sx={{
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "text.secondary",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              display: "flex",
+              alignItems: "center",
+              lineHeight: 1,
+              mb: 0.8,
+            }}
+          >
+            Character
+          </Typography>
+        ) : (
+          <Typography
+            sx={{
+              fontSize: "0.95rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "rgba(226,232,240,0.7)",
+            }}
+          >
+            Character
+          </Typography>
+        )}
 
         <Box
           sx={{
@@ -287,21 +311,53 @@ export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
             gap: 0.6,
           }}
         >
-          <Typography sx={{ fontSize: "1.85rem", fontWeight: 700 }}>
-            {displayName}
-          </Typography>
           <Typography
             sx={{
-              fontSize: "1.2rem",
-              fontWeight: 600,
-              color: detectedClass ? "#6366f1" : "rgba(226,232,240,0.7)",
+              fontSize: isSidebar ? "1.3rem" : "1.85rem",
+              fontWeight: 700,
+              lineHeight: 1.15,
             }}
           >
-            {classLabel}
+            {displayName}
           </Typography>
-          <Typography sx={{ fontSize: "1.1rem", fontWeight: 600 }}>
-            {weaponsLabel}
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              gap: 1.2,
+              width: "100%",
+              minWidth: 0,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: isSidebar ? "0.95rem" : "1.1rem",
+                fontWeight: 500,
+                color: "#e5e7eb",
+                flexShrink: 0,
+              }}
+            >
+              {classLabel}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: isSidebar ? "0.95rem" : "1.1rem",
+                fontWeight: 500,
+                color: "rgba(226,232,240,0.72)",
+                flex: "0 1 auto",
+                flexShrink: 1,
+                minWidth: 0,
+                textAlign: "right",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+              title={weaponsLabel}
+            >
+              {weaponsLabel}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     );

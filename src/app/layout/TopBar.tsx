@@ -4,6 +4,8 @@ import { Box, IconButton, Typography } from "@mui/material";
 import MinimizeIcon from "@mui/icons-material/Minimize";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
 import CloseIcon from "@mui/icons-material/Close";
+// Inline the logo to avoid any file-path issues in packaged builds.
+import logoImage from "../../../resources/logo.png?inline";
 
 type WindowControlsApi = {
   minimize: () => void;
@@ -41,18 +43,36 @@ const TopBar: React.FC = () => {
         flexShrink: 0,
       }}
     >
-      <Typography
-        variant="caption"
-        sx={{
-          fontWeight: 500,
-          letterSpacing: "0.16em",
-          textTransform: "uppercase",
-          color: "#9ca3af",
-          fontSize: "0.85rem",
-        }}
-      >
-        TL Combat Ledger
-      </Typography>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box
+          component="img"
+          src={logoImage}
+          alt="TL Combat Ledger"
+          sx={{
+            width: 28,
+            height: 28,
+            borderRadius: 0.6,
+            opacity: 0.9,
+            flexShrink: 0,
+          }}
+        />
+        <Typography
+          variant="caption"
+          sx={{
+            fontWeight: 500,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "#9ca3af",
+            fontSize: "0.85rem",
+            lineHeight: 1,
+            height: 28,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          TL Combat Ledger
+        </Typography>
+      </Box>
 
       <Box
         sx={{

@@ -661,7 +661,9 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
       selectedTargetName != null ? bucket.skills?.[selectedTargetName] : undefined;
     const skillRows = buildSkillRows(skillsForTarget);
 
-    const stabilityItem = payload.find((p) => String(p?.name) === "stability");
+    const stabilityItem = payload.find(
+      (p) => String(p?.dataKey) === "stability"
+    );
     const fallbackStability =
       showStability && stabilitySeries
         ? stabilitySeries.points.find((p) => p.idx === idx)?.stability ?? null
@@ -784,9 +786,11 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                 backgroundColor: "rgba(2,6,23,0.35)",
               }}
             >
-              <Typography sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}>
-                Stability
-              </Typography>
+	              <Typography
+	                sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}
+	              >
+	                Rotation consistency
+	              </Typography>
               <Typography sx={{ fontSize: "0.95rem", fontWeight: 800, color: "rgba(34,197,94,0.95)" }}>
                 {stabilityPct}%
               </Typography>
@@ -803,7 +807,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
             }}
           >
             <Typography sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}>
-              Burst
+              Burst damage
             </Typography>
             <Typography
               sx={{
@@ -1005,15 +1009,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                   sx={switchSx}
                 />
               }
-              label={
-                <Tooltip
-                  title="Highlights rotation burst windows using local spikes: smoothed DPS vs a rolling median baseline (segment-aware with hysteresis). Tooltip shows Burst % intensity ramping up before a burst and holding at 100% during it."
-                  arrow
-                  placement="top"
-                >
-                  <span>Burst</span>
-                </Tooltip>
-              }
+	              label={
+	                <Tooltip
+	                  title="Highlights burst moments (red areas) when your damage spikes for a short time. Burst % is an intensity meter: low = normal, 100% = you’re in a burst."
+	                  arrow
+	                  placement="top"
+	                >
+	                  <span>Burst damage</span>
+	                </Tooltip>
+	              }
               sx={{
                 ml: 0.5,
                 "& .MuiFormControlLabel-label": {
@@ -1032,15 +1036,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                   sx={switchSx}
                 />
               }
-              label={
-                <Tooltip
-                  title="Shows a stability line (higher = steadier output). Useful for spotting rotation consistency vs spikes/downtime."
-                  arrow
-                  placement="top"
-                >
-                  <span>Stability</span>
-                </Tooltip>
-              }
+	              label={
+	                <Tooltip
+	                  title="Adds a rotation consistency line (higher = more consistent DPS; lower = spikes/downtime)."
+	                  arrow
+	                  placement="top"
+	                >
+	                  <span>Rotation consistency</span>
+	                </Tooltip>
+	              }
               sx={{
                 ml: 0.5,
                 "& .MuiFormControlLabel-label": {
@@ -1058,10 +1062,10 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               }}
             >
               {xLabel} • {yLabel}
-              {showStability && stabilitySeries
-                ? ` • Stability ${(stabilitySeries.avg * 100).toFixed(0)}%`
-                : ""}
-            </Typography>
+	              {showStability && stabilitySeries
+	                ? ` • Rotation consistency ${(stabilitySeries.avg * 100).toFixed(0)}%`
+	                : ""}
+	            </Typography>
           </Box>
 
           <ResponsiveContainer width="100%" height="100%">

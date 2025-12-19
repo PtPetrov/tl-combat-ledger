@@ -1,6 +1,8 @@
 // src/components/logs/LogsAnalyzerView.tsx
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Box, TableSortLabel } from "@mui/material";
+import React, { useCallback, useEffect, useState } from "react";
+import { Box, IconButton, TableSortLabel, Tooltip } from "@mui/material";
+import CompareIcon from "@mui/icons-material/Compare";
+import IosShareIcon from "@mui/icons-material/IosShare";
 import {
   LoadState,
   DamageTimelineBucket,
@@ -9,7 +11,6 @@ import {
   TargetBreakdown,
 } from "../types/logTypes";
 import { TimelineSession, TimelineSeries } from "../hooks/useLogsPanelLogic";
-import { AnalyzerHeader } from "./AnalyzerHeader";
 import { SessionsRow } from "./SessionsRow";
 import { SkillsTableSection } from "./SkillsTableSection";
 import type {
@@ -17,7 +18,6 @@ import type {
   SkillsTableSortKey,
 } from "./SkillsTableSection";
 import { StatsPanel } from "./StatsPanel";
-import { CharacterClassView } from "./CharacterClassView";
 import { DamageTimelineCard } from "./DamageTimelineCard";
 import { SkillDetailsCard } from "./SkillDetailsCard";
 import { LogsTargetsSidebar } from "./LogsTargetsSidebar";
@@ -25,13 +25,9 @@ import { ExtendedSkillBreakdown } from "../utils/logsViewUtils";
 import {
   contentPaddingX,
   contentPaddingY,
-  sectionSpacing,
+	sectionSpacing,
 } from "./layoutTokens";
 import { useDynamicLayoutHeights } from "../hooks/useDynamicLayoutHeights";
-import type {
-  UpdateStatusPayload,
-  UpdatesApi,
-} from "../types/updateTypes";
 import { trackUsage } from "../../../telemetry/telemetry";
 
 export interface LogsAnalyzerViewProps {
@@ -128,14 +124,11 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   viewLabel,
 }) => {
   const compareLayoutActive = Boolean(isCompareActive);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [selectedSkill, setSelectedSkill] =
-    useState<ExtendedSkillBreakdown | null>(null);
-  const [updateStatus, setUpdateStatus] =
-    useState<UpdateStatusPayload | null>(null);
-  const updatesApiRef = useRef<UpdatesApi | null>(null);
-  const [hasUpdateBridge, setHasUpdateBridge] = useState(false);
-  const { timelineHeight } = useDynamicLayoutHeights();
+	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+	const [selectedSkill, setSelectedSkill] =
+	  useState<ExtendedSkillBreakdown | null>(null);
+	const [isExporting, setIsExporting] = useState(false);
+	const { timelineHeight } = useDynamicLayoutHeights();
   const [skillsSort, setSkillsSort] = useState<{
     key: SkillsTableSortKey | null;
     direction: SkillsTableSortDirection;
@@ -159,43 +152,22 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
     });
   }, [summaryState, currentTopSkills]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const api = window.tlcla?.updates;
-    if (!api) return;
-    const isDevBuild = import.meta.env.DEV;
-    updatesApiRef.current = api;
-    setHasUpdateBridge(true);
+  const exportApi = typeof window !== "undefined" ? window.tlcla?.export : undefined;
+  const hasExportBridge = Boolean(exportApi);
 
-    const unsubscribe = api.onStatus((status) => {
-      setUpdateStatus(status);
-    });
+  const handleExport = useCallback(async () => {
+    if (!exportApi) return;
+    setIsExporting(true);
 
-    if (!isDevBuild) {
-      trackUsage("update.check.auto");
-      api.checkForUpdates().catch((error) => {
-        console.warn("Update check failed", error);
-      });
+    try {
+      trackUsage("export.png");
+      await exportApi.savePng(selectedSummaryTitle);
+    } catch (error) {
+      console.warn("Export failed", error);
+    } finally {
+      setIsExporting(false);
     }
-
-    return () => {
-      unsubscribe?.();
-    };
-  }, []);
-
-  const handleCheckForUpdates = useCallback(() => {
-    trackUsage("update.check.manual");
-    updatesApiRef.current?.checkForUpdates().catch((error) => {
-      console.warn("Failed to check for updates", error);
-    });
-  }, []);
-
-  const handleInstallUpdate = useCallback(() => {
-    trackUsage("update.install");
-    updatesApiRef.current?.installUpdate().catch((error) => {
-      console.warn("Failed to install update", error);
-    });
-  }, []);
+  }, [exportApi, selectedSummaryTitle]);
 
   const handleSortColumn = useCallback((key: SkillsTableSortKey) => {
     setSkillsSort((prev) => {
@@ -243,21 +215,6 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
         overflow: "hidden",
       }}
     >
-      <AnalyzerHeader
-        onToggleCompare={onToggleCompare}
-        isCompareActive={isCompareActive}
-        showCompareControl={showCompareControl}
-        contextLabel={viewLabel}
-        updateStatus={hasUpdateBridge ? updateStatus : null}
-        onCheckForUpdates={
-          hasUpdateBridge ? handleCheckForUpdates : undefined
-        }
-        onInstallUpdate={
-          hasUpdateBridge ? handleInstallUpdate : undefined
-        }
-        exportFileBaseName={selectedSummaryTitle}
-      />
-
       <Box
         sx={{
           display: "flex",
@@ -268,27 +225,29 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
           overflow: "hidden",
         }}
       >
-        <LogsTargetsSidebar
-          logs={logs}
-          state={state}
-          error={error}
-          hasLogs={hasLogs}
-          selectedLog={selectedLog}
-          onSelectLog={onSelectLog}
-          onRenameLog={onRenameLog}
-          logFavorites={logFavorites}
-          onToggleLogFavorite={onToggleLogFavorite}
-          onRefresh={onRefresh}
-          onSelectFolder={onSelectFolder}
-          selectedDir={selectedDir}
-          summaryState={summaryState}
-          topTargets={topTargets}
-          overallTotalDamage={overallTotalDamage}
-          selectedTargetName={selectedTargetName}
-          onSelectTarget={onSelectTarget}
-          isOpen={isSidebarOpen}
-          onToggle={() => setIsSidebarOpen((prev) => !prev)}
-        />
+	        <LogsTargetsSidebar
+	          logs={logs}
+	          state={state}
+	          error={error}
+	          hasLogs={hasLogs}
+	          selectedLog={selectedLog}
+	          onSelectLog={onSelectLog}
+	          onRenameLog={onRenameLog}
+	          logFavorites={logFavorites}
+	          onToggleLogFavorite={onToggleLogFavorite}
+	          onRefresh={onRefresh}
+	          onSelectFolder={onSelectFolder}
+	          selectedDir={selectedDir}
+	          summaryState={summaryState}
+	          topTargets={topTargets}
+	          overallTotalDamage={overallTotalDamage}
+	          selectedTargetName={selectedTargetName}
+	          onSelectTarget={onSelectTarget}
+	          characterName={characterName}
+	          currentTopSkills={currentTopSkills}
+	          isOpen={isSidebarOpen}
+	          onToggle={() => setIsSidebarOpen((prev) => !prev)}
+	        />
 
         <Box
           sx={{
@@ -307,30 +266,89 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
             onSelectSession={onSelectSession}
           />
 
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                lg: "repeat(2, minmax(0, 1fr))",
-              },
-              gap: sectionSpacing,
-            }}
-          >
-            <CharacterClassView
-              characterName={characterName}
-              currentTopSkills={currentTopSkills}
-            />
-            <StatsPanel
-              summaryState={summaryState}
-              selectedSummaryTitle={selectedSummaryTitle}
-              currentTotalDamage={currentTotalDamage}
-              currentDps={currentDps}
-              currentDurationSeconds={currentDurationSeconds}
-              selectedTargetName={selectedTargetName}
-              selectedSessionId={selectedSessionId}
-            />
-          </Box>
+		          <Box
+		            sx={{
+		              display: "grid",
+		              gridTemplateColumns: {
+		                xs: "1fr",
+		                md: "7fr 3fr",
+		              },
+		              gap: sectionSpacing,
+		              alignItems: "stretch",
+		            }}
+		          >
+	            <StatsPanel
+	              summaryState={summaryState}
+	              selectedSummaryTitle={selectedSummaryTitle}
+	              currentTotalDamage={currentTotalDamage}
+	              currentDps={currentDps}
+	              currentDurationSeconds={currentDurationSeconds}
+	              selectedTargetName={selectedTargetName}
+	              selectedSessionId={selectedSessionId}
+	            />
+	            <Box
+	              sx={{
+	                display: "flex",
+	                justifyContent: "flex-end",
+	                alignItems: "center",
+	                gap: 1.1,
+	                justifySelf: { md: "end" },
+	                alignSelf: { md: "center" },
+	                minWidth: 90,
+	              }}
+	            >
+	              {showCompareControl && onToggleCompare && (
+	                <Tooltip title="Compare logs" placement="bottom">
+	                  <IconButton
+	                    aria-label="Compare logs"
+	                    onClick={onToggleCompare}
+	                    sx={{
+	                      width: 44,
+	                      height: 44,
+	                      color: isCompareActive
+	                        ? "#a5b4fc"
+	                        : "rgba(226,232,240,0.9)",
+	                      transition: "color 150ms ease",
+	                      "&:hover": { color: "#c7d2fe" },
+	                    }}
+	                  >
+	                    <CompareIcon sx={{ fontSize: "1.6rem" }} />
+	                  </IconButton>
+	                </Tooltip>
+	              )}
+
+	              <Tooltip
+	                title={
+	                  hasExportBridge
+	                    ? isExporting
+	                      ? "Exporting…"
+	                      : "Export as PNG"
+	                    : "Export available only in the app"
+	                }
+	                placement="bottom"
+	              >
+	                <span>
+	                  <IconButton
+	                    aria-label="Export as PNG"
+	                    onClick={handleExport}
+	                    disabled={!hasExportBridge || isExporting}
+	                    sx={{
+	                      width: 44,
+	                      height: 44,
+	                      color: "rgba(226,232,240,0.9)",
+	                      transition: "color 150ms ease",
+	                      "&:hover": { color: "#c7d2fe" },
+	                      "&.Mui-disabled": {
+	                        color: "rgba(226,232,240,0.45)",
+	                      },
+	                    }}
+	                  >
+	                    <IosShareIcon sx={{ fontSize: "1.55rem" }} />
+	                  </IconButton>
+	                </span>
+	              </Tooltip>
+	            </Box>
+	          </Box>
 
           <Box
             sx={{
@@ -407,28 +425,28 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                     overflowX: "auto",
                   }}
                 >
-                  <Box
-                    sx={{
-                      minWidth: 640,
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      minHeight: 0,
+	                  <Box
+	                    sx={{
+	                      minWidth: 760,
+	                      flex: 1,
+	                      display: "flex",
+	                      flexDirection: "column",
+	                      minHeight: 0,
                     }}
                   >
                     <Box
                       sx={{
                         px: { xs: 1.4, md: 2 },
                         py: { xs: 0.8, md: 1.1 },
-                        display: "grid",
-                        gridTemplateColumns: {
-                          xs: "2.4fr 1.2fr 1.4fr",
-                          sm: "2.4fr 1.2fr 1.6fr 1fr",
-                          md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr",
-                        },
-                        columnGap: { xs: 1.2, md: 2.2 },
-                        fontSize: { xs: "1rem", md: "1.2rem" },
-                        borderBottom: "1px solid rgba(55,65,81,0.95)",
+	                        display: "grid",
+	                        gridTemplateColumns: {
+	                          xs: "2.4fr 1.2fr 1.4fr",
+	                          sm: "2.4fr 1.2fr 1.6fr 1fr",
+	                          md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr 1.2fr",
+	                        },
+	                        columnGap: { xs: 1.2, md: 2.2 },
+	                        fontSize: { xs: "1rem", md: "1.2rem" },
+	                        borderBottom: "1px solid rgba(55,65,81,0.95)",
                         background:
                           "linear-gradient(90deg, rgba(17,24,39,1), rgba(15,23,42,1))",
                         color: "text.secondary",
@@ -448,19 +466,19 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
 	                      >
 	                        Damage
 	                      </TableSortLabel>
-	                      <TableSortLabel
-	                        active={skillsSort.key === "share"}
-	                        hideSortIcon
-	                        direction={
-	                          skillsSort.key === "share"
-	                            ? skillsSort.direction
-	                            : "desc"
-	                        }
-	                        onClick={() => handleSortColumn("share")}
-	                        sx={sortLabelSx}
-	                      >
-	                        Share
-	                      </TableSortLabel>
+		                      <TableSortLabel
+		                        active={skillsSort.key === "share"}
+		                        hideSortIcon
+		                        direction={
+		                          skillsSort.key === "share"
+		                            ? skillsSort.direction
+		                            : "desc"
+		                        }
+		                        onClick={() => handleSortColumn("share")}
+		                        sx={sortLabelSx}
+		                      >
+		                        Ratio
+		                      </TableSortLabel>
 	                      <TableSortLabel
 	                        active={skillsSort.key === "hits"}
 	                        hideSortIcon
@@ -487,23 +505,36 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
 	                      >
 	                        Crit
 	                      </TableSortLabel>
-	                      <TableSortLabel
-	                        active={skillsSort.key === "heavy"}
-	                        hideSortIcon
-	                        direction={
-	                          skillsSort.key === "heavy"
+		                      <TableSortLabel
+		                        active={skillsSort.key === "heavy"}
+		                        hideSortIcon
+		                        direction={
+		                          skillsSort.key === "heavy"
 	                            ? skillsSort.direction
 	                            : "desc"
 	                        }
 	                        onClick={() => handleSortColumn("heavy")}
 	                        sx={sortLabelSx}
-	                      >
-	                        Heavy
-	                      </TableSortLabel>
-	                    </Box>
+		                      >
+		                        Heavy
+		                      </TableSortLabel>
+		                      <TableSortLabel
+		                        active={skillsSort.key === "critHeavy"}
+		                        hideSortIcon
+		                        direction={
+		                          skillsSort.key === "critHeavy"
+		                            ? skillsSort.direction
+		                            : "desc"
+		                        }
+		                        onClick={() => handleSortColumn("critHeavy")}
+		                        sx={sortLabelSx}
+		                      >
+		                        Crit+Heavy
+		                      </TableSortLabel>
+		                    </Box>
 
-                    <Box
-                      sx={{
+	                    <Box
+	                      sx={{
                         flex: 1,
                         display: "flex",
                         flexDirection: "column",

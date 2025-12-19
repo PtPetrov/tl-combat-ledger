@@ -4,7 +4,13 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PersonIcon from "@mui/icons-material/Person";
-import { LoadState, LogFileInfo, TargetBreakdown } from "../types/logTypes";
+import {
+  LoadState,
+  LogFileInfo,
+  SkillBreakdown,
+  TargetBreakdown,
+} from "../types/logTypes";
+import { CharacterClassView } from "./CharacterClassView";
 import { LogsRow } from "./LogsRow";
 import { TargetsRow } from "./TargetsRow";
 import { sectionSpacing } from "./layoutTokens";
@@ -29,6 +35,9 @@ export interface LogsTargetsSidebarProps {
   selectedTargetName: string | null;
   onSelectTarget: (targetName: string | null) => void;
 
+  characterName: string | null;
+  currentTopSkills: SkillBreakdown[];
+
   isOpen: boolean;
   onToggle: () => void;
 }
@@ -52,6 +61,8 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
     overallTotalDamage,
     selectedTargetName,
     onSelectTarget,
+    characterName,
+    currentTopSkills,
     isOpen,
     onToggle,
   }) => {
@@ -121,10 +132,21 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
             sx={{
               flex: 1,
               display: "grid",
-              gridTemplateRows: "auto minmax(0, 1fr)",
+              gridTemplateRows: "auto auto minmax(0, 1fr)",
               minHeight: 0,
             }}
           >
+            <Box
+              sx={{
+                minHeight: 0,
+              }}
+            >
+              <CharacterClassView
+                characterName={characterName}
+                currentTopSkills={currentTopSkills}
+                variant="sidebar"
+              />
+            </Box>
             <Box
               sx={{
                 borderRadius: "2px",
