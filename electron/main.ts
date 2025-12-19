@@ -8,11 +8,12 @@ import { Worker } from "node:worker_threads";
 import { autoUpdater } from "electron-updater";
 
 import { IPC } from "../shared/ipc";
-import type { ExportResult, ParsedLogSummary, UpdateStatusPayload } from "../shared/types";
-import {
-  getDefaultLogDirectories,
-  listLogFilesInDirectory,
-} from "./logs";
+import type {
+  ExportResult,
+  ParsedLogSummary,
+  UpdateStatusPayload,
+} from "../shared/types";
+import { getDefaultLogDirectories, listLogFilesInDirectory } from "./logs";
 import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
 import { getAptabaseAppKey, getSentryDsn } from "./telemetryConfig";
 import { trackUsageEvent } from "./analytics";
@@ -84,13 +85,14 @@ const humanizeUsageEventName = (raw: string): string => {
 };
 
 function getRecommendedZoomFactor(display: Display): number {
-  const physicalWidth = Math.round(display.workAreaSize.width * display.scaleFactor);
-  const physicalHeight = Math.round(display.workAreaSize.height * display.scaleFactor);
+  const effectiveHeight = Math.round(display.workAreaSize.height);
 
-  // Target: scale UI down on smaller displays so more fits onscreen.
+  // Target: scale UI down on smaller *effective* displays (DIP) so more fits onscreen.
   // Use height-based thresholds so ultrawide (e.g. 2560x1080) behaves as expected.
-  if (physicalHeight <= 1080) return 0.8;
-  if (physicalHeight <= 1440) return 0.9;
+  // Note: Using workAreaSize (not physical pixels) accounts for OS display scaling.
+  if (effectiveHeight <= 1080) return 0.85;
+  if (effectiveHeight <= 1440) return 0.9;
+  if (effectiveHeight <= 1600) return 0.95;
   return 1;
 }
 
@@ -179,7 +181,8 @@ function createMainWindow() {
         return;
       }
 
-      const ctrlOrCmd = process.platform === "darwin" ? input.meta : input.control;
+      const ctrlOrCmd =
+        process.platform === "darwin" ? input.meta : input.control;
 
       // Ctrl/Cmd+Shift+I/J/C/K (Chrome/Edge/Firefox devtools)
       if (ctrlOrCmd && input.shift && ["i", "j", "c", "k"].includes(key)) {
@@ -361,7 +364,10 @@ const buildDefaultExportPath = (suggestedFileName: unknown, ext: string) => {
 
 async function triggerUpdateCheck() {
   if (isDev) {
-    sendUpdateStatus({ state: "error", message: "Updates unavailable in development" });
+    sendUpdateStatus({
+      state: "error",
+      message: "Updates unavailable in development",
+    });
     return;
   }
   try {
@@ -485,7 +491,10 @@ function registerIpcHandlers() {
       try {
         const result = await dialog.showSaveDialog(mainWindow, {
           title: "Export view as PNG",
-          defaultPath: buildDefaultExportPath(payload?.suggestedFileName, "png"),
+          defaultPath: buildDefaultExportPath(
+            payload?.suggestedFileName,
+            "png"
+          ),
           filters: [{ name: "PNG Image", extensions: ["png"] }],
         });
 
@@ -515,10 +524,7 @@ function registerIpcHandlers() {
 
   ipcMain.handle(
     IPC.TELEMETRY_SET_SETTINGS,
-    (
-      _event,
-      update: { crashReportsEnabled?: boolean }
-    ) => {
+    (_event, update: { crashReportsEnabled?: boolean }) => {
       return setTelemetrySettings(update);
     }
   );

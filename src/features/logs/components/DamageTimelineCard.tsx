@@ -709,8 +709,8 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
         onClick={(event) => event.stopPropagation()}
         onMouseDown={(event) => event.stopPropagation()}
         sx={{
-          minWidth: 320,
-          maxWidth: 420,
+          minWidth: 380,
+          maxWidth: 520,
           px: 1.4,
           py: 1.2,
           borderRadius: 0,
@@ -758,7 +758,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
           )}
         </Box>
 
-        <Box sx={{ display: "flex", gap: 1.8, mt: 1.2, flexWrap: "wrap" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1.2,
+            mt: 1.2,
+            flexWrap: "nowrap",
+            alignItems: "stretch",
+          }}
+        >
           <Box
             sx={{
               px: 1,
@@ -766,9 +774,20 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               borderRadius: 0,
               border: "1px solid rgba(55,65,81,0.75)",
               backgroundColor: "rgba(2,6,23,0.35)",
+              minWidth: 0,
+              flex: 1,
             }}
           >
-            <Typography sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}>
+            <Typography
+              sx={{
+                fontSize: "0.75rem",
+                color: "rgba(226,232,240,0.7)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                lineHeight: 1.15,
+              }}
+            >
               Damage (this second)
             </Typography>
             <Typography sx={{ fontSize: "0.95rem", fontWeight: 800 }}>
@@ -784,10 +803,19 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                 borderRadius: 0,
                 border: "1px solid rgba(34,197,94,0.35)",
                 backgroundColor: "rgba(2,6,23,0.35)",
+                minWidth: 0,
+                flex: 1,
               }}
             >
 	              <Typography
-	                sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}
+	                sx={{
+                    fontSize: "0.75rem",
+                    color: "rgba(226,232,240,0.7)",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    lineHeight: 1.15,
+                  }}
 	              >
 	                Rotation consistency
 	              </Typography>
@@ -804,9 +832,20 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               borderRadius: 0,
               border: "1px solid rgba(239,68,68,0.35)",
               backgroundColor: "rgba(2,6,23,0.35)",
+              minWidth: 0,
+              flex: 1,
             }}
           >
-            <Typography sx={{ fontSize: "0.75rem", color: "rgba(226,232,240,0.7)" }}>
+            <Typography
+              sx={{
+                fontSize: "0.75rem",
+                color: "rgba(226,232,240,0.7)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                lineHeight: 1.15,
+              }}
+            >
               Burst damage
             </Typography>
             <Typography
@@ -877,7 +916,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                     {s.skillName}
                   </Typography>
                 </Box>
-                <Typography sx={{ fontSize: "0.9rem", fontWeight: 900, color: "#c7d2fe" }}>
+                <Typography
+                  sx={{
+                    fontSize: "0.9rem",
+                    fontWeight: 900,
+                    color: "#c7d2fe",
+                    whiteSpace: "nowrap",
+                    textAlign: "right",
+                  }}
+                >
                   {formatInteger(s.damage)}
                 </Typography>
               </Box>
@@ -935,6 +982,24 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
             mb: 0.5,
             flex: 1,
             minHeight: 0,
+            "& .recharts-responsive-container, & .recharts-wrapper, & .recharts-surface": {
+              outline: "none",
+              border: "none",
+              boxShadow: "none",
+            },
+            "&:focus-within": {
+              outline: "none",
+            },
+            "& *:focus, & *:focus-visible": {
+              outline: "none",
+              boxShadow: "none",
+            },
+            "& svg, & svg:focus, & svg:focus-visible": {
+              outline: "none",
+            },
+            "& .recharts-responsive-container:focus, & .recharts-responsive-container:focus-visible": {
+              outline: "none",
+            },
             "& .recharts-wrapper:focus, & .recharts-wrapper:focus-visible": {
               outline: "none",
             },
@@ -1156,6 +1221,7 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                       ? false
                       : undefined
                 }
+                cursor={isTooltipPinned ? false : undefined}
                 wrapperStyle={{ zIndex: 4000, pointerEvents: "auto" }}
               />
               <Area
