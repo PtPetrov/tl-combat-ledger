@@ -10,17 +10,17 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import placeholderLogo from "../../../../resources/logo.png?inline";
+import placeholderLogo from "../../../../../resources/logo.png?inline";
 import {
   OVERALL_TIMELINE_KEY,
   TimelineSeries,
   TimelineSession,
-} from "../hooks/useLogsPanelLogic";
+} from "../../hooks/useLogsPanelLogic";
 import {
   LoadState,
   DamageTimelineBucket,
   TimelineSkillContribution,
-} from "../types/logTypes";
+} from "../../types/logTypes";
 import {
   Area,
   CartesianGrid,
@@ -33,13 +33,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatInteger } from "../utils/formatters";
+import { formatInteger } from "../../utils/formatters";
 import {
   cardGap,
   cardPaddingX,
   cardPaddingY,
-} from "./layoutTokens";
-import { getSkillIconPath } from "./SkillsTableSection";
+} from "../ui";
+import { getSkillIconPath } from "../panels/SkillsTableSection";
 
 interface DamageTimelineCardProps {
   summaryState: LoadState;
@@ -807,8 +807,8 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                 flex: 1,
               }}
             >
-	              <Typography
-	                sx={{
+                <Typography
+                  sx={{
                     fontSize: "0.75rem",
                     color: "rgba(226,232,240,0.7)",
                     whiteSpace: "nowrap",
@@ -816,9 +816,9 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                     textOverflow: "ellipsis",
                     lineHeight: 1.15,
                   }}
-	              >
-	                Rotation consistency
-	              </Typography>
+                >
+                  Rotation consistency
+                </Typography>
               <Typography sx={{ fontSize: "0.95rem", fontWeight: 800, color: "rgba(34,197,94,0.95)" }}>
                 {stabilityPct}%
               </Typography>
@@ -1074,15 +1074,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                   sx={switchSx}
                 />
               }
-	              label={
-	                <Tooltip
-	                  title="Highlights burst moments (red areas) when your damage spikes for a short time. Burst % is an intensity meter: low = normal, 100% = you’re in a burst."
-	                  arrow
-	                  placement="top"
-	                >
-	                  <span>Burst damage</span>
-	                </Tooltip>
-	              }
+                label={
+                  <Tooltip
+                    title="Highlights burst moments (red areas) when your damage spikes for a short time. Burst % is an intensity meter: low = normal, 100% = you’re in a burst."
+                    arrow
+                    placement="top"
+                  >
+                    <span>Burst damage</span>
+                  </Tooltip>
+                }
               sx={{
                 ml: 0.5,
                 "& .MuiFormControlLabel-label": {
@@ -1101,15 +1101,15 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
                   sx={switchSx}
                 />
               }
-	              label={
-	                <Tooltip
-	                  title="Adds a rotation consistency line (higher = more consistent DPS; lower = spikes/downtime)."
-	                  arrow
-	                  placement="top"
-	                >
-	                  <span>Rotation consistency</span>
-	                </Tooltip>
-	              }
+                label={
+                  <Tooltip
+                    title="Adds a rotation consistency line (higher = more consistent DPS; lower = spikes/downtime)."
+                    arrow
+                    placement="top"
+                  >
+                    <span>Rotation consistency</span>
+                  </Tooltip>
+                }
               sx={{
                 ml: 0.5,
                 "& .MuiFormControlLabel-label": {
@@ -1127,10 +1127,10 @@ export const DamageTimelineCard: React.FC<DamageTimelineCardProps> = ({
               }}
             >
               {xLabel} • {yLabel}
-	              {showStability && stabilitySeries
-	                ? ` • Rotation consistency ${(stabilitySeries.avg * 100).toFixed(0)}%`
-	                : ""}
-	            </Typography>
+                {showStability && stabilitySeries
+                  ? ` • Rotation consistency ${(stabilitySeries.avg * 100).toFixed(0)}%`
+                  : ""}
+              </Typography>
           </Box>
 
           <ResponsiveContainer width="100%" height="100%">

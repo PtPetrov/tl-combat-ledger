@@ -1,8 +1,8 @@
-// src/components/logs/SessionsRow.tsx
+// src/features/logs/components/rows/SessionsRow.tsx
 import React from "react";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { TimelineSession } from "../hooks/useLogsPanelLogic";
+import { TimelineSession } from "../../hooks/useLogsPanelLogic";
 
 export interface SessionsRowProps {
   selectedTargetName: string | null;
@@ -88,10 +88,10 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
           >
             All
           </Box>
-	          {timelineSessions.map((s) => (
-	            <Box
-	              key={s.id}
-	              onClick={() => onSelectSession(s.id)}
+            {timelineSessions.map((s) => (
+              <Box
+                key={s.id}
+                onClick={() => onSelectSession(s.id)}
               sx={{
                 px: 1.2,
                 py: 0.4,
@@ -107,12 +107,12 @@ export const SessionsRow: React.FC<SessionsRowProps> = React.memo(
                   color: "#e0e7ff",
                 },
               }}
-	            >
-	              Pull # {s.id}
-	            </Box>
-	          ))}
-	        </Box>
-	      </Box>
+              >
+                Pull # {s.id}
+              </Box>
+            ))}
+          </Box>
+        </Box>
     );
   }
 );

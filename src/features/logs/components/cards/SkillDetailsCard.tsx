@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { LoadState, SkillBreakdown } from "../types/logTypes";
+import { LoadState, SkillBreakdown } from "../../types/logTypes";
 import {
   formatInteger,
   formatNumber,
   formatPercent,
-} from "../utils/formatters";
-import { ExtendedSkillBreakdown } from "../utils/logsViewUtils";
-import { getSkillIconPath } from "./SkillsTableSection";
-import { cardGap, cardPaddingX, cardPaddingY } from "./layoutTokens";
-import { scrollBarStyles } from "../utils/logsViewUtils";
+} from "../../utils/formatters";
+import { ExtendedSkillBreakdown } from "../../utils/logsViewUtils";
+import { getSkillIconPath } from "../panels/SkillsTableSection";
+import { cardGap, cardPaddingX, cardPaddingY } from "../ui";
+import { scrollBarStyles } from "../../utils/logsViewUtils";
 
 const formatDamageInt = (value: number | null | undefined): string =>
   value == null ? "–" : formatInteger(value);

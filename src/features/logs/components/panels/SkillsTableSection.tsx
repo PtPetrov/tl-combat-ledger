@@ -1,4 +1,4 @@
-// src/components/logs/SkillsTableSection.tsx
+// src/features/logs/components/panels/SkillsTableSection.tsx
 import React, { useMemo } from "react";
 import {
   Box,
@@ -7,19 +7,19 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { LoadState, LogFileInfo, SkillBreakdown } from "../types/logTypes";
+import { LoadState, LogFileInfo, SkillBreakdown } from "../../types/logTypes";
 import {
   ExtendedSkillBreakdown,
   scrollBarStyles,
-} from "../utils/logsViewUtils";
-import { formatInteger } from "../utils/formatters";
-import skillsData from "../../../assets/skills.json";
-import masterySkillsData from "../../../assets/weaponMasterySkills.json";
-import skillCoresData from "../../../assets/skillCores.json";
-import placeholderLogo from "../../../../resources/logo.png?inline";
+} from "../../utils/logsViewUtils";
+import { formatInteger } from "../../utils/formatters";
+import skillsData from "../../../../assets/skills.json";
+import masterySkillsData from "../../../../assets/weaponMasterySkills.json";
+import skillCoresData from "../../../../assets/skillCores.json";
+import placeholderLogo from "../../../../../resources/logo.png?inline";
 
 const iconAssets = import.meta.glob<string>(
-  "../../../assets/icons/{crossbow,daggers,greatsword,longbow,mastery,orb,spear,staff,sword-shield,wand,skill-cores}/**/*",
+  "../../../../assets/icons/{crossbow,daggers,greatsword,longbow,mastery,orb,spear,staff,sword-shield,wand,skill-cores}/**/*",
   {
     eager: true,
     query: "?url",
@@ -70,7 +70,7 @@ const resolveIconAssetUrl = (rawPath: string): string | undefined => {
     }
   }
 
-  const assetKey = `../../../${cleaned}`;
+  const assetKey = `../../../../${cleaned}`;
   return iconAssets[assetKey];
 };
 
@@ -221,12 +221,12 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
 
     const extendedSkills = currentTopSkills as ExtendedSkillBreakdown[];
 
-	    const { rows: baseRows, totalHits, totalCritHits, totalHeavyDamage, totalHeavyHits } =
-	      useMemo(() => {
-	        let hitsSum = 0;
-	        let critHitsSum = 0;
-	        let heavyDamageSum = 0;
-	        let heavyHitsSum = 0;
+      const { rows: baseRows, totalHits, totalCritHits, totalHeavyDamage, totalHeavyHits } =
+        useMemo(() => {
+          let hitsSum = 0;
+          let critHitsSum = 0;
+          let heavyDamageSum = 0;
+          let heavyHitsSum = 0;
 
         const mapped = extendedSkills.map((s, index) => {
           const hits = s.totalHits ?? 0;
@@ -263,18 +263,18 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
               ? (s.totalDamage / currentTotalDamage) * 100
               : 0;
 
-	          return {
-	            key: `${s.skillName}-${index}`,
-	            skill: s,
-	            hits,
-	            share,
-	            critRate,
-	            heavyRate,
-	            critHeavyRate: critRate + heavyRate,
-	            iconPath: getSkillIconPath(s.skillName),
-	            index,
-	          };
-	        });
+            return {
+              key: `${s.skillName}-${index}`,
+              skill: s,
+              hits,
+              share,
+              critRate,
+              heavyRate,
+              critHeavyRate: critRate + heavyRate,
+              iconPath: getSkillIconPath(s.skillName),
+              index,
+            };
+          });
 
         return {
           rows: mapped,
@@ -285,28 +285,28 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
         };
       }, [extendedSkills, currentTotalDamage]);
 
-	    const rows = useMemo(() => {
-	      if (!sortKey) return baseRows;
-	      const direction = sortDirection === "asc" ? 1 : -1;
+      const rows = useMemo(() => {
+        if (!sortKey) return baseRows;
+        const direction = sortDirection === "asc" ? 1 : -1;
 
-	      const valueFor = (row: (typeof baseRows)[number]): number => {
-	        switch (sortKey) {
-	          case "damage":
-	            return row.skill.totalDamage ?? 0;
-	          case "share":
-	            return row.share ?? 0;
-	          case "hits":
-	            return row.hits ?? 0;
-	          case "crit":
-	            return row.critRate ?? 0;
-	          case "heavy":
-	            return row.heavyRate ?? 0;
-	          case "critHeavy":
-	            return row.critHeavyRate ?? 0;
-	          default:
-	            return 0;
-	        }
-	      };
+        const valueFor = (row: (typeof baseRows)[number]): number => {
+          switch (sortKey) {
+            case "damage":
+              return row.skill.totalDamage ?? 0;
+            case "share":
+              return row.share ?? 0;
+            case "hits":
+              return row.hits ?? 0;
+            case "crit":
+              return row.critRate ?? 0;
+            case "heavy":
+              return row.heavyRate ?? 0;
+            case "critHeavy":
+              return row.critHeavyRate ?? 0;
+            default:
+              return 0;
+          }
+        };
 
       const sorted = [...baseRows].sort((a, b) => {
         const av = valueFor(a);
@@ -357,22 +357,22 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
               ...scrollBarStyles,
             }}
           >
-	            {rows.map(
-	              ({
-	                key,
-	                skill,
-	                share,
-	                iconPath,
-	                heavyRate,
-	                critRate,
-	                critHeavyRate,
-	                index,
-	              }) => {
-	                const isTop = index === 0;
-	                const isSelected = selectedSkillName === skill.skillName;
-	                const defaultBg = isTop ? "rgba(55,48,163,0.5)" : "transparent";
-	                const oddBg = isTop
-	                  ? "rgba(55,48,163,0.55)"
+              {rows.map(
+                ({
+                  key,
+                  skill,
+                  share,
+                  iconPath,
+                  heavyRate,
+                  critRate,
+                  critHeavyRate,
+                  index,
+                }) => {
+                  const isTop = index === 0;
+                  const isSelected = selectedSkillName === skill.skillName;
+                  const defaultBg = isTop ? "rgba(55,48,163,0.5)" : "transparent";
+                  const oddBg = isTop
+                    ? "rgba(55,48,163,0.55)"
                   : "rgba(15,23,42,0.92)";
                 const hasSkillIcon = Boolean(iconPath);
                 const resolvedIconSrc = iconPath ?? placeholderLogo;
@@ -397,16 +397,16 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                     key={key}
                     sx={{
                       px: { xs: 1.4, md: 2 },
-	                      py: { xs: 0.8, md: 1.1 },
-	                      display: "grid",
-	                      gridTemplateColumns: {
-	                        xs: "2.4fr 1.2fr 1.4fr",
-	                        sm: "2.4fr 1.2fr 1.6fr 1fr",
-	                        md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr 1.2fr",
-	                      },
-	                      columnGap: { xs: 1.2, md: 2.2 },
-	                      alignItems: "center",
-	                      fontSize: { xs: "1rem", md: "1.2rem" },
+                        py: { xs: 0.8, md: 1.1 },
+                        display: "grid",
+                        gridTemplateColumns: {
+                          xs: "2.4fr 1.2fr 1.4fr",
+                          sm: "2.4fr 1.2fr 1.6fr 1fr",
+                          md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr 1.2fr",
+                        },
+                        columnGap: { xs: 1.2, md: 2.2 },
+                        alignItems: "center",
+                        fontSize: { xs: "1rem", md: "1.2rem" },
                       borderBottom: "1px solid rgba(31,41,55,0.9)",
                       backgroundColor: isSelected
                         ? "rgba(37,99,235,0.25)"
@@ -419,11 +419,11 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                       },
                       "&:hover": onSelectSkill
                         ? { backgroundColor: "rgba(37,99,235,0.35)" }
-	                        : undefined,
-	                      minWidth: 760,
-	                    }}
-	                    onClick={() => onSelectSkill?.(skill)}
-	                  >
+                          : undefined,
+                        minWidth: 760,
+                      }}
+                      onClick={() => onSelectSkill?.(skill)}
+                    >
                     {/* Skill name + icon */}
                     <Box
                       component="span"
@@ -463,12 +463,12 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                     {/* Damage */}
                     <span>{formatInteger(skill.totalDamage)}</span>
 
-	                    {/* Ratio */}
-	                    <span>
-	                      <Box
-	                        sx={{
-	                          display: "flex",
-	                          alignItems: "center",
+                      {/* Ratio */}
+                      <span>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
                           gap: 1,
                           justifyContent: "flex-start",
                         }}
@@ -508,52 +508,52 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                       {(critRate ?? 0).toFixed(1)}%
                     </span>
 
-	                    {/* Heavy */}
-	                    <span style={{ whiteSpace: "nowrap" }}>
-	                      {(heavyRate ?? 0).toFixed(1)}%
-	                    </span>
+                      {/* Heavy */}
+                      <span style={{ whiteSpace: "nowrap" }}>
+                        {(heavyRate ?? 0).toFixed(1)}%
+                      </span>
 
-	                    {/* Crit+Heavy */}
-	                    <span style={{ whiteSpace: "nowrap" }}>
-	                      {(critHeavyRate ?? 0).toFixed(1)}%
-	                    </span>
-	                  </Box>
-	                );
-	              }
-	            )}
+                      {/* Crit+Heavy */}
+                      <span style={{ whiteSpace: "nowrap" }}>
+                        {(critHeavyRate ?? 0).toFixed(1)}%
+                      </span>
+                    </Box>
+                  );
+                }
+              )}
           </Box>
         </Box>
 
         {/* Totals row */}
-	        <Box
-	          sx={{
-	            px: { xs: 1.4, md: 2 },
-	            py: { xs: 0.8, md: 1.1 },
-	            display: "grid",
-	            gridTemplateColumns: {
-	              xs: "2.4fr 1.2fr 1.4fr",
-	              sm: "2.4fr 1.2fr 1.6fr 1fr",
-	              md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr 1.2fr",
-	            },
-	            columnGap: { xs: 1.2, md: 2.2 },
-	            alignItems: "center",
-	            fontSize: { xs: "1rem", md: "1.2rem" },
-	            borderTop: "1px solid rgba(55,65,81,0.95)",
-	            backgroundColor: "rgba(15,23,42,1)",
-	            minWidth: 760,
-	          }}
-	        >
+          <Box
+            sx={{
+              px: { xs: 1.4, md: 2 },
+              py: { xs: 0.8, md: 1.1 },
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "2.4fr 1.2fr 1.4fr",
+                sm: "2.4fr 1.2fr 1.6fr 1fr",
+                md: "2.4fr 1.4fr 1.8fr 1fr 1.2fr 1.2fr 1.2fr",
+              },
+              columnGap: { xs: 1.2, md: 2.2 },
+              alignItems: "center",
+              fontSize: { xs: "1rem", md: "1.2rem" },
+              borderTop: "1px solid rgba(55,65,81,0.95)",
+              backgroundColor: "rgba(15,23,42,1)",
+              minWidth: 760,
+            }}
+          >
           <span style={{ fontWeight: 600 }}>Total</span>
           <span>{formatInteger(currentTotalDamage)}</span>
           <span>100%</span>
-	          <span>{formatInteger(totalHits)}</span>
-	          <span>{totalCritRate.toFixed(1)}%</span>
-	          <span>{totalHeavyRate.toFixed(1)}%</span>
-	          <span>{(totalCritRate + totalHeavyRate).toFixed(1)}%</span>
-	        </Box>
-	      </Box>
-	    );
-	  }
+            <span>{formatInteger(totalHits)}</span>
+            <span>{totalCritRate.toFixed(1)}%</span>
+            <span>{totalHeavyRate.toFixed(1)}%</span>
+            <span>{(totalCritRate + totalHeavyRate).toFixed(1)}%</span>
+          </Box>
+        </Box>
+      );
+    }
 );
 
 SkillsTableSection.displayName = "SkillsTableSection";

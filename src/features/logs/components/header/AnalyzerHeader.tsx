@@ -1,4 +1,4 @@
-// src/components/logs/AnalyzerHeader.tsx
+// src/features/logs/components/header/AnalyzerHeader.tsx
 import React, { useState } from "react";
 import {
   Box,
@@ -7,8 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 // Inline the logo to avoid any file-path issues in packaged builds.
-import logoImage from "../../../../resources/logo.png?inline";
-import type { UpdateStatusPayload } from "../types/updateTypes";
+import logoImage from "../../../../../resources/logo.png?inline";
+import type { UpdateStatusPayload } from "../../types/updateTypes";
 
 export interface AnalyzerHeaderProps {
   contextLabel?: string;

@@ -9,11 +9,10 @@ import {
   LogFileInfo,
   SkillBreakdown,
   TargetBreakdown,
-} from "../types/logTypes";
-import { CharacterClassView } from "./CharacterClassView";
-import { LogsRow } from "./LogsRow";
-import { TargetsRow } from "./TargetsRow";
-import { sectionSpacing } from "./layoutTokens";
+} from "../../types/logTypes";
+import { CharacterClassCard } from "../cards/CharacterClassCard";
+import { LogsRow, TargetsRow } from "../rows";
+import { sectionSpacing } from "../ui";
 
 export interface LogsTargetsSidebarProps {
   logs: LogFileInfo[];
@@ -141,7 +140,7 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
                 minHeight: 0,
               }}
             >
-              <CharacterClassView
+              <CharacterClassCard
                 characterName={characterName}
                 currentTopSkills={currentTopSkills}
                 variant="sidebar"

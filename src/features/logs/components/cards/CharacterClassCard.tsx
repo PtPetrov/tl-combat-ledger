@@ -1,10 +1,10 @@
-// src/components/logs/CharacterClassView.tsx
+// src/features/logs/components/cards/CharacterClassCard.tsx
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { SkillBreakdown } from "../types/logTypes";
-import skillsData from "../../../assets/skills.json";
-import classesData from "../../../assets/classess.json";
-import { cardGap, cardPaddingX, cardPaddingY } from "./layoutTokens";
+import { SkillBreakdown } from "../../types/logTypes";
+import skillsData from "../../../../assets/skills.json";
+import classesData from "../../../../assets/classess.json";
+import { cardGap, cardPaddingX, cardPaddingY } from "../ui";
 
 /**
  * JSON shapes
@@ -227,7 +227,7 @@ const inferClassFromSkills = (skills: SkillBreakdown[]): InferredClassInfo => {
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
-export interface CharacterClassViewProps {
+export interface CharacterClassCardProps {
   /** Player / character name extracted from the combat log */
   characterName: string | null;
   /** Skills for the current scope (overall or target+pull) */
@@ -235,7 +235,7 @@ export interface CharacterClassViewProps {
   variant?: "main" | "sidebar";
 }
 
-export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
+export const CharacterClassCard: React.FC<CharacterClassCardProps> = React.memo(
   ({ characterName, currentTopSkills, variant = "main" }) => {
     const { primaryWeapons, detectedClass } =
       inferClassFromSkills(currentTopSkills);
@@ -364,4 +364,4 @@ export const CharacterClassView: React.FC<CharacterClassViewProps> = React.memo(
   }
 );
 
-CharacterClassView.displayName = "CharacterClassView";
+CharacterClassCard.displayName = "CharacterClassCard";

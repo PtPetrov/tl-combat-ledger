@@ -1,7 +1,7 @@
-// src/components/logs/DefaultDirectoriesRow.tsx
+// src/features/logs/components/rows/DefaultDirectoriesRow.tsx
 import React from "react";
 import { Box, Chip, Typography } from "@mui/material";
-import { sectionSpacing } from "./layoutTokens";
+import { sectionSpacing } from "../ui";
 
 export interface DefaultDirectoriesRowProps {
   defaultDirs: string[];

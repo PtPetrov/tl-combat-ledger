@@ -1,17 +1,17 @@
 import React from "react";
 import { Box, Tooltip, Typography } from "@mui/material";
-import { LoadState } from "../types/logTypes";
+import { LoadState } from "../../types/logTypes";
 import {
   formatDuration,
   formatInteger,
   formatNumber,
-} from "../utils/formatters";
-import { getTargetIconPath, TARGET_PLACEHOLDER_ICON_PATH } from "../utils/targetIcons";
+} from "../../utils/formatters";
+import { getTargetIconPath, TARGET_PLACEHOLDER_ICON_PATH } from "../../utils/targetIcons";
 import {
   cardGap,
   cardPaddingX,
   cardPaddingY,
-} from "./layoutTokens";
+} from "../ui";
 
 export interface StatsPanelProps {
   summaryState: LoadState;
@@ -39,8 +39,8 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
     : undefined;
   const isPlaceholderIcon =
     Boolean(targetIconPath) && targetIconPath === TARGET_PLACEHOLDER_ICON_PATH;
-	const sessionLabel =
-	  selectedSessionId != null ? `Pull # ${selectedSessionId}` : "All pulls";
+  const sessionLabel =
+    selectedSessionId != null ? `Pull # ${selectedSessionId}` : "All pulls";
 
   return (
     <Box

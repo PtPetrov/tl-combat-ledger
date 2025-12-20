@@ -1,16 +1,16 @@
-// src/components/logs/TargetsRow.tsx
+// src/features/logs/components/rows/TargetsRow.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Box, FormControl, MenuItem, Select, Tooltip, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import { LoadState, TargetBreakdown } from "../types/logTypes";
-import { scrollBarStyles } from "../utils/logsViewUtils";
+import { LoadState, TargetBreakdown } from "../../types/logTypes";
+import { scrollBarStyles } from "../../utils/logsViewUtils";
 import {
   getTargetCategoryKey,
   getTargetIconPath,
   TARGET_PLACEHOLDER_ICON_PATH,
   TargetCategoryKey,
   TARGET_CATEGORY_LABELS,
-} from "../utils/targetIcons";
+} from "../../utils/targetIcons";
 
 type TargetCategoryFilter = "all" | TargetCategoryKey;
 

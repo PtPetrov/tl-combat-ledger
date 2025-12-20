@@ -1,12 +1,12 @@
-// src/components/logs/LogsPanel.tsx
+// src/features/logs/components/panels/LogsPanel.tsx
 import React, { useState } from "react";
 import { Box } from "@mui/material";
 import {
   useLogsPanelLogic,
   UseLogsPanelLogicResult,
-} from "../hooks/useLogsPanelLogic";
-import { LogsAnalyzerView, LogsAnalyzerViewProps } from "./LogsAnalyzerView";
-import { trackUsage } from "../../../telemetry/telemetry";
+} from "../../hooks/useLogsPanelLogic";
+import { LogsAnalyzerView, LogsAnalyzerViewProps } from "../pages/LogsAnalyzerView";
+import { trackUsage } from "../../../../telemetry/telemetry";
 
 type AnalyzerViewBaseProps = Omit<
   LogsAnalyzerViewProps,
