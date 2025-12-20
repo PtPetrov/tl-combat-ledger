@@ -1,6 +1,6 @@
 {
   "name": "tl-combat-ledger",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Throne and Liberty Combat Ledger",
   "main": "dist/electron/main.js",
   "tlclTelemetry": {
