@@ -17,6 +17,7 @@ type LogsApi = {
   selectDirectory: () => Promise<string | null>;
   listFiles: (directory: string) => Promise<LogFileInfo[]>;
   parseSummary: (filePath: string) => Promise<ParsedLogSummary>;
+  deleteFile: (filePath: string) => Promise<void>;
 };
 
 type AppApi = {
@@ -164,6 +165,7 @@ export interface UseLogsPanelLogicResult {
   handleSelectSession: (sessionId: number | null) => void;
   handleRenameLog: (log: LogFileInfo, nextName: string) => void;
   handleToggleLogFavorite: (log: LogFileInfo) => void;
+  handleDeleteLog: (log: LogFileInfo) => void;
 }
 
 const getLogsApi = (): LogsApi | undefined => {
@@ -352,6 +354,50 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
       return next;
     });
   }, []);
+
+  const handleDeleteLog = useCallback(
+    async (log: LogFileInfo) => {
+      const api = getLogsApi();
+      if (!api?.deleteFile) {
+        setError(LOGS_API_UNAVAILABLE_MESSAGE);
+        return;
+      }
+
+      try {
+        await api.deleteFile(log.path);
+
+        setLogs((prev) => prev.filter((item) => item.path !== log.path));
+
+        setLogDisplayNames((prev) => {
+          if (!prev[log.path]) return prev;
+          const next: LogDisplayNameMap = { ...prev };
+          delete next[log.path];
+          return next;
+        });
+
+        setLogFavorites((prev) => {
+          if (!prev[log.path]) return prev;
+          const next: LogFavoritesMap = { ...prev };
+          delete next[log.path];
+          return next;
+        });
+
+        const wasSelected = selectedLog?.path === log.path;
+        if (wasSelected) {
+          setSelectedLog(null);
+          setSummary(null);
+          setSummaryState("idle");
+          setSummaryError(null);
+          setSelectedTargetName(null);
+          setSelectedSessionId(null);
+        }
+      } catch (err) {
+        console.error("[logs] deleteFile failed", err);
+        setError("Failed to delete combat log.");
+      }
+    },
+    [selectedLog]
+  );
 
   // Bootstrap: get default directories & first folder logs
   useEffect(() => {
@@ -739,5 +785,6 @@ export const useLogsPanelLogic = (): UseLogsPanelLogicResult => {
     handleSelectSession,
     handleRenameLog,
     handleToggleLogFavorite,
+    handleDeleteLog,
   };
 };

@@ -24,6 +24,7 @@ export interface LogsTargetsSidebarProps {
   onRenameLog: (log: LogFileInfo, nextName: string) => void;
   logFavorites: Record<string, true>;
   onToggleLogFavorite: (log: LogFileInfo) => void;
+  onDeleteLog: (log: LogFileInfo) => void;
   onRefresh: () => void;
   onSelectFolder: () => void;
   selectedDir: string | null;
@@ -52,6 +53,7 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
     onRenameLog,
     logFavorites,
     onToggleLogFavorite,
+    onDeleteLog,
     onRefresh,
     onSelectFolder,
     selectedDir,
@@ -167,6 +169,7 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
                 onRenameLog={onRenameLog}
                 logFavorites={logFavorites}
                 onToggleLogFavorite={onToggleLogFavorite}
+                onDeleteLog={onDeleteLog}
                 onRefresh={onRefresh}
                 onSelectFolder={onSelectFolder}
                 selectedDir={selectedDir}

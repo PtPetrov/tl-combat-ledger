@@ -144,13 +144,13 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 0.6 }}>
-            <PersonIcon sx={{ fontSize: "1.2rem", color: "text.secondary" }} />
+            <PersonIcon sx={{ fontSize: "1.08rem", color: "text.secondary" }} />
             <Typography
               sx={{
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
                 color: "text.secondary",
-                fontSize: "0.9rem",
+                fontSize: "0.81rem",
                 fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
@@ -188,7 +188,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                 },
                 "& .MuiSelect-select": {
                   py: 0.55,
-                  fontSize: "0.9rem",
+                  fontSize: "0.81rem",
                 },
               }}
             >
@@ -209,7 +209,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
               display: "flex",
               alignItems: "center",
               color: "text.secondary",
-              fontSize: "1rem",
+              fontSize: "0.9rem",
             }}
           >
             Per-target breakdown will appear here after parsing a log.
@@ -242,7 +242,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                     px: 1.6,
                     py: 1.2,
                     color: "text.secondary",
-                    fontSize: "0.95rem",
+                    fontSize: "0.855rem",
                   }}
                 >
                   No targets found for this category.
@@ -334,7 +334,7 @@ export const TargetsRow: React.FC<TargetsRowProps> = React.memo(
                         <Typography
                           sx={{
                             fontWeight: 600,
-                            fontSize: "0.9rem",
+                            fontSize: "0.81rem",
                             textAlign: "left",
                             minWidth: 0,
                           flex: 1,

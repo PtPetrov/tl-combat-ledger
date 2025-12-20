@@ -21,6 +21,7 @@ const IPC = {
   LOGS_SELECT_DIRECTORY: "logs:selectDirectory",
   LOGS_LIST_FILES: "logs:listFiles",
   LOGS_PARSE_SUMMARY: "logs:parseSummary",
+  LOGS_DELETE_FILE: "logs:deleteFile",
 
   UPDATES_CHECK: "updates:check",
   UPDATES_INSTALL: "updates:install",
@@ -51,6 +52,9 @@ const logsApi = {
   },
   parseSummary(filePath: string): Promise<ParsedLogSummary> {
     return ipcRenderer.invoke(IPC.LOGS_PARSE_SUMMARY, filePath);
+  },
+  deleteFile(filePath: string): Promise<void> {
+    return ipcRenderer.invoke(IPC.LOGS_DELETE_FILE, filePath);
   },
 };
 

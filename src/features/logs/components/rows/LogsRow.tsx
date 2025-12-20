@@ -2,7 +2,10 @@
 import React from "react";
 import {
   Box,
+  Button,
   CircularProgress,
+  Dialog,
+  Divider,
   IconButton,
   InputBase,
   Tooltip as MuiTooltip,
@@ -17,12 +20,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { LoadState, LogFileInfo } from "../../types/logTypes";
 import { formatShortDate, scrollBarStyles } from "../../utils/logsViewUtils";
-import type { UpdateStatusPayload } from "../../types/updateTypes";
 
 export interface LogsRowProps {
   logs: LogFileInfo[];
@@ -34,6 +34,7 @@ export interface LogsRowProps {
   onSelectLog: (log: LogFileInfo) => void;
   onRenameLog: (log: LogFileInfo, nextName: string) => void;
   onToggleLogFavorite: (log: LogFileInfo) => void;
+  onDeleteLog: (log: LogFileInfo) => void;
   onRefresh: () => void;
   onSelectFolder: () => void;
   selectedDir: string | null;
@@ -51,6 +52,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
     onSelectLog,
     onRenameLog,
     onToggleLogFavorite,
+    onDeleteLog,
     onRefresh,
     onSelectFolder,
     selectedDir,
@@ -61,30 +63,8 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
     const renameInputRef = React.useRef<HTMLInputElement | null>(null);
     const cancelNextRenameCommitRef = React.useRef(false);
     const [showFavouritesOnly, setShowFavouritesOnly] = React.useState(false);
-    const updatesApi = typeof window !== "undefined" ? window.tlcla?.updates : undefined;
-    const [updateStatus, setUpdateStatus] = React.useState<UpdateStatusPayload>({
-      state: "idle",
-    });
-
-    React.useEffect(() => {
-      if (!updatesApi) return undefined;
-      return updatesApi.onStatus((payload) => {
-        setUpdateStatus(payload);
-      });
-    }, [updatesApi]);
-
-    const handleUpdateAction = React.useCallback(async () => {
-      if (!updatesApi) return;
-      try {
-        if (updateStatus.state === "ready") {
-          await updatesApi.installUpdate();
-        } else {
-          await updatesApi.checkForUpdates();
-        }
-      } catch (error) {
-        console.warn("Update action failed", error);
-      }
-    }, [updatesApi, updateStatus.state]);
+    const [pendingDeleteLog, setPendingDeleteLog] =
+      React.useState<LogFileInfo | null>(null);
 
     React.useEffect(() => {
       if (!renamingPath) return;
@@ -116,6 +96,20 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
       [onRenameLog, renameDraft]
     );
 
+    const openDeleteDialog = React.useCallback((log: LogFileInfo) => {
+      setPendingDeleteLog(log);
+    }, []);
+
+    const closeDeleteDialog = React.useCallback(() => {
+      setPendingDeleteLog(null);
+    }, []);
+
+    const confirmDeleteLog = React.useCallback(() => {
+      if (!pendingDeleteLog) return;
+      onDeleteLog(pendingDeleteLog);
+      setPendingDeleteLog(null);
+    }, [onDeleteLog, pendingDeleteLog]);
+
     const containerStyles = fillHeight
       ? {
           display: "flex",
@@ -131,43 +125,6 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
       ? logs.filter((log) => Boolean(logFavorites[log.path]))
       : logs;
     const visibleLogsCount = visibleLogs.length;
-    const updateState = updateStatus.state;
-    const updatePercent =
-      typeof updateStatus.percent === "number"
-        ? Math.round(updateStatus.percent)
-        : null;
-    const updateDisabled =
-      updateState === "checking" || updateState === "downloading";
-    const updateTooltip = (() => {
-      switch (updateState) {
-        case "checking":
-          return "Checking for updates…";
-        case "available":
-          return updateStatus.version
-            ? `Update ${updateStatus.version} available`
-            : "Update available";
-        case "downloading":
-          return updatePercent != null
-            ? `Downloading update… ${updatePercent}%`
-            : "Downloading update…";
-        case "ready":
-          return updateStatus.version
-            ? `Restart to install ${updateStatus.version}`
-            : "Restart to update";
-        case "error":
-          return updateStatus.message
-            ? `Update error: ${updateStatus.message}`
-            : "Update error";
-        default:
-          return "Check for updates";
-      }
-    })();
-    const updateLabel =
-      updateState === "downloading" && updatePercent != null
-        ? `${updatePercent}%`
-        : updateState === "ready"
-          ? "Restart to update"
-          : null;
 
     return (
       <Box sx={containerStyles}>
@@ -182,10 +139,10 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <DescriptionIcon sx={{ fontSize: "1.2rem", color: "text.secondary" }} />
+            <DescriptionIcon sx={{ fontSize: "1.08rem", color: "text.secondary" }} />
             <Typography
               sx={{
-                fontSize: "0.9rem",
+                fontSize: "0.81rem",
                 color: "text.secondary",
                 fontWeight: 500,
                 textTransform: "uppercase",
@@ -200,7 +157,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
             <Typography
               color="text.secondary"
               sx={{
-                fontSize: "0.8rem",
+                fontSize: "0.72rem",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
               }}
@@ -222,7 +179,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                   }}
                   aria-label="Back to all logs"
                 >
-                  <ArrowBackIcon sx={{ fontSize: "1.15rem" }} />
+                  <ArrowBackIcon sx={{ fontSize: "1.035rem" }} />
                 </IconButton>
               </MuiTooltip>
             ) : (
@@ -239,7 +196,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                         color: "#a5b4fc",
                       }}
                     >
-                      <RefreshIcon sx={{ fontSize: "1.15rem" }} />
+                      <RefreshIcon sx={{ fontSize: "1.035rem" }} />
                     </IconButton>
                   </span>
                 </MuiTooltip>
@@ -255,7 +212,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                         color: "#a5b4fc",
                       }}
                     >
-                      <FolderOpenIcon sx={{ fontSize: "1.15rem" }} />
+                      <FolderOpenIcon sx={{ fontSize: "1.035rem" }} />
                     </IconButton>
                   </span>
                 </MuiTooltip>
@@ -271,68 +228,10 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                       }}
                       aria-label="Show favourite logs"
                     >
-                      <FavoriteIcon sx={{ fontSize: "1.15rem" }} />
+                      <FavoriteIcon sx={{ fontSize: "1.035rem" }} />
                     </IconButton>
                   </span>
                 </MuiTooltip>
-              </>
-            )}
-            {updatesApi && (
-              <>
-                <MuiTooltip title={updateTooltip}>
-                  <span>
-                    <IconButton
-                      size="small"
-                      onClick={handleUpdateAction}
-                      disabled={updateDisabled}
-                      sx={{
-                        width: 34,
-                        height: 34,
-                        color:
-                          updateState === "error"
-                            ? "#fca5a5"
-                            : "#a5b4fc",
-                        "&.Mui-disabled": {
-                          color: "rgba(226,232,240,0.45)",
-                        },
-                      }}
-                      aria-label={updateTooltip}
-                    >
-                      {updateState === "checking" ||
-                      updateState === "downloading" ? (
-                        <CircularProgress
-                          size={18}
-                          thickness={5}
-                          variant={
-                            updatePercent != null
-                              ? "determinate"
-                              : "indeterminate"
-                          }
-                          value={updatePercent ?? undefined}
-                          sx={{ color: "#a5b4fc" }}
-                        />
-                      ) : updateState === "ready" ? (
-                        <RestartAltIcon sx={{ fontSize: "1.15rem" }} />
-                      ) : updateState === "error" ? (
-                        <ErrorOutlineIcon sx={{ fontSize: "1.1rem" }} />
-                      ) : (
-                        <SystemUpdateAltIcon sx={{ fontSize: "1.1rem" }} />
-                      )}
-                    </IconButton>
-                  </span>
-                </MuiTooltip>
-                {updateLabel && (
-                  <Typography
-                    sx={{
-                      fontSize: "0.78rem",
-                      letterSpacing: "0.06em",
-                      color:
-                        updateState === "ready" ? "#a5b4fc" : "text.secondary",
-                    }}
-                  >
-                    {updateLabel}
-                  </Typography>
-                )}
               </>
             )}
           </Box>
@@ -341,13 +240,13 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
         {state === "loading" && (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
             <CircularProgress size={20} />
-            <Typography color="text.secondary" sx={{ fontSize: "1rem" }}>
+            <Typography color="text.secondary" sx={{ fontSize: "0.9rem" }}>
               Scanning...
             </Typography>
           </Box>
         )}
         {error && (
-          <Typography color="error" sx={{ fontSize: "1rem", mb: 1 }}>
+          <Typography color="error" sx={{ fontSize: "0.9rem", mb: 1 }}>
             {error}
           </Typography>
         )}
@@ -432,7 +331,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                           fullWidth
                           sx={{
                             fontWeight: 600,
-                            fontSize: "0.9rem",
+                            fontSize: "0.81rem",
                             minWidth: 0,
                             px: 0.75,
                             py: 0.25,
@@ -456,7 +355,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                             whiteSpace: "nowrap",
-                            fontSize: "0.9rem",
+                            fontSize: "0.81rem",
                           }}
                         >
                           {log.name}
@@ -464,7 +363,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                       )}
                       <Typography
                         sx={{
-                          fontSize: "0.75rem",
+                          fontSize: "0.675rem",
                           color: "text.secondary",
                         }}
                       >
@@ -500,7 +399,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                                   color: "#a5b4fc",
                                 }}
                               >
-                                <CheckIcon sx={{ fontSize: "1.05rem" }} />
+                                <CheckIcon sx={{ fontSize: "0.945rem" }} />
                               </IconButton>
                             </MuiTooltip>
                             <MuiTooltip title="Cancel rename">
@@ -517,7 +416,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                                   color: "text.secondary",
                                 }}
                               >
-                                <CloseIcon sx={{ fontSize: "1.05rem" }} />
+                                <CloseIcon sx={{ fontSize: "0.945rem" }} />
                               </IconButton>
                             </MuiTooltip>
                             <MuiTooltip
@@ -545,35 +444,34 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                                 }}
                               >
                                 {isFavourite ? (
-                                  <FavoriteIcon sx={{ fontSize: "1.05rem" }} />
+                                  <FavoriteIcon sx={{ fontSize: "0.945rem" }} />
                                 ) : (
                                   <FavoriteBorderIcon
-                                    sx={{ fontSize: "1.05rem" }}
+                                    sx={{ fontSize: "0.945rem" }}
                                   />
                                 )}
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip title="Delete log">
+                              <IconButton
+                                size="small"
+                                aria-label="Delete log"
+                                onMouseDown={(event) => {
+                                  event.preventDefault();
+                                }}
+                                onClick={() => openDeleteDialog(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "#fca5a5",
+                                }}
+                              >
+                                <DeleteOutlineIcon sx={{ fontSize: "0.945rem" }} />
                               </IconButton>
                             </MuiTooltip>
                           </>
                         ) : (
                           <>
-                            <MuiTooltip title="Rename (in-app only)">
-                              <IconButton
-                                size="small"
-                                aria-label="Rename (in-app only)"
-                                onClick={() => beginRename(log)}
-                                sx={{
-                                  width: 32,
-                                  height: 32,
-                                  color: "#a5b4fc",
-                                  opacity: 0.92,
-                                  "&:hover": { opacity: 1 },
-                                }}
-                              >
-                                <DriveFileRenameOutlineIcon
-                                  sx={{ fontSize: "1.05rem" }}
-                                />
-                              </IconButton>
-                            </MuiTooltip>
                             <MuiTooltip
                               title={
                                 isFavourite
@@ -598,12 +496,46 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                                 }}
                               >
                                 {isFavourite ? (
-                                  <FavoriteIcon sx={{ fontSize: "1.05rem" }} />
+                                  <FavoriteIcon sx={{ fontSize: "0.945rem" }} />
                                 ) : (
                                   <FavoriteBorderIcon
-                                    sx={{ fontSize: "1.05rem" }}
+                                    sx={{ fontSize: "0.945rem" }}
                                   />
                                 )}
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip title="Rename (in-app only)">
+                              <IconButton
+                                size="small"
+                                aria-label="Rename (in-app only)"
+                                onClick={() => beginRename(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "#a5b4fc",
+                                  opacity: 0.92,
+                                  "&:hover": { opacity: 1 },
+                                }}
+                              >
+                                <DriveFileRenameOutlineIcon
+                                  sx={{ fontSize: "0.945rem" }}
+                                />
+                              </IconButton>
+                            </MuiTooltip>
+                            <MuiTooltip title="Delete log">
+                              <IconButton
+                                size="small"
+                                aria-label="Delete log"
+                                onClick={() => openDeleteDialog(log)}
+                                sx={{
+                                  width: 32,
+                                  height: 32,
+                                  color: "#fca5a5",
+                                  opacity: 0.92,
+                                  "&:hover": { opacity: 1 },
+                                }}
+                              >
+                                <DeleteOutlineIcon sx={{ fontSize: "0.945rem" }} />
                               </IconButton>
                             </MuiTooltip>
                           </>
@@ -614,7 +546,7 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                 );
               })
             ) : (
-              <Typography color="text.secondary" sx={{ fontSize: "1.2rem" }}>
+              <Typography color="text.secondary" sx={{ fontSize: "1.08rem" }}>
                 {showFavouritesOnly
                   ? "No favourited logs yet."
                   : "No log files found in the selected folder."}
@@ -622,6 +554,119 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
             )}
           </Box>
         </Box>
+
+        <Dialog
+          open={Boolean(pendingDeleteLog)}
+          onClose={closeDeleteDialog}
+          maxWidth="xs"
+          fullWidth
+          PaperProps={{
+            sx: {
+              borderRadius: "2px",
+              background:
+                "linear-gradient(135deg, rgba(15,23,42,0.98), rgba(5,8,20,0.98))",
+              border: "1px solid rgba(55,65,81,0.9)",
+              boxShadow: "0 24px 48px rgba(2,6,23,0.8)",
+              color: "#e5e7eb",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              px: 2,
+              pt: 1.6,
+              pb: 1.2,
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <DeleteOutlineIcon sx={{ fontSize: 18, color: "#fca5a5" }} />
+            <Typography
+              sx={{
+                fontSize: "0.99rem",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                fontWeight: 700,
+                color: "rgba(226,232,240,0.9)",
+                flex: 1,
+              }}
+            >
+              Delete log?
+            </Typography>
+            <IconButton
+              aria-label="Close delete confirmation"
+              onClick={closeDeleteDialog}
+              sx={{
+                color: "rgba(226,232,240,0.75)",
+                borderRadius: 0,
+                p: 0.5,
+                "&:hover": {
+                  color: "#e0e7ff",
+                  backgroundColor: "rgba(2,6,23,0.35)",
+                },
+                "&:focus-visible": {
+                  outline: "none",
+                },
+              }}
+            >
+              <CloseIcon sx={{ fontSize: 16.2 }} />
+            </IconButton>
+          </Box>
+
+          <Divider sx={{ borderColor: "rgba(55,65,81,0.7)" }} />
+
+          <Box sx={{ px: 2, py: 1.6 }}>
+            <Typography sx={{ fontSize: "0.855rem", color: "text.secondary" }}>
+              This will permanently delete{" "}
+              <Box component="span" sx={{ color: "#e2e8f0", fontWeight: 600 }}>
+                {pendingDeleteLog?.name ?? "this log"}
+              </Box>{" "}
+              from your system. This cannot be undone.
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              px: 2,
+              pb: 1.6,
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: 1,
+            }}
+          >
+            <Button
+              onClick={closeDeleteDialog}
+              variant="text"
+              sx={{
+                color: "rgba(226,232,240,0.75)",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                fontSize: "0.675rem",
+                "&:hover": { color: "#e0e7ff" },
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={confirmDeleteLog}
+              variant="contained"
+              sx={{
+                backgroundColor: "#ef4444",
+                color: "#0f172a",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                fontSize: "0.675rem",
+                fontWeight: 700,
+                "&:hover": {
+                  backgroundColor: "#f87171",
+                },
+              }}
+            >
+              Delete
+            </Button>
+          </Box>
+        </Dialog>
       </Box>
     );
   }

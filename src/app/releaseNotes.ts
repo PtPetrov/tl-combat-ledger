@@ -6,6 +6,13 @@ export type ReleaseNotesPatch = {
 // Newest patch first.
 export const RELEASE_NOTES: ReleaseNotesPatch[] = [
   {
+    version: "0.3.2",
+    notes: [
+      "Added a delete log action with confirmation.",
+      "Reduced log, target, and skills table font sizes by ~10%.",
+    ],
+  },
+  {
     version: "0.3.1",
     notes: ["Further app fixes and optimizations."],
   },

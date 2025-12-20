@@ -48,6 +48,7 @@ const buildAnalyzerViewProps = ({
   handleSelectLog,
   handleRenameLog,
   handleToggleLogFavorite,
+  handleDeleteLog,
   handleSelectTarget,
   handleSelectSession,
 }: UseLogsPanelLogicResult): AnalyzerViewBaseProps => ({
@@ -85,6 +86,7 @@ const buildAnalyzerViewProps = ({
   onSelectLog: handleSelectLog,
   onRenameLog: handleRenameLog,
   onToggleLogFavorite: handleToggleLogFavorite,
+  onDeleteLog: handleDeleteLog,
   onSelectTarget: handleSelectTarget,
   onSelectSession: handleSelectSession,
 });

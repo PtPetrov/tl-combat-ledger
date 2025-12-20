@@ -235,6 +235,18 @@ export async function listLogFilesInDirectory(
   }
 }
 
+export async function deleteLogFile(filePath: string): Promise<void> {
+  const stat = await fs.stat(filePath);
+  if (!stat.isFile()) {
+    throw new Error("Log path is not a file.");
+  }
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext !== ".txt" && ext !== ".csv") {
+    throw new Error("Unsupported log file type.");
+  }
+  await fs.unlink(filePath);
+}
+
 /* ------------------------------------------------------------------ */
 /* Parsing                                                            */
 /* ------------------------------------------------------------------ */

@@ -48,10 +48,6 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
         borderRadius: "2px",
         px: cardPaddingX,
         py: { xs: 1.1, sm: 1.25, lg: 1.4 },
-        background:
-          "linear-gradient(135deg, rgba(13,18,30,0.98), rgba(5,8,20,0.95))",
-        boxShadow:
-          "0 18px 32px rgba(2,6,23,0.7), 0 0 0 1px rgba(15,23,42,0.9)",
         display: "flex",
         flexDirection: "column",
         gap: { xs: 0.6, md: 0.8 },

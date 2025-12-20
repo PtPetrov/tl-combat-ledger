@@ -5,6 +5,7 @@ export const IPC = {
   LOGS_SELECT_DIRECTORY: "logs:selectDirectory",
   LOGS_LIST_FILES: "logs:listFiles",
   LOGS_PARSE_SUMMARY: "logs:parseSummary",
+  LOGS_DELETE_FILE: "logs:deleteFile",
 
   UPDATES_CHECK: "updates:check",
   UPDATES_INSTALL: "updates:install",
@@ -24,4 +25,3 @@ export const IPC = {
 } as const;
 
 export type IpcChannel = (typeof IPC)[keyof typeof IPC];
-

@@ -13,6 +13,7 @@ export type LogsApi = {
   selectDirectory: () => Promise<string | null>;
   listFiles: (directory: string) => Promise<LogFileInfo[]>;
   parseSummary: (filePath: string) => Promise<ParsedLogSummary>;
+  deleteFile: (filePath: string) => Promise<void>;
 };
 
 export type WindowControlsApi = {
@@ -54,4 +55,3 @@ export type TlclaApi = {
   telemetry: TelemetryApi;
   analytics: AnalyticsApi;
 };
-

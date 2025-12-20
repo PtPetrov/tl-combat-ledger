@@ -1,8 +1,18 @@
 // src/features/logs/components/pages/LogsAnalyzerView.tsx
 import React, { useCallback, useEffect, useState } from "react";
-import { Box, IconButton, TableSortLabel, Tooltip } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  IconButton,
+  TableSortLabel,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import CompareIcon from "@mui/icons-material/Compare";
 import IosShareIcon from "@mui/icons-material/IosShare";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
 import {
   LoadState,
   DamageTimelineBucket,
@@ -29,6 +39,7 @@ import {
 } from "../ui";
 import { useDynamicLayoutHeights } from "../../hooks/useDynamicLayoutHeights";
 import { trackUsage } from "../../../../telemetry/telemetry";
+import type { UpdateStatusPayload } from "../../types/updateTypes";
 
 export interface LogsAnalyzerViewProps {
   selectedDir: string | null;
@@ -73,6 +84,7 @@ export interface LogsAnalyzerViewProps {
   onSelectLog: (log: LogFileInfo) => void;
   onRenameLog: (log: LogFileInfo, nextName: string) => void;
   onToggleLogFavorite: (log: LogFileInfo) => void;
+  onDeleteLog: (log: LogFileInfo) => void;
   onSelectTarget: (targetName: string | null) => void;
   onSelectSession: (sessionId: number | null) => void;
   onToggleCompare?: () => void;
@@ -116,6 +128,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   onSelectLog,
   onRenameLog,
   onToggleLogFavorite,
+  onDeleteLog,
   onSelectTarget,
   onSelectSession,
   onToggleCompare,
@@ -128,6 +141,10 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
   const [selectedSkill, setSelectedSkill] =
     useState<ExtendedSkillBreakdown | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const updatesApi = typeof window !== "undefined" ? window.tlcla?.updates : undefined;
+  const [updateStatus, setUpdateStatus] = useState<UpdateStatusPayload>({
+    state: "idle",
+  });
   const { timelineHeight } = useDynamicLayoutHeights();
   const [skillsSort, setSkillsSort] = useState<{
     key: SkillsTableSortKey | null;
@@ -152,6 +169,13 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
     });
   }, [summaryState, currentTopSkills]);
 
+  useEffect(() => {
+    if (!updatesApi) return undefined;
+    return updatesApi.onStatus((payload) => {
+      setUpdateStatus(payload);
+    });
+  }, [updatesApi]);
+
   const exportApi = typeof window !== "undefined" ? window.tlcla?.export : undefined;
   const hasExportBridge = Boolean(exportApi);
 
@@ -168,6 +192,19 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
       setIsExporting(false);
     }
   }, [exportApi, selectedSummaryTitle]);
+
+  const handleUpdateAction = useCallback(async () => {
+    if (!updatesApi) return;
+    try {
+      if (updateStatus.state === "ready") {
+        await updatesApi.installUpdate();
+      } else {
+        await updatesApi.checkForUpdates();
+      }
+    } catch (error) {
+      console.warn("Update action failed", error);
+    }
+  }, [updatesApi, updateStatus.state]);
 
   const handleSortColumn = useCallback((key: SkillsTableSortKey) => {
     setSkillsSort((prev) => {
@@ -195,6 +232,44 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
       opacity: 1,
     },
   } as const;
+
+  const updateState = updateStatus.state;
+  const updatePercent =
+    typeof updateStatus.percent === "number"
+      ? Math.round(updateStatus.percent)
+      : null;
+  const updateDisabled =
+    updateState === "checking" || updateState === "downloading";
+  const updateTooltip = (() => {
+    switch (updateState) {
+      case "checking":
+        return "Checking for updates…";
+      case "available":
+        return updateStatus.version
+          ? `Update ${updateStatus.version} available`
+          : "Update available";
+      case "downloading":
+        return updatePercent != null
+          ? `Downloading update… ${updatePercent}%`
+          : "Downloading update…";
+      case "ready":
+        return updateStatus.version
+          ? `Restart to install ${updateStatus.version}`
+          : "Restart to update";
+      case "error":
+        return updateStatus.message
+          ? `Update error: ${updateStatus.message}`
+          : "Update error";
+      default:
+        return "Check for updates";
+    }
+  })();
+  const updateLabel =
+    updateState === "downloading" && updatePercent != null
+      ? `${updatePercent}%`
+      : updateState === "ready"
+        ? "Restart to update"
+        : null;
 
   return (
     <Box
@@ -235,6 +310,7 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
             onRenameLog={onRenameLog}
             logFavorites={logFavorites}
             onToggleLogFavorite={onToggleLogFavorite}
+            onDeleteLog={onDeleteLog}
             onRefresh={onRefresh}
             onSelectFolder={onSelectFolder}
             selectedDir={selectedDir}
@@ -297,6 +373,73 @@ export const LogsAnalyzerView: React.FC<LogsAnalyzerViewProps> = ({
                   minWidth: 90,
                 }}
               >
+                {updatesApi && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 0.6,
+                    }}
+                  >
+                    <Tooltip title={updateTooltip} placement="bottom">
+                      <span>
+                        <IconButton
+                          aria-label={updateTooltip}
+                          onClick={handleUpdateAction}
+                          disabled={updateDisabled}
+                          sx={{
+                            width: 44,
+                            height: 44,
+                            color:
+                              updateState === "error"
+                                ? "#fca5a5"
+                                : "rgba(226,232,240,0.9)",
+                            transition: "color 150ms ease",
+                            "&:hover": { color: "#c7d2fe" },
+                            "&.Mui-disabled": {
+                              color: "rgba(226,232,240,0.45)",
+                            },
+                          }}
+                        >
+                          {updateState === "checking" ||
+                          updateState === "downloading" ? (
+                            <CircularProgress
+                              size={18}
+                              thickness={5}
+                              variant={
+                                updatePercent != null
+                                  ? "determinate"
+                                  : "indeterminate"
+                              }
+                              value={updatePercent ?? undefined}
+                              sx={{ color: "#a5b4fc" }}
+                            />
+                          ) : updateState === "ready" ? (
+                            <RestartAltIcon sx={{ fontSize: "1.35rem" }} />
+                          ) : updateState === "error" ? (
+                            <ErrorOutlineIcon sx={{ fontSize: "1.25rem" }} />
+                          ) : (
+                            <SystemUpdateAltIcon sx={{ fontSize: "1.25rem" }} />
+                          )}
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                    {updateLabel && (
+                      <Typography
+                        sx={{
+                          fontSize: "0.78rem",
+                          letterSpacing: "0.06em",
+                          color:
+                            updateState === "ready"
+                              ? "#a5b4fc"
+                              : "text.secondary",
+                        }}
+                      >
+                        {updateLabel}
+                      </Typography>
+                    )}
+                  </Box>
+                )}
                 {showCompareControl && onToggleCompare && (
                   <Tooltip title="Compare logs" placement="bottom">
                     <IconButton

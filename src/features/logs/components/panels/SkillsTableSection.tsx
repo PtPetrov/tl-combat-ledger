@@ -159,7 +159,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
             justifyContent: "center",
           }}
         >
-          <Typography color="text.secondary" sx={{ fontSize: "1.3rem" }}>
+          <Typography color="text.secondary" sx={{ fontSize: "1.17rem" }}>
             Select a log to see skill breakdown.
           </Typography>
         </Box>
@@ -178,7 +178,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
           }}
         >
           <CircularProgress size={24} />
-          <Typography color="text.secondary" sx={{ fontSize: "1.3rem" }}>
+          <Typography color="text.secondary" sx={{ fontSize: "1.17rem" }}>
             Parsing log and computing metrics...
           </Typography>
         </Box>
@@ -195,7 +195,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
             justifyContent: "center",
           }}
         >
-          <Typography color="error" sx={{ fontSize: "1.3rem" }}>
+          <Typography color="error" sx={{ fontSize: "1.17rem" }}>
             {summaryError}
           </Typography>
         </Box>
@@ -212,7 +212,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
             justifyContent: "center",
           }}
         >
-          <Typography color="text.secondary" sx={{ fontSize: "1.3rem" }}>
+          <Typography color="text.secondary" sx={{ fontSize: "1.17rem" }}>
             No damage skills found for this scope.
           </Typography>
         </Box>
@@ -406,7 +406,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                         },
                         columnGap: { xs: 1.2, md: 2.2 },
                         alignItems: "center",
-                        fontSize: { xs: "1rem", md: "1.2rem" },
+                        fontSize: { xs: "0.9rem", md: "1.08rem" },
                       borderBottom: "1px solid rgba(31,41,55,0.9)",
                       backgroundColor: isSelected
                         ? "rgba(37,99,235,0.25)"
@@ -476,7 +476,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
                         <Typography
                           sx={{
                             color: "text.secondary",
-                            fontSize: "1.2rem",
+                            fontSize: "1.08rem",
                           }}
                         >
                           {share.toFixed(1)}%
@@ -537,7 +537,7 @@ export const SkillsTableSection: React.FC<SkillsTableSectionProps> = React.memo(
               },
               columnGap: { xs: 1.2, md: 2.2 },
               alignItems: "center",
-              fontSize: { xs: "1rem", md: "1.2rem" },
+              fontSize: { xs: "0.9rem", md: "1.08rem" },
               borderTop: "1px solid rgba(55,65,81,0.95)",
               backgroundColor: "rgba(15,23,42,1)",
               minWidth: 760,

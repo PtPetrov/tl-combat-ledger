@@ -13,7 +13,11 @@ import type {
   ParsedLogSummary,
   UpdateStatusPayload,
 } from "../shared/types";
-import { getDefaultLogDirectories, listLogFilesInDirectory } from "./logs";
+import {
+  deleteLogFile,
+  getDefaultLogDirectories,
+  listLogFilesInDirectory,
+} from "./logs";
 import { getTelemetrySettings, setTelemetrySettings } from "./telemetry";
 import { getAptabaseAppKey, getSentryDsn } from "./telemetryConfig";
 import { trackUsageEvent } from "./analytics";
@@ -474,6 +478,13 @@ function registerIpcHandlers() {
       throw new Error("filePath is required for logs:parseSummary");
     }
     return parseSummaryInWorker(filePath);
+  });
+
+  ipcMain.handle(IPC.LOGS_DELETE_FILE, async (_event, filePath: string) => {
+    if (!filePath || typeof filePath !== "string") {
+      throw new Error("filePath is required for logs:deleteFile");
+    }
+    await deleteLogFile(filePath);
   });
 
   ipcMain.handle(IPC.UPDATES_CHECK, async () => {
