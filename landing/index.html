@@ -81,15 +81,16 @@
         </div>
       </header>
 
-      <main class="hero">
-        <div class="hero-text">
-          <p class="eyebrow">Combat log analyzer</p>
-          <h1>Track every rotation. Level up every run.</h1>
-          <p class="lede">
-            Turn Throne &amp; Liberty combat logs into clear insights—skills, targets, sessions, DPS,
-            crit/heavy rates, and damage timelines—so you can tighten rotations faster.
-          </p>
-          <div class="actions">
+      <main class="landing">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-text">
+            <p class="eyebrow">Combat log analyzer</p>
+            <h1 id="hero-title">Track every rotation. Level up every run.</h1>
+            <p class="lede">
+              Turn Throne &amp; Liberty combat logs into clear insights—skills, targets, sessions, DPS,
+              crit/heavy rates, and damage timelines—so you can tighten rotations faster.
+            </p>
+            <div class="actions hero-actions">
             <a
               id="download-btn"
               class="btn primary has-sub"
@@ -102,20 +103,14 @@
                 <span id="download-version" class="btn-version" aria-live="polite"></span>
               </span>
             </a>
-            <a
-              class="btn ghost"
-              href="/features.html"
-            >
-              Features list
-            </a>
           </div>
-          <p id="download-meta" class="meta">Fetching latest release…</p>
-          <noscript>
-            <p class="meta">
-              JavaScript is disabled; use the "Download latest" button to view the latest release.
-            </p>
-          </noscript>
-        </div>
+            <p id="download-meta" class="meta">Fetching latest release…</p>
+            <noscript>
+              <p class="meta">
+                JavaScript is disabled; use the "Download latest" button to view the latest release.
+              </p>
+            </noscript>
+          </div>
         <div class="hero-media">
           <a
             class="hero-screenshot-link"
@@ -133,6 +128,96 @@
             />
           </a>
         </div>
+        </section>
+
+        <section id="features" class="features" aria-labelledby="features-title">
+          <div class="features-header">
+            <p class="eyebrow">Feature list</p>
+            <h2 id="features-title">Everything you need to turn logs into wins.</h2>
+            <p class="lede">
+              TL Combat Ledger is built for fast, practical analysis: find your biggest damage sources,
+              identify rotation gaps, and compare runs without guesswork.
+            </p>
+            <p class="lede features-sublede">
+              Designed for the Throne &amp; Liberty community: clean breakdowns, clear timelines, and
+              side-by-side comparisons so you can improve between pulls.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5v14"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </span>
+              <h3>Instant setup</h3>
+              <p>Auto-detects your combat log folder with manual browse and one-click refresh.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M4 6h16"></path>
+                  <path d="M4 12h16"></path>
+                  <path d="M4 18h10"></path>
+                </svg>
+              </span>
+              <h3>Log library</h3>
+              <p>Sort by newest, rename runs, and favorite the logs you want to revisit.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M4 19h16"></path>
+                  <path d="M6 16l4-4 3 3 5-6"></path>
+                </svg>
+              </span>
+              <h3>Combat breakdowns</h3>
+              <p>Skill leaderboards, target totals, and detailed attack breakdowns with crit/heavy insight.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M7 4v16"></path>
+                  <path d="M17 4v16"></path>
+                  <path d="M3 8h18"></path>
+                  <path d="M3 16h18"></path>
+                </svg>
+              </span>
+              <h3>Targets &amp; sessions</h3>
+              <p>Per-target views with automatic session grouping for clean, focused analysis.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M4 18l5-5 4 4 7-7"></path>
+                  <path d="M4 6h16"></path>
+                </svg>
+              </span>
+              <h3>Damage timeline</h3>
+              <p>Damage-over-time charts with target and session filters to spot burst windows.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M4 7h16"></path>
+                  <path d="M4 12h16"></path>
+                  <path d="M4 17h10"></path>
+                  <circle cx="18" cy="17" r="2.5"></circle>
+                </svg>
+              </span>
+              <h3>Compare, export, updates</h3>
+              <p>Side-by-side compare, PNG export, and in-app updates when a new build is ready.</p>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer class="footer">

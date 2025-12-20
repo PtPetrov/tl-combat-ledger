@@ -165,6 +165,21 @@ function createMainWindow() {
   mainWindow.setMenuBarVisibility(false);
   mainWindow.setAutoHideMenuBar(true);
 
+  const appUrl = isDev
+    ? "http://localhost:5173"
+    : url.format({
+        pathname: path.join(__dirname, "..", "renderer", "index.html"),
+        protocol: "file:",
+        slashes: true,
+      });
+
+  mainWindow.webContents.setWindowOpenHandler(() => ({ action: "deny" }));
+  mainWindow.webContents.on("will-navigate", (event, targetUrl) => {
+    if (!targetUrl.startsWith(appUrl)) {
+      event.preventDefault();
+    }
+  });
+
   if (lockInspector) {
     // Disable right-click context menu to prevent "Inspect Element".
     mainWindow.webContents.on("context-menu", (event) => {
@@ -208,17 +223,7 @@ function createMainWindow() {
     });
   }
 
-  if (isDev) {
-    mainWindow.loadURL("http://localhost:5173");
-  } else {
-    mainWindow.loadURL(
-      url.format({
-        pathname: path.join(__dirname, "..", "renderer", "index.html"),
-        protocol: "file:",
-        slashes: true,
-      })
-    );
-  }
+  mainWindow.loadURL(appUrl);
 
   mainWindow.once("ready-to-show", () => {
     if (!mainWindow) return;

@@ -101,8 +101,8 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
           minHeight: 0,
           width: {
             xs: "100%",
-            md: isOpen ? 320 : 64,
-            xl: isOpen ? 360 : 68,
+            md: isOpen ? 320 : 32,
+            xl: isOpen ? 360 : 34,
           },
           transition: "width 180ms cubic-bezier(0.4, 0, 0.2, 1)",
           willChange: "width",
@@ -252,21 +252,23 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
               sx={{
                 position: "absolute",
                 top: 16,
-                left: "50%",
-                transform: "translateX(-50%)",
+                left: 0,
+                right: 0,
+                mx: "auto",
+                width: "fit-content",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: 1.4,
+                gap: 1.1,
                 color: "text.secondary",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                padding: "8px 4px",
+                padding: "6px 2px",
               }}
             >
-              <DescriptionIcon sx={{ fontSize: "1.6rem" }} />
-              <PersonIcon sx={{ fontSize: "1.6rem" }} />
+              <DescriptionIcon sx={{ fontSize: "1.4rem" }} />
+              <PersonIcon sx={{ fontSize: "1.4rem" }} />
             </Box>
             <Tooltip title="Show logs & targets">
               <IconButton
@@ -275,12 +277,14 @@ export const LogsTargetsSidebar: React.FC<LogsTargetsSidebarProps> = React.memo(
                 sx={{
                   position: "absolute",
                   bottom: 16,
-                  left: "50%",
-                  transform: "translateX(-50%)",
+                  left: 0,
+                  right: 0,
+                  mx: "auto",
+                  width: 28,
+                  transform: "none",
                   backgroundColor: "rgba(15,23,42,0.95)",
                   border: "1px solid rgba(99,102,241,0.4)",
-                  width: 34,
-                  height: 34,
+                  height: 28,
                   color: "#a5b4fc",
                   "&:hover": {
                     backgroundColor: "rgba(79,70,229,0.2)",

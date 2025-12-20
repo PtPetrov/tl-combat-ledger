@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { unstable_createMuiStrictModeTheme } from "@mui/material/styles";
 
-export const tlTheme = createTheme({
+export const tlTheme = unstable_createMuiStrictModeTheme({
   palette: {
     mode: "dark",
     primary: {
