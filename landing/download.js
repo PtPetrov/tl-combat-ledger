@@ -133,17 +133,6 @@
     }
   };
 
-  const getCurrentLandingPage = () => {
-    const path = (location.pathname || "/").toLowerCase();
-    if (path.endsWith("/features.html") || path.endsWith("/features")) return "features";
-    return "landing";
-  };
-
-  const getPageViewEventName = (page) => {
-    if (page === "features") return "Features Page View";
-    return "Landing Page View";
-  };
-
   const initInspectionGuards = () => {
     // Best-effort only: browsers do not allow reliably blocking devtools.
     document.addEventListener(
@@ -192,22 +181,43 @@
   };
 
   const initLandingAnalytics = () => {
-    const page = getCurrentLandingPage();
-
-    trackAptabaseEvent(getPageViewEventName(page), { page });
+    trackAptabaseEvent("landing_view", { page: "landing" });
 
     if (downloadBtn) {
       downloadBtn.addEventListener("click", () => {
-        trackAptabaseEvent("Download Click", { page });
+        trackAptabaseEvent("landing_cta_click", {
+          cta: "primary",
+          location: "hero",
+        });
       });
     }
 
-    const featuresLink = document.querySelector('a[href$="features.html"]');
-    if (featuresLink) {
-      featuresLink.addEventListener("click", () => {
-        trackAptabaseEvent("Features Link Click", { from: page });
-      });
-    }
+    const featuresSection = document.getElementById("features");
+    if (!featuresSection || typeof IntersectionObserver === "undefined") return;
+
+    const sectionKey = "tlcl:a:sectionView:features";
+    const markSectionViewed = () => {
+      try {
+        if (sessionStorage.getItem(sectionKey)) return false;
+        sessionStorage.setItem(sectionKey, "1");
+        return true;
+      } catch {
+        return true;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry || !entry.isIntersecting) return;
+        if (!markSectionViewed()) return;
+        trackAptabaseEvent("landing_section_view", { section: "features" });
+        observer.disconnect();
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(featuresSection);
   };
 
   async function fetchLatest() {
