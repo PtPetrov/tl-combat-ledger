@@ -17,8 +17,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
 import { LoadState, LogFileInfo } from "../../types/logTypes";
 import { formatShortDate, scrollBarStyles } from "../../utils/logsViewUtils";
+import type { UpdateStatusPayload } from "../../types/updateTypes";
 
 export interface LogsRowProps {
   logs: LogFileInfo[];
@@ -57,6 +61,30 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
     const renameInputRef = React.useRef<HTMLInputElement | null>(null);
     const cancelNextRenameCommitRef = React.useRef(false);
     const [showFavouritesOnly, setShowFavouritesOnly] = React.useState(false);
+    const updatesApi = typeof window !== "undefined" ? window.tlcla?.updates : undefined;
+    const [updateStatus, setUpdateStatus] = React.useState<UpdateStatusPayload>({
+      state: "idle",
+    });
+
+    React.useEffect(() => {
+      if (!updatesApi) return undefined;
+      return updatesApi.onStatus((payload) => {
+        setUpdateStatus(payload);
+      });
+    }, [updatesApi]);
+
+    const handleUpdateAction = React.useCallback(async () => {
+      if (!updatesApi) return;
+      try {
+        if (updateStatus.state === "ready") {
+          await updatesApi.installUpdate();
+        } else {
+          await updatesApi.checkForUpdates();
+        }
+      } catch (error) {
+        console.warn("Update action failed", error);
+      }
+    }, [updatesApi, updateStatus.state]);
 
     React.useEffect(() => {
       if (!renamingPath) return;
@@ -103,6 +131,43 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
       ? logs.filter((log) => Boolean(logFavorites[log.path]))
       : logs;
     const visibleLogsCount = visibleLogs.length;
+    const updateState = updateStatus.state;
+    const updatePercent =
+      typeof updateStatus.percent === "number"
+        ? Math.round(updateStatus.percent)
+        : null;
+    const updateDisabled =
+      updateState === "checking" || updateState === "downloading";
+    const updateTooltip = (() => {
+      switch (updateState) {
+        case "checking":
+          return "Checking for updates…";
+        case "available":
+          return updateStatus.version
+            ? `Update ${updateStatus.version} available`
+            : "Update available";
+        case "downloading":
+          return updatePercent != null
+            ? `Downloading update… ${updatePercent}%`
+            : "Downloading update…";
+        case "ready":
+          return updateStatus.version
+            ? `Restart to install ${updateStatus.version}`
+            : "Restart to update";
+        case "error":
+          return updateStatus.message
+            ? `Update error: ${updateStatus.message}`
+            : "Update error";
+        default:
+          return "Check for updates";
+      }
+    })();
+    const updateLabel =
+      updateState === "downloading" && updatePercent != null
+        ? `${updatePercent}%`
+        : updateState === "ready"
+          ? "Restart to update"
+          : null;
 
     return (
       <Box sx={containerStyles}>
@@ -210,6 +275,64 @@ export const LogsRow: React.FC<LogsRowProps> = React.memo(
                     </IconButton>
                   </span>
                 </MuiTooltip>
+              </>
+            )}
+            {updatesApi && (
+              <>
+                <MuiTooltip title={updateTooltip}>
+                  <span>
+                    <IconButton
+                      size="small"
+                      onClick={handleUpdateAction}
+                      disabled={updateDisabled}
+                      sx={{
+                        width: 34,
+                        height: 34,
+                        color:
+                          updateState === "error"
+                            ? "#fca5a5"
+                            : "#a5b4fc",
+                        "&.Mui-disabled": {
+                          color: "rgba(226,232,240,0.45)",
+                        },
+                      }}
+                      aria-label={updateTooltip}
+                    >
+                      {updateState === "checking" ||
+                      updateState === "downloading" ? (
+                        <CircularProgress
+                          size={18}
+                          thickness={5}
+                          variant={
+                            updatePercent != null
+                              ? "determinate"
+                              : "indeterminate"
+                          }
+                          value={updatePercent ?? undefined}
+                          sx={{ color: "#a5b4fc" }}
+                        />
+                      ) : updateState === "ready" ? (
+                        <RestartAltIcon sx={{ fontSize: "1.15rem" }} />
+                      ) : updateState === "error" ? (
+                        <ErrorOutlineIcon sx={{ fontSize: "1.1rem" }} />
+                      ) : (
+                        <SystemUpdateAltIcon sx={{ fontSize: "1.1rem" }} />
+                      )}
+                    </IconButton>
+                  </span>
+                </MuiTooltip>
+                {updateLabel && (
+                  <Typography
+                    sx={{
+                      fontSize: "0.78rem",
+                      letterSpacing: "0.06em",
+                      color:
+                        updateState === "ready" ? "#a5b4fc" : "text.secondary",
+                    }}
+                  >
+                    {updateLabel}
+                  </Typography>
+                )}
               </>
             )}
           </Box>

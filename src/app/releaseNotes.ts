@@ -6,6 +6,10 @@ export type ReleaseNotesPatch = {
 // Newest patch first.
 export const RELEASE_NOTES: ReleaseNotesPatch[] = [
   {
+    version: "0.3.1",
+    notes: ["Further app fixes and optimizations."],
+  },
+  {
     version: "0.2.9",
     notes: [
       "Renamed Share to Ratio in the skills table and added a Crit+Heavy column.",

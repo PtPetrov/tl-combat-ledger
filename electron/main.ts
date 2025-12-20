@@ -93,6 +93,7 @@ function getRecommendedZoomFactor(display: Display): number {
   if (effectiveHeight <= 1080) return 0.85;
   if (effectiveHeight <= 1440) return 0.9;
   if (effectiveHeight <= 1600) return 0.95;
+  if (effectiveHeight <= 2160) return 0.97;
   return 1;
 }
 
@@ -390,6 +391,7 @@ function initAutoUpdater() {
   }
 
   autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = false;
   autoUpdater.logger = console as any;
   sendUpdateStatus({ state: "idle" });
 
