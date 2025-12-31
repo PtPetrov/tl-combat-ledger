@@ -1,4 +1,5 @@
-import { readFileSync } from "node:fs";
+import { app } from "electron";
+import { existsSync, readFileSync } from "node:fs";
 import * as path from "node:path";
 
 type PackagedTelemetryConfig = {
@@ -15,14 +16,56 @@ const normalizeConfigValue = (value: unknown): string => {
   return str;
 };
 
+const resolvePackageJsonPath = (): string => {
+  const candidates = new Set<string>();
+  const appPath = (() => {
+    try {
+      return app?.getAppPath?.() ?? "";
+    } catch {
+      return "";
+    }
+  })();
+
+  if (appPath) candidates.add(path.join(appPath, "package.json"));
+  candidates.add(path.join(__dirname, "..", "package.json"));
+  candidates.add(path.join(__dirname, "..", "..", "package.json"));
+
+  if (process.resourcesPath) {
+    candidates.add(path.join(process.resourcesPath, "app.asar", "package.json"));
+    candidates.add(path.join(process.resourcesPath, "app", "package.json"));
+  }
+
+  for (const candidate of candidates) {
+    if (candidate && existsSync(candidate)) return candidate;
+  }
+
+  return "";
+};
+
 const readPackagedTelemetryConfig = (): PackagedTelemetryConfig => {
   if (cachedPackagedConfig) return cachedPackagedConfig;
 
   try {
-    const packageJsonPath = path.join(__dirname, "..", "package.json");
+    const packageJsonPath = resolvePackageJsonPath();
+    if (!packageJsonPath) {
+      cachedPackagedConfig = {};
+      return cachedPackagedConfig;
+    }
     const raw = readFileSync(packageJsonPath, "utf8");
-    const pkg = JSON.parse(raw) as { tlclTelemetry?: PackagedTelemetryConfig };
-    cachedPackagedConfig = pkg.tlclTelemetry ?? {};
+    const pkg = JSON.parse(raw) as {
+      tlclTelemetry?: PackagedTelemetryConfig;
+      build?: { extraMetadata?: { tlclTelemetry?: PackagedTelemetryConfig } };
+    };
+    const fromRoot = pkg.tlclTelemetry ?? {};
+    const fromExtra = pkg.build?.extraMetadata?.tlclTelemetry ?? {};
+    cachedPackagedConfig = {
+      aptabaseAppKey: normalizeConfigValue(fromRoot.aptabaseAppKey)
+        ? fromRoot.aptabaseAppKey
+        : fromExtra.aptabaseAppKey,
+      sentryDsn: normalizeConfigValue(fromRoot.sentryDsn)
+        ? fromRoot.sentryDsn
+        : fromExtra.sentryDsn,
+    };
   } catch {
     cachedPackagedConfig = {};
   }
@@ -45,4 +88,3 @@ export const getSentryDsn = (): string => {
     process.env.TLCL_SENTRY_DSN ?? process.env.SENTRY_DSN ?? packaged.sentryDsn
   );
 };
-
